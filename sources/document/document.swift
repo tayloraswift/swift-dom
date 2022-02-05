@@ -142,15 +142,15 @@ enum Document
         
         @inlinable public static 
         subscript(_ container:Domain.Container, id id:ID? = nil, 
-            @AttributesBuilder<Domain> attributes:() -> [String: String], 
-            @ElementsBuilder<Domain, ID>  content:() -> [Self] = { [] }) 
+            @AttributesBuilder<Domain> attributes attributes:() -> [String: String], 
+            @ElementsBuilder<Domain, ID>  content    content:() -> [Self] = { [] }) 
             -> Self
         {
             .container(container, id: id, attributes: attributes(), content: content())
         }
         @inlinable public static 
         subscript(_ container:Domain.Container, id id:ID? = nil, 
-            @ElementsBuilder<Domain, ID> _ content:() -> [Self]) 
+            @ElementsBuilder<Domain, ID> content:() -> [Self]) 
             -> Self
         {
             .container(container, id: id, content: content())
