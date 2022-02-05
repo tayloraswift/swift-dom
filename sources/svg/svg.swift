@@ -1,65 +1,54 @@
-protocol _SVGRoot:XML.Root where Domain == SVG
+import StructuredDocument
+import HTML
+
+extension Document 
 {
-}
-enum SVG:XML.Domain
-{
-    typealias Root              = _SVGRoot
-    
-    struct Dynamic<ID>:Root where ID:XML.ID
+    public 
+    enum SVG:DocumentDomain
     {
-        let attributes:[String: String]
-        let content:[XML.Element<SVG, ID>]
-    }
-    typealias Static = Dynamic<Never>
-    
-    enum Container:String, XML.Container 
-    {
-        typealias Domain = SVG 
-        
-        case svg 
-        case g 
-        case text 
-    }
-    enum Leaf:String, XML.Leaf
-    {
-        typealias Domain = SVG 
-        
-        case rect 
-        case line 
-        case polyline 
-        case polygon 
-        case path
-        case circle 
-        case image
-        
-        var void:Bool 
+        @frozen public 
+        enum Container:String, ContainerDomain
         {
-            false 
+            public 
+            typealias Domain = SVG 
+            
+            case svg 
+            case g 
+            case text 
+            
+            @inlinable public static 
+            var root:Self { .svg }
         }
-    }
-}
-extension SVG.Root
-{
-    static 
-    var type:SVG.Container 
-    {
-        .svg 
+        @frozen public 
+        enum Leaf:String, LeafDomain
+        {
+            public 
+            typealias Domain = SVG 
+            
+            case rect 
+            case line 
+            case polyline 
+            case polygon 
+            case path
+            case circle 
+            case image
+            
+            @inlinable public 
+            var void:Bool 
+            {
+                false 
+            }
+        }
     }
 }
 
 // attributes 
-protocol _SVGAttribute:XML.Attribute 
+public 
+protocol SVGAttribute:DocumentAttribute 
 {
 }
-protocol _SVGScalarAttribute
-{
-    static 
-    var name:String 
-    {
-        get 
-    }
-}
-protocol _SVGVector4Attribute
+public 
+protocol SVGScalarAttribute
 {
     static 
     var name:String 
@@ -67,7 +56,8 @@ protocol _SVGVector4Attribute
         get 
     }
 }
-protocol _SVGRGBAAttribute
+public 
+protocol SVGVector4Attribute
 {
     static 
     var name:String 
@@ -75,132 +65,134 @@ protocol _SVGRGBAAttribute
         get 
     }
 }
-extension SVG 
+public 
+protocol SVGRGBAAttribute
 {
-    typealias Attribute         = _SVGAttribute
-    typealias ScalarAttribute   = _SVGScalarAttribute
-    typealias Vector4Attribute  = _SVGVector4Attribute
-    typealias RGBAAttribute     = _SVGRGBAAttribute
+    static 
+    var name:String 
+    {
+        get 
+    }
 }
-extension XML.AttributesBuilder where Domain == SVG 
+extension Document.AttributesBuilder where Domain == Document.SVG 
 {
     //  css classes can be written in brackets: 
     //  ```
     //  ["foo", "bar"]
     /// ```
-    static 
+    @inlinable public static 
     func buildExpression(_ classes:[String]) -> [Element]
     {
-        Self.buildExpression((classes.joined(separator: " "), as: HTML.Class.self))
+        Self.buildExpression((classes.joined(separator: " "), as: Document.HTML.Class.self))
     }
     
-    static 
+    @inlinable public static 
     func buildExpression<Attribute>(_ expression:Attribute) -> [Element] 
-        where Attribute:SVG.Attribute, Attribute.Expression == Attribute 
+        where Attribute:SVGAttribute, Attribute.Expression == Attribute 
     {
         Self.buildExpression(Attribute.item(from: expression))
     }
-    static 
+    @inlinable public static 
     func buildExpression<Attribute>(_ expression:(Attribute.Expression, as:Attribute.Type)) -> [Element] 
-        where Attribute:SVG.Attribute
+        where Attribute:SVGAttribute
     {
         Self.buildExpression(Attribute.item(from: expression.0))
     }
     
     // needed because we want to allow any `Numeric` type. will probably replace with 
     // eager typecast function
-    static 
+    @inlinable public static 
     func buildExpression<Attribute, T>(_ item:(T, as:Attribute.Type)) -> [Element]
-        where Attribute:SVG.ScalarAttribute, T:Numeric
+        where Attribute:SVGScalarAttribute, T:Numeric
     {
         [(Attribute.name, "\(item.0)")]
     }
-    static 
+    @inlinable public static 
     func buildExpression<Attribute, T0, T1, T2, T3>(_ item:((T0, T1, T2, T3), as:Attribute.Type)) -> [Element]
-        where Attribute:SVG.Vector4Attribute, T0:Numeric, T1:Numeric, T2:Numeric, T3:Numeric 
+        where Attribute:SVGVector4Attribute, T0:Numeric, T1:Numeric, T2:Numeric, T3:Numeric 
     {
         [(Attribute.name, "\(item.0.0) \(item.0.1) \(item.0.2) \(item.0.3)")]
     }
-    static 
+    @inlinable public static 
     func buildExpression<Attribute, T0, T1, T2, T3>(_ item:((r:T0, g:T1, b:T2, a:T3), as:Attribute.Type)) -> [Element]
-        where Attribute:SVG.RGBAAttribute, T0:Numeric, T1:Numeric, T2:Numeric, T3:Numeric 
+        where Attribute:SVGRGBAAttribute, T0:Numeric, T1:Numeric, T2:Numeric, T3:Numeric 
     {
         [(Attribute.name, "rgba(\(item.0.0), \(item.0.1), \(item.0.2), \(item.0.3))")]
     }
 }
-extension HTML.Class:SVG.Attribute 
+extension Document.HTML.Class:SVGAttribute 
 {
 }
-extension SVG 
+extension Document.SVG 
 {
-    enum R:ScalarAttribute  
+    enum R:SVGScalarAttribute  
     {
         static 
         let name:String = "r"
     }
-    enum CX:ScalarAttribute  
+    enum CX:SVGScalarAttribute  
     {
         static 
         let name:String = "cx"
     }
-    enum RX:ScalarAttribute  
+    enum RX:SVGScalarAttribute  
     {
         static 
         let name:String = "rx"
     }
-    enum X:ScalarAttribute  
+    enum X:SVGScalarAttribute  
     {
         static 
         let name:String = "x"
     }
-    enum X1:ScalarAttribute  
+    enum X1:SVGScalarAttribute  
     {
         static 
         let name:String = "x1"
     }
-    enum X2:ScalarAttribute  
+    enum X2:SVGScalarAttribute  
     {
         static 
         let name:String = "x2"
     }
-    enum CY:ScalarAttribute  
+    enum CY:SVGScalarAttribute  
     {
         static 
         let name:String = "cy"
     }
-    enum RY:ScalarAttribute  
+    enum RY:SVGScalarAttribute  
     {
         static 
         let name:String = "ry"
     }
-    enum Y:ScalarAttribute  
+    enum Y:SVGScalarAttribute  
     {
         static 
         let name:String = "y"
     }
-    enum Y1:ScalarAttribute  
+    enum Y1:SVGScalarAttribute  
     {
         static 
         let name:String = "y1"
     }
-    enum Y2:ScalarAttribute  
+    enum Y2:SVGScalarAttribute  
     {
         static 
         let name:String = "y2"
     }
     
-    enum ViewBox:Vector4Attribute 
+    enum ViewBox:SVGVector4Attribute 
     {
         static 
         let name:String = "viewBox"
     }
-    enum Fill:RGBAAttribute 
+    enum Fill:SVGRGBAAttribute 
     {
         static 
         let name:String = "fill"
     }
     
-    enum D:Attribute
+    enum D:SVGAttribute
     {
         static 
         let name:String = "d"
