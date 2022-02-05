@@ -1,8 +1,6 @@
 public 
 protocol LeafDomain:Equatable, RawRepresentable where RawValue == String 
 {
-    // needed so that `callAsFunction` knows what kind of element to build
-    associatedtype Domain   where Domain:DocumentDomain, Domain.Leaf == Self
     // indicates if the leaf should be rendered '<example>' (true) or '<example/>' (false)
     var void:Bool 
     {
@@ -12,8 +10,6 @@ protocol LeafDomain:Equatable, RawRepresentable where RawValue == String
 public 
 protocol ContainerDomain:Equatable, RawRepresentable where RawValue == String 
 {
-    // needed so that `callAsFunction` knows what kind of element to build
-    associatedtype Domain   where Domain:DocumentDomain, Domain.Container == Self
     static 
     var root:Self
     {
@@ -40,51 +36,6 @@ extension Never:DocumentID
     var documentId:String  
     {
         fatalError("unreachable")
-    }
-}
-extension LeafDomain where Domain.Leaf == Self
-{
-    @inlinable public 
-    func callAsFunction<ID>(id:ID? = nil, 
-        @Document.AttributesBuilder<Domain> attributes:() -> [String: String]) 
-        -> Document.Element<Domain, ID> 
-        where ID:DocumentID
-    {
-        .leaf(self, id: id, attributes: attributes())
-    }
-    @inlinable public 
-    func callAsFunction<ID>(id:ID) 
-        -> Document.Element<Domain, ID> 
-        where ID:DocumentID
-    {
-        .leaf(self, id: id)
-    }
-}
-extension ContainerDomain 
-{
-    @inlinable public 
-    func callAsFunction<ID>(id:ID? = nil, 
-        @Document.AttributesBuilder<Domain> attributes:() -> [String: String], 
-        @Document.ElementsBuilder<Domain, ID>  content:() -> [Document.Element<Domain, ID>] = { [] }) 
-        -> Document.Element<Domain, ID> 
-        where ID:DocumentID 
-    {
-        .container(self, id: id, attributes: attributes(), content: content())
-    }
-    @inlinable public 
-    func callAsFunction<ID>(id:ID? = nil, 
-        @Document.ElementsBuilder<Domain, ID> _ content:() -> [Document.Element<Domain, ID>]) 
-        -> Document.Element<Domain, ID> 
-        where ID:DocumentID
-    {
-        .container(self, id: id, content: content())
-    }
-    @inlinable public 
-    func callAsFunction<ID>(id:ID)
-        -> Document.Element<Domain, ID> 
-        where ID:DocumentID
-    {
-        .container(self, id: id)
     }
 }
 
@@ -174,6 +125,41 @@ enum Document
         func text(escaping unescaped:String) -> Self
         {
             .text(escaped: Document.escape(unescaped))
+        }
+        
+        @inlinable public static 
+        subscript(_ leaf:Domain.Leaf, id id:ID? = nil, 
+            @AttributesBuilder<Domain> attributes:() -> [String: String]) 
+            -> Self
+        {
+            .leaf(leaf, id: id, attributes: attributes())
+        }
+        @inlinable public static 
+        subscript(_ leaf:Domain.Leaf, id id:ID) -> Self
+        {
+            .leaf(leaf, id: id)
+        }
+        
+        @inlinable public static 
+        subscript(_ container:Domain.Container, id id:ID? = nil, 
+            @AttributesBuilder<Domain> attributes:() -> [String: String], 
+            @ElementsBuilder<Domain, ID>  content:() -> [Self] = { [] }) 
+            -> Self
+        {
+            .container(container, id: id, attributes: attributes(), content: content())
+        }
+        @inlinable public static 
+        subscript(_ container:Domain.Container, id id:ID? = nil, 
+            @ElementsBuilder<Domain, ID> _ content:() -> [Self]) 
+            -> Self
+        {
+            .container(container, id: id, content: content())
+        }
+        @inlinable public static 
+        subscript(_ container:Domain.Container, id id:ID)
+            -> Self
+        {
+            .container(container, id: id)
         }
     }
         
@@ -447,7 +433,7 @@ extension Document
         {
             [Element.root(foreign)]
         }
-        @inlinable public static 
+        /* @inlinable public static 
         func buildExpression(_ empty:Domain.Container) -> [Element]  
         {
             [Element.container(empty)]
@@ -456,7 +442,7 @@ extension Document
         func buildExpression(_ empty:Domain.Leaf) -> [Element]  
         {
             [Element.leaf(empty)]
-        }
+        } */
         @inlinable public static 
         func buildExpression(_ unescaped:String) -> [Element]  
         {
