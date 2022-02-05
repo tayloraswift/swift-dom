@@ -135,7 +135,7 @@ enum Document
             .leaf(leaf, id: id, attributes: attributes())
         }
         @inlinable public static 
-        subscript(_ leaf:Domain.Leaf, id id:ID) -> Self
+        subscript(_ leaf:Domain.Leaf, id id:ID? = nil) -> Self
         {
             .leaf(leaf, id: id)
         }
@@ -156,7 +156,7 @@ enum Document
             .container(container, id: id, content: content())
         }
         @inlinable public static 
-        subscript(_ container:Domain.Container, id id:ID)
+        subscript(_ container:Domain.Container, id id:ID? = nil)
             -> Self
         {
             .container(container, id: id)
