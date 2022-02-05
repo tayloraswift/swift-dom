@@ -9,9 +9,6 @@ extension Document
         @frozen public 
         enum Container:String, ContainerDomain
         {
-            public 
-            typealias Domain = SVG 
-            
             case svg 
             case g 
             case text 
@@ -22,9 +19,6 @@ extension Document
         @frozen public 
         enum Leaf:String, LeafDomain
         {
-            public 
-            typealias Domain = SVG 
-            
             case rect 
             case line 
             case polyline 

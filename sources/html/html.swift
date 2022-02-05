@@ -9,9 +9,6 @@ extension Document
         @frozen public 
         enum Container:String, ContainerDomain
         {
-            public 
-            typealias Domain = HTML 
-            
             case html 
             case head 
             case body 
@@ -50,9 +47,6 @@ extension Document
         @frozen public 
         enum Leaf:String, LeafDomain
         {
-            public 
-            typealias Domain = HTML 
-            
             case meta 
             case link 
             case wbr 
@@ -248,86 +242,83 @@ extension Document.HTML
         public 
         typealias Element = (key:String, value:String)
     }
+}
+extension Document.Element where Domain == Document.HTML 
+{
     @inlinable public static 
-    func metadata<ID>(id:ID? = nil, charset _:Unicode.UTF8.Type) -> Document.Element<Self, ID>
+    func metadata(id:ID? = nil, charset _:Unicode.UTF8.Type) -> Self
     {
-        Leaf.meta(id: id){ Charset.utf8 }
+        Self[.meta, id: id]{ Domain.Charset.utf8 }
     }
-    static 
-    func metadata<ID>(of _:ID.Type = ID.self, 
-        @MetadataBuilder _ items:() -> [(key:String, value:String)]) -> [Document.Element<Self, ID>]
-        where ID:DocumentID
+    @inlinable public static  
+    func metadata(of _:ID.Type = ID.self, 
+        @Document.HTML.MetadataBuilder _ items:() -> [(key:String, value:String)]) -> [Self]
     {
         items().map 
         {
             (item:(key:String, value:String)) in 
-            Leaf.meta
+            Self[.meta]
             {
-                (item.key,   as: Name.self)
-                (item.value, as: Content.self)
+                (item.key,   as: Domain.Name.self)
+                (item.value, as: Domain.Content.self)
             }
         }
     }
     
-    static 
-    func item<ID>(id:ID? = nil, 
-        @Document.InlineBuilder<Self, ID> _ paragraphs:() -> [[Document.Element<Self, ID>]]) 
-        -> Document.Element<Self, ID>
-        where ID:DocumentID
+    @inlinable public static 
+    func item(id:ID? = nil, 
+        @Document.InlineBuilder<Domain, ID> _ paragraphs:() -> [[Self]]) 
+        -> Self
     {
-        Container.li(id: id) 
+        Self[.li, id: id]
         {
             paragraphs().map 
             {
-                .container(.p, content: $0)
+                Self.container(.p, content: $0)
             }
         }
     }
-    static 
-    func span<ID>(_ string:String, id:ID? = nil, 
-        @Document.AttributesBuilder<Self> attributes:() -> [String: String] = { [:] }) 
-        -> Document.Element<Self, ID> 
-        where ID:DocumentID
+    @inlinable public static 
+    func span(_ string:String, id:ID? = nil, 
+        @Document.AttributesBuilder<Domain> attributes:() -> [String: String] = { [:] }) 
+        -> Self 
     {
         .container(.span, id: id, attributes: attributes(), content: [.text(escaping: string)])
     }
     // all inline blocks will get consolidated into one single block
-    static 
-    func span<ID>(id:ID? = nil, 
-        @Document.AttributesBuilder<Self> attributes:() -> [String: String] = { [:] }, 
-        @Document.InlineBuilder<Self, ID> content inline:() -> [[Document.Element<Self, ID>]]) 
-        -> Document.Element<Self, ID> 
-        where ID:DocumentID
+    @inlinable public static 
+    func span(id:ID? = nil, 
+        @Document.AttributesBuilder<Domain> attributes:() -> [String: String] = { [:] }, 
+        @Document.InlineBuilder<Domain, ID> content inline:() -> [[Self]]) 
+        -> Self 
     {
         .container(.span, id: id, attributes: attributes(), content: .init(inline().joined()))
     }
-    static 
-    func link<ID>(_ string:String, to url:String, id:ID? = nil, internal:Bool = false, 
-        @Document.AttributesBuilder<Self> attributes:() -> [String: String] = { [:] }) 
-        -> Document.Element<Self, ID> 
-        where ID:DocumentID
+    @inlinable public static 
+    func link(_ string:String, to url:String, id:ID? = nil, internal:Bool = false, 
+        @Document.AttributesBuilder<Domain> attributes:() -> [String: String] = { [:] }) 
+        -> Self 
     {
-        var attributes:[String: String] = attributes()
-            attributes[Href.name]       = url
+        var attributes:[String: String]     = attributes()
+            attributes[Domain.Href.name]    = url
         if !`internal` 
         {
-            attributes[Target.name]     = Target._blank.rawValue
+            attributes[Domain.Target.name]  = Domain.Target._blank.rawValue
         }
         return .container(.a, id: id, attributes: attributes, content: [.text(escaping: string)])
     }
     // all inline blocks will get consolidated into one single block
-    static 
-    func link<ID>(to url:String, id:ID? = nil, internal:Bool = false, 
-        @Document.AttributesBuilder<Self> attributes:() -> [String: String] = { [:] }, 
-        @Document.InlineBuilder<Self, ID> content inline:() -> [[Document.Element<Self, ID>]]) 
-        -> Document.Element<Self, ID> 
-        where ID:DocumentID
+    @inlinable public static 
+    func link(to url:String, id:ID? = nil, internal:Bool = false, 
+        @Document.AttributesBuilder<Domain> attributes:() -> [String: String] = { [:] }, 
+        @Document.InlineBuilder<Domain, ID> content inline:() -> [[Self]]) 
+        -> Self 
     {
-        var attributes:[String: String] = attributes()
-            attributes[Href.name]       = url
+        var attributes:[String: String]     = attributes()
+            attributes[Domain.Href.name]    = url
         if !`internal` 
         {
-            attributes[Target.name]     = Target._blank.rawValue
+            attributes[Domain.Target.name]  = Domain.Target._blank.rawValue
         }
         return .container(.a, id: id, attributes: attributes, content: .init(inline().joined()))
     }
