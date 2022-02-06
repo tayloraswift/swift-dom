@@ -7,7 +7,7 @@ extension Document
     enum SVG:DocumentDomain
     {
         @frozen public 
-        enum Container:String, ContainerDomain
+        enum Container:String, ContainerDomain, Sendable
         {
             case svg 
             case g 
@@ -17,7 +17,7 @@ extension Document
             var root:Self { .svg }
         }
         @frozen public 
-        enum Leaf:String, LeafDomain
+        enum Leaf:String, LeafDomain, Sendable
         {
             case rect 
             case line 

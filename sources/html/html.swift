@@ -7,7 +7,7 @@ extension Document
     {
         // these means ABI breakage is inevitable, but this is necessary for performance
         @frozen public 
-        enum Container:String, ContainerDomain
+        enum Container:String, ContainerDomain, Sendable
         {
             case html 
             case head 
@@ -45,7 +45,7 @@ extension Document
             var root:Self { .html }
         }
         @frozen public 
-        enum Leaf:String, LeafDomain
+        enum Leaf:String, LeafDomain, Sendable
         {
             case meta 
             case link 
