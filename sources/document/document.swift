@@ -115,7 +115,7 @@ enum Document
     @frozen public
     enum Element<Domain, ID> where Domain:DocumentDomain, ID:DocumentID
     {
-        case root       (DocumentRoot)
+        case root       (DocumentRoot & Sendable)
         
         case container  (Domain.Container, id:ID? = nil, attributes:[String: String] = [:], content:[Self] = []) 
         case leaf       (Domain.Leaf,      id:ID? = nil, attributes:[String: String] = [:]) 
@@ -181,6 +181,12 @@ enum Document
         }
         return string
     }
+}
+extension Document.Dynamic:Sendable where ID:Sendable, Domain.Leaf:Sendable, Domain.Container:Sendable
+{
+}
+extension Document.Element:Sendable where ID:Sendable, Domain.Leaf:Sendable, Domain.Container:Sendable
+{
 }
 
 // rendering 
@@ -429,7 +435,7 @@ extension Document
         }
         @inlinable public static 
         func buildExpression<Other>(_ foreign:Other) -> [Element]
-            where Other:DocumentRoot
+            where Other:DocumentRoot & Sendable
         {
             [Element.root(foreign)]
         }
