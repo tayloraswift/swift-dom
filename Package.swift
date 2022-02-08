@@ -5,7 +5,7 @@ let package = Package(
     name: "swift-structured-document",
     products: 
     [
-        .library    (name: "StructuredDocument",    targets: ["HTML", "SVG"]),
+        .library    (name: "StructuredDocument",    targets: ["HTML", "SVG", "RSS"]),
     ],
     dependencies: 
     [
@@ -23,6 +23,15 @@ let package = Package(
                 .target(name: "StructuredDocument")
             ],
             path: "sources/html",
+            exclude: 
+            [
+            ]),
+        .target(name: "RSS",
+            dependencies: 
+            [
+                .target(name: "StructuredDocument"),
+            ],
+            path: "sources/rss",
             exclude: 
             [
             ]),

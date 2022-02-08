@@ -1,5 +1,21 @@
 public 
-protocol LeafDomain:Equatable, RawRepresentable where RawValue == String 
+protocol TagDomain:Equatable
+{
+    var name:String 
+    {
+        get 
+    }
+}
+extension TagDomain where Self:RawRepresentable, RawValue == String
+{
+    @inlinable public
+    var name:String
+    { 
+        self.rawValue 
+    }
+}
+public 
+protocol LeafDomain:TagDomain
 {
     // indicates if the leaf should be rendered '<example>' (true) or '<example/>' (false)
     var void:Bool 
@@ -8,7 +24,7 @@ protocol LeafDomain:Equatable, RawRepresentable where RawValue == String
     }
 }
 public 
-protocol ContainerDomain:Equatable, RawRepresentable where RawValue == String 
+protocol ContainerDomain:TagDomain
 {
     static 
     var root:Self
@@ -224,12 +240,12 @@ extension Document.Element
         case .leaf      (let element, id: let identifier, attributes: let dictionary): 
             attributes  = dictionary
             children    = element.void ? .none : .some(nil) 
-            type        = element.rawValue
+            type        = element.name
             id          = identifier 
         case .container (let element, id: let identifier, attributes: let dictionary, content: let content):
             attributes  = dictionary
             children    = .some(content)
-            type        = element.rawValue
+            type        = element.name
             id          = identifier
         }
         
