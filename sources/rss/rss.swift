@@ -5,7 +5,6 @@ extension Document
     public 
     enum RSS:DocumentDomain
     {
-        // these means ABI breakage is inevitable, but this is necessary for performance
         @frozen public 
         enum Container:String, ContainerDomain, Sendable
         {

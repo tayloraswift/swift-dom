@@ -191,6 +191,7 @@ extension Document.HTML
         case preconnect = "preconnect"
         case icon       = "icon"
         case nofollow   = "nofollow noopener"
+        case alternate  = "alternate"
     }
     @frozen public 
     enum Target:RawRepresentable, HTMLAttribute 
