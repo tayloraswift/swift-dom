@@ -19,6 +19,7 @@ extension Document
             case address
             case article 
             case aside 
+            case blockquote 
             case code 
             case dl 
             case dt
@@ -28,6 +29,9 @@ extension Document
             case h1
             case h2
             case h3
+            case h4
+            case h5
+            case h6
             case header
             case li
             case main 
@@ -35,9 +39,18 @@ extension Document
             case ol 
             case p
             case pre 
+            case q
+            case s
             case section
             case span
             case script 
+            case strong
+            case table
+            case tbody
+            case thead
+            case td
+            case th
+            case tr
             case time
             case ul 
             
@@ -47,10 +60,12 @@ extension Document
         @frozen public 
         enum Leaf:String, LeafDomain, Sendable
         {
-            case meta 
-            case link 
-            case wbr 
             case br 
+            case hr
+            case img
+            case link 
+            case meta 
+            case wbr 
             
             @inlinable public
             var void:Bool 
