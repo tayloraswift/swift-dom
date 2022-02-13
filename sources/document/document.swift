@@ -329,6 +329,11 @@ protocol DocumentArrayBuilder
 extension DocumentArrayBuilder
 {
     @inlinable public static 
+    func buildExpression(_ element:Element?) -> [Element]
+    {
+        element.map{ [$0] } ?? []
+    }
+    @inlinable public static 
     func buildExpression(_ element:Element) -> [Element]
     {
         [element]
