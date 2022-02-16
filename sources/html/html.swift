@@ -26,6 +26,7 @@ extension Document
             case dd 
             case div
             case em
+            case form
             case h1
             case h2
             case h3
@@ -63,6 +64,7 @@ extension Document
             case br 
             case hr
             case img
+            case input
             case link 
             case meta 
             case wbr 
@@ -117,6 +119,16 @@ extension Document.HTML
         static var name:String { "async" }
     }
     @frozen public 
+    enum Autocomplete:String, HTMLAttribute
+    {
+        public 
+        typealias Expression = Self 
+        @inlinable public 
+        static var name:String { "autocomplete" }
+        
+        case off = "off"
+    }
+    @frozen public 
     enum Charset:String, HTMLAttribute
     {
         public 
@@ -147,6 +159,14 @@ extension Document.HTML
         static var name:String { "crossorigin" }
         
         case anonymous = "anonymous"
+    }
+    public 
+    enum Defer:HTMLAttribute
+    {
+        public 
+        typealias Expression = Bool 
+        @inlinable public 
+        static var name:String { "defer" }
     }
     public 
     enum Href:HTMLAttribute
@@ -194,6 +214,12 @@ extension Document.HTML
         @inlinable public
         static var name:String { "onmousedown" }
     }
+    public 
+    enum Placeholder:HTMLAttribute 
+    {
+        @inlinable public
+        static var name:String { "placeholder" }
+    }
     @frozen public 
     enum Rel:String, HTMLAttribute
     {
@@ -207,6 +233,16 @@ extension Document.HTML
         case icon       = "icon"
         case nofollow   = "nofollow noopener"
         case alternate  = "alternate"
+    }
+    @frozen public 
+    enum Role:String, HTMLAttribute
+    {
+        public 
+        typealias Expression = Self 
+        @inlinable public
+        static var name:String { "role" }
+        
+        case search = "search"
     }
     @frozen public 
     enum Target:RawRepresentable, HTMLAttribute 
@@ -246,6 +282,16 @@ extension Document.HTML
             case .frame(let frame): return frame
             }
         }
+    }
+    @frozen public 
+    enum InputType:String, HTMLAttribute
+    {
+        public 
+        typealias Expression = Self 
+        @inlinable public
+        static var name:String { "type" }
+        
+        case text = "text"
     }
 }
 
