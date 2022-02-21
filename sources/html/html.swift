@@ -129,6 +129,14 @@ extension Document.HTML
         case off = "off"
     }
     @frozen public 
+    enum Autofocus:HTMLAttribute
+    {
+        public 
+        typealias Expression = Bool 
+        @inlinable public 
+        static var name:String { "autofocus" }
+    }
+    @frozen public 
     enum Charset:String, HTMLAttribute
     {
         public 
@@ -291,7 +299,8 @@ extension Document.HTML
         @inlinable public
         static var name:String { "type" }
         
-        case text = "text"
+        case text   = "text"
+        case search = "search"
     }
 }
 
