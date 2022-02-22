@@ -9,10 +9,15 @@ let package = Package(
     ],
     dependencies: 
     [
+        .package(url: "https://github.com/kelvin13/swift-resource.git", branch: "master"),
     ],
     targets: 
     [
         .target(name: "StructuredDocument", 
+            dependencies: 
+            [
+                .product(name: "Resource", package: "swift-resource"),
+            ], 
             path: "sources/document", 
             exclude: 
             [
@@ -20,6 +25,7 @@ let package = Package(
         .target(name: "HTML",
             dependencies: 
             [
+                .product(name: "Resource", package: "swift-resource"),
                 .target(name: "StructuredDocument")
             ],
             path: "sources/html",
