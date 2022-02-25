@@ -29,6 +29,6 @@ extension Resource
     func html<ID>(_ document:Document.Dynamic<Document.HTML, ID>, version:Resource.Version?) -> Self
         where ID:DocumentID
     {
-        .text("<!DOCTYPE html>\(document.rendered)", subtype: .html, version: version)
+        .text("<!DOCTYPE html>\(document.rendered)", type: .html, version: version)
     }
 }
