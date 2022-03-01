@@ -38,6 +38,13 @@ protocol DocumentDomain
     associatedtype Container    where Container:ContainerDomain
     associatedtype Leaf         where      Leaf:LeafDomain
 }
+extension DocumentDomain 
+{
+    public 
+    typealias StaticElement = DocumentElement<Self, Never>
+    public 
+    typealias Element<ID> = DocumentElement<Self, ID> where ID:DocumentID
+}
 public 
 protocol DocumentID
 {
@@ -55,19 +62,72 @@ extension Never:DocumentID
     }
 }
 
-public 
-protocol DocumentRoot
+@frozen public
+enum DocumentElement<Domain, ID> where Domain:DocumentDomain, ID:DocumentID
 {
-    associatedtype Domain   where Domain:DocumentDomain 
-    associatedtype ID       where ID:DocumentID
+    case root       (any AnyDocumentRoot & Sendable)
     
-    var element:Document.Element<Domain, ID>
+    case container  (Domain.Container, id:ID? = nil, attributes:[String: String] = [:], content:[Self] = []) 
+    case leaf       (Domain.Leaf,      id:ID? = nil, attributes:[String: String] = [:]) 
+    case text       (escaped:String)
+    
+    @inlinable public static 
+    func text(escaping unescaped:String) -> Self
     {
-        get 
+        .text(escaped: Document.escape(unescaped))
+    }
+    
+    @inlinable public static 
+    subscript(_ leaf:Domain.Leaf, id id:ID? = nil, @Attributes attributes:() -> [String: String]) 
+        -> Self
+    {
+        .leaf(leaf, id: id, attributes: attributes())
+    }
+    @inlinable public static 
+    subscript(_ leaf:Domain.Leaf, id id:ID? = nil) 
+        -> Self
+    {
+        .leaf(leaf, id: id)
+    }
+    
+    @inlinable public static 
+    subscript(_ container:Domain.Container, id id:ID? = nil, 
+        @Attributes attributes attributes:() -> [String: String], 
+        @Content    content       content:() -> [Self] = { [] }) 
+        -> Self
+    {
+        .container(container, id: id, attributes: attributes(), content: content())
+    }
+    @inlinable public static 
+    subscript(_ container:Domain.Container, id id:ID? = nil, @Content content:() -> [Self]) 
+        -> Self
+    {
+        .container(container, id: id, content: content())
+    }
+    @inlinable public static 
+    subscript(_ container:Domain.Container, id id:ID? = nil) 
+        -> Self
+    {
+        .container(container, id: id)
     }
 }
+
+public 
+typealias StaticDocumentRoot<Domain> = DocumentRoot<Domain, Never> where Domain:DocumentDomain
+
+public 
+protocol AnyDocumentRoot
+{
+     associatedtype Domain where Domain:DocumentDomain
+     associatedtype ID where ID:DocumentID
+     
+     var element:DocumentElement<Domain, ID> 
+     {
+         get
+     }
+}
 // needed because we cannot access `self.element` from a protocol existential
-extension DocumentRoot 
+extension AnyDocumentRoot 
 {
     @inlinable public 
     var rendered:String 
@@ -80,105 +140,57 @@ extension DocumentRoot
         self.element.plain
     }
 }
+@frozen public 
+struct DocumentRoot<Domain, ID>:AnyDocumentRoot where Domain:DocumentDomain, ID:DocumentID
+{
+    public 
+    var id:ID?
+    public 
+    var attributes:[String: String]
+    public
+    var content:[DocumentElement<Domain, ID>]
+    
+    @inlinable public 
+    var element:DocumentElement<Domain, ID> 
+    {
+        .container(.root, id: self.id, attributes: self.attributes, content: self.content)
+    }
+    
+    @inlinable public 
+    init(id:ID? = nil,   
+        @DocumentElement<Domain, ID>.Attributes attributes:() -> [String: String], 
+        @DocumentElement<Domain, ID>.Content       content:() -> [DocumentElement<Domain, ID>] = { [] }) 
+    {
+        self.id         = id
+        self.attributes = attributes()
+        self.content    = content()
+    }
+    @inlinable public 
+    init(id:ID? = nil, 
+        @DocumentElement<Domain, ID>.Content content:() -> [DocumentElement<Domain, ID>]) 
+    {
+        self.id         = id
+        self.attributes = [:]
+        self.content    = content()
+    }
+    @inlinable public 
+    init(id:ID? = nil) 
+    {
+        self.id         = id
+        self.attributes = [:]
+        self.content    = []
+    }
+}
+
 public 
 enum Document 
 {
+    @available(*, deprecated, renamed: "StaticDocumentRoot")
     public
-    typealias Static<Domain> = Dynamic<Domain, Never> where Domain:DocumentDomain
+    typealias Static<Domain> = StaticDocumentRoot<Domain> where Domain:DocumentDomain
+    public 
+    typealias Dynamic<Domain, ID> = DocumentRoot<Domain, ID>  where Domain:DocumentDomain, ID:DocumentID
     
-    @frozen public 
-    struct Dynamic<Domain, ID>:DocumentRoot where Domain:DocumentDomain, ID:DocumentID
-    {
-        public 
-        var id:ID?
-        public 
-        var attributes:[String: String]
-        public
-        var content:[Element<Domain, ID>]
-        
-        @inlinable public 
-        var element:Element<Domain, ID> 
-        {
-            .container(.root, id: self.id, attributes: self.attributes, content: self.content)
-        }
-        
-        @inlinable public 
-        init(id:ID? = nil,   
-            @AttributesBuilder<Domain> attributes:() -> [String: String], 
-            @ElementsBuilder<Domain, ID>  content:() -> [Element<Domain, ID>] = { [] }) 
-        {
-            self.id         = id
-            self.attributes = attributes()
-            self.content    = content()
-        }
-        @inlinable public 
-        init(id:ID? = nil, 
-            @ElementsBuilder<Domain, ID>  content:() -> [Element<Domain, ID>]) 
-        {
-            self.id         = id
-            self.attributes = [:]
-            self.content    = content()
-        }
-        @inlinable public 
-        init(id:ID? = nil) 
-        {
-            self.id         = id
-            self.attributes = [:]
-            self.content    = []
-        }
-    }
-    
-    @frozen public
-    enum Element<Domain, ID> where Domain:DocumentDomain, ID:DocumentID
-    {
-        case root       (DocumentRoot & Sendable)
-        
-        case container  (Domain.Container, id:ID? = nil, attributes:[String: String] = [:], content:[Self] = []) 
-        case leaf       (Domain.Leaf,      id:ID? = nil, attributes:[String: String] = [:]) 
-        case text       (escaped:String)
-        
-        @inlinable public static 
-        func text(escaping unescaped:String) -> Self
-        {
-            .text(escaped: Document.escape(unescaped))
-        }
-        
-        @inlinable public static 
-        subscript(_ leaf:Domain.Leaf, id id:ID? = nil, 
-            @AttributesBuilder<Domain> attributes:() -> [String: String]) 
-            -> Self
-        {
-            .leaf(leaf, id: id, attributes: attributes())
-        }
-        @inlinable public static 
-        subscript(_ leaf:Domain.Leaf, id id:ID? = nil) -> Self
-        {
-            .leaf(leaf, id: id)
-        }
-        
-        @inlinable public static 
-        subscript(_ container:Domain.Container, id id:ID? = nil, 
-            @AttributesBuilder<Domain> attributes attributes:() -> [String: String], 
-            @ElementsBuilder<Domain, ID>  content    content:() -> [Self] = { [] }) 
-            -> Self
-        {
-            .container(container, id: id, attributes: attributes(), content: content())
-        }
-        @inlinable public static 
-        subscript(_ container:Domain.Container, id id:ID? = nil, 
-            @ElementsBuilder<Domain, ID> content:() -> [Self]) 
-            -> Self
-        {
-            .container(container, id: id, content: content())
-        }
-        @inlinable public static 
-        subscript(_ container:Domain.Container, id id:ID? = nil)
-            -> Self
-        {
-            .container(container, id: id)
-        }
-    }
-        
     @inlinable public static 
     func escape(_ unescaped:String) -> String 
     {
@@ -197,16 +209,41 @@ enum Document
         }
         return string
     }
+    
+    @available(*, deprecated, renamed: "DocumentElement")
+    public 
+    typealias Element<Domain, ID> = DocumentElement<Domain, ID>
+        where Domain:DocumentDomain, ID:DocumentID
+    
+    @available(*, deprecated, renamed: "DocumentElement.Attributes")
+    public 
+    typealias AttributesBuilder<Domain, ID> = DocumentElement<Domain, ID>.Attributes
+        where Domain:DocumentDomain, ID:DocumentID
+    
+    @available(*, deprecated, renamed: "DocumentElement.Content")
+    public 
+    typealias ElementsBuilder<Domain, ID> = DocumentElement<Domain, ID>.Content
+        where Domain:DocumentDomain, ID:DocumentID
+    
+    @available(*, deprecated, renamed: "DocumentElement.Prose")
+    public 
+    typealias InlineBuilder<Domain, ID> = DocumentElement<Domain, ID>.Prose
+        where Domain:DocumentDomain, ID:DocumentID
+    
+    @available(*, deprecated, renamed: "DocumentElement.Prose")
+    public 
+    typealias Inline<Domain, ID> = DocumentElement<Domain, ID>.Prose
+        where Domain:DocumentDomain, ID:DocumentID
 }
-extension Document.Dynamic:Sendable where ID:Sendable, Domain.Leaf:Sendable, Domain.Container:Sendable
+extension DocumentRoot:Sendable where ID:Sendable, Domain.Leaf:Sendable, Domain.Container:Sendable
 {
 }
-extension Document.Element:Sendable where ID:Sendable, Domain.Leaf:Sendable, Domain.Container:Sendable
+extension DocumentElement:Sendable where ID:Sendable, Domain.Leaf:Sendable, Domain.Container:Sendable
 {
 }
 
 // rendering 
-extension Document.Element
+extension DocumentElement
 {
     @inlinable public 
     var plain:String 
@@ -311,10 +348,10 @@ extension Document.Element
 {
     static 
     func render<S, ID>(_ content:S) -> String
-        where   S:Sequence, ID:XML.ID, S.Element == Document.Element<Self, ID>
+        where   S:Sequence, ID:XML.ID, S.Element == DocumentElement<Self, ID>
     {
         var concatenated:String = ""
-        for element:Document.Element<Self, ID> in content 
+        for element:DocumentElement<Self, ID> in content 
         {
             concatenated += element.rendered 
         }
@@ -421,12 +458,14 @@ extension DocumentAttribute where Expression == Self, Self:RawRepresentable, Sel
         expression.rawValue
     }
 }
-extension Document 
+
+extension DocumentElement 
 {
     // by default, only (key:String, value:String) expressions are accepted. 
     // some `Domain`s provide additional DSL
     @resultBuilder 
-    public enum AttributesBuilder<Domain>:DocumentArrayBuilder where Domain:DocumentDomain
+    public 
+    enum Attributes:DocumentArrayBuilder 
     {
         public 
         typealias Element = (key:String, value:String)
@@ -444,19 +483,21 @@ extension Document
         }
     }
     @resultBuilder 
-    public enum ElementsBuilder<Domain, ID>:DocumentArrayBuilder where Domain:DocumentDomain, ID:DocumentID
+    public 
+    enum Content:DocumentArrayBuilder
     {
         public 
-        typealias Element = Document.Element<Domain, ID>
+        typealias Element = DocumentElement<Domain, ID>
         
         @inlinable public static 
-        func buildExpression(_ inline:Inline<Domain, ID>) -> [Element]  
+        func buildExpression(_ inline:Element.Prose) -> [Element]  
         {
             inline.elements
         }
         @inlinable public static 
-        func buildExpression<Other>(_ foreign:Other) -> [Element]
-            where Other:DocumentRoot & Sendable
+        func buildExpression<Domain, ID>(_ foreign:DocumentRoot<Domain, ID>) -> [Element]
+            where   Domain:DocumentDomain, Domain.Leaf:Sendable, Domain.Container:Sendable, 
+                    ID:DocumentID & Sendable
         {
             [Element.root(foreign)]
         }
@@ -477,26 +518,15 @@ extension Document
         }
     }
     @resultBuilder 
-    public enum InlineBuilder<Domain, ID>:DocumentArrayBuilder where Domain:DocumentDomain, ID:DocumentID
-    {
-        public 
-        typealias Element = Document.Inline<Domain, ID>
-        
-        @inlinable public static 
-        func buildFinalResult(_ elements:[Element]) -> [[Document.Element<Domain, ID>]]
-        {
-            elements.map(\.elements)
-        }
-    }
     @frozen public 
-    struct Inline<Domain, ID>:ExpressibleByStringInterpolation where Domain:DocumentDomain, ID:DocumentID
+    struct Prose:ExpressibleByStringInterpolation
     {
-        public 
-        typealias Element = Document.Element<Domain, ID>
-        
         @frozen public 
         struct StringInterpolationType:StringInterpolationProtocol 
         {
+            public 
+            typealias Element = DocumentElement<Domain, ID>
+            
             public 
             var elements:[Element] 
             @inlinable public 
@@ -540,7 +570,8 @@ extension Document
         }
         
         public 
-        let elements:[Element]
+        let elements:[DocumentElement<Domain, ID>]
+        
         @inlinable public 
         init(stringInterpolation:StringInterpolationType) 
         {
@@ -551,5 +582,15 @@ extension Document
         {
             self.elements = [.text(escaping: stringLiteral)]
         }
+    }
+}
+extension DocumentElement.Prose:DocumentArrayBuilder 
+{
+    public 
+    typealias Element = Self 
+    @inlinable public static 
+    func buildFinalResult(_ elements:[Self]) -> [[DocumentElement<Domain, ID>]]
+    {
+        elements.map(\.elements)
     }
 }

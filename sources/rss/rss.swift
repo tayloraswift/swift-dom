@@ -1,44 +1,49 @@
 import StructuredDocument
 
-extension Document 
+public 
+enum RSS:DocumentDomain
 {
-    public 
-    enum RSS:DocumentDomain
+    @frozen public 
+    enum Container:String, ContainerDomain, Sendable
     {
-        @frozen public 
-        enum Container:String, ContainerDomain, Sendable
-        {
-            case rss
-            case channel 
-            case title 
-            case description 
-            case link 
-            case copyright 
-            case lastBuildDate 
-            case pubDate 
-            case ttl 
-            case item 
-            
-            @inlinable public static 
-            var root:Self { .rss }
-        }
-        @frozen public 
-        enum Leaf:LeafDomain, Sendable
-        {
-            @inlinable public
-            var name:String { fatalError("unreachable") }
-            @inlinable public
-            var void:Bool { true }
-        }
+        case rss
+        case channel 
+        case title 
+        case description 
+        case link 
+        case copyright 
+        case lastBuildDate 
+        case pubDate 
+        case ttl 
+        case item 
+        
+        @inlinable public static 
+        var root:Self { .rss }
+    }
+    @frozen public 
+    enum Leaf:LeafDomain, Sendable
+    {
+        @inlinable public
+        var name:String { fatalError("unreachable") }
+        @inlinable public
+        var void:Bool { true }
     }
 }
 
+public
+typealias _RSS = RSS
+extension Document 
+{
+    @available(*, deprecated, renamed: "RSS")
+    public
+    typealias RSS = _RSS
+}
 // attributes 
 public 
 protocol RSSAttribute:DocumentAttribute
 {
 }
-extension Document.AttributesBuilder where Domain == Document.RSS
+extension DocumentElement.Attributes where Domain == RSS
 {
     // if an attribute is its own expression type, infer the key-value pair 
     @inlinable public static 
@@ -54,7 +59,7 @@ extension Document.AttributesBuilder where Domain == Document.RSS
         Self.buildExpression(Attribute.item(from: expression.0))
     }
 }
-extension Document.RSS 
+extension RSS 
 {
     public 
     enum Version:RSSAttribute
