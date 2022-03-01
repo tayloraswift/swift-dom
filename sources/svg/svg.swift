@@ -1,39 +1,45 @@
 import StructuredDocument
 import HTML
 
-extension Document 
+public 
+enum SVG:DocumentDomain
 {
-    public 
-    enum SVG:DocumentDomain
+    @frozen public 
+    enum Container:String, ContainerDomain, Sendable
     {
-        @frozen public 
-        enum Container:String, ContainerDomain, Sendable
+        case svg 
+        case g 
+        case text 
+        
+        @inlinable public static 
+        var root:Self { .svg }
+    }
+    @frozen public 
+    enum Leaf:String, LeafDomain, Sendable
+    {
+        case rect 
+        case line 
+        case polyline 
+        case polygon 
+        case path
+        case circle 
+        case image
+        
+        @inlinable public 
+        var void:Bool 
         {
-            case svg 
-            case g 
-            case text 
-            
-            @inlinable public static 
-            var root:Self { .svg }
-        }
-        @frozen public 
-        enum Leaf:String, LeafDomain, Sendable
-        {
-            case rect 
-            case line 
-            case polyline 
-            case polygon 
-            case path
-            case circle 
-            case image
-            
-            @inlinable public 
-            var void:Bool 
-            {
-                false 
-            }
+            false 
         }
     }
+}
+
+public
+typealias _SVG = SVG
+extension Document 
+{
+    @available(*, deprecated, renamed: "SVG")
+    public
+    typealias SVG = _SVG
 }
 
 // attributes 
@@ -68,7 +74,7 @@ protocol SVGRGBAAttribute
         get 
     }
 }
-extension Document.AttributesBuilder where Domain == Document.SVG 
+extension DocumentElement.Attributes where Domain == SVG 
 {
     //  css classes can be written in brackets: 
     //  ```
@@ -77,7 +83,7 @@ extension Document.AttributesBuilder where Domain == Document.SVG
     @inlinable public static 
     func buildExpression(_ classes:[String]) -> [Element]
     {
-        Self.buildExpression((classes.joined(separator: " "), as: Document.HTML.Class.self))
+        Self.buildExpression((classes.joined(separator: " "), as: HTML.Class.self))
     }
     
     @inlinable public static 
@@ -114,10 +120,10 @@ extension Document.AttributesBuilder where Domain == Document.SVG
         [(Attribute.name, "rgba(\(item.0.0), \(item.0.1), \(item.0.2), \(item.0.3))")]
     }
 }
-extension Document.HTML.Class:SVGAttribute 
+extension HTML.Class:SVGAttribute 
 {
 }
-extension Document.SVG 
+extension SVG 
 {
     enum R:SVGScalarAttribute  
     {

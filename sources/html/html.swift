@@ -1,81 +1,87 @@
 import StructuredDocument
 
-extension Document 
-{
-    public 
-    enum HTML:DocumentDomain
+public 
+enum HTML:DocumentDomain
+{    
+    // these means ABI breakage is inevitable, but this is necessary for performance
+    @frozen public 
+    enum Container:String, ContainerDomain, Sendable
     {
-        // these means ABI breakage is inevitable, but this is necessary for performance
-        @frozen public 
-        enum Container:String, ContainerDomain, Sendable
+        case html 
+        case head 
+        case body 
+        
+        case title 
+        
+        case a
+        case address
+        case article 
+        case aside 
+        case blockquote 
+        case code 
+        case dl 
+        case dt
+        case dd 
+        case div
+        case em
+        case form
+        case h1
+        case h2
+        case h3
+        case h4
+        case h5
+        case h6
+        case header
+        case li
+        case main 
+        case nav 
+        case ol 
+        case p
+        case pre 
+        case q
+        case s
+        case section
+        case span
+        case script 
+        case strong
+        case table
+        case tbody
+        case thead
+        case td
+        case th
+        case tr
+        case time
+        case ul 
+        
+        @inlinable public static 
+        var root:Self { .html }
+    }
+    @frozen public 
+    enum Leaf:String, LeafDomain, Sendable
+    {
+        case br 
+        case hr
+        case img
+        case input
+        case link 
+        case meta 
+        case wbr 
+        
+        @inlinable public
+        var void:Bool 
         {
-            case html 
-            case head 
-            case body 
-            
-            case title 
-            
-            case a
-            case address
-            case article 
-            case aside 
-            case blockquote 
-            case code 
-            case dl 
-            case dt
-            case dd 
-            case div
-            case em
-            case form
-            case h1
-            case h2
-            case h3
-            case h4
-            case h5
-            case h6
-            case header
-            case li
-            case main 
-            case nav 
-            case ol 
-            case p
-            case pre 
-            case q
-            case s
-            case section
-            case span
-            case script 
-            case strong
-            case table
-            case tbody
-            case thead
-            case td
-            case th
-            case tr
-            case time
-            case ul 
-            
-            @inlinable public static 
-            var root:Self { .html }
-        }
-        @frozen public 
-        enum Leaf:String, LeafDomain, Sendable
-        {
-            case br 
-            case hr
-            case img
-            case input
-            case link 
-            case meta 
-            case wbr 
-            
-            @inlinable public
-            var void:Bool 
-            {
-                true 
-            }
+            true 
         }
     }
+}
+
+public
+typealias _HTML = HTML 
+extension Document 
+{
+    @available(*, deprecated, renamed: "HTML")
+    public 
+    typealias HTML = _HTML
 }
 
 // attributes 
@@ -83,7 +89,7 @@ public
 protocol HTMLAttribute:DocumentAttribute
 {
 }
-extension Document.AttributesBuilder where Domain == Document.HTML
+extension DocumentElement.Attributes where Domain == HTML 
 {
     //  css classes can be written in brackets: 
     //  ```
@@ -92,7 +98,7 @@ extension Document.AttributesBuilder where Domain == Document.HTML
     @inlinable public static 
     func buildExpression(_ classes:[String]) -> [Element]
     {
-        Self.buildExpression((classes.joined(separator: " "), as: Document.HTML.Class.self))
+        Self.buildExpression((classes.joined(separator: " "), as: HTML.Class.self))
     }
     // if an attribute is its own expression type, infer the key-value pair 
     @inlinable public static 
@@ -108,7 +114,7 @@ extension Document.AttributesBuilder where Domain == Document.HTML
         Self.buildExpression(Attribute.item(from: expression.0))
     }
 }
-extension Document.HTML 
+extension HTML 
 {
     public 
     enum Async:HTMLAttribute
@@ -304,7 +310,7 @@ extension Document.HTML
     }
 }
 
-extension Document.HTML 
+extension HTML 
 {
     @resultBuilder 
     public 
@@ -314,7 +320,8 @@ extension Document.HTML
         typealias Element = (key:String, value:String)
     }
 }
-extension Document.Element where Domain == Document.HTML 
+// typechecker requires this
+extension HTML.Element where Domain == HTML
 {
     @inlinable public static 
     func metadata(id:ID? = nil, charset _:Unicode.UTF8.Type) -> Self
@@ -323,7 +330,7 @@ extension Document.Element where Domain == Document.HTML
     }
     @inlinable public static  
     func metadata(of _:ID.Type = ID.self, 
-        @Document.HTML.MetadataBuilder _ items:() -> [(key:String, value:String)]) -> [Self]
+        @HTML.MetadataBuilder _ items:() -> [(key:String, value:String)]) -> [Self]
     {
         items().map 
         {
@@ -337,8 +344,7 @@ extension Document.Element where Domain == Document.HTML
     }
     
     @inlinable public static 
-    func item(id:ID? = nil, 
-        @Document.InlineBuilder<Domain, ID> _ paragraphs:() -> [[Self]]) 
+    func item(id:ID? = nil, @Prose _ paragraphs:() -> [[Self]]) 
         -> Self
     {
         Self[.li, id: id]
@@ -350,8 +356,7 @@ extension Document.Element where Domain == Document.HTML
         }
     }
     @inlinable public static 
-    func span(_ string:String, id:ID? = nil, 
-        @Document.AttributesBuilder<Domain> attributes:() -> [String: String] = { [:] }) 
+    func span(_ string:String, id:ID? = nil, @Attributes attributes:() -> [String: String] = { [:] }) 
         -> Self 
     {
         .container(.span, id: id, attributes: attributes(), content: [.text(escaping: string)])
@@ -359,15 +364,15 @@ extension Document.Element where Domain == Document.HTML
     // all inline blocks will get consolidated into one single block
     @inlinable public static 
     func span(id:ID? = nil, 
-        @Document.AttributesBuilder<Domain> attributes:() -> [String: String] = { [:] }, 
-        @Document.InlineBuilder<Domain, ID> content inline:() -> [[Self]]) 
+        @Attributes attributes:() -> [String: String] = { [:] }, 
+        @Prose  content inline:() -> [[Self]]) 
         -> Self 
     {
         .container(.span, id: id, attributes: attributes(), content: .init(inline().joined()))
     }
     @inlinable public static 
     func link(_ string:String, to url:String, id:ID? = nil, internal:Bool = false, 
-        @Document.AttributesBuilder<Domain> attributes:() -> [String: String] = { [:] }) 
+        @Attributes attributes:() -> [String: String] = { [:] }) 
         -> Self 
     {
         var attributes:[String: String]     = attributes()
@@ -381,8 +386,8 @@ extension Document.Element where Domain == Document.HTML
     // all inline blocks will get consolidated into one single block
     @inlinable public static 
     func link(to url:String, id:ID? = nil, internal:Bool = false, 
-        @Document.AttributesBuilder<Domain> attributes:() -> [String: String] = { [:] }, 
-        @Document.InlineBuilder<Domain, ID> content inline:() -> [[Self]]) 
+        @Attributes attributes:() -> [String: String] = { [:] }, 
+        content inline:() -> Prose) 
         -> Self 
     {
         var attributes:[String: String]     = attributes()
@@ -391,6 +396,15 @@ extension Document.Element where Domain == Document.HTML
         {
             attributes[Domain.Target.name]  = Domain.Target._blank.rawValue
         }
-        return .container(.a, id: id, attributes: attributes, content: .init(inline().joined()))
+        return .container(.a, id: id, attributes: attributes, content: inline().elements)
+    }
+    // all inline blocks will get consolidated into one single block
+    @inlinable public static 
+    func paragraph(id:ID? = nil, internal:Bool = false, 
+        @Attributes attributes:() -> [String: String] = { [:] }, 
+        content inline:() -> Prose) 
+        -> Self
+    {
+        return .container(.p, id: id, attributes: attributes(), content: inline().elements)
     }
 }
