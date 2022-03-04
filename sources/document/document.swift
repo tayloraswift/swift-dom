@@ -70,6 +70,7 @@ enum DocumentElement<Domain, ID> where Domain:DocumentDomain, ID:DocumentID
     case container  (Domain.Container, id:ID? = nil, attributes:[String: String] = [:], content:[Self] = []) 
     case leaf       (Domain.Leaf,      id:ID? = nil, attributes:[String: String] = [:]) 
     case text       (escaped:String)
+    case anchor                       (id:ID)
     
     @inlinable public static 
     func text(escaping unescaped:String) -> Self
@@ -258,6 +259,8 @@ extension DocumentElement
             return ""
         case .container (_, id: _, attributes: _, content: let content):
             return content.map(\.plain).joined()
+        case .anchor: 
+            return ""
         }
     }
     @inlinable public 
@@ -284,6 +287,8 @@ extension DocumentElement
             children    = .some(content)
             type        = element.name
             id          = identifier
+        case .anchor: 
+            return ""
         }
         
         var head:String         = type 
