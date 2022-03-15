@@ -58,7 +58,7 @@ extension DocumentTemplate where ID:DocumentID, Storage:RangeReplaceableCollecti
         self.apply { substitutions[$0]?.template(of: Storage.self).apply(substitutions) ?? [] }
     }
 }
-extension DocumentTemplate:Sendable where Storage:Sendable, ID:Sendable
+extension DocumentTemplate:Sendable where Storage:Sendable, Storage.Index:Sendable, ID:Sendable
 {
 }
 
