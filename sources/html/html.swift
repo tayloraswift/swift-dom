@@ -24,6 +24,8 @@ enum HTML:DocumentDomain
         case dd 
         case div
         case em
+        case figcaption
+        case figure
         case form
         case h1
         case h2
@@ -116,6 +118,12 @@ extension DocumentElement.Attributes where Domain == HTML
 }
 extension HTML 
 {
+    public 
+    enum Alt:HTMLAttribute
+    {
+        @inlinable public
+        static var name:String { "alt" }
+    }
     public 
     enum Async:HTMLAttribute
     {
