@@ -28,7 +28,6 @@ extension Resource
     @available(*, deprecated)
     @inlinable public static 
     func html<ID>(_ document:Document.Dynamic<HTML, ID>, version:Resource.Version?) -> Self
-        where ID:DocumentID
     {
         .text("<!DOCTYPE html>\(document.rendered)", type: .html, version: version)
     }

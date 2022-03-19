@@ -43,27 +43,11 @@ extension DocumentDomain
     public 
     typealias StaticElement = DocumentElement<Self, Never>
     public 
-    typealias Element<ID> = DocumentElement<Self, ID> where ID:DocumentID
-}
-public 
-protocol DocumentID
-{
-    var documentId:String 
-    {
-        get 
-    }
-}
-extension Never:DocumentID 
-{
-    @inlinable public 
-    var documentId:String  
-    {
-        fatalError("unreachable")
-    }
+    typealias Element<ID> = DocumentElement<Self, ID> 
 }
 
 @frozen public
-enum DocumentElement<Domain, ID> where Domain:DocumentDomain, ID:DocumentID
+enum DocumentElement<Domain, ID> where Domain:DocumentDomain
 {
     case root       (any AnyDocumentRoot & Sendable)
     
@@ -120,7 +104,7 @@ public
 protocol AnyDocumentRoot
 {
      associatedtype Domain where Domain:DocumentDomain
-     associatedtype ID where ID:DocumentID
+     associatedtype ID 
      
      var element:DocumentElement<Domain, ID> 
      {
@@ -142,7 +126,7 @@ extension AnyDocumentRoot
     }
 }
 @frozen public 
-struct DocumentRoot<Domain, ID>:AnyDocumentRoot where Domain:DocumentDomain, ID:DocumentID
+struct DocumentRoot<Domain, ID>:AnyDocumentRoot where Domain:DocumentDomain
 {
     public 
     var id:ID?
@@ -190,7 +174,7 @@ enum Document
     public
     typealias Static<Domain> = StaticDocumentRoot<Domain> where Domain:DocumentDomain
     public 
-    typealias Dynamic<Domain, ID> = DocumentRoot<Domain, ID>  where Domain:DocumentDomain, ID:DocumentID
+    typealias Dynamic<Domain, ID> = DocumentRoot<Domain, ID>  where Domain:DocumentDomain
     
     @inlinable public static 
     func escape(_ unescaped:String) -> String 
@@ -214,27 +198,27 @@ enum Document
     @available(*, deprecated, renamed: "DocumentElement")
     public 
     typealias Element<Domain, ID> = DocumentElement<Domain, ID>
-        where Domain:DocumentDomain, ID:DocumentID
+        where Domain:DocumentDomain
     
     @available(*, deprecated, renamed: "DocumentElement.Attributes")
     public 
     typealias AttributesBuilder<Domain, ID> = DocumentElement<Domain, ID>.Attributes
-        where Domain:DocumentDomain, ID:DocumentID
+        where Domain:DocumentDomain
     
     @available(*, deprecated, renamed: "DocumentElement.Content")
     public 
     typealias ElementsBuilder<Domain, ID> = DocumentElement<Domain, ID>.Content
-        where Domain:DocumentDomain, ID:DocumentID
+        where Domain:DocumentDomain
     
     @available(*, deprecated, renamed: "DocumentElement.Prose")
     public 
     typealias InlineBuilder<Domain, ID> = DocumentElement<Domain, ID>.Prose
-        where Domain:DocumentDomain, ID:DocumentID
+        where Domain:DocumentDomain
     
     @available(*, deprecated, renamed: "DocumentElement.Prose")
     public 
     typealias Inline<Domain, ID> = DocumentElement<Domain, ID>.Prose
-        where Domain:DocumentDomain, ID:DocumentID
+        where Domain:DocumentDomain
 }
 extension DocumentRoot:Sendable where ID:Sendable, Domain.Leaf:Sendable, Domain.Container:Sendable
 {
@@ -268,8 +252,7 @@ extension DocumentElement
     {
         let attributes:[String: String], 
             children:[Self]??, 
-            type:String, 
-            id:ID?
+            type:String
         switch self 
         {
         case .root      (let foreign): 
@@ -277,25 +260,19 @@ extension DocumentElement
         case .text      (escaped: let text):
             return text 
         
-        case .leaf      (let element, id: let identifier, attributes: let dictionary): 
+        case .leaf      (let element, id: _, attributes: let dictionary): 
             attributes  = dictionary
             children    = element.void ? .none : .some(nil) 
             type        = element.name
-            id          = identifier 
-        case .container (let element, id: let identifier, attributes: let dictionary, content: let content):
+        case .container (let element, id: _, attributes: let dictionary, content: let content):
             attributes  = dictionary
             children    = .some(content)
             type        = element.name
-            id          = identifier
         case .anchor: 
             return ""
         }
         
         var head:String         = type 
-        if let id:ID            = id
-        {
-            head               += " id=\"\(id.documentId)\"" 
-        }
         for (key, value):(String, String) in attributes.sorted(by: { $0.key < $1.key })
         { 
             head               += " \(key)=\"\(value)\"" 
@@ -501,8 +478,7 @@ extension DocumentElement
         }
         @inlinable public static 
         func buildExpression<Domain, ID>(_ foreign:DocumentRoot<Domain, ID>) -> [Element]
-            where   Domain:DocumentDomain, Domain.Leaf:Sendable, Domain.Container:Sendable, 
-                    ID:DocumentID & Sendable
+            where Domain:DocumentDomain, Domain.Leaf:Sendable, Domain.Container:Sendable, ID:Sendable
         {
             [Element.root(foreign)]
         }
