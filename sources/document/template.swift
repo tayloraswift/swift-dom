@@ -50,7 +50,7 @@ struct DocumentTemplate<ID, Storage> where ID:Hashable, Storage:Collection
         self.apply { substitutions[$0].map { CollectionOfOne<Storage.SubSequence>.init($0[...]) } }
     }
 }
-extension DocumentTemplate where ID:DocumentID, Storage:RangeReplaceableCollection, Storage.Element == UInt8
+extension DocumentTemplate where Storage:RangeReplaceableCollection, Storage.Element == UInt8
 {
     @inlinable public 
     func apply<Domain>(_ substitutions:[ID: DocumentElement<Domain, ID>]) -> [Storage.SubSequence]
@@ -117,14 +117,6 @@ extension DocumentElement
         
         output.append(0x3c) // '<'
         output.append(contentsOf: type.utf8) 
-        if let id:ID    = id
-        {
-            // ' id="'
-            output.append(contentsOf: [0x20, 0x69, 0x64, 0x3d, 0x22])
-            output.append(contentsOf: id.documentId.utf8)
-            // '"'
-            output.append(                               0x22)
-        }
         for (key, value):(String, String) in attributes.sorted(by: { $0.key < $1.key })
         { 
             // ' '

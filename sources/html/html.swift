@@ -197,6 +197,12 @@ extension HTML
         static var name:String { "href" }
     }
     public 
+    enum ID:HTMLAttribute
+    {
+        @inlinable public
+        static var name:String { "id" }
+    }
+    public 
     enum Src:HTMLAttribute
     {
         @inlinable public
