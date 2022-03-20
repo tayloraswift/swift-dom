@@ -14,6 +14,19 @@ struct DocumentTemplate<ID, Storage> where ID:Hashable, Storage:Collection
     }
     
     @inlinable public 
+    func map<T>(_ transform:(ID) throws -> T) rethrows -> DocumentTemplate<T, Storage> 
+        where T:Hashable 
+    {
+        .init(literals: self.literals, anchors: try self.anchors.map { (try transform($0.id), $0.index) })
+    }
+    @inlinable public 
+    func compactMap<T>(_ transform:(ID) throws -> T?) rethrows -> DocumentTemplate<T, Storage> 
+        where T:Hashable 
+    {
+        .init(literals: self.literals, anchors: try self.anchors.compactMap { anchor in try transform(anchor.id).map { ($0, anchor.index) } })
+    }
+    
+    @inlinable public 
     func apply<Substitution>(_ substitutions:(ID) throws -> Substitution?) rethrows -> [Storage.SubSequence]
         where Substitution:Sequence, Substitution.Element == Storage.SubSequence
     {
@@ -81,6 +94,11 @@ extension DocumentTemplate where Storage:RangeReplaceableCollection, Storage.Ele
     func apply<Domain>(_ substitutions:[ID: DocumentElement<Domain, ID>]) -> [Storage.SubSequence]
     {
         self.apply { substitutions[$0].map(Self.init(freezing:))?.apply(substitutions) ?? [] }
+    }
+    @inlinable public 
+    func apply<Domain>(_ substitutions:(ID) throws -> DocumentElement<Domain, Never>?) rethrows -> [Storage.SubSequence]
+    {
+        try self.apply { try substitutions($0).map{ CollectionOfOne<Storage.SubSequence>.init($0.render(as: Storage.self)[...]) }}
     }
 }
 extension DocumentTemplate:Sendable where Storage:Sendable, Storage.Index:Sendable, ID:Sendable
