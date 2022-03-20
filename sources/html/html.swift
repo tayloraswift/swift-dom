@@ -338,9 +338,9 @@ extension HTML
 extension HTML.Element where Domain == HTML
 {
     @inlinable public static 
-    func metadata(id:ID? = nil, charset _:Unicode.UTF8.Type) -> Self
+    func metadata(charset _:Unicode.UTF8.Type) -> Self
     {
-        Self[.meta, id: id]{ Domain.Charset.utf8 }
+        Self[.meta]{ Domain.Charset.utf8 }
     }
     @inlinable public static  
     func metadata(of _:ID.Type = ID.self, 
@@ -358,10 +358,10 @@ extension HTML.Element where Domain == HTML
     }
     
     @inlinable public static 
-    func item(id:ID? = nil, @Prose _ paragraphs:() -> [[Self]]) 
+    func item(@Prose _ paragraphs:() -> [[Self]]) 
         -> Self
     {
-        Self[.li, id: id]
+        Self[.li]
         {
             paragraphs().map 
             {
@@ -370,22 +370,22 @@ extension HTML.Element where Domain == HTML
         }
     }
     @inlinable public static 
-    func span(_ string:String, id:ID? = nil, @Attributes attributes:() -> [String: String] = { [:] }) 
+    func span(_ string:String, @Attributes attributes:() -> [String: String] = { [:] }) 
         -> Self 
     {
-        .container(.span, id: id, attributes: attributes(), content: [.text(escaping: string)])
+        .container(.span, attributes: attributes(), content: [.text(escaping: string)])
     }
     // all inline blocks will get consolidated into one single block
     @inlinable public static 
-    func span(id:ID? = nil, 
+    func span(
         @Attributes attributes:() -> [String: String] = { [:] }, 
         @Prose  content inline:() -> [[Self]]) 
         -> Self 
     {
-        .container(.span, id: id, attributes: attributes(), content: .init(inline().joined()))
+        .container(.span, attributes: attributes(), content: .init(inline().joined()))
     }
     @inlinable public static 
-    func link(_ string:String, to url:String, id:ID? = nil, internal:Bool = false, 
+    func link(_ string:String, to url:String, internal:Bool = false, 
         @Attributes attributes:() -> [String: String] = { [:] }) 
         -> Self 
     {
@@ -395,11 +395,11 @@ extension HTML.Element where Domain == HTML
         {
             attributes[Domain.Target.name]  = Domain.Target._blank.rawValue
         }
-        return .container(.a, id: id, attributes: attributes, content: [.text(escaping: string)])
+        return .container(.a, attributes: attributes, content: [.text(escaping: string)])
     }
     // all inline blocks will get consolidated into one single block
     @inlinable public static 
-    func link(to url:String, id:ID? = nil, internal:Bool = false, 
+    func link(to url:String, internal:Bool = false, 
         @Attributes attributes:() -> [String: String] = { [:] }, 
         content inline:() -> Prose) 
         -> Self 
@@ -410,15 +410,15 @@ extension HTML.Element where Domain == HTML
         {
             attributes[Domain.Target.name]  = Domain.Target._blank.rawValue
         }
-        return .container(.a, id: id, attributes: attributes, content: inline().elements)
+        return .container(.a, attributes: attributes, content: inline().elements)
     }
     // all inline blocks will get consolidated into one single block
     @inlinable public static 
-    func paragraph(id:ID? = nil, internal:Bool = false, 
+    func paragraph(internal:Bool = false, 
         @Attributes attributes:() -> [String: String] = { [:] }, 
         content inline:() -> Prose) 
         -> Self
     {
-        return .container(.p, id: id, attributes: attributes(), content: inline().elements)
+        return .container(.p, attributes: attributes(), content: inline().elements)
     }
 }
