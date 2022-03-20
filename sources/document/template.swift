@@ -53,26 +53,42 @@ struct DocumentTemplate<ID, Storage> where ID:Hashable, Storage:Collection
 extension DocumentTemplate where Storage:RangeReplaceableCollection, Storage.Element == UInt8
 {
     @inlinable public 
+    init<Dynamic, Domain>(freezing dynamic:Dynamic)
+        where Domain:DocumentDomain, Dynamic:Sequence, Dynamic.Element == DocumentElement<Domain, ID>
+    {
+        var output:Storage = .init()
+        var anchors:[(id:ID, index:Storage.Index)] = []
+        for element:Dynamic.Element in dynamic 
+        {
+            element.render(into: &output, anchors: &anchors)
+        }
+        self.init(literals: output, anchors: anchors)
+    }
+    @inlinable public 
+    init<Domain>(freezing dynamic:DocumentElement<Domain, ID>)
+        where Domain:DocumentDomain
+    {
+        self.init(freezing: CollectionOfOne<DocumentElement<Domain, ID>>.init(dynamic))
+    }
+    @inlinable public 
+    init<Domain>(freezing dynamic:DocumentRoot<Domain, ID>)
+        where Domain:DocumentDomain
+    {
+        self.init(freezing: dynamic.element)
+    }
+    
+    @inlinable public 
     func apply<Domain>(_ substitutions:[ID: DocumentElement<Domain, ID>]) -> [Storage.SubSequence]
     {
-        self.apply { substitutions[$0]?.template(of: Storage.self).apply(substitutions) ?? [] }
+        self.apply { substitutions[$0].map(Self.init(freezing:))?.apply(substitutions) ?? [] }
     }
 }
 extension DocumentTemplate:Sendable where Storage:Sendable, Storage.Index:Sendable, ID:Sendable
 {
 }
 
-extension DocumentElement 
+extension DocumentElement where ID == Never
 {
-    @inlinable public 
-    func template<UTF8>(of _:UTF8.Type) -> DocumentTemplate<ID, UTF8>
-        where UTF8:RangeReplaceableCollection, UTF8.Element == UInt8
-    {
-        var output:UTF8 = .init()
-        var anchors:[(id:ID, index:UTF8.Index)] = []
-        self.render(into: &output, anchors: &anchors)
-        return .init(literals: output, anchors: anchors)
-    }
     @inlinable public 
     func render<UTF8>(as _:UTF8.Type) -> UTF8
         where UTF8:RangeReplaceableCollection, UTF8.Element == UInt8
@@ -82,33 +98,33 @@ extension DocumentElement
         self.render(into: &output, anchors: &anchors)
         return output 
     }
+}
+extension DocumentElement 
+{
     @inlinable public 
     func render<UTF8>(into output:inout UTF8, anchors:inout [(id:ID, index:UTF8.Index)]) 
         where UTF8:RangeReplaceableCollection, UTF8.Element == UInt8
     {
         let attributes:[String: String], 
             children:[Self]??, 
-            type:String, 
-            id:ID?
+            type:String
         switch self 
         {
-        case .root      (let foreign): 
-            output.append(contentsOf: foreign.render(as: UTF8.self))
-            return 
+        case .bytes     (utf8: let utf8):
+            output.append(contentsOf:      utf8)
+            return
         case .text      (escaped: let text):
             output.append(contentsOf: text.utf8)
             return 
         
-        case .leaf      (let element, id: let identifier, attributes: let dictionary): 
+        case .leaf      (let element, attributes: let dictionary): 
             attributes  = dictionary
             children    = element.void ? .none : .some(nil) 
             type        = element.name
-            id          = identifier 
-        case .container (let element, id: let identifier, attributes: let dictionary, content: let content):
+        case .container (let element, attributes: let dictionary, content: let content):
             attributes  = dictionary
             children    = .some(content)
             type        = element.name
-            id          = identifier
         
         case .anchor    (id: let id):
             anchors.append((id, output.endIndex))
@@ -151,20 +167,17 @@ extension DocumentElement
         output.append(0x3e) // '>'
     }
 }
-extension AnyDocumentRoot 
+extension DocumentRoot where ID == Never
 {
     @inlinable public 
-    func template<UTF8>(of type:UTF8.Type) -> DocumentTemplate<ID, UTF8>
-        where UTF8:RangeReplaceableCollection, UTF8.Element == UInt8
-    {
-        self.element.template(of: type) 
-    }
-    @inlinable public 
     func render<UTF8>(as type:UTF8.Type) -> UTF8
-        where UTF8:RangeReplaceableCollection, UTF8.Element == UInt8
+        where UTF8:RangeReplaceableCollection, UTF8.Element == UInt8, ID == Never
     {
         self.element.render(as: type) 
     }
+}
+extension DocumentRoot 
+{
     @inlinable public 
     func render<UTF8>(into output:inout UTF8, anchors:inout [(id:ID, index:UTF8.Index)]) 
         where UTF8:RangeReplaceableCollection, UTF8.Element == UInt8

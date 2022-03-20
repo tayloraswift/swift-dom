@@ -49,12 +49,11 @@ extension DocumentDomain
 @frozen public
 enum DocumentElement<Domain, ID> where Domain:DocumentDomain
 {
-    case root       (any AnyDocumentRoot & Sendable)
-    
-    case container  (Domain.Container, id:ID? = nil, attributes:[String: String] = [:], content:[Self] = []) 
-    case leaf       (Domain.Leaf,      id:ID? = nil, attributes:[String: String] = [:]) 
+    case container  (Domain.Container, attributes:[String: String] = [:], content:[Self] = []) 
+    case leaf       (Domain.Leaf,      attributes:[String: String] = [:]) 
     case text       (escaped:String)
-    case anchor                       (id:ID)
+    case bytes      (utf8:[UInt8])
+    case anchor     (id:ID)
     
     @inlinable public static 
     func text(escaping unescaped:String) -> Self
@@ -63,57 +62,52 @@ enum DocumentElement<Domain, ID> where Domain:DocumentDomain
     }
     
     @inlinable public static 
-    subscript(_ leaf:Domain.Leaf, id id:ID? = nil, @Attributes attributes:() -> [String: String]) 
+    subscript(_ leaf:Domain.Leaf, @Attributes attributes:() -> [String: String]) 
         -> Self
     {
-        .leaf(leaf, id: id, attributes: attributes())
+        .leaf(leaf, attributes: attributes())
     }
     @inlinable public static 
-    subscript(_ leaf:Domain.Leaf, id id:ID? = nil) 
+    subscript(_ leaf:Domain.Leaf) 
         -> Self
     {
-        .leaf(leaf, id: id)
+        .leaf(leaf)
     }
     
     @inlinable public static 
-    subscript(_ container:Domain.Container, id id:ID? = nil, 
+    subscript(_ container:Domain.Container, 
         @Attributes attributes attributes:() -> [String: String], 
         @Content    content       content:() -> [Self] = { [] }) 
         -> Self
     {
-        .container(container, id: id, attributes: attributes(), content: content())
+        .container(container, attributes: attributes(), content: content())
     }
     @inlinable public static 
-    subscript(_ container:Domain.Container, id id:ID? = nil, @Content content:() -> [Self]) 
+    subscript(_ container:Domain.Container, @Content content:() -> [Self]) 
         -> Self
     {
-        .container(container, id: id, content: content())
+        .container(container, content: content())
     }
     @inlinable public static 
-    subscript(_ container:Domain.Container, id id:ID? = nil) 
+    subscript(_ container:Domain.Container) 
         -> Self
     {
-        .container(container, id: id)
+        .container(container)
     }
 }
 
 public 
 typealias StaticDocumentRoot<Domain> = DocumentRoot<Domain, Never> where Domain:DocumentDomain
 
-public 
-protocol AnyDocumentRoot
+@frozen public 
+struct DocumentRoot<Domain, ID> where Domain:DocumentDomain
 {
-     associatedtype Domain where Domain:DocumentDomain
-     associatedtype ID 
-     
-     var element:DocumentElement<Domain, ID> 
-     {
-         get
-     }
-}
-// needed because we cannot access `self.element` from a protocol existential
-extension AnyDocumentRoot 
-{
+    public 
+    var attributes:[String: String]
+    public
+    var content:[DocumentElement<Domain, ID>]
+    
+    @available(*, deprecated)
     @inlinable public 
     var rendered:String 
     {
@@ -124,44 +118,31 @@ extension AnyDocumentRoot
     {
         self.element.plain
     }
-}
-@frozen public 
-struct DocumentRoot<Domain, ID>:AnyDocumentRoot where Domain:DocumentDomain
-{
-    public 
-    var id:ID?
-    public 
-    var attributes:[String: String]
-    public
-    var content:[DocumentElement<Domain, ID>]
     
     @inlinable public 
     var element:DocumentElement<Domain, ID> 
     {
-        .container(.root, id: self.id, attributes: self.attributes, content: self.content)
+        .container(.root, attributes: self.attributes, content: self.content)
     }
     
     @inlinable public 
-    init(id:ID? = nil,   
+    init(
         @DocumentElement<Domain, ID>.Attributes attributes:() -> [String: String], 
         @DocumentElement<Domain, ID>.Content       content:() -> [DocumentElement<Domain, ID>] = { [] }) 
     {
-        self.id         = id
         self.attributes = attributes()
         self.content    = content()
     }
     @inlinable public 
-    init(id:ID? = nil, 
+    init(
         @DocumentElement<Domain, ID>.Content content:() -> [DocumentElement<Domain, ID>]) 
     {
-        self.id         = id
         self.attributes = [:]
         self.content    = content()
     }
     @inlinable public 
-    init(id:ID? = nil) 
+    init() 
     {
-        self.id         = id
         self.attributes = [:]
         self.content    = []
     }
@@ -235,18 +216,19 @@ extension DocumentElement
     {
         switch self 
         {
-        case .root      (let foreign): 
-            return foreign.plain
+        case .bytes     (utf8: let utf8):
+            return String.init(decoding: utf8, as: Unicode.UTF8.self)
         case .text      (escaped: let text):
             return text 
-        case .leaf      (_, id: _, attributes: _): 
+        case .leaf      (_, attributes: _): 
             return ""
-        case .container (_, id: _, attributes: _, content: let content):
+        case .container (_, attributes: _, content: let content):
             return content.map(\.plain).joined()
         case .anchor: 
             return ""
         }
     }
+    @available(*, deprecated)
     @inlinable public 
     var rendered:String 
     {
@@ -255,16 +237,16 @@ extension DocumentElement
             type:String
         switch self 
         {
-        case .root      (let foreign): 
-            return foreign.rendered
         case .text      (escaped: let text):
             return text 
+        case .bytes     (utf8: let utf8):
+            return String.init(decoding: utf8, as: Unicode.UTF8.self)
         
-        case .leaf      (let element, id: _, attributes: let dictionary): 
+        case .leaf      (let element, attributes: let dictionary): 
             attributes  = dictionary
             children    = element.void ? .none : .some(nil) 
             type        = element.name
-        case .container (let element, id: _, attributes: let dictionary, content: let content):
+        case .container (let element, attributes: let dictionary, content: let content):
             attributes  = dictionary
             children    = .some(content)
             type        = element.name
@@ -292,7 +274,7 @@ extension DocumentElement
     @inlinable public 
     func stripping(where predicate:(Domain.Container) throws -> Bool) rethrows -> [Self] 
     {
-        guard case .container(let type, id: let id, attributes: let attributes, content: let content) = self
+        guard case .container(let type, attributes: let attributes, content: let content) = self
         else 
         {
             return [self] 
@@ -307,7 +289,7 @@ extension DocumentElement
         }
         else 
         {
-            return [.container(type, id: id, attributes: attributes, content: stripped)]
+            return [.container(type, attributes: attributes, content: stripped)]
         }
     }
     @inlinable public 
@@ -476,22 +458,6 @@ extension DocumentElement
         {
             inline.elements
         }
-        @inlinable public static 
-        func buildExpression<Domain, ID>(_ foreign:DocumentRoot<Domain, ID>) -> [Element]
-            where Domain:DocumentDomain, Domain.Leaf:Sendable, Domain.Container:Sendable, ID:Sendable
-        {
-            [Element.root(foreign)]
-        }
-        /* @inlinable public static 
-        func buildExpression(_ empty:Domain.Container) -> [Element]  
-        {
-            [Element.container(empty)]
-        }
-        @inlinable public static 
-        func buildExpression(_ empty:Domain.Leaf) -> [Element]  
-        {
-            [Element.leaf(empty)]
-        } */
         @inlinable public static 
         func buildExpression(_ unescaped:String) -> [Element]  
         {
