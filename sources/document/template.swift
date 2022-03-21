@@ -96,6 +96,11 @@ extension DocumentTemplate where Storage:RangeReplaceableCollection, Storage.Ele
         self.apply { substitutions[$0].map(Self.init(freezing:))?.apply(substitutions) ?? [] }
     }
     @inlinable public 
+    func apply<Domain>(_ substitutions:[ID: DocumentElement<Domain, Never>]) -> [Storage.SubSequence]
+    {
+        self.apply { substitutions[$0].map{ CollectionOfOne<Storage.SubSequence>.init($0.render(as: Storage.self)[...]) }}
+    }
+    @inlinable public 
     func apply<Domain>(_ substitutions:(ID) throws -> DocumentElement<Domain, Never>?) rethrows -> [Storage.SubSequence]
     {
         try self.apply { try substitutions($0).map{ CollectionOfOne<Storage.SubSequence>.init($0.render(as: Storage.self)[...]) }}
