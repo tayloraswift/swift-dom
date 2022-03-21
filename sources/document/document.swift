@@ -56,7 +56,7 @@ enum DocumentElement<Domain, ID> where Domain:DocumentDomain
     case anchor     (id:ID)
     
     @inlinable public static 
-    func text(escaping unescaped:String) -> Self
+    func text<S>(escaping unescaped:S) -> Self where S:StringProtocol
     {
         .text(escaped: Document.escape(unescaped))
     }
@@ -158,7 +158,7 @@ enum Document
     typealias Dynamic<Domain, ID> = DocumentRoot<Domain, ID>  where Domain:DocumentDomain
     
     @inlinable public static 
-    func escape(_ unescaped:String) -> String 
+    func escape<S>(_ unescaped:S) -> String where S:StringProtocol
     {
         var string:String = ""
         for character:Character in unescaped 
