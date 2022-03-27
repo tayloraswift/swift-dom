@@ -9,7 +9,7 @@ extension Resource
         var bytes:[UInt8] = .init("<?xml version=\"1.0\" encoding=\"UTF-8\"?>".utf8)
         var ignored:[(id:ID, index:Int)] = []
         
-        document.render(into: &bytes, anchors: &ignored)
+        document.rendered(into: &bytes, anchors: &ignored)
         
         return .bytes(bytes, type: type, version: version)
     }

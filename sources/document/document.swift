@@ -107,12 +107,6 @@ struct DocumentRoot<Domain, ID> where Domain:DocumentDomain
     public
     var content:[DocumentElement<Domain, ID>]
     
-    @available(*, deprecated)
-    @inlinable public 
-    var rendered:String 
-    {
-        self.element.rendered 
-    }
     @inlinable public 
     var plain:String 
     {
@@ -226,85 +220,6 @@ extension DocumentElement
             return content.map(\.plain).joined()
         case .anchor: 
             return ""
-        }
-    }
-    @available(*, deprecated)
-    @inlinable public 
-    var rendered:String 
-    {
-        let attributes:[String: String], 
-            children:[Self]??, 
-            type:String
-        switch self 
-        {
-        case .text      (escaped: let text):
-            return text 
-        case .bytes     (utf8: let utf8):
-            return String.init(decoding: utf8, as: Unicode.UTF8.self)
-        
-        case .leaf      (let element, attributes: let dictionary): 
-            attributes  = dictionary
-            children    = element.void ? .none : .some(nil) 
-            type        = element.name
-        case .container (let element, attributes: let dictionary, content: let content):
-            attributes  = dictionary
-            children    = .some(content)
-            type        = element.name
-        case .anchor: 
-            return ""
-        }
-        
-        var head:String         = type 
-        for (key, value):(String, String) in attributes.sorted(by: { $0.key < $1.key })
-        { 
-            head               += " \(key)=\"\(value)\"" 
-        }
-        guard let enclosed:[Self]?  = children 
-        else 
-        {
-            return "<\(head)>"
-        }
-        guard let content:[Self]    = enclosed
-        else 
-        {
-            return "<\(head)/>"
-        }
-        return "<\(head)>\(content.map{ $0.rendered }.joined())</\(type)>"
-    }
-    @inlinable public 
-    func stripping(where predicate:(Domain.Container) throws -> Bool) rethrows -> [Self] 
-    {
-        guard case .container(let type, attributes: let attributes, content: let content) = self
-        else 
-        {
-            return [self] 
-        }
-        let stripped:[Self] = try content.flatMap 
-        {
-            try $0.stripping(where: predicate)
-        } 
-        if try predicate(type)
-        {
-            return stripped 
-        }
-        else 
-        {
-            return [.container(type, attributes: attributes, content: stripped)]
-        }
-    }
-    @inlinable public 
-    func stripping(_ container:Domain.Container) -> [Self] 
-    {
-        self.stripping 
-        {
-            if case container = $0
-            {
-                return true 
-            }
-            else 
-            {
-                return false 
-            }
         }
     }
 }
