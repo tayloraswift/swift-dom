@@ -73,7 +73,7 @@ extension DocumentTemplate where Storage:RangeReplaceableCollection, Storage.Ele
         var anchors:[(id:ID, index:Storage.Index)] = []
         for element:Dynamic.Element in dynamic 
         {
-            element.render(into: &output, anchors: &anchors)
+            element.rendered(into: &output, anchors: &anchors)
         }
         self.init(literals: output, anchors: anchors)
     }
@@ -98,12 +98,12 @@ extension DocumentTemplate where Storage:RangeReplaceableCollection, Storage.Ele
     @inlinable public 
     func apply<Domain>(_ substitutions:[ID: DocumentElement<Domain, Never>]) -> [Storage.SubSequence]
     {
-        self.apply { substitutions[$0].map{ CollectionOfOne<Storage.SubSequence>.init($0.render(as: Storage.self)[...]) }}
+        self.apply { substitutions[$0].map{ CollectionOfOne<Storage.SubSequence>.init($0.rendered(as: Storage.self)[...]) }}
     }
     @inlinable public 
     func apply<Domain>(_ substitutions:(ID) throws -> DocumentElement<Domain, Never>?) rethrows -> [Storage.SubSequence]
     {
-        try self.apply { try substitutions($0).map{ CollectionOfOne<Storage.SubSequence>.init($0.render(as: Storage.self)[...]) }}
+        try self.apply { try substitutions($0).map{ CollectionOfOne<Storage.SubSequence>.init($0.rendered(as: Storage.self)[...]) }}
     }
 }
 extension DocumentTemplate:Sendable where Storage:Sendable, Storage.Index:Sendable, ID:Sendable
@@ -113,19 +113,26 @@ extension DocumentTemplate:Sendable where Storage:Sendable, Storage.Index:Sendab
 extension DocumentElement where ID == Never
 {
     @inlinable public 
-    func render<UTF8>(as _:UTF8.Type) -> UTF8
+    func rendered<UTF8>(as _:UTF8.Type) -> UTF8
         where UTF8:RangeReplaceableCollection, UTF8.Element == UInt8
     {
         var output:UTF8 = .init()
         var anchors:[(id:ID, index:UTF8.Index)] = []
-        self.render(into: &output, anchors: &anchors)
+        self.rendered(into: &output, anchors: &anchors)
         return output 
+    }
+    @inlinable public 
+    func rendered<UTF8>(into output:inout UTF8)
+        where UTF8:RangeReplaceableCollection, UTF8.Element == UInt8
+    {
+        var anchors:[(id:ID, index:UTF8.Index)] = []
+        self.rendered(into: &output, anchors: &anchors)
     }
 }
 extension DocumentElement 
 {
     @inlinable public 
-    func render<UTF8>(into output:inout UTF8, anchors:inout [(id:ID, index:UTF8.Index)]) 
+    func rendered<UTF8>(into output:inout UTF8, anchors:inout [(id:ID, index:UTF8.Index)]) 
         where UTF8:RangeReplaceableCollection, UTF8.Element == UInt8
     {
         let attributes:[String: String], 
@@ -183,7 +190,7 @@ extension DocumentElement
         output.append(0x3e) // '>'
         for child:Self in content 
         {
-            child.render(into: &output, anchors: &anchors)
+            child.rendered(into: &output, anchors: &anchors)
         }
         output.append(contentsOf: [0x3c, 0x2f]) // '</'
         output.append(contentsOf: type.utf8) 
@@ -193,18 +200,18 @@ extension DocumentElement
 extension DocumentRoot where ID == Never
 {
     @inlinable public 
-    func render<UTF8>(as type:UTF8.Type) -> UTF8
+    func rendered<UTF8>(as type:UTF8.Type) -> UTF8
         where UTF8:RangeReplaceableCollection, UTF8.Element == UInt8, ID == Never
     {
-        self.element.render(as: type) 
+        self.element.rendered(as: type) 
     }
 }
 extension DocumentRoot 
 {
     @inlinable public 
-    func render<UTF8>(into output:inout UTF8, anchors:inout [(id:ID, index:UTF8.Index)]) 
+    func rendered<UTF8>(into output:inout UTF8, anchors:inout [(id:ID, index:UTF8.Index)]) 
         where UTF8:RangeReplaceableCollection, UTF8.Element == UInt8
     {
-        self.element.render(into: &output, anchors: &anchors) 
+        self.element.rendered(into: &output, anchors: &anchors) 
     }
 }

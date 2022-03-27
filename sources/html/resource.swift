@@ -25,12 +25,6 @@ extension Resource.Binary:HTMLAttribute
 }
 extension Resource 
 {
-    @available(*, deprecated)
-    @inlinable public static 
-    func html<ID>(_ document:Document.Dynamic<HTML, ID>, version:Resource.Version?) -> Self
-    {
-        .text("<!DOCTYPE html>\(document.rendered)", type: .html, version: version)
-    }
     @inlinable public static 
     func html<S>(utf8:S, version:Resource.Version?) -> Self
         where S:Sequence, S.Element == UInt8
