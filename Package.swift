@@ -9,7 +9,7 @@ let package = Package(
     ],
     dependencies: 
     [
-        .package(url: "https://github.com/kelvin13/swift-resource.git", branch: "master"),
+        .package(url: "https://github.com/kelvin13/swift-resource.git", from: "0.1.0"),
     ],
     targets: 
     [
