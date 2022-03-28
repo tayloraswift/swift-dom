@@ -1,4 +1,4 @@
-import StructuredDocument
+@_exported import StructuredDocument
 import HTML
 
 public 
