@@ -11,6 +11,6 @@ extension Resource
         
         document.rendered(into: &bytes, anchors: &ignored)
         
-        return .bytes(bytes, type: type, version: version)
+        return .utf8(encoded: bytes, type: type, version: version)
     }
 }
