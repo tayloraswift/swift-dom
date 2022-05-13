@@ -201,7 +201,7 @@ extension DocumentRoot where ID == Never
 {
     @inlinable public 
     func rendered<UTF8>(as type:UTF8.Type) -> UTF8
-        where UTF8:RangeReplaceableCollection, UTF8.Element == UInt8, ID == Never
+        where UTF8:RangeReplaceableCollection, UTF8.Element == UInt8
     {
         self.element.rendered(as: type) 
     }
