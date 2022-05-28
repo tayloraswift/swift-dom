@@ -6,6 +6,12 @@ struct DocumentTemplate<ID, Storage> where ID:Hashable, Storage:Collection
     public 
     let anchors:[(id:ID, index:Storage.Index)]
     
+    @inlinable public
+    var isEmpty:Bool 
+    {
+        self.anchors.isEmpty && self.literals.isEmpty
+    }
+    
     @inlinable public 
     init(literals:Storage, anchors:[(id:ID, index:Storage.Index)])
     {
@@ -65,6 +71,11 @@ struct DocumentTemplate<ID, Storage> where ID:Hashable, Storage:Collection
 }
 extension DocumentTemplate where Storage:RangeReplaceableCollection, Storage.Element == UInt8
 {
+    @inlinable public static 
+    var empty:Self 
+    {
+        .init(literals: .init(), anchors: [])
+    }
     @inlinable public 
     init<Dynamic, Domain>(freezing dynamic:Dynamic)
         where Domain:DocumentDomain, Dynamic:Sequence, Dynamic.Element == DocumentElement<Domain, ID>
