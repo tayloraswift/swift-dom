@@ -1,3 +1,36 @@
+extension DocumentTemplate:Equatable where Storage:Equatable
+{
+    @inlinable public static 
+    func == (lhs:Self, rhs:Self) -> Bool 
+    {
+        guard   lhs.literals == rhs.literals, 
+                lhs.anchors.count == rhs.anchors.count 
+        else 
+        {
+            return false 
+        }
+        for index:Int in lhs.anchors.indices 
+            where lhs.anchors[index] != rhs.anchors[index]
+        {
+            return false 
+        }
+        return true
+    }
+}
+extension DocumentTemplate:Hashable where Storage:Hashable, Storage.Index:Hashable
+{
+    @inlinable public  
+    func hash(into hasher:inout Hasher) 
+    {
+        self.literals.hash(into: &hasher)
+        for (id, index):(ID, Storage.Index) in self.anchors 
+        {
+            id.hash(into: &hasher)
+            index.hash(into: &hasher)
+        }
+    }
+}
+
 @frozen public
 struct DocumentTemplate<ID, Storage> where ID:Hashable, Storage:Collection
 {
