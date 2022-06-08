@@ -1,4 +1,4 @@
-@_exported import StructuredDocument
+@_exported import DOM
 
 public 
 enum HTML:DocumentDomain
@@ -77,289 +77,12 @@ enum HTML:DocumentDomain
     }
 }
 
-public
-typealias _HTML = HTML 
-extension Document 
-{
-    @available(*, deprecated, renamed: "HTML")
-    public 
-    typealias HTML = _HTML
-}
-
-// attributes 
-public 
-protocol HTMLAttribute:DocumentAttribute
-{
-}
-extension DocumentElement.Attributes where Domain == HTML 
-{
-    //  css classes can be written in brackets: 
-    //  ```
-    //  ["foo", "bar"]
-    /// ```
-    @inlinable public static 
-    func buildExpression(_ classes:[String]) -> [Element]
-    {
-        Self.buildExpression((classes.joined(separator: " "), as: HTML.Class.self))
-    }
-    // if an attribute is its own expression type, infer the key-value pair 
-    @inlinable public static 
-    func buildExpression<Attribute>(_ expression:Attribute) -> [Element] 
-        where Attribute:HTMLAttribute, Attribute.Expression == Attribute 
-    {
-        Self.buildExpression(Attribute.item(from: expression))
-    }
-    @inlinable public static 
-    func buildExpression<Attribute>(_ expression:(Attribute.Expression, as:Attribute.Type)) -> [Element] 
-        where Attribute:HTMLAttribute
-    {
-        Self.buildExpression(Attribute.item(from: expression.0))
-    }
-}
-extension HTML 
-{
-    public 
-    enum Alt:HTMLAttribute
-    {
-        @inlinable public
-        static var name:String { "alt" }
-    }
-    public 
-    enum Async:HTMLAttribute
-    {
-        public 
-        typealias Expression = Bool 
-        @inlinable public 
-        static var name:String { "async" }
-    }
-    @frozen public 
-    enum Autocomplete:String, HTMLAttribute
-    {
-        public 
-        typealias Expression = Self 
-        @inlinable public 
-        static var name:String { "autocomplete" }
-        
-        case off = "off"
-    }
-    @frozen public 
-    enum Autofocus:HTMLAttribute
-    {
-        public 
-        typealias Expression = Bool 
-        @inlinable public 
-        static var name:String { "autofocus" }
-    }
-    @frozen public 
-    enum Charset:String, HTMLAttribute
-    {
-        public 
-        typealias Expression = Self 
-        @inlinable public 
-        static var name:String { "charset" }
-        
-        case utf8 = "UTF-8"
-    }
-    public 
-    enum Class:HTMLAttribute 
-    {
-        @inlinable public
-        static var name:String { "class" }
-    }
-    public 
-    enum Content:HTMLAttribute 
-    {
-        @inlinable public
-        static var name:String { "content" }
-    }
-    @frozen public 
-    enum Crossorigin:String, HTMLAttribute
-    {
-        public 
-        typealias Expression = Self 
-        @inlinable public 
-        static var name:String { "crossorigin" }
-        
-        case anonymous = "anonymous"
-    }
-    public 
-    enum Defer:HTMLAttribute
-    {
-        public 
-        typealias Expression = Bool 
-        @inlinable public 
-        static var name:String { "defer" }
-    }
-    public 
-    enum Href:HTMLAttribute
-    {
-        @inlinable public
-        static var name:String { "href" }
-    }
-    public 
-    enum ID:HTMLAttribute
-    {
-        @inlinable public
-        static var name:String { "id" }
-    }
-    public 
-    enum Src:HTMLAttribute
-    {
-        @inlinable public
-        static var name:String { "src" }
-    }
-    @frozen public 
-    enum Lang:String, HTMLAttribute
-    {
-        public 
-        typealias Expression = Self 
-        @inlinable public
-        static var name:String { "lang" }
-        
-        case en = "en"
-    }
-    public 
-    enum Name:HTMLAttribute 
-    {
-        @inlinable public
-        static var name:String { "name" }
-    }
-    public 
-    enum Onclick:HTMLAttribute 
-    {
-        @inlinable public
-        static var name:String { "onclick" }
-    }
-    public 
-    enum Onmouseup:HTMLAttribute 
-    {
-        @inlinable public
-        static var name:String { "onmouseup" }
-    }
-    public 
-    enum Onmousedown:HTMLAttribute 
-    {
-        @inlinable public
-        static var name:String { "onmousedown" }
-    }
-    public 
-    enum Placeholder:HTMLAttribute 
-    {
-        @inlinable public
-        static var name:String { "placeholder" }
-    }
-    @frozen public 
-    enum Rel:String, HTMLAttribute
-    {
-        public 
-        typealias Expression = Self 
-        @inlinable public
-        static var name:String { "rel" }
-        
-        case stylesheet = "stylesheet"
-        case preconnect = "preconnect"
-        case icon       = "icon"
-        case nofollow   = "nofollow noopener"
-        case alternate  = "alternate"
-    }
-    @frozen public 
-    enum Role:String, HTMLAttribute
-    {
-        public 
-        typealias Expression = Self 
-        @inlinable public
-        static var name:String { "role" }
-        
-        case search = "search"
-    }
-    @frozen public 
-    enum Target:RawRepresentable, HTMLAttribute 
-    {
-        public 
-        typealias Expression = Self 
-        @inlinable public
-        static var name:String { "target" }
-        
-        case _blank
-        case _self
-        case _parent
-        case _top
-        case frame(String)
-        
-        @inlinable public
-        init(rawValue:String)
-        {
-            switch rawValue
-            {
-            case "_blank":  self = ._blank
-            case "_self":   self = ._self
-            case "_parent": self = ._parent
-            case "_top":    self = ._top
-            case let frame: self = .frame(frame)
-            }
-        }
-        @inlinable public
-        var rawValue:String 
-        {
-            switch self 
-            {
-            case ._blank:   return "_blank"
-            case ._self:    return "_self"
-            case ._parent:  return "_parent"
-            case ._top:     return "_top"
-            case .frame(let frame): return frame
-            }
-        }
-    }
-    @frozen public 
-    enum InputType:String, HTMLAttribute
-    {
-        public 
-        typealias Expression = Self 
-        @inlinable public
-        static var name:String { "type" }
-        
-        case text   = "text"
-        case search = "search"
-    }
-}
-
-extension HTML 
-{
-    @resultBuilder 
-    public 
-    enum MetadataBuilder:DocumentArrayBuilder 
-    {
-        public 
-        typealias Element = (key:String, value:String)
-    }
-}
 // typechecker requires this
-extension HTML.Element where Domain == HTML
+extension DOM.Element where Domain == HTML
 {
-    @inlinable public static 
-    func metadata(charset _:Unicode.UTF8.Type) -> Self
-    {
-        Self[.meta]{ Domain.Charset.utf8 }
-    }
-    @inlinable public static  
-    func metadata(of _:ID.Type = ID.self, 
-        @HTML.MetadataBuilder _ items:() -> [(key:String, value:String)]) -> [Self]
-    {
-        items().map 
-        {
-            (item:(key:String, value:String)) in 
-            Self[.meta]
-            {
-                (item.key,   as: Domain.Name.self)
-                (item.value, as: Domain.Content.self)
-            }
-        }
-    }
     
-    @inlinable public static 
-    func item(@Prose _ paragraphs:() -> [[Self]]) 
-        -> Self
+    /* @inlinable public static 
+    func li(@Prose _ paragraphs:() -> [[Self]]) -> Self
     {
         Self[.li]
         {
@@ -368,57 +91,74 @@ extension HTML.Element where Domain == HTML
                 Self.container(.p, content: $0)
             }
         }
+    } */
+    
+    @inlinable public static 
+    func code(_ string:String, @Attributes attributes:() -> [Attribute] = { [] }) 
+        -> Self 
+    {
+        .container(.code, attributes: attributes(), content: [.text(escaping: string)])
     }
     @inlinable public static 
-    func span(_ string:String, @Attributes attributes:() -> [String: String] = { [:] }) 
+    func code(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) 
         -> Self 
+    {
+        .container(.code, attributes: attributes(), content: [child])
+    }
+    
+    @inlinable public static 
+    func span(_ string:String, @Attributes attributes:() -> [Attribute]) -> Self 
     {
         .container(.span, attributes: attributes(), content: [.text(escaping: string)])
     }
-    // all inline blocks will get consolidated into one single block
     @inlinable public static 
+    func span(_ child:Self, @Attributes attributes:() -> [Attribute]) -> Self 
+    {
+        .container(.span, attributes: attributes(), content: [child])
+    }
+    // all inline blocks will get consolidated into one single block
+    /* @inlinable public static 
     func span(
-        @Attributes attributes:() -> [String: String] = { [:] }, 
+        @Attributes attributes:() -> Attributes = { [:] }, 
         @Prose  content inline:() -> [[Self]]) 
         -> Self 
     {
         .container(.span, attributes: attributes(), content: .init(inline().joined()))
+    } */
+    
+    @inlinable public static 
+    func a(_ string:String, @Attributes attributes:() -> [Attribute]) -> Self 
+    {
+        return .container(.a, attributes: attributes(), content: [.text(escaping: string)])
     }
     @inlinable public static 
-    func link(_ string:String, to url:String, internal:Bool = false, 
-        @Attributes attributes:() -> [String: String] = { [:] }) 
+    func a(_ child:Self, @Attributes attributes:() -> [Attribute]) -> Self 
+    {
+        return .container(.a, attributes: attributes(), content: [child])
+    }
+    /* // all inline blocks will get consolidated into one single block
+    @inlinable public static 
+    func a(href url:String,
+        @Attributes attributes:() -> Attributes = { [:] }, 
+        @Prose  content inline:() -> [[Self]]) 
         -> Self 
     {
-        var attributes:[String: String]     = attributes()
+        var attributes:Attributes     = attributes()
             attributes[Domain.Href.name]    = url
         if !`internal` 
         {
             attributes[Domain.Target.name]  = Domain.Target._blank.rawValue
         }
-        return .container(.a, attributes: attributes, content: [.text(escaping: string)])
+        return .container(.a, attributes: attributes, content: .init(inline().joined()))
     }
+    
     // all inline blocks will get consolidated into one single block
     @inlinable public static 
-    func link(to url:String, internal:Bool = false, 
-        @Attributes attributes:() -> [String: String] = { [:] }, 
-        content inline:() -> Prose) 
-        -> Self 
-    {
-        var attributes:[String: String]     = attributes()
-            attributes[Domain.Href.name]    = url
-        if !`internal` 
-        {
-            attributes[Domain.Target.name]  = Domain.Target._blank.rawValue
-        }
-        return .container(.a, attributes: attributes, content: inline().elements)
-    }
-    // all inline blocks will get consolidated into one single block
-    @inlinable public static 
-    func paragraph(internal:Bool = false, 
-        @Attributes attributes:() -> [String: String] = { [:] }, 
-        content inline:() -> Prose) 
+    func paragraph(
+        @Attributes attributes:() -> Attributes = { [:] }, 
+        @Prose content inline:() -> Prose) 
         -> Self
     {
         return .container(.p, attributes: attributes(), content: inline().elements)
-    }
+    } */
 }

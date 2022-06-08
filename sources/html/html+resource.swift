@@ -1,7 +1,7 @@
-import StructuredDocument
+import DOM
 import Resource
 
-extension Resource.Text:HTMLAttribute
+/* extension Resource.Text:HTMLAttribute
 {
     public 
     typealias Expression = Self 
@@ -22,7 +22,7 @@ extension Resource.Binary:HTMLAttribute
     {
         "type"
     }
-}
+} */
 extension Resource 
 {
     @inlinable public static 

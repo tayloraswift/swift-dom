@@ -1,4 +1,4 @@
-@_exported import StructuredDocument
+@_exported import DOM
 
 public 
 enum RSS:DocumentDomain
@@ -30,20 +30,12 @@ enum RSS:DocumentDomain
     }
 }
 
-public
-typealias _RSS = RSS
-extension Document 
-{
-    @available(*, deprecated, renamed: "RSS")
-    public
-    typealias RSS = _RSS
-}
-// attributes 
+/* // attributes 
 public 
-protocol RSSAttribute:DocumentAttribute
+protocol RSSAttribute:Attribute
 {
 }
-extension DocumentElement.Attributes where Domain == RSS
+extension DOM.Element.Attributes where Domain == RSS
 {
     // if an attribute is its own expression type, infer the key-value pair 
     @inlinable public static 
@@ -67,4 +59,4 @@ extension RSS
         @inlinable public 
         static var name:String { "version" }
     }
-}
+} */

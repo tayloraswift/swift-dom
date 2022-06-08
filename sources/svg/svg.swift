@@ -1,4 +1,4 @@
-@_exported import StructuredDocument
+@_exported import DOM
 import HTML
 
 public 
@@ -33,18 +33,9 @@ enum SVG:DocumentDomain
     }
 }
 
-public
-typealias _SVG = SVG
-extension Document 
-{
-    @available(*, deprecated, renamed: "SVG")
-    public
-    typealias SVG = _SVG
-}
-
 // attributes 
-public 
-protocol SVGAttribute:DocumentAttribute 
+/* public 
+protocol SVGAttribute:Attribute 
 {
 }
 public 
@@ -74,7 +65,7 @@ protocol SVGRGBAAttribute
         get 
     }
 }
-extension DocumentElement.Attributes where Domain == SVG 
+extension DOM.Element.Attributes where Domain == SVG 
 {
     //  css classes can be written in brackets: 
     //  ```
@@ -221,4 +212,4 @@ extension SVG
     {
         ("points", points.map{ "\($0.x),\($0.y)" }.joined(separator: " "))
     }
-}
+} */
