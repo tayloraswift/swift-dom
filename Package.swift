@@ -5,7 +5,7 @@ let package = Package(
     name: "swift-structured-document",
     products: 
     [
-        .library    (name: "StructuredDocument",    targets: ["HTML", "SVG", "RSS"]),
+        .library(name: "DOM", targets: ["HTML", "SVG", "RSS"]),
     ],
     dependencies: 
     [
@@ -13,12 +13,12 @@ let package = Package(
     ],
     targets: 
     [
-        .target(name: "StructuredDocument", 
+        .target(name: "DOM", 
             dependencies: 
             [
                 .product(name: "Resource", package: "swift-resource"),
             ], 
-            path: "sources/document", 
+            path: "sources/dom", 
             exclude: 
             [
             ]),
@@ -26,7 +26,7 @@ let package = Package(
             dependencies: 
             [
                 .product(name: "Resource", package: "swift-resource"),
-                .target(name: "StructuredDocument")
+                .target(name: "DOM")
             ],
             path: "sources/html",
             exclude: 
@@ -35,7 +35,7 @@ let package = Package(
         .target(name: "RSS",
             dependencies: 
             [
-                .target(name: "StructuredDocument"),
+                .target(name: "DOM"),
             ],
             path: "sources/rss",
             exclude: 
@@ -44,7 +44,7 @@ let package = Package(
         .target(name: "SVG",
             dependencies: 
             [
-                .target(name: "StructuredDocument"),
+                .target(name: "DOM"),
                 .target(name: "HTML")
             ],
             path: "sources/svg",
