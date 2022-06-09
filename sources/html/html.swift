@@ -80,18 +80,26 @@ enum HTML:DocumentDomain
 // typechecker requires this
 extension DOM.Element where Domain == HTML
 {
-    
-    /* @inlinable public static 
+    @inlinable public static 
     func li(@Prose _ paragraphs:() -> [[Self]]) -> Self
     {
-        Self[.li]
+        Self.container(.li, content: paragraphs().map 
         {
-            paragraphs().map 
-            {
-                Self.container(.p, content: $0)
-            }
-        }
-    } */
+            Self.container(.p, content: $0)
+        })
+    } 
+    @inlinable public static 
+    func li(_ string:String, @Attributes attributes:() -> [Attribute] = { [] }) 
+        -> Self 
+    {
+        .container(.li, attributes: attributes(), content: [.text(escaping: string)])
+    }
+    @inlinable public static 
+    func li(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) 
+        -> Self 
+    {
+        .container(.li, attributes: attributes(), content: [child])
+    }
     
     @inlinable public static 
     func code(_ string:String, @Attributes attributes:() -> [Attribute] = { [] }) 
