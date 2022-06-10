@@ -37,9 +37,9 @@ extension DOM
     struct Template<Key, Storage> where Key:Hashable, Storage:Collection
     {
         public 
-        let literals:Storage 
+        var literals:Storage 
         public 
-        let anchors:[(key:Key, index:Storage.Index)]
+        var anchors:[(key:Key, index:Storage.Index)]
         
         @inlinable public
         var isEmpty:Bool 
@@ -74,11 +74,68 @@ extension DOM
         }
         
         @inlinable public 
+        func rendered<Substitution, Output>(as _:Output.Type, 
+            substituting substitutions:[Key: Substitution]) 
+            -> Output
+            where   Output:RangeReplaceableCollection, Output.Element == Storage.Element,
+                    Substitution:Collection, Substitution.Element == Storage.Element
+        {
+            self.rendered(as: Output.self, substituting: substitutions) { _ in nil }
+        }
+        @inlinable public 
+        func rendered<Substitution, Output>(as _:Output.Type, 
+            substituting substitutions:[Key: Substitution] = [:], 
+            _ generate:(Key) throws -> Substitution?) 
+            rethrows -> Output
+            where   Output:RangeReplaceableCollection, Output.Element == Storage.Element,
+                    Substitution:Collection, Substitution.Element == Storage.Element
+        {
+            var output:Output = .init()
+                output.reserveCapacity(self.literals.underestimatedCount)
+
+            var start:Storage.Index = literals.startIndex
+            var cache:[Key: Substitution] = substitutions
+            for (key, index):(Key, Storage.Index) in self.anchors 
+            {
+                let substitution:Substitution
+                 
+                if let cached:Substitution = cache[key] 
+                {
+                    substitution = cached
+                }
+                else if let generated:Substitution = try generate(key)
+                {
+                    substitution = generated
+                    cache[key] = generated
+                }
+                else 
+                {
+                    continue 
+                }
+                
+                if  start < index 
+                {
+                    output.append(contentsOf: self.literals[start ..< index])
+                    start = index 
+                }
+                output.append(contentsOf: substitution)
+            }
+            if start < self.literals.endIndex 
+            {
+                output.append(contentsOf: self.literals[start...])
+            }
+            
+            return output 
+        }
+        
+        @available(*, deprecated)
+        @inlinable public 
         func apply<Substitution>(substitutions:[Key: Substitution]) -> [Storage.SubSequence]
             where Substitution:Collection, Substitution.SubSequence == Storage.SubSequence
         {
             self.apply(substitutions: substitutions) { _ in nil }
         }
+        @available(*, deprecated)
         @inlinable public 
         func apply<Substitution>(substitutions:[Key: Substitution] = [:], 
             _ generate:(Key) throws -> Substitution?) 
@@ -124,34 +181,42 @@ extension DOM
 
 extension DOM.Template where Storage:RangeReplaceableCollection, Storage.Element == UInt8
 {
-    @inlinable public static 
-    var empty:Self 
+    @inlinable public 
+    init()
     {
-        .init(literals: .init(), anchors: [])
+        self.literals = .init()
+        self.anchors = []
+    }
+    
+    @inlinable public 
+    init<Elements, Domain>(freezing elements:Elements)
+        where Domain:DocumentDomain, Elements:Sequence, Elements.Element == DOM.Element<Domain, Key>
+    {
+        self.init()
+        self.freeze(elements)
     }
     @inlinable public 
-    init<Dynamic, Domain>(freezing dynamic:Dynamic)
-        where Domain:DocumentDomain, Dynamic:Sequence, Dynamic.Element == DOM.Element<Domain, Key>
+    init<Domain>(freezing element:DOM.Element<Domain, Key>)
+        where Domain:DocumentDomain
     {
-        var output:Storage = .init()
-        var anchors:[(key:Key, index:Storage.Index)] = []
-        for element:Dynamic.Element in dynamic 
+        self.init()
+        self.freeze(element)
+    }
+    
+    @inlinable public mutating 
+    func freeze<Domain>(_ element:DOM.Element<Domain, Key>)
+        where Domain:DocumentDomain
+    {
+        element.rendered(into: &self.literals, anchors: &self.anchors)
+    }
+    @inlinable public mutating 
+    func freeze<Elements, Domain>(_ elements:Elements)
+        where Domain:DocumentDomain, Elements:Sequence, Elements.Element == DOM.Element<Domain, Key>
+    {
+        for element:DOM.Element<Domain, Key> in elements 
         {
-            element.rendered(into: &output, anchors: &anchors)
+            element.rendered(into: &self.literals, anchors: &self.anchors)
         }
-        self.init(literals: output, anchors: anchors)
-    }
-    @inlinable public 
-    init<Domain>(freezing dynamic:DOM.Element<Domain, Key>)
-        where Domain:DocumentDomain
-    {
-        self.init(freezing: CollectionOfOne<DOM.Element<Domain, Key>>.init(dynamic))
-    }
-    @inlinable public 
-    init<Domain>(freezing dynamic:DOM.Root<Domain, Key>)
-        where Domain:DocumentDomain
-    {
-        self.init(freezing: dynamic.element)
     }
     
     /* @inlinable public 
@@ -271,23 +336,5 @@ extension DOM.Element
         output.append(contentsOf: [0x3c, 0x2f]) // '</'
         output.append(contentsOf: type.utf8) 
         output.append(0x3e) // '>'
-    }
-}
-extension DOM.Root where Anchor == Never
-{
-    @inlinable public 
-    func rendered<UTF8>(as type:UTF8.Type) -> UTF8
-        where UTF8:RangeReplaceableCollection, UTF8.Element == UInt8
-    {
-        self.element.rendered(as: type) 
-    }
-}
-extension DOM.Root 
-{
-    @inlinable public 
-    func rendered<UTF8>(into output:inout UTF8, anchors:inout [(key:Anchor, index:UTF8.Index)]) 
-        where UTF8:RangeReplaceableCollection, UTF8.Element == UInt8
-    {
-        self.element.rendered(into: &output, anchors: &anchors) 
     }
 }
