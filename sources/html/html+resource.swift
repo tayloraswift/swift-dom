@@ -1,37 +1,42 @@
 import DOM
 import Resource
 
-/* extension Resource.Text:HTMLAttribute
+extension DOM.Root where Domain == HTML
 {
-    public 
-    typealias Expression = Self 
-    
-    @inlinable public static 
-    var name:String 
-    {
-        "type"
-    }
-}
-extension Resource.Binary:HTMLAttribute
-{
-    public 
-    typealias Expression = Self 
-    
-    @inlinable public static 
-    var name:String 
-    {
-        "type"
-    }
-} */
-extension Resource 
-{
-    @inlinable public static 
-    func html<S>(utf8:S, tag:Resource.Tag?) -> Self
-        where S:Sequence, S.Element == UInt8
+    @inlinable public 
+    func rendered<UTF8>(into output:inout UTF8, anchors:inout [(key:Anchor, index:UTF8.Index)]) 
+        where UTF8:RangeReplaceableCollection, UTF8.Element == UInt8
     {
         // '<!DOCTYPE html>'
-        var bytes:[UInt8] = [0x3c, 0x21, 0x44, 0x4f, 0x43, 0x54, 0x59, 0x50, 0x45, 0x20, 0x68, 0x74, 0x6d, 0x6c, 0x3e]
-            bytes.append(contentsOf: utf8)
-        return .utf8(encoded: bytes, type: .html, tag: tag)
+        output.append(contentsOf: 
+            [0x3c, 0x21, 0x44, 0x4f, 0x43, 0x54, 0x59, 0x50, 0x45, 0x20, 0x68, 0x74, 0x6d, 0x6c, 0x3e])
+        self.element.rendered(into: &output, anchors: &anchors)
+    }
+}
+extension DOM.Root where Domain == HTML, Anchor == Never
+{
+    @inlinable public 
+    func rendered<UTF8>(as type:UTF8.Type) -> UTF8
+        where UTF8:RangeReplaceableCollection, UTF8.Element == UInt8
+    {
+        var output:UTF8 = .init()
+        var anchors:[(key:Anchor, index:UTF8.Index)] = []
+        self.rendered(into: &output, anchors: &anchors)
+        return output 
+    }
+}
+
+extension DOM.Template where Storage:RangeReplaceableCollection, Storage.Element == UInt8
+{
+    @inlinable public 
+    init(freezing html:DOM.Root<HTML, Key>) 
+    {
+        self.init()
+        self.freeze(html)
+    }
+    @inlinable public mutating 
+    func freeze(_ html:DOM.Root<HTML, Key>)
+    {
+        html.rendered(into: &self.literals, anchors: &self.anchors)
     }
 }

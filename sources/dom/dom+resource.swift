@@ -1,4 +1,4 @@
-import Resource
+/* import Resource
 
 extension Resource 
 {
@@ -16,4 +16,4 @@ extension Resource
         
         return .utf8(encoded: bytes, type: type, tag: tag)
     }
-}
+} */
