@@ -74,17 +74,17 @@ extension DOM
         }
         
         @inlinable public 
-        func rendered<Substitution, Output>(as _:Output.Type, 
-            substituting substitutions:[Key: Substitution]) 
+        func rendered<Substitution, Output>(as _:Output.Type = Output.self, 
+            substituting cache:[Key: Substitution]) 
             -> Output
             where   Output:RangeReplaceableCollection, Output.Element == Storage.Element,
                     Substitution:Collection, Substitution.Element == Storage.Element
         {
-            self.rendered(as: Output.self, substituting: substitutions) { _ in nil }
+            self.rendered(as: Output.self, substituting: cache) { _ in nil }
         }
         @inlinable public 
-        func rendered<Substitution, Output>(as _:Output.Type, 
-            substituting substitutions:[Key: Substitution] = [:], 
+        func rendered<Substitution, Output>(as _:Output.Type = Output.self, 
+            substituting cache:[Key: Substitution] = [:], 
             _ generate:(Key) throws -> Substitution?) 
             rethrows -> Output
             where   Output:RangeReplaceableCollection, Output.Element == Storage.Element,
@@ -94,20 +94,9 @@ extension DOM
                 output.reserveCapacity(self.literals.underestimatedCount)
 
             var start:Storage.Index = literals.startIndex
-            var cache:[Key: Substitution] = substitutions
             for (key, index):(Key, Storage.Index) in self.anchors 
             {
-                let substitution:Substitution
-                 
-                if let cached:Substitution = cache[key] 
-                {
-                    substitution = cached
-                }
-                else if let generated:Substitution = try generate(key)
-                {
-                    substitution = generated
-                    cache[key] = generated
-                }
+                guard let substitution:Substitution = try cache[key] ?? generate(key)
                 else 
                 {
                     continue 
@@ -218,22 +207,6 @@ extension DOM.Template where Storage:RangeReplaceableCollection, Storage.Element
             element.rendered(into: &self.literals, anchors: &self.anchors)
         }
     }
-    
-    /* @inlinable public 
-    func apply<Domain>(_ substitutions:[Key: DOM.Element<Domain, Key>]) -> [Storage.SubSequence]
-    {
-        self.apply { substitutions[$0].map(Self.init(freezing:))?.apply(substitutions) ?? [] }
-    }
-    @inlinable public 
-    func apply<Domain>(_ substitutions:[Key: DOM.Element<Domain, Never>]) -> [Storage.SubSequence]
-    {
-        self.apply { substitutions[$0].map{ CollectionOfOne<Storage.SubSequence>.init($0.rendered(as: Storage.self)[...]) }}
-    }
-    @inlinable public 
-    func apply<Domain>(_ substitutions:(Key) throws -> DOM.Element<Domain, Never>?) rethrows -> [Storage.SubSequence]
-    {
-        try self.apply { try substitutions($0).map{ CollectionOfOne<Storage.SubSequence>.init($0.rendered(as: Storage.self)[...]) }}
-    } */
 }
 extension DOM.Template:Sendable where Storage:Sendable, Storage.Index:Sendable, Key:Sendable
 {
