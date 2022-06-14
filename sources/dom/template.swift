@@ -1,4 +1,4 @@
-extension DOM.Template:Equatable where Storage:Equatable
+extension DOM.Template:Equatable where Literals:Equatable
 {
     @inlinable public static 
     func == (lhs:Self, rhs:Self) -> Bool 
@@ -17,13 +17,13 @@ extension DOM.Template:Equatable where Storage:Equatable
         return true
     }
 }
-extension DOM.Template:Hashable where Storage:Hashable, Storage.Index:Hashable
+extension DOM.Template:Hashable where Literals:Hashable, Literals.Index:Hashable
 {
     @inlinable public  
     func hash(into hasher:inout Hasher) 
     {
         self.literals.hash(into: &hasher)
-        for (key, index):(Key, Storage.Index) in self.anchors 
+        for (key, index):(Key, Literals.Index) in self.anchors 
         {
             key.hash(into: &hasher)
             index.hash(into: &hasher)
@@ -34,12 +34,22 @@ extension DOM.Template:Hashable where Storage:Hashable, Storage.Index:Hashable
 extension DOM 
 {
     @frozen public
-    struct Template<Key, Storage> where Key:Hashable, Storage:Collection
+    enum Substitution<Key, Segment> where Key:Hashable, Segment:Sequence 
     {
+        case key(Key)
+        case segment(Segment)
+    }
+    
+    @frozen public
+    struct Template<Key, Literals> where Key:Hashable, Literals:Collection
+    {
+        public
+        typealias Anchor = (key:Key, index:Literals.Index)
+        
         public 
-        var literals:Storage 
+        var literals:Literals 
         public 
-        var anchors:[(key:Key, index:Storage.Index)]
+        var anchors:[Anchor]
         
         @inlinable public
         var isEmpty:Bool 
@@ -48,23 +58,15 @@ extension DOM
         }
         
         @inlinable public 
-        init(literals:Storage, anchors:[(key:Key, index:Storage.Index)])
+        init(literals:Literals, anchors:[Anchor])
         {
             self.literals   = literals 
             self.anchors    = anchors 
         }
-        
+                
+        @available(*, deprecated)
         @inlinable public 
-        func map<T>(_ transform:(Key) throws -> T) rethrows -> Template<T, Storage> 
-            where T:Hashable 
-        {
-            .init(literals: self.literals, anchors: try self.anchors.map 
-            { 
-                (try transform($0.key), $0.index) 
-            })
-        }
-        @inlinable public 
-        func compactMap<T>(_ transform:(Key) throws -> T?) rethrows -> Template<T, Storage> 
+        func compactMap<T>(_ transform:(Key) throws -> T?) rethrows -> Template<T, Literals> 
             where T:Hashable 
         {
             .init(literals: self.literals, anchors: try self.anchors.compactMap 
@@ -72,55 +74,10 @@ extension DOM
                 anchor in try transform(anchor.key).map { ($0, anchor.index) } 
             })
         }
-        
-        @inlinable public 
-        func rendered<Substitution, Output>(as _:Output.Type = Output.self, 
-            substituting cache:[Key: Substitution]) 
-            -> Output
-            where   Output:RangeReplaceableCollection, Output.Element == Storage.Element,
-                    Substitution:Collection, Substitution.Element == Storage.Element
-        {
-            self.rendered(as: Output.self, substituting: cache) { _ in nil }
-        }
-        @inlinable public 
-        func rendered<Substitution, Output>(as _:Output.Type = Output.self, 
-            substituting cache:[Key: Substitution] = [:], 
-            _ generate:(Key) throws -> Substitution?) 
-            rethrows -> Output
-            where   Output:RangeReplaceableCollection, Output.Element == Storage.Element,
-                    Substitution:Collection, Substitution.Element == Storage.Element
-        {
-            var output:Output = .init()
-                output.reserveCapacity(self.literals.underestimatedCount)
-
-            var start:Storage.Index = literals.startIndex
-            for (key, index):(Key, Storage.Index) in self.anchors 
-            {
-                guard let substitution:Substitution = try cache[key] ?? generate(key)
-                else 
-                {
-                    continue 
-                }
-                
-                if  start < index 
-                {
-                    output.append(contentsOf: self.literals[start ..< index])
-                    start = index 
-                }
-                output.append(contentsOf: substitution)
-            }
-            if start < self.literals.endIndex 
-            {
-                output.append(contentsOf: self.literals[start...])
-            }
-            
-            return output 
-        }
-        
         @available(*, deprecated)
         @inlinable public 
-        func apply<Substitution>(substitutions:[Key: Substitution]) -> [Storage.SubSequence]
-            where Substitution:Collection, Substitution.SubSequence == Storage.SubSequence
+        func apply<Substitution>(substitutions:[Key: Substitution]) -> [Literals.SubSequence]
+            where Substitution:Collection, Substitution.SubSequence == Literals.SubSequence
         {
             self.apply(substitutions: substitutions) { _ in nil }
         }
@@ -128,13 +85,13 @@ extension DOM
         @inlinable public 
         func apply<Substitution>(substitutions:[Key: Substitution] = [:], 
             _ generate:(Key) throws -> Substitution?) 
-            rethrows -> [Storage.SubSequence]
-            where Substitution:Collection, Substitution.SubSequence == Storage.SubSequence
+            rethrows -> [Literals.SubSequence]
+            where Substitution:Collection, Substitution.SubSequence == Literals.SubSequence
         {
-            var start:Storage.Index = literals.startIndex
-            var segments:[Storage.SubSequence] = []
+            var start:Literals.Index = literals.startIndex
+            var segments:[Literals.SubSequence] = []
             var cache:[Key: Substitution] = substitutions
-            for (key, index):(Key, Storage.Index) in self.anchors 
+            for (key, index):(Key, Literals.Index) in self.anchors 
             {
                 let substitution:Substitution
                  
@@ -167,8 +124,99 @@ extension DOM
         }
     }
 }
+extension DOM.Template 
+{            
+    @inlinable public 
+    func rendered<Segment, Output>(as _:Output.Type = Output.self, 
+        substituting cache:[Key: Segment]) 
+        -> Output
+        where   Output:RangeReplaceableCollection, Output.Element == Literals.Element,
+                Segment:Collection, Segment.Element == Literals.Element
+    {
+        self.rendered(as: Output.self, substituting: cache) { _ in nil }
+    }
+    @inlinable public 
+    func rendered<Segment, Output>(as _:Output.Type = Output.self, 
+        substituting cache:[Key: Segment] = [:], 
+        _ generate:(Key) throws -> Segment?) 
+        rethrows -> Output
+        where   Output:RangeReplaceableCollection, Output.Element == Literals.Element,
+                Segment:Collection, Segment.Element == Literals.Element
+    {
+        var output:Output = .init()
+            output.reserveCapacity(self.literals.underestimatedCount)
 
-extension DOM.Template where Storage:RangeReplaceableCollection, Storage.Element == UInt8
+        var start:Literals.Index = self.literals.startIndex
+        for (key, index):(Key, Literals.Index) in self.anchors 
+        {
+            guard let segment:Segment = try cache[key] ?? generate(key)
+            else 
+            {
+                continue 
+            }
+            
+            if  start < index 
+            {
+                output.append(contentsOf: self.literals[start ..< index])
+                start = index 
+            }
+            output.append(contentsOf: segment)
+        }
+        if start < self.literals.endIndex 
+        {
+            output.append(contentsOf: self.literals[start...])
+        }
+        
+        return output 
+    }
+    
+    @inlinable public 
+    func map<T>(_ transform:(Key) throws -> T) 
+        rethrows -> DOM.Template<T, Literals> 
+        where T:Hashable 
+    {
+        .init(literals: self.literals, anchors: try self.anchors.map 
+        { 
+            (try transform($0.key), $0.index) 
+        })
+    }
+}
+extension DOM.Template where Literals:RangeReplaceableCollection
+{
+    @inlinable public 
+    func transform<T, Segment>(_ transform:(Key) throws -> DOM.Substitution<T, Segment>) 
+        rethrows -> DOM.Template<T, Literals>
+        where T:Hashable, Segment:Sequence, Segment.Element == Literals.Element
+    {
+        var iterator:Array<Anchor>.Iterator = self.anchors.makeIterator()
+        var anchors:[(key:T, index:Literals.Index)] = []
+        while let anchor:Anchor = iterator.next()
+        {
+            switch try transform(anchor.key)
+            {
+            case .key(let key): 
+                anchors.append((key, anchor.index))
+            case .segment(let segment): 
+                var literals:Literals = .init()
+                literals.append(contentsOf: self.literals[..<anchor.index])
+                literals.append(contentsOf: segment)
+                while let key:Key = iterator.next()?.key
+                {
+                    switch try transform(key)
+                    {
+                    case .key(let key): 
+                        anchors.append((key, literals.endIndex))
+                    case .segment(let segment): 
+                        literals.append(contentsOf: segment)
+                    }
+                }
+                return .init(literals: literals, anchors: anchors)
+            }
+        }
+        return .init(literals: self.literals, anchors: anchors)
+    }
+}
+extension DOM.Template where Literals:RangeReplaceableCollection, Literals.Element == UInt8
 {
     @inlinable public 
     init()
@@ -208,7 +256,10 @@ extension DOM.Template where Storage:RangeReplaceableCollection, Storage.Element
         }
     }
 }
-extension DOM.Template:Sendable where Storage:Sendable, Storage.Index:Sendable, Key:Sendable
+extension DOM.Substitution:Sendable where Key:Sendable, Segment:Sendable
+{
+}
+extension DOM.Template:Sendable where Key:Sendable, Literals:Sendable, Literals.Index:Sendable
 {
 }
 
