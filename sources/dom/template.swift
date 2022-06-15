@@ -1,4 +1,5 @@
-extension DOM.Template:Equatable where Literals:Equatable
+extension DOM.Template:Equatable 
+    where Key:Equatable, Literals:Equatable
 {
     @inlinable public static 
     func == (lhs:Self, rhs:Self) -> Bool 
@@ -17,7 +18,8 @@ extension DOM.Template:Equatable where Literals:Equatable
         return true
     }
 }
-extension DOM.Template:Hashable where Literals:Hashable, Literals.Index:Hashable
+extension DOM.Template:Hashable 
+    where Key:Hashable, Literals:Hashable, Literals.Index:Hashable
 {
     @inlinable public  
     func hash(into hasher:inout Hasher) 
@@ -34,14 +36,14 @@ extension DOM.Template:Hashable where Literals:Hashable, Literals.Index:Hashable
 extension DOM 
 {
     @frozen public
-    enum Substitution<Key, Segment> where Key:Hashable, Segment:Sequence 
+    enum Substitution<Key, Segment> where Segment:Sequence 
     {
         case key(Key)
         case segment(Segment)
     }
     
     @frozen public
-    struct Template<Key, Literals> where Key:Hashable, Literals:Collection
+    struct Template<Key, Literals> where Literals:Collection
     {
         public
         typealias Anchor = (key:Key, index:Literals.Index)
@@ -63,82 +65,25 @@ extension DOM
             self.literals   = literals 
             self.anchors    = anchors 
         }
-                
-        @available(*, deprecated)
-        @inlinable public 
-        func compactMap<T>(_ transform:(Key) throws -> T?) rethrows -> Template<T, Literals> 
-            where T:Hashable 
-        {
-            .init(literals: self.literals, anchors: try self.anchors.compactMap 
-            { 
-                anchor in try transform(anchor.key).map { ($0, anchor.index) } 
-            })
-        }
-        @available(*, deprecated)
-        @inlinable public 
-        func apply<Substitution>(substitutions:[Key: Substitution]) -> [Literals.SubSequence]
-            where Substitution:Collection, Substitution.SubSequence == Literals.SubSequence
-        {
-            self.apply(substitutions: substitutions) { _ in nil }
-        }
-        @available(*, deprecated)
-        @inlinable public 
-        func apply<Substitution>(substitutions:[Key: Substitution] = [:], 
-            _ generate:(Key) throws -> Substitution?) 
-            rethrows -> [Literals.SubSequence]
-            where Substitution:Collection, Substitution.SubSequence == Literals.SubSequence
-        {
-            var start:Literals.Index = literals.startIndex
-            var segments:[Literals.SubSequence] = []
-            var cache:[Key: Substitution] = substitutions
-            for (key, index):(Key, Literals.Index) in self.anchors 
-            {
-                let substitution:Substitution
-                 
-                if let cached:Substitution = cache[key] 
-                {
-                    substitution = cached
-                }
-                else if let generated:Substitution = try generate(key)
-                {
-                    substitution = generated
-                    cache[key] = generated
-                }
-                else 
-                {
-                    continue 
-                }
-                
-                if  start < index 
-                {
-                    segments.append(self.literals[start ..< index])
-                    start = index 
-                }
-                segments.append(substitution[...])
-            }
-            if start < self.literals.endIndex 
-            {
-                segments.append(self.literals[start...])
-            }
-            return segments
-        }
     }
 }
-extension DOM.Template 
+extension DOM.Template where Key:Hashable
 {            
     @inlinable public 
     func rendered<Segment, Output>(as _:Output.Type = Output.self, 
-        substituting cache:[Key: Segment]) 
+        substituting segments:[Key: Segment]) 
         -> Output
         where   Output:RangeReplaceableCollection, Output.Element == Literals.Element,
                 Segment:Collection, Segment.Element == Literals.Element
     {
-        self.rendered(as: Output.self, substituting: cache) { _ in nil }
+        self.rendered(as: Output.self) { segments[$0] }
     }
+}
+extension DOM.Template 
+{
     @inlinable public 
     func rendered<Segment, Output>(as _:Output.Type = Output.self, 
-        substituting cache:[Key: Segment] = [:], 
-        _ generate:(Key) throws -> Segment?) 
+        _ render:(Key) throws -> Segment?) 
         rethrows -> Output
         where   Output:RangeReplaceableCollection, Output.Element == Literals.Element,
                 Segment:Collection, Segment.Element == Literals.Element
@@ -149,7 +94,7 @@ extension DOM.Template
         var start:Literals.Index = self.literals.startIndex
         for (key, index):(Key, Literals.Index) in self.anchors 
         {
-            guard let segment:Segment = try cache[key] ?? generate(key)
+            guard let segment:Segment = try render(key)
             else 
             {
                 continue 
