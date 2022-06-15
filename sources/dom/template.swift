@@ -143,17 +143,29 @@ extension DOM.Template where Literals:RangeReplaceableCollection
                 anchors.append((key, anchor.index))
             case .segment(let segment): 
                 var literals:Literals = .init()
-                literals.append(contentsOf: self.literals[..<anchor.index])
+                    literals.reserveCapacity(self.literals.count)
+                var source:Literals.Index = anchor.index
+                literals.append(contentsOf: self.literals[..<source])
                 literals.append(contentsOf: segment)
-                while let key:Key = iterator.next()?.key
+                while let anchor:Anchor = iterator.next()
                 {
-                    switch try transform(key)
+                    if  source < anchor.index 
+                    {
+                        literals.append(contentsOf: 
+                            self.literals[source ..< anchor.index])
+                        source = anchor.index 
+                    }
+                    switch try transform(anchor.key)
                     {
                     case .key(let key): 
                         anchors.append((key, literals.endIndex))
                     case .segment(let segment): 
                         literals.append(contentsOf: segment)
                     }
+                }
+                if source < self.literals.endIndex 
+                {
+                    literals.append(contentsOf: self.literals[source...])
                 }
                 return .init(literals: literals, anchors: anchors)
             }
