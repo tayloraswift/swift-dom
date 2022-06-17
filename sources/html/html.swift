@@ -141,7 +141,32 @@ extension DOM.Element where Domain == HTML
     func li(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) 
         -> Self 
     {
-        .container(.li, attributes: attributes(), content: [child])
+        .li([child], attributes: attributes)
+    }
+    @inlinable public static 
+    func li(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) 
+        -> Self 
+    {
+        .container(.li, attributes: attributes(), content: children)
+    }
+    
+    @inlinable public static 
+    func p(_ string:String, @Attributes attributes:() -> [Attribute] = { [] }) 
+        -> Self 
+    {
+        .p(.text(escaping: string), attributes: attributes)
+    }
+    @inlinable public static 
+    func p(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) 
+        -> Self 
+    {
+        .p([child], attributes: attributes)
+    }
+    @inlinable public static 
+    func p(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) 
+        -> Self 
+    {
+        .container(.p, attributes: attributes(), content: children)
     }
     
     @inlinable public static 
@@ -197,6 +222,17 @@ extension DOM.Element where Domain == HTML
     }
     
     @inlinable public static 
+    func h4(_ string:String, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
+    {
+        .h4(.text(escaping: string), attributes: attributes)
+    }
+    @inlinable public static 
+    func h4(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
+    {
+        .container(.h4, attributes: attributes(), content: [child])
+    }
+    
+    @inlinable public static 
     func span(_ string:String, @Attributes attributes:() -> [Attribute]) -> Self 
     {
         .span(.text(escaping: string), attributes: attributes)
@@ -206,15 +242,6 @@ extension DOM.Element where Domain == HTML
     {
         .container(.span, attributes: attributes(), content: [child])
     }
-    // all inline blocks will get consolidated into one single block
-    /* @inlinable public static 
-    func span(
-        @Attributes attributes:() -> Attributes = { [:] }, 
-        @Prose  content inline:() -> [[Self]]) 
-        -> Self 
-    {
-        .container(.span, attributes: attributes(), content: .init(inline().joined()))
-    } */
     
     @inlinable public static 
     func a(_ string:String, @Attributes attributes:() -> [Attribute]) -> Self 
@@ -224,31 +251,12 @@ extension DOM.Element where Domain == HTML
     @inlinable public static 
     func a(_ child:Self, @Attributes attributes:() -> [Attribute]) -> Self 
     {
-        .container(.a, attributes: attributes(), content: [child])
+        .a([child], attributes: attributes)
     }
-    /* // all inline blocks will get consolidated into one single block
     @inlinable public static 
-    func a(href url:String,
-        @Attributes attributes:() -> Attributes = { [:] }, 
-        @Prose  content inline:() -> [[Self]]) 
+    func a(_ children:[Self], @Attributes attributes:() -> [Attribute]) 
         -> Self 
     {
-        var attributes:Attributes     = attributes()
-            attributes[Domain.Href.name]    = url
-        if !`internal` 
-        {
-            attributes[Domain.Target.name]  = Domain.Target._blank.rawValue
-        }
-        return .container(.a, attributes: attributes, content: .init(inline().joined()))
+        .container(.a, attributes: attributes(), content: children)
     }
-    
-    // all inline blocks will get consolidated into one single block
-    @inlinable public static 
-    func paragraph(
-        @Attributes attributes:() -> Attributes = { [:] }, 
-        @Prose content inline:() -> Prose) 
-        -> Self
-    {
-        return .container(.p, attributes: attributes(), content: inline().elements)
-    } */
 }
