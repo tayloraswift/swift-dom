@@ -34,6 +34,7 @@ enum HTML:DocumentDomain
         case h5
         case h6
         case header
+        case label
         case li
         case main 
         case nav 
