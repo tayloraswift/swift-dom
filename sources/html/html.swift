@@ -19,6 +19,7 @@ enum HTML:DocumentDomain
         case aside 
         case blockquote 
         case code 
+        case cite
         case dl 
         case dt
         case dd 
@@ -34,6 +35,7 @@ enum HTML:DocumentDomain
         case h5
         case h6
         case header
+        case i
         case label
         case li
         case main 
@@ -82,47 +84,40 @@ enum HTML:DocumentDomain
 extension DOM.Element where Domain == HTML
 {
     @inlinable public static 
-    func div(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) 
-        -> Self 
+    func div(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
         .div([child], attributes: attributes)
     }
     @inlinable public static 
-    func div(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) 
-        -> Self 
+    func div(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
         .container(.div, attributes: attributes(), content: children)
     }
     
     @inlinable public static 
-    func section(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) 
-        -> Self 
+    func section(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
         .section([child], attributes: attributes)
     }
     @inlinable public static 
-    func section(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) 
-        -> Self 
+    func section(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
         .container(.section, attributes: attributes(), content: children)
     }
     
     @inlinable public static 
-    func pre(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) 
-        -> Self 
+    func pre(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
         .container(.pre, attributes: attributes(), content: [child])
     }
     
     @inlinable public static 
-    func ol(items:[Self], @Attributes attributes:() -> [Attribute] = { [] }) 
-        -> Self 
+    func ol(items:[Self], @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
         .container(.ol, attributes: attributes(), content: items)
     }
     @inlinable public static 
-    func ul(items:[Self], @Attributes attributes:() -> [Attribute] = { [] }) 
-        -> Self 
+    func ul(items:[Self], @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
         .container(.ul, attributes: attributes(), content: items)
     }
@@ -133,58 +128,49 @@ extension DOM.Element where Domain == HTML
         .container(.li, content: paragraphs().map { .container(.p, content: $0) })
     } 
     @inlinable public static 
-    func li(_ string:String, @Attributes attributes:() -> [Attribute] = { [] }) 
-        -> Self 
+    func li(_ string:String, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
         .li(.text(escaping: string), attributes: attributes)
     }
     @inlinable public static 
-    func li(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) 
-        -> Self 
+    func li(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
         .li([child], attributes: attributes)
     }
     @inlinable public static 
-    func li(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) 
-        -> Self 
+    func li(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
         .container(.li, attributes: attributes(), content: children)
     }
     
     @inlinable public static 
-    func p(_ string:String, @Attributes attributes:() -> [Attribute] = { [] }) 
-        -> Self 
+    func p(_ string:String, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
         .p(.text(escaping: string), attributes: attributes)
     }
     @inlinable public static 
-    func p(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) 
-        -> Self 
+    func p(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
         .p([child], attributes: attributes)
     }
     @inlinable public static 
-    func p(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) 
-        -> Self 
+    func p(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
         .container(.p, attributes: attributes(), content: children)
     }
     
     @inlinable public static 
-    func code(_ string:String, @Attributes attributes:() -> [Attribute] = { [] }) 
-        -> Self 
+    func code(_ string:String, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
         .code(.text(escaping: string), attributes: attributes)
     }
     @inlinable public static 
-    func code(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) 
-        -> Self 
+    func code(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
         .code([child], attributes: attributes)
     }
     @inlinable public static 
-    func code(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) 
-        -> Self 
+    func code(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
         .container(.code, attributes: attributes(), content: children)
     }
@@ -197,7 +183,12 @@ extension DOM.Element where Domain == HTML
     @inlinable public static 
     func h1(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
-        .container(.h1, attributes: attributes(), content: [child])
+        .h1([child], attributes: attributes)
+    }
+    @inlinable public static 
+    func h1(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
+    {
+        .container(.h1, attributes: attributes(), content: children)
     }
     
     @inlinable public static 
@@ -208,7 +199,12 @@ extension DOM.Element where Domain == HTML
     @inlinable public static 
     func h2(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
-        .container(.h2, attributes: attributes(), content: [child])
+        .h2([child], attributes: attributes)
+    }
+    @inlinable public static 
+    func h2(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
+    {
+        .container(.h2, attributes: attributes(), content: children)
     }
     
     @inlinable public static 
@@ -219,7 +215,12 @@ extension DOM.Element where Domain == HTML
     @inlinable public static 
     func h3(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
-        .container(.h3, attributes: attributes(), content: [child])
+        .h3([child], attributes: attributes)
+    }
+    @inlinable public static 
+    func h3(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
+    {
+        .container(.h3, attributes: attributes(), content: children)
     }
     
     @inlinable public static 
@@ -230,18 +231,92 @@ extension DOM.Element where Domain == HTML
     @inlinable public static 
     func h4(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
-        .container(.h4, attributes: attributes(), content: [child])
+        .h4([child], attributes: attributes)
+    }
+    @inlinable public static 
+    func h4(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
+    {
+        .container(.h4, attributes: attributes(), content: children)
     }
     
     @inlinable public static 
-    func span(_ string:String, @Attributes attributes:() -> [Attribute]) -> Self 
+    func em(_ string:String, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
+    {
+        .em(.text(escaping: string), attributes: attributes)
+    }
+    @inlinable public static 
+    func em(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
+    {
+        .em([child], attributes: attributes)
+    }
+    @inlinable public static 
+    func em(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
+    {
+        .container(.em, attributes: attributes(), content: children)
+    }
+    
+    @inlinable public static 
+    func strong(_ string:String, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
+    {
+        .strong(.text(escaping: string), attributes: attributes)
+    }
+    @inlinable public static 
+    func strong(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
+    {
+        .strong([child], attributes: attributes)
+    }
+    @inlinable public static 
+    func strong(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
+    {
+        .container(.strong, attributes: attributes(), content: children)
+    }
+    
+    @inlinable public static 
+    func s(_ string:String, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
+    {
+        .s(.text(escaping: string), attributes: attributes)
+    }
+    @inlinable public static 
+    func s(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
+    {
+        .s([child], attributes: attributes)
+    }
+    @inlinable public static 
+    func s(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
+    {
+        .container(.s, attributes: attributes(), content: children)
+    }
+    
+    @inlinable public static 
+    func cite(_ string:String, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
+    {
+        .cite(.text(escaping: string), attributes: attributes)
+    }
+    @inlinable public static 
+    func cite(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
+    {
+        .cite([child], attributes: attributes)
+    }
+    @inlinable public static 
+    func cite(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
+    {
+        .container(.cite, attributes: attributes(), content: children)
+    }
+    
+    @inlinable public static 
+    func span(_ string:String, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
         .span(.text(escaping: string), attributes: attributes)
     }
     @inlinable public static 
-    func span(_ child:Self, @Attributes attributes:() -> [Attribute]) -> Self 
+    func span(_ child:Self, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {
-        .container(.span, attributes: attributes(), content: [child])
+        .span([child], attributes: attributes)
+    }
+    @inlinable public static 
+    func span(_ children:[Self], @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
+    {
+        .container(.span, attributes: attributes(), content: children)
     }
     
     @inlinable public static 
@@ -255,8 +330,7 @@ extension DOM.Element where Domain == HTML
         .a([child], attributes: attributes)
     }
     @inlinable public static 
-    func a(_ children:[Self], @Attributes attributes:() -> [Attribute]) 
-        -> Self 
+    func a(_ children:[Self], @Attributes attributes:() -> [Attribute]) -> Self 
     {
         .container(.a, attributes: attributes(), content: children)
     }
