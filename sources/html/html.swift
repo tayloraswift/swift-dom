@@ -18,6 +18,7 @@ enum HTML:DocumentDomain
         case article 
         case aside 
         case blockquote 
+        case button
         case code 
         case cite
         case dl 
