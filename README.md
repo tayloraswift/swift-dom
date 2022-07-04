@@ -1,3 +1,3 @@
 <p align="center">
-  <strong><em><code>dom</code></em></strong><br><small><code>0.3.9</code></small>
+  <strong><em><code>dom</code></em></strong><br><small><code>0.3.10</code></small>
 </p>
