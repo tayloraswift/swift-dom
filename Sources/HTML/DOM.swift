@@ -1,5 +1,4 @@
 import DOM
-import Resource
 
 extension DOM.Root where Domain == HTML
 {
