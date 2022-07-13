@@ -25,7 +25,7 @@ extension DOM.Root where Domain == HTML, Anchor == Never
     }
 }
 
-extension DOM.Template where Literals:RangeReplaceableCollection, Literals.Element == UInt8
+extension DOM.Template 
 {
     @inlinable public 
     init(freezing html:DOM.Root<HTML, Key>) 

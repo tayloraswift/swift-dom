@@ -1,5 +1,4 @@
-extension DOM.Template:Equatable 
-    where Key:Equatable, Literals:Equatable
+extension DOM.Template:Equatable where Key:Equatable
 {
     @inlinable public static 
     func == (lhs:Self, rhs:Self) -> Bool 
@@ -18,14 +17,13 @@ extension DOM.Template:Equatable
         return true
     }
 }
-extension DOM.Template:Hashable 
-    where Key:Hashable, Literals:Hashable, Literals.Index:Hashable
+extension DOM.Template:Hashable where Key:Hashable
 {
     @inlinable public  
     func hash(into hasher:inout Hasher) 
     {
         self.literals.hash(into: &hasher)
-        for (key, index):(Key, Literals.Index) in self.anchors 
+        for (key, index):(Key, Int) in self.anchors 
         {
             key.hash(into: &hasher)
             index.hash(into: &hasher)
@@ -43,13 +41,13 @@ extension DOM
     }
     
     @frozen public
-    struct Template<Key, Literals> where Literals:Collection
+    struct Template<Key> 
     {
         public
-        typealias Anchor = (key:Key, index:Literals.Index)
+        typealias Anchor = (key:Key, index:Int)
         
         public 
-        var literals:Literals 
+        var literals:[UInt8] 
         public 
         var anchors:[Anchor]
         
@@ -60,7 +58,7 @@ extension DOM
         }
         
         @inlinable public 
-        init(literals:Literals, anchors:[Anchor])
+        init(literals:[UInt8], anchors:[Anchor])
         {
             self.literals   = literals 
             self.anchors    = anchors 
@@ -71,10 +69,9 @@ extension DOM.Template where Key:Hashable
 {            
     @inlinable public 
     func rendered<Segment, Output>(as _:Output.Type = Output.self, 
-        substituting segments:[Key: Segment]) 
-        -> Output
-        where   Output:RangeReplaceableCollection, Output.Element == Literals.Element,
-                Segment:Collection, Segment.Element == Literals.Element
+        substituting segments:[Key: Segment]) -> Output
+        where   Output:RangeReplaceableCollection, Output.Element == UInt8,
+                Segment:Collection, Segment.Element == UInt8
     {
         self.rendered(as: Output.self) { segments[$0] }
     }
@@ -83,16 +80,15 @@ extension DOM.Template
 {
     @inlinable public 
     func rendered<Segment, Output>(as _:Output.Type = Output.self, 
-        _ render:(Key) throws -> Segment?) 
-        rethrows -> Output
-        where   Output:RangeReplaceableCollection, Output.Element == Literals.Element,
-                Segment:Collection, Segment.Element == Literals.Element
+        _ render:(Key) throws -> Segment?) rethrows -> Output
+        where   Output:RangeReplaceableCollection, Output.Element == UInt8,
+                Segment:Collection, Segment.Element == UInt8
     {
         var output:Output = .init()
             output.reserveCapacity(self.literals.underestimatedCount)
 
-        var start:Literals.Index = self.literals.startIndex
-        for (key, index):(Key, Literals.Index) in self.anchors 
+        var start:Int = self.literals.startIndex
+        for (key, index):(Key, Int) in self.anchors 
         {
             guard let segment:Segment = try render(key)
             else 
@@ -116,8 +112,7 @@ extension DOM.Template
     }
     
     @inlinable public 
-    func map<T>(_ transform:(Key) throws -> T) 
-        rethrows -> DOM.Template<T, Literals> 
+    func map<T>(_ transform:(Key) throws -> T) rethrows -> DOM.Template<T> 
         where T:Hashable 
     {
         .init(literals: self.literals, anchors: try self.anchors.map 
@@ -126,15 +121,15 @@ extension DOM.Template
         })
     }
 }
-extension DOM.Template where Literals:RangeReplaceableCollection
+extension DOM.Template 
 {
     @inlinable public 
     func transform<T, Segment>(_ transform:(Key) throws -> DOM.Substitution<T, Segment>) 
-        rethrows -> DOM.Template<T, Literals>
-        where T:Hashable, Segment:Sequence, Segment.Element == Literals.Element
+        rethrows -> DOM.Template<T>
+        where T:Hashable, Segment:Sequence, Segment.Element == UInt8
     {
         var iterator:Array<Anchor>.Iterator = self.anchors.makeIterator()
-        var anchors:[(key:T, index:Literals.Index)] = []
+        var anchors:[(key:T, index:Int)] = []
         while let anchor:Anchor = iterator.next()
         {
             switch try transform(anchor.key)
@@ -142,9 +137,9 @@ extension DOM.Template where Literals:RangeReplaceableCollection
             case .key(let key): 
                 anchors.append((key, anchor.index))
             case .segment(let segment): 
-                var literals:Literals = .init()
+                var literals:[UInt8] = []
                     literals.reserveCapacity(self.literals.count)
-                var source:Literals.Index = anchor.index
+                var source:Int = anchor.index
                 literals.append(contentsOf: self.literals[..<source])
                 literals.append(contentsOf: segment)
                 while let anchor:Anchor = iterator.next()
@@ -173,7 +168,7 @@ extension DOM.Template where Literals:RangeReplaceableCollection
         return .init(literals: self.literals, anchors: anchors)
     }
 }
-extension DOM.Template where Literals:RangeReplaceableCollection, Literals.Element == UInt8
+extension DOM.Template 
 {
     @inlinable public 
     init()
@@ -216,7 +211,7 @@ extension DOM.Template where Literals:RangeReplaceableCollection, Literals.Eleme
 extension DOM.Substitution:Sendable where Key:Sendable, Segment:Sendable
 {
 }
-extension DOM.Template:Sendable where Key:Sendable, Literals:Sendable, Literals.Index:Sendable
+extension DOM.Template:Sendable where Key:Sendable
 {
 }
 
