@@ -1,4 +1,4 @@
-@_exported import DOM
+import DOM
 
 public 
 enum HTML:DocumentDomain
@@ -11,23 +11,38 @@ enum HTML:DocumentDomain
         case head 
         case body 
         
-        case title 
-        
         case a
+        case abbr
+        case audio
+        case b
+        case bdi
+        case bdo
         case address
         case article 
         case aside 
         case blockquote 
         case button
+        case canvas
+        case caption
         case code 
+        case colgroup
         case cite
+        case data
+        case datalist
+        case del
+        case details
+        case dialog
+        case dfn
+        case div
         case dl 
         case dt
         case dd 
-        case div
         case em
+        case embed
+        case fieldset
         case figcaption
         case figure
+        case footer
         case form
         case h1
         case h2
@@ -37,27 +52,61 @@ enum HTML:DocumentDomain
         case h6
         case header
         case i
+        case iframe
+        case ins
+        case kbd
         case label
+        case legend
         case li
         case main 
+        case map
+        case mark
+        case menu
+        case meter
         case nav 
+        case noscript
         case ol 
+        case object
+        case optgroup
+        case option
+        case output
         case p
+        case picture
+        case portal
         case pre 
+        case progress
         case q
+        case rp
+        case rt
+        case ruby
         case s
+        case samp
+        case small
         case section
         case span
         case script 
+        case select
+        case slot
         case strong
+        case style
+        case sub 
+        case summary
+        case sup
         case table
         case tbody
-        case thead
         case td
+        case template
+        case textarea
+        case tfoot
         case th
-        case tr
+        case thead
         case time
+        case title 
+        case tr
+        case u
         case ul 
+        case `var` 
+        case video
         
         @inlinable public static 
         var root:Self { .html }
@@ -65,12 +114,18 @@ enum HTML:DocumentDomain
     @frozen public 
     enum Leaf:String, LeafDomain, Sendable
     {
+        case area 
+        case base 
         case br 
-        case hr
-        case img
-        case input
+        case col 
+        case hr 
+        case img 
+        case input 
         case link 
         case meta 
+        case param 
+        case source 
+        case track 
         case wbr 
         
         @inlinable public

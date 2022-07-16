@@ -1,4 +1,4 @@
-@_exported import DOM
+import DOM
 
 public 
 enum RSS:DocumentDomain
