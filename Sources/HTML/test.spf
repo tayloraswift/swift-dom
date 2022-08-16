@@ -25,7 +25,7 @@ let strings:[Never] =
 ]
 
 /// this is a doccomment
-@template(__Foo__: foos)
+@matrix(__Foo__: foos)
 enum __Foo__:Sendable 
 {
     /// this is another doccomment
@@ -40,8 +40,8 @@ enum __Foo__:Sendable
     /// \(Self.\(__Foo__).string)
     /// """
     /// ```
-    @template(__Foo__: foos)
-    @template(__Bar__: bars, __string__: strings)
+    @matrix(__Foo__: foos)
+    @matrix(__Bar__: bars, __string__: strings)
     enum __Foo__:__Bar__
     {
         @basis 
@@ -56,7 +56,7 @@ enum __Foo__:Sendable
         var string:String { __string__ }
     }
 }
-@template(__Bar__: bars)
+@matrix(__Bar__: bars)
 protocol __Bar__:Sendable 
 {
     var __Bar__:Int { get }
@@ -64,14 +64,14 @@ protocol __Bar__:Sendable
 
 extension DOM.Element where Domain == HTML 
 {
-    @template(__ordinal__: [i, j])
+    @matrix(__ordinal__: [i, j, k], __value__: [0, 1, 2])
     @inlinable public 
     var __ordinal__:Int 
     {
-        0
+        __value__
     }
 
-    @template(__case__: [a, b])
+    @matrix(__case__: [a, b])
     @inlinable public static 
     func __case__(_ string:String, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
     {

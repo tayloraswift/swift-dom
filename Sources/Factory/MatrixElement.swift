@@ -128,7 +128,7 @@ extension MatrixElement
         let loops:[Factory.Loop]? = template.removeAttributes 
         {
             guard   let attribute:CustomAttributeSyntax = $0.as(CustomAttributeSyntax.self), 
-                    case "template"? = attribute.simpleName
+                    case "matrix"? = attribute.simpleName
             else 
             {
                 return nil 
@@ -136,7 +136,7 @@ extension MatrixElement
             guard let arguments:TupleExprElementListSyntax = attribute.argumentList
             else 
             {
-                fatalError("@template(identifiers:in:) requires arguments")
+                fatalError("@matrix expects at least one loop argument")
             }
             var zipper:[Factory.Loop.Thread] = []
             arguments:
@@ -145,7 +145,7 @@ extension MatrixElement
                 guard case .identifier(let binding)? = argument.label?.tokenKind
                 else 
                 {
-                    fatalError("@template loop requires a binding")
+                    fatalError("@matrix loop requires a binding")
                 }
                 if      let literal:ArrayExprSyntax = 
                     argument.expression.as(ArrayExprSyntax.self)
@@ -165,11 +165,11 @@ extension MatrixElement
                             continue arguments  
                         }
                     }
-                    fatalError("@template basis '\(variable)' is not defined in this lexical scope")
+                    fatalError("@matrix basis '\(variable)' is not defined in this lexical scope")
                 }
                 else 
                 {
-                    fatalError("@template basis must be an array literal or a @basis binding")
+                    fatalError("@matrix basis must be an array literal or a @basis binding")
                 }
             }
             return .init(zipper)
