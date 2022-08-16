@@ -1,0 +1,71 @@
+import Glibc
+
+@matrix 
+let foos:[Never] = 
+[
+    A, 
+    B, 
+    C,
+]
+
+@matrix 
+let bars:[Never] = 
+[
+    X, 
+    Y, 
+    Z,
+]
+@matrix 
+let strings:[Never] = 
+[
+    "xxx", 
+    "yyy", 
+    "zzz",
+]
+
+/// this is a doccomment
+/// with two lines
+@template(__Foo__: foos)
+enum __Foo__:Sendable 
+{
+    /// this is another doccomment
+    /// with three
+    /// lines
+    @template(__Foo__: foos)
+    @template(__Bar__: bars, __string__: strings)
+    enum __Foo__:__Bar__
+    {
+        @matrix 
+        let foos2:[Never] = 
+        [
+            A, 
+            B, 
+            C,
+        ]
+
+        static 
+        var string:String { __string__ }
+    }
+}
+@template(__Bar__: bars)
+protocol __Bar__:Sendable 
+{
+    var __Bar__:Int { get }
+}
+
+extension DOM.Element where Domain == HTML 
+{
+    @template(__ordinal__: [i, j])
+    @inlinable public 
+    var __ordinal__:Int 
+    {
+        0
+    }
+
+    @template(__case__: [a, b])
+    @inlinable public static 
+    func __case__(_ string:String, @Attributes attributes:() -> [Attribute] = { [] }) -> Self 
+    {
+        .__case__(.text(escaping: __case__.rawValue), attributes: attributes)
+    }
+}

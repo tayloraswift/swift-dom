@@ -1,7 +1,7 @@
 import DOM
 
 public 
-enum RSS:DocumentDomain
+enum RSS<Anchor>:DocumentDomain
 {
     @frozen public 
     enum Container:String, ContainerDomain, Sendable

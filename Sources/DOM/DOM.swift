@@ -59,16 +59,19 @@ public
 protocol DocumentDomain 
 {
     associatedtype Container    where Container:ContainerDomain
-    associatedtype Leaf         where      Leaf:LeafDomain
+    associatedtype Leaf         where Leaf:LeafDomain
 }
 extension DocumentDomain 
 {
     public 
-    typealias StaticElement = DOM.Element<Self, Never>
-    public 
     typealias Element<Anchor> = DOM.Element<Self, Anchor> 
     public 
+    typealias StaticElement = DOM.Element<Self, Never>
+    
+    public 
     typealias Root<Anchor> = DOM.Root<Self, Anchor> 
+    public 
+    typealias StaticRoot = DOM.Root<Self, Never> 
 }
 
 public 

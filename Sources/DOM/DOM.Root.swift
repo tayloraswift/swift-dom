@@ -1,8 +1,5 @@
 extension DOM
 {    
-    public 
-    typealias StaticRoot<Domain> = Root<Domain, Never> where Domain:DocumentDomain
-    
     @frozen public 
     struct Root<Domain, Anchor> where Domain:DocumentDomain
     {

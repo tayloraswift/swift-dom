@@ -25,12 +25,14 @@ extension DOM
             .text(escaped: DOM.escape(unescaped))
         }
         
+        @available(*, deprecated) 
         @inlinable public static 
         subscript(_ leaf:Domain.Leaf, @Attributes attributes:() -> [Attribute]) 
             -> Self
         {
             .leaf(leaf, attributes: attributes())
         }
+        @available(*, deprecated) 
         @inlinable public static 
         subscript(_ leaf:Domain.Leaf) 
             -> Self
@@ -38,6 +40,7 @@ extension DOM
             .leaf(leaf)
         }
         
+        @available(*, deprecated) 
         @inlinable public static 
         subscript(_ container:Domain.Container, 
             @Attributes attributes attributes:() -> [Attribute], 
@@ -46,12 +49,14 @@ extension DOM
         {
             .container(container, attributes: attributes(), content: content())
         }
+        @available(*, deprecated) 
         @inlinable public static 
         subscript(_ container:Domain.Container, @Content content:() -> [Self]) 
             -> Self
         {
             .container(container, content: content())
         }
+        @available(*, deprecated) 
         @inlinable public static 
         subscript(_ container:Domain.Container) 
             -> Self

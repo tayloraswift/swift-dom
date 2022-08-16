@@ -26,13 +26,13 @@ extension DOM.Root where Domain == HTML, Anchor == Never
 extension DOM.Template 
 {
     @inlinable public 
-    init(freezing html:DOM.Root<HTML, Key>) 
+    init(freezing html:HTML.Root<Key>)
     {
         self.init()
         self.freeze(html)
     }
     @inlinable public mutating 
-    func freeze(_ html:DOM.Root<HTML, Key>)
+    func freeze(_ html:HTML.Root<Key>)
     {
         html.rendered(into: &self.literals, anchors: &self.anchors)
     }
