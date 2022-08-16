@@ -464,7 +464,7 @@ class Factory:SyntaxRewriter
     }
 
     final private 
-    func expand(_ declaration:DeclSyntax) -> [DeclSyntax]
+    func expand(_ declaration:DeclSyntax) -> [DeclSyntax]?
     {
         if  let expandable:any ExpandableSyntax = 
             declaration.asProtocol(DeclSyntaxProtocol.self) as? ExpandableSyntax
@@ -473,7 +473,7 @@ class Factory:SyntaxRewriter
         }
         else 
         {
-            return [declaration]
+            return nil
         }
     }
 
@@ -525,19 +525,31 @@ class Factory:SyntaxRewriter
         }
         return self.with(scope: bindings)
         {
-            return super.visit(SyntaxFactory.makeCodeBlockItemList(list.flatMap 
+            // expand nested blocks *before* expanding outer block 
+            let list:Syntax = super.visit(list)
+            guard let list:CodeBlockItemListSyntax = list.as(CodeBlockItemListSyntax.self) 
+            else 
+            {
+                return list 
+            }
+            var elements:[CodeBlockItemSyntax] = []
+                elements.reserveCapacity(list.count)
+            for element:CodeBlockItemSyntax in list 
             { 
-                guard let declaration:DeclSyntax = $0.item.as(DeclSyntax.self)
+                guard let declaration:DeclSyntax = element.item.as(DeclSyntax.self), 
+                        let expanded:[DeclSyntax] = self.expand(declaration)
                 else 
                 {
-                    return [$0]
+                    elements.append(element)
+                    continue 
                 }
-                return self.expand(declaration).map 
+                for element:DeclSyntax in expanded 
                 {
-                    SyntaxFactory.makeCodeBlockItem(item: .init($0), 
-                        semicolon: nil, errorTokens: nil) 
+                    elements.append(.init(item: Syntax.init(element), 
+                        semicolon: nil, errorTokens: nil))
                 }
-            }))
+            }
+            return .init(CodeBlockItemListSyntax.init(elements))
         }
     }
     final override 
@@ -553,13 +565,29 @@ class Factory:SyntaxRewriter
         }
         return self.with(scope: bindings)
         {
-            return super.visit(SyntaxFactory.makeMemberDeclList(list.flatMap 
+            // expand nested blocks *before* expanding outer block 
+            let list:Syntax = super.visit(list)
+            guard let list:MemberDeclListSyntax = list.as(MemberDeclListSyntax.self) 
+            else 
+            {
+                return list 
+            }
+            var elements:[MemberDeclListItemSyntax] = []
+                elements.reserveCapacity(list.count)
+            for element:MemberDeclListItemSyntax in list 
             { 
-                self.expand($0.decl).map 
+                guard let expanded:[DeclSyntax] = self.expand(element.decl)
+                else 
                 {
-                    SyntaxFactory.makeMemberDeclListItem(decl: $0, semicolon: nil) 
+                    elements.append(element)
+                    continue 
                 }
-            }))
+                for element:DeclSyntax in expanded 
+                {
+                    elements.append(.init(decl: element, semicolon: nil))
+                }
+            }
+            return .init(MemberDeclListSyntax.init(elements))
         }
     }
 }
