@@ -6,6 +6,7 @@ let tools:(products:[Product], dependencies:[Package.Dependency], targets:[Targe
 (
     products: 
     [
+        .library(name: "Factory",       targets: ["Factory"]),
         .plugin(name: "FactoryPlugin",  targets: ["FactoryPlugin"]),
     ],
     dependencies: 
@@ -15,6 +16,18 @@ let tools:(products:[Product], dependencies:[Package.Dependency], targets:[Targe
     ],
     targets:
     [
+        .target(name: "Factory", 
+            dependencies: 
+            [
+                .product(name: "SystemExtras",      package: "swift-system-extras"),
+                .product(name: "SwiftSyntax",       package: "swift-syntax"),
+                .product(name: "SwiftSyntaxParser", package: "swift-syntax"),
+            ]), 
+        .executableTarget(name: "factory", 
+            dependencies: 
+            [
+                .target(name: "Factory"),
+            ]), 
         .plugin(name: "FactoryPlugin", 
             capability: .command(
                 intent: .custom(verb: "factory", description: "generate mechanized sources"), 
@@ -24,14 +37,7 @@ let tools:(products:[Product], dependencies:[Package.Dependency], targets:[Targe
                 ]),
             dependencies: 
             [
-                .target(name: "Factory"),
-            ]), 
-        .executableTarget(name: "Factory", 
-            dependencies: 
-            [
-                .product(name: "SystemExtras",      package: "swift-system-extras"),
-                .product(name: "SwiftSyntax",       package: "swift-syntax"),
-                .product(name: "SwiftSyntaxParser", package: "swift-syntax"),
+                .target(name: "factory"),
             ]), 
     ]
 )

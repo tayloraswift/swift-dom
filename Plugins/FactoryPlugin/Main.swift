@@ -43,15 +43,28 @@ struct Main:CommandPlugin
     }
     func performCommand(context:PluginContext, arguments:[String]) throws 
     {
-        let tool:PluginContext.Tool = try context.tool(named: "Factory")
+        let tool:PluginContext.Tool = try context.tool(named: "factory")
         for target:SwiftSourceModuleTarget in try Self.targets(context: context, filter: arguments) 
         {
             for file:File in target.sourceFiles
             {
-                if case .unknown = file.type, file.path.extension == "spf"
+                guard case .unknown = file.type 
+                else 
                 {
-                    let i:Int32 = system("\(tool.path.string) \(file.path.string)")
-                    print(i)
+                    continue 
+                }
+                switch file.path.extension 
+                {
+                case "spf", "swiftpf", "factory":
+                    switch system("\(tool.path.string) \(file.path.string)")
+                    {
+                    case 0: 
+                        break 
+                    case let code: 
+                        print("failed to transform file '\(file.path.string)' (exit code: \(code))")
+                    }
+                default: 
+                    continue 
                 }
             }
         }

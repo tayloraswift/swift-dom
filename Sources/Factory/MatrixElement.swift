@@ -23,10 +23,10 @@ extension VariableDeclSyntax:MatrixElement {}
 extension MatrixElement 
 {
     private 
-    func expand(loops:ArraySlice<Factory.Loop>, substitutions:[[String: ExprSyntax]]) 
+    func expand(loops:ArraySlice<Loop>, substitutions:[[String: ExprSyntax]]) 
         -> [DeclSyntax]
     {
-        if let loop:Factory.Loop = loops.first 
+        if let loop:Loop = loops.first 
         {
             var instances:[DeclSyntax] = []
             for iteration:[String: ExprSyntax] in loop 
@@ -38,7 +38,7 @@ extension MatrixElement
         }
         else 
         {
-            let instantiator:Factory.Instantiator = .init(substitutions)
+            let instantiator:Instantiator = .init(substitutions)
             let declaration:DeclSyntax 
             switch self 
             {
@@ -125,7 +125,7 @@ extension MatrixElement
     func expand(scope:[[String: [ExprSyntax]]]) -> [DeclSyntax]
     {
         var template:Self = self 
-        let loops:[Factory.Loop]? = template.removeAttributes 
+        let loops:[Loop]? = template.removeAttributes 
         {
             guard   let attribute:CustomAttributeSyntax = $0.as(CustomAttributeSyntax.self), 
                     case "matrix"? = attribute.simpleName
@@ -138,7 +138,7 @@ extension MatrixElement
             {
                 fatalError("@matrix expects at least one loop argument")
             }
-            var zipper:[Factory.Loop.Thread] = []
+            var zipper:[Loop.Thread] = []
             arguments:
             for argument:TupleExprElementSyntax in arguments 
             {
@@ -174,7 +174,7 @@ extension MatrixElement
             }
             return .init(zipper)
         }
-        if let loops:[Factory.Loop]
+        if let loops:[Loop]
         {
             return template.expand(loops: loops[...], substitutions: [])
         }
