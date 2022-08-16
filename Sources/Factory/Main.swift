@@ -184,10 +184,70 @@ extension ExpandableSyntax
         }
         return instances
     }
+    mutating 
+    func removeAttributes<Recognized>(where recognize:(Syntax) throws -> Recognized?) 
+        rethrows -> [Recognized]?
+    {
+        guard let attributes:AttributeListSyntax = self.attributes 
+        else 
+        {
+            return nil 
+        }
+        var removed:[Recognized] = []
+        // if we delete a node, its leading trivia should coalesce with the 
+        // leading trivia of the next node 
+        var kept:[Syntax] = []
+        var trivia:[TriviaPiece] = []
+        for attribute:Syntax in attributes 
+        {
+            if let recognized:Recognized = try recognize(attribute) 
+            {
+                if let residue:Trivia = attribute.leadingTrivia 
+                {
+                    trivia.append(contentsOf: residue)
+                }
+                removed.append(recognized)
+            }
+            else if !trivia.isEmpty 
+            {
+                kept.append(attribute.withLeadingTrivia(.init(
+                    pieces: trivia + (attribute.leadingTrivia ?? []))))
+                trivia.removeAll()
+            }
+            else 
+            {
+                kept.append(attribute)
+            }
+        }
+        if removed.isEmpty 
+        {
+            return nil 
+        }
+        else if kept.isEmpty
+        {
+            self.attributes = nil 
+            if !trivia.isEmpty 
+            {
+                self = self.withLeadingTrivia(.init(
+                    pieces: trivia + (self.leadingTrivia ?? [])))
+            }
+        }
+        else 
+        {
+            if !trivia.isEmpty 
+            {
+                let lastAttribute:Syntax = kept[kept.endIndex - 1]
+                kept[kept.endIndex - 1] = lastAttribute.withLeadingTrivia(.init(
+                    pieces: (lastAttribute.leadingTrivia ?? []) + trivia))
+            }
+            self.attributes = SyntaxFactory.makeAttributeList(kept)
+        }
+        return removed
+    }
     func expand(scope:[[String: [ExprSyntax]]]) -> [DeclSyntax]
     {
         var template:Self = self 
-        let loops:[Loop]? = template.attributes.strip 
+        let loops:[Loop]? = template.removeAttributes 
         {
             guard   let attribute:CustomAttributeSyntax = $0.as(CustomAttributeSyntax.self), 
                     case "template"? = attribute.simpleName
@@ -234,7 +294,6 @@ extension ExpandableSyntax
                     fatalError("@template matrix must be an array literal or a @matrix binding")
                 }
             }
-            print(zipper)
             return .init(zipper)
         }
         if let loops:[Loop]
@@ -308,8 +367,8 @@ extension VariableDeclSyntax
 {
     func matrices() -> PatternBindingListSyntax? 
     {
-        var attributes:AttributeListSyntax? = self.attributes
-        let matrix:[Void]? = attributes.strip 
+        var scratch:Self = self 
+        let matrix:[Void]? = scratch.removeAttributes
         {
             if  let attribute:CustomAttributeSyntax = $0.as(CustomAttributeSyntax.self), 
                 case "matrix"? = attribute.simpleName
@@ -517,7 +576,6 @@ enum Main
             let input:String = try path.read()
             let source:SourceFileSyntax = try SyntaxParser.parse(source: input, 
                 filenameForDiagnostics: path.string)
-            //print(Array.init(source.statements))
 
             let factory:Factory = .init()
             let output:Syntax = factory.visit(source)
