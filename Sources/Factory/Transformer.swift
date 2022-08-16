@@ -16,37 +16,6 @@ extension CustomAttributeSyntax
     }
 }
 
-extension AttributeListSyntax?
-{
-    // this is going to be slow no matter what, 
-    // see https://github.com/apple/swift-syntax/issues/592
-    mutating 
-    func strip<T>(_ strip:(Wrapped.Element) throws -> T?) rethrows -> [T]?
-    {
-        var stripped:[T] = []
-        var current:Int = 0
-        while let list:Wrapped = self
-        {
-            let index:Wrapped.Index = list.index(list.startIndex, offsetBy: current)
-            guard index < list.endIndex 
-            else 
-            {
-                break
-            }
-            if let value:T = try strip(list[index])
-            {
-                stripped.append(value)
-                self = list.count == 1 ? nil : list.removing(childAt: current)
-            }
-            else 
-            {
-                current += 1
-            }
-        }
-        return stripped.isEmpty ? nil : stripped
-    }
-}
-
 extension VariableDeclSyntax 
 {
     func bases() -> PatternBindingListSyntax? 
