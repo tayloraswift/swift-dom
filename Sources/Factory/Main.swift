@@ -51,13 +51,13 @@ extension AttributeListSyntax?
 }
 extension VariableDeclSyntax 
 {
-    func matrices() -> PatternBindingListSyntax? 
+    func bases() -> PatternBindingListSyntax? 
     {
         var scratch:Self = self 
-        let matrix:[Void]? = scratch.removeAttributes
+        let basis:[Void]? = scratch.removeAttributes
         {
             if  let attribute:CustomAttributeSyntax = $0.as(CustomAttributeSyntax.self), 
-                case "matrix"? = attribute.simpleName
+                case "basis"? = attribute.simpleName
             {
                 return ()
             }
@@ -66,7 +66,7 @@ extension VariableDeclSyntax
                 return nil
             }
         }
-        if case _? = matrix 
+        if case _? = basis 
         {
             return self.bindings
         }

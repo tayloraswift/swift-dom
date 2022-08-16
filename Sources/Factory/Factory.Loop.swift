@@ -7,7 +7,7 @@ extension Factory
         struct Thread 
         {
             let binding:String 
-            let matrix:[ExprSyntax]
+            let basis:[ExprSyntax]
         }
 
         let threads:[Thread]
@@ -19,7 +19,7 @@ extension Factory
             var element:[String: ExprSyntax] = .init(minimumCapacity: self.threads.count)
             for thread:Thread in self.threads 
             {
-                element[thread.binding] = thread.matrix[index]
+                element[thread.binding] = thread.basis[index]
             }
             return element
         }
@@ -27,7 +27,7 @@ extension Factory
         init(_ threads:[Thread])
         {
             self.threads = threads 
-            self.endIndex = self.threads.lazy.map(\.matrix.count).min() ?? 0
+            self.endIndex = self.threads.lazy.map(\.basis.count).min() ?? 0
         }
     }
 }

@@ -1,7 +1,7 @@
 import Glibc
 
 // blah
-@matrix 
+@basis 
 let foos:[Never] = 
 [
     A, 
@@ -9,14 +9,14 @@ let foos:[Never] =
     C,
 ]
 
-@matrix 
+@basis 
 let bars:[Never] = 
 [
     X, 
     Y, 
     Z,
 ]
-@matrix 
+@basis 
 let strings:[Never] = 
 [
     "xxx", 
@@ -44,7 +44,7 @@ enum __Foo__:Sendable
     @template(__Bar__: bars, __string__: strings)
     enum __Foo__:__Bar__
     {
-        @matrix 
+        @basis 
         let foos2:[Never] = 
         [
             A, 

@@ -151,7 +151,7 @@ extension MatrixElement
                     argument.expression.as(ArrayExprSyntax.self)
                 {
                     zipper.append(.init(binding: binding, 
-                        matrix: literal.elements.map { $0.expression.withoutTrivia() }))
+                        basis: literal.elements.map { $0.expression.withoutTrivia() }))
                 }
                 else if let variable:IdentifierExprSyntax = 
                     argument.expression.as(IdentifierExprSyntax.self)
@@ -159,17 +159,17 @@ extension MatrixElement
                     let variable:String = variable.identifier.text
                     for scope:[String: [ExprSyntax]] in scope.reversed() 
                     {
-                        if let matrix:[ExprSyntax] = scope[variable]
+                        if let basis:[ExprSyntax] = scope[variable]
                         {
-                            zipper.append(.init(binding: binding, matrix: matrix))
+                            zipper.append(.init(binding: binding, basis: basis))
                             continue arguments  
                         }
                     }
-                    fatalError("@template matrix '\(variable)' is not defined in this lexical scope")
+                    fatalError("@template basis '\(variable)' is not defined in this lexical scope")
                 }
                 else 
                 {
-                    fatalError("@template matrix must be an array literal or a @matrix binding")
+                    fatalError("@template basis must be an array literal or a @basis binding")
                 }
             }
             return .init(zipper)
