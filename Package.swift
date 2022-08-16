@@ -11,7 +11,7 @@ let tools:(products:[Product], dependencies:[Package.Dependency], targets:[Targe
     dependencies: 
     [
         .package(url: "https://github.com/kelvin13/swift-system-extras.git", from: "0.1.0"),
-        .package(url: "https://github.com/apple/swift-syntax.git", branch: "swift-DEVELOPMENT-SNAPSHOT-2022-08-09-a"),
+        .package(url: "https://github.com/apple/swift-syntax.git", branch: "swift-DEVELOPMENT-SNAPSHOT-2022-08-15-a"),
     ],
     targets:
     [
