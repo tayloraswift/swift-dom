@@ -65,12 +65,9 @@ class Factory:SyntaxRewriter
     func visit(_ list:CodeBlockItemListSyntax) -> Syntax
     {
         var list:CodeBlockItemListSyntax = list 
-        let bindings:[PatternBindingListSyntax]? = list.strip 
+        let bindings:[PatternBindingListSyntax] = list.remove 
         {
-            $0.item.as(VariableDeclSyntax.self).flatMap
-            {
-                $0.matrices()
-            }
+            $0.item.as(VariableDeclSyntax.self).flatMap { $0.matrices() }
         }
         return self.with(scope: bindings)
         {
@@ -105,12 +102,9 @@ class Factory:SyntaxRewriter
     func visit(_ list:MemberDeclListSyntax) -> Syntax
     {
         var list:MemberDeclListSyntax = list 
-        let bindings:[PatternBindingListSyntax]? = list.strip 
+        let bindings:[PatternBindingListSyntax]? = list.remove 
         {
-            $0.decl.as(VariableDeclSyntax.self).flatMap
-            {
-                $0.matrices()
-            }
+            $0.decl.as(VariableDeclSyntax.self).flatMap { $0.matrices() }
         }
         return self.with(scope: bindings)
         {

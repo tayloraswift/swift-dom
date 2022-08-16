@@ -2,34 +2,34 @@ import SwiftSyntax
 
 protocol LexicalScope:SyntaxCollection, BidirectionalCollection 
 {
-    func removing(childAt offset:Int) -> Self 
+    init(_:[Element])
 }
 extension CodeBlockItemListSyntax:LexicalScope {} 
 extension MemberDeclListSyntax:LexicalScope {} 
 
 extension LexicalScope
 {
-    // this is going to be slow no matter what, 
-    // see https://github.com/apple/swift-syntax/issues/592
     mutating 
-    func strip<T>(_ strip:(Element) throws -> T?) rethrows -> [T]?
+    func remove<Recognized>(where recognize:(Element) throws -> Recognized?) 
+        rethrows -> [Recognized]
     {
-        var stripped:[T] = []
-        var current:Int = 0
-        var index:Index = self.startIndex
-        while index < self.endIndex
+        var removed:[Recognized] = []
+        var kept:[Element] = []
+        for element:Element in self 
         {
-            if let value:T = try strip(self[index])
+            if let recognized:Recognized = try recognize(element)
             {
-                stripped.append(value)
-                self = self.removing(childAt: current)
+                removed.append(recognized)
             }
             else 
             {
-                current += 1
+                kept.append(element)
             }
-            index = self.index(self.startIndex, offsetBy: current)
         }
-        return stripped.isEmpty ? nil : stripped
+        if !removed.isEmpty 
+        {
+            self = .init(kept)
+        }
+        return removed 
     }
 }

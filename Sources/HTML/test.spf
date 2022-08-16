@@ -25,13 +25,21 @@ let strings:[Never] =
 ]
 
 /// this is a doccomment
-/// with two lines
 @template(__Foo__: foos)
 enum __Foo__:Sendable 
 {
     /// this is another doccomment
-    /// with three
-    /// lines
+    /// with many lines, and it 
+    /// mentions ``\(__Foo__)``.
+    /// 
+    /// ```swift
+    /// // nested comments and string 
+    /// // interpolations work!
+    /// let string:String = 
+    /// """
+    /// \(Self.\(__Foo__).string)
+    /// """
+    /// ```
     @template(__Foo__: foos)
     @template(__Bar__: bars, __string__: strings)
     enum __Foo__:__Bar__
