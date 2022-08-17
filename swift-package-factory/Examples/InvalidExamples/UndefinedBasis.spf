@@ -1,0 +1,19 @@
+struct S 
+{
+    @basis 
+    let lexicallyScopedBasis:[Never] = 
+    [
+        foo, 
+        bar 
+    ]
+}
+extension S 
+{
+    // this is a different code block, 
+    // so `lexicallyScopedBasis` is not defined here.
+    @matrix(__member__: lexicallyScopedBasis)
+    subscript(__member__ __member__:Int) -> Int 
+    {
+        0
+    }
+}

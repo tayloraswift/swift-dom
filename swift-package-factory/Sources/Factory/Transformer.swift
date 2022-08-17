@@ -115,13 +115,6 @@ class Transformer:SyntaxRewriter
         }
         return self.with(scope: bindings)
         {
-            // expand nested blocks *before* expanding outer block 
-            let list:Syntax = super.visit(list)
-            guard let list:CodeBlockItemListSyntax = list.as(CodeBlockItemListSyntax.self) 
-            else 
-            {
-                return list 
-            }
             var elements:[CodeBlockItemSyntax] = []
                 elements.reserveCapacity(list.count)
             for element:CodeBlockItemSyntax in list 
@@ -139,7 +132,7 @@ class Transformer:SyntaxRewriter
                         semicolon: nil, errorTokens: nil))
                 }
             }
-            return .init(CodeBlockItemListSyntax.init(elements))
+            return .init(super.visit(CodeBlockItemListSyntax.init(elements)))
         }
     }
     final override 
@@ -152,13 +145,6 @@ class Transformer:SyntaxRewriter
         }
         return self.with(scope: bindings)
         {
-            // expand nested blocks *before* expanding outer block 
-            let list:Syntax = super.visit(list)
-            guard let list:MemberDeclListSyntax = list.as(MemberDeclListSyntax.self) 
-            else 
-            {
-                return list 
-            }
             var elements:[MemberDeclListItemSyntax] = []
                 elements.reserveCapacity(list.count)
             for element:MemberDeclListItemSyntax in list 
@@ -174,7 +160,7 @@ class Transformer:SyntaxRewriter
                     elements.append(.init(decl: element, semicolon: nil))
                 }
             }
-            return .init(MemberDeclListSyntax.init(elements))
+            return .init(super.visit(MemberDeclListSyntax.init(elements)))
         }
     }
 }

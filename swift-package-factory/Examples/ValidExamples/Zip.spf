@@ -1,0 +1,18 @@
+@basis 
+let vectors:[Never] = 
+[
+    SIMD2, 
+    SIMD4,
+    SIMD8,
+    SIMD16,
+    SIMD32,
+]
+
+@matrix(__SIMDType__: vectors, __Slug__: [UInt16, UInt32, UInt64])
+extension __SIMDType__ where Scalar == UInt8 
+{
+    var slug:__Slug__ 
+    {
+        unsafeBitCast(self, to: __Slug__.self)
+    }
+}

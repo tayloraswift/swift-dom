@@ -1,0 +1,15 @@
+@basis 
+let floats:[Never] = 
+[
+    0.25, 
+    0.5, 
+    0.75
+]
+
+enum E 
+{
+    @matrix(__member__: floats)
+    func __member__() 
+    {
+    }
+}

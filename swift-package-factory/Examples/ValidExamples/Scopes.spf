@@ -1,0 +1,28 @@
+@basis 
+let typenames:[Never] = 
+[
+    OuterA, 
+    OuterB, 
+    OuterC
+]
+
+@matrix(__Outer__: typenames) 
+enum __Outer__
+{
+    @basis 
+    let typenames:[Never] = 
+    [
+        InnerA, 
+        InnerB, 
+        InnerC
+    ]
+    @matrix(__Inner__: typenames) 
+    enum __Inner__:Sendable
+    {
+    }
+}
+
+@matrix(__Outer__: typenames) 
+extension __Outer__:Sendable 
+{
+}

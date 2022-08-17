@@ -1,0 +1,66 @@
+import Swift 
+
+// this comment should disappear
+@basis 
+let typenames:[Never] = 
+[
+    FooType, 
+    BarType, 
+    BazType,
+]
+
+@basis 
+let members:[Never] = 
+[
+    foo, 
+    bar, 
+    baz 
+]
+
+@basis 
+let values:[Never] = 
+[
+    0, 
+    1, 
+    2,
+]
+
+/// Models a `\(__Type__)`. Has a member 
+/// named ``\(__member__)``.
+@matrix(__Type__: typenames, __member__: members, __value__: values)
+@frozen public 
+enum __Type__ 
+{
+    /// Returns the number `\(__value__)`
+    @inlinable public 
+    var __member__:Int 
+    {
+        __value__
+    }
+}
+
+extension Int
+{
+    @matrix(__ordinal__: [i, j, k], __value__: [0, 1, 2])
+    @inlinable public 
+    var __ordinal__:Int 
+    {
+        __value__
+    }
+
+    @basis 
+    let cases:[Never] = [a, b]
+
+    enum Cases:Int
+    {
+        @matrix(__case__: cases)
+        case __case__
+    }
+
+    @matrix(__case__: cases)
+    public static 
+    var __case__:Self 
+    {
+        Cases.__case__.rawValue
+    }
+}

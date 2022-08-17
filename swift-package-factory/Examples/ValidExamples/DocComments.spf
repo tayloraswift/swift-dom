@@ -1,0 +1,39 @@
+@basis 
+let httpCodes:[Never] = 
+[
+    200, 
+    404,
+    500
+]
+@basis 
+let httpStatuses:[Never] = 
+[
+    ok, 
+    notFound,
+    serverError
+]
+
+enum HTTP 
+{
+    /// The numeric code for `\(__name__)`, \(__code__).
+    /// 
+    /// ```swift
+    /// // prints the number \(__code__)
+    /// let string:String = 
+    /// """
+    /// \(HTTP.\(__name__))
+    /// """
+    /// print(string)
+    /// ```
+    @matrix(__code__: httpCodes, __name__: httpStatuses)
+    static 
+    let __name__:Int = __code__
+
+    /// basis elements render *exactly* as they do in source:
+    /// \(__tuple__), but they do not include surrounding trivia.
+    @matrix(__property__: [a, b, c], __tuple__: [("a", 1)  , (b,  b: 2), (c)])
+    var __property__:Never 
+    {
+        fatalError()
+    }
+}

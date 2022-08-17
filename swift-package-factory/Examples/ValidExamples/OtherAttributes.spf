@@ -1,0 +1,62 @@
+@basis 
+let genericTypes:[Never] = 
+[
+    X, 
+    Y, 
+    Z,
+]
+@basis 
+let operators:[Never] = 
+[
+    (+), 
+    (-), 
+    (*), 
+]
+
+// this comment will be kept.
+/// This doccomment will also be kept.
+@matrix(__Type__: genericTypes, __GenericParameter__: [T, U, V], __operator__: operators)
+// if this comment is kept, it will orphan the 
+// doccomment above it, so it will be discarded.
+@resultBuilder
+// this comment will stay, because the attribute 
+// it is attached to was kept, and the attribute 
+// above it has a doccomment attached
+@frozen public
+struct __Type__<__GenericParameter__>
+{
+    public static 
+    func buildBlock(_ components:Int...) -> Int 
+    {
+        components.reduce(0, __operator__)
+    }
+}
+
+@basis 
+let types:[Never] = 
+[
+    A, 
+    B, 
+    C,
+]
+
+// this comment will be kept.
+/// This doccomment will also be kept.
+@resultBuilder
+// this comment will stay, because the attribute 
+// it is attached to was kept, and the attribute 
+// above it has a doccomment attached
+@frozen 
+/// this comment will be deleted, even though it is a 
+/// doccomment, because the @matrix attribute 
+/// below is not the first attribute.
+@matrix(__Type__: types)
+public
+struct __Type__
+{
+    public static 
+    func buildBlock(_ components:Int...) -> Int 
+    {
+        components.reduce(0, +)
+    }
+}

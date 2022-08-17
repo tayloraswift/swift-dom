@@ -1,0 +1,41 @@
+import Swift 
+
+// vector arities
+@basis 
+let vectors:[Never] = 
+[
+    Vector2, 
+    Vector3, 
+    Vector4,
+]
+// vector scalar constraints
+@basis 
+let scalars:[Never] = 
+[
+    FixedWidthInteger, 
+    BinaryFloatingPoint, 
+]
+// vector components
+@basis 
+let components:[Never] = 
+[
+    [x, y], 
+    [x, y, z], 
+    [x, y, z, w], 
+]
+
+@matrix(__Type__: vectors, __components__: components)
+@frozen public 
+struct __Type__<T>:Hashable, Sendable where T:Hashable & Sendable
+{
+    /// The *\(__component__)*-component of this vector.
+    @matrix(__component__: __components__)
+    public 
+    var __component__:T 
+}
+
+@matrix(__Scalar__: scalars)
+@matrix(__Type__: vectors)
+extension __Type__ where T:__Scalar__ 
+{
+}
