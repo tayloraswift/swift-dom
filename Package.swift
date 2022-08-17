@@ -9,7 +9,7 @@ let tools:(products:[Product], dependencies:[Package.Dependency], targets:[Targe
     ],
     dependencies: 
     [
-        .package(name: "swift-package-factory", path: "swift-package-factory"),
+        .package(url: "https://github.com/kelvin13/swift-package-factory.git", branch: "master"),
     ],
     targets:
     [
