@@ -1,0 +1,2 @@
+@basis 
+var notABasis:[Never] { [test] }

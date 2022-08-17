@@ -47,22 +47,24 @@ extension VariableDeclSyntax
 final 
 class Transformer:SyntaxRewriter 
 {
-    var scope:[[String: [ExprSyntax]]] = []
+    var scope:[[String: [ExprSyntax]]] 
+    var errors:[any Error]
 
     override 
     init() 
     {
-        super.init() 
         self.scope = []
+        self.errors = []
+        super.init() 
     }
 
     final private 
-    func expand(_ declaration:DeclSyntax) -> [DeclSyntax]?
+    func expand(_ declaration:DeclSyntax) throws -> [DeclSyntax]?
     {
         if  let expandable:any MatrixElement = 
             declaration.asProtocol(DeclSyntaxProtocol.self) as? MatrixElement
         {
-            return expandable.expand(scope: self.scope)
+            return try expandable.expand(scope: self.scope)
         }
         else 
         {
@@ -71,7 +73,7 @@ class Transformer:SyntaxRewriter
     }
 
     final private 
-    func with<T>(scope bindings:[PatternBindingListSyntax]?, _ body:() throws -> T) rethrows -> T 
+    func with<T>(scope bindings:[PatternBindingListSyntax]?, _ body:() throws -> T) throws -> T 
     {
         guard let bindings:[PatternBindingListSyntax], !bindings.isEmpty
         else 
@@ -86,13 +88,13 @@ class Transformer:SyntaxRewriter
                 binding.pattern.as(IdentifierPatternSyntax.self)
             else 
             {
-                fatalError("expected let binding")
+                throw Factory.BasisError.expectedInitializationExpression
             }
             guard   let clause:InitializerClauseSyntax = binding.initializer, 
                     let array:ArrayExprSyntax = clause.value.as(ArrayExprSyntax.self)
             else 
             {
-                fatalError("expected array literal")
+                throw Factory.BasisError.expectedArrayLiteral
             }
             
             scope[pattern.identifier.text] = array.elements.map { $0.expression.withoutTrivia() }
@@ -113,26 +115,34 @@ class Transformer:SyntaxRewriter
         {
             $0.item.as(VariableDeclSyntax.self).flatMap { $0.bases() }
         }
-        return self.with(scope: bindings)
+        do 
         {
-            var elements:[CodeBlockItemSyntax] = []
-                elements.reserveCapacity(list.count)
-            for element:CodeBlockItemSyntax in list 
-            { 
-                guard let declaration:DeclSyntax = element.item.as(DeclSyntax.self), 
-                        let expanded:[DeclSyntax] = self.expand(declaration)
-                else 
-                {
-                    elements.append(element)
-                    continue 
+            return try self.with(scope: bindings)
+            {
+                var elements:[CodeBlockItemSyntax] = []
+                    elements.reserveCapacity(list.count)
+                for element:CodeBlockItemSyntax in list 
+                { 
+                    guard let declaration:DeclSyntax = element.item.as(DeclSyntax.self), 
+                            let expanded:[DeclSyntax] = try self.expand(declaration)
+                    else 
+                    {
+                        elements.append(element)
+                        continue 
+                    }
+                    for element:DeclSyntax in expanded 
+                    {
+                        elements.append(.init(item: Syntax.init(element), 
+                            semicolon: nil, errorTokens: nil))
+                    }
                 }
-                for element:DeclSyntax in expanded 
-                {
-                    elements.append(.init(item: Syntax.init(element), 
-                        semicolon: nil, errorTokens: nil))
-                }
+                return .init(super.visit(CodeBlockItemListSyntax.init(elements)))
             }
-            return .init(super.visit(CodeBlockItemListSyntax.init(elements)))
+        }
+        catch let error 
+        {
+            self.errors.append(error)
+            return .init(list)
         }
     }
     final override 
@@ -143,24 +153,32 @@ class Transformer:SyntaxRewriter
         {
             $0.decl.as(VariableDeclSyntax.self).flatMap { $0.bases() }
         }
-        return self.with(scope: bindings)
+        do 
         {
-            var elements:[MemberDeclListItemSyntax] = []
-                elements.reserveCapacity(list.count)
-            for element:MemberDeclListItemSyntax in list 
-            { 
-                guard let expanded:[DeclSyntax] = self.expand(element.decl)
-                else 
-                {
-                    elements.append(element)
-                    continue 
+            return try self.with(scope: bindings)
+            {
+                var elements:[MemberDeclListItemSyntax] = []
+                    elements.reserveCapacity(list.count)
+                for element:MemberDeclListItemSyntax in list 
+                { 
+                    guard let expanded:[DeclSyntax] = try self.expand(element.decl)
+                    else 
+                    {
+                        elements.append(element)
+                        continue 
+                    }
+                    for element:DeclSyntax in expanded 
+                    {
+                        elements.append(.init(decl: element, semicolon: nil))
+                    }
                 }
-                for element:DeclSyntax in expanded 
-                {
-                    elements.append(.init(decl: element, semicolon: nil))
-                }
+                return .init(super.visit(MemberDeclListSyntax.init(elements)))
             }
-            return .init(super.visit(MemberDeclListSyntax.init(elements)))
+        }
+        catch let error 
+        {
+            self.errors.append(error)
+            return .init(list)
         }
     }
 }

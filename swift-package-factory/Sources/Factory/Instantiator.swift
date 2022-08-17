@@ -4,6 +4,7 @@ final
 class Instantiator:SyntaxRewriter 
 {
     let substitutions:[[String: ExprSyntax]] 
+    var errors:[any Error]
 
     private final 
     func lookup(_ identifier:String) -> ExprSyntax? 
@@ -21,6 +22,7 @@ class Instantiator:SyntaxRewriter
     init(_ substitutions:[[String: ExprSyntax]])
     {
         self.substitutions = substitutions
+        self.errors = []
         super.init()
     }
 
@@ -52,7 +54,11 @@ class Instantiator:SyntaxRewriter
             guard let substitution:IdentifierExprSyntax = substitution.as(IdentifierExprSyntax.self)
             else 
             {
-                fatalError("arbitrary token may only be replaced with an identifier expression")
+                // API cannot throw...
+                let error:Factory.SubstitutionError = .notAnIdentifier(substitution.description, 
+                    replacing: identifier)
+                self.errors.append(error)
+                return .init(token)
             }
             // preserve the original trivia
             return .init(token.withKind(substitution.identifier.tokenKind))

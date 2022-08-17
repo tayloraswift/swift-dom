@@ -24,14 +24,14 @@ extension MatrixElement
 {
     private 
     func expand(loops:ArraySlice<Loop>, substitutions:[[String: ExprSyntax]]) 
-        -> [DeclSyntax]
+        throws -> [DeclSyntax]
     {
         if let loop:Loop = loops.first 
         {
             var instances:[DeclSyntax] = []
             for iteration:[String: ExprSyntax] in loop 
             {
-                instances.append(contentsOf: self.expand(loops: loops.dropFirst(), 
+                instances.append(contentsOf: try self.expand(loops: loops.dropFirst(), 
                     substitutions: substitutions + [iteration]))
             }
             return instances
@@ -59,6 +59,10 @@ extension MatrixElement
             case let base as VariableDeclSyntax:        declaration = instantiator.visit(base)
             default: 
                 fatalError("unreachable")
+            }
+            if let error:any Error = instantiator.errors.first 
+            {
+                throw error
             }
             return [declaration]
         }
@@ -122,10 +126,10 @@ extension MatrixElement
         }
         return removed
     }
-    func expand(scope:[[String: [ExprSyntax]]]) -> [DeclSyntax]
+    func expand(scope:[[String: [ExprSyntax]]]) throws -> [DeclSyntax]
     {
         var template:Self = self 
-        let loops:[Loop]? = template.removeAttributes 
+        let loops:[Loop]? = try template.removeAttributes 
         {
             guard   let attribute:CustomAttributeSyntax = $0.as(CustomAttributeSyntax.self), 
                     case "matrix"? = attribute.simpleName
@@ -136,7 +140,7 @@ extension MatrixElement
             guard let arguments:TupleExprElementListSyntax = attribute.argumentList
             else 
             {
-                fatalError("@matrix expects at least one loop argument")
+                throw Factory.MatrixError.missingArguments
             }
             var zipper:[Loop.Thread] = []
             arguments:
@@ -145,7 +149,7 @@ extension MatrixElement
                 guard case .identifier(let binding)? = argument.label?.tokenKind
                 else 
                 {
-                    fatalError("@matrix loop requires a binding")
+                    throw Factory.MatrixError.missingBinding
                 }
                 if      let literal:ArrayExprSyntax = 
                     argument.expression.as(ArrayExprSyntax.self)
@@ -165,18 +169,18 @@ extension MatrixElement
                             continue arguments  
                         }
                     }
-                    fatalError("@matrix basis '\(variable)' is not defined in this lexical scope")
+                    throw Factory.MatrixError.undefinedBasis(variable)
                 }
                 else 
                 {
-                    fatalError("@matrix basis must be an array literal or a @basis binding")
+                    throw Factory.MatrixError.invalidBasis(for: binding)
                 }
             }
             return .init(zipper)
         }
         if let loops:[Loop]
         {
-            return template.expand(loops: loops[...], substitutions: [])
+            return try template.expand(loops: loops[...], substitutions: [])
         }
         else 
         {

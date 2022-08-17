@@ -5,15 +5,24 @@ public
 enum Factory 
 {
     public static 
-    func transform(syntax source:SourceFileSyntax) -> Syntax 
+    func transform(syntax source:SourceFileSyntax) throws -> Syntax 
     {
-        Transformer.init().visit(source)
+        let transformer:Transformer = .init()
+        let output:Syntax = transformer.visit(source)
+        if let error:any Error = transformer.errors.first 
+        {
+            throw error 
+        }
+        else 
+        {
+            return output
+        }
     }
     public static 
     func transform(source:String, filenameForDiagnostics:String = "") throws -> String
     {
         let source:SourceFileSyntax = try SyntaxParser.parse(source: source, 
             filenameForDiagnostics: filenameForDiagnostics)
-        return Self.transform(syntax: source).description
+        return try Self.transform(syntax: source).description
     }
 }
