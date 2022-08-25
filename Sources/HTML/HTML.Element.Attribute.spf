@@ -2,6 +2,7 @@ import DOM
 
 extension HTML.Element 
 {
+    /// An HTML attribute.
     @frozen public 
     struct Attribute 
     {
@@ -289,11 +290,13 @@ extension HTML.Element
     ])
 extension HTML.Element.Attribute 
 {
+    /// Returns an instance of the HTML `\(__name__)` attribute, with no associated value.
     @inlinable public static 
     var __attribute__:Self 
     {
         self.init(.init(escaped: __name__))
     }
+    /// Returns an instance of the HTML `\(__name__)` attribute, with the given string value.
     @inlinable public static 
     func __attribute__<S>(_ string:S) -> Self where S:StringProtocol 
     {

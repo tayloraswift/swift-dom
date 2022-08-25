@@ -123,18 +123,29 @@ extension HTML
 @matrix(__container__: containers)
 extension HTML.Element 
 {
+    /// Creates an HTML `\(__container__)` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func __container__<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .__container__(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `\(__container__)` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``\(__container__)(escaped:attributes:)``.
     @inlinable public static 
     func __container__<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .__container__(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `\(__container__)` element. 
     @inlinable public static 
     func __container__(attributes:[Attribute] = []) -> Self 
     {

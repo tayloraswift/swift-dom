@@ -2,6 +2,7 @@ import DOM
 
 extension RSS.Element 
 {
+    /// An RSS attribute.
     @frozen public 
     struct Attribute 
     {
@@ -41,11 +42,13 @@ extension RSS.Element
     ])
 extension RSS.Element.Attribute 
 {
+    /// Returns an instance of the RSS `\(__name__)` attribute, with no associated value.
     @inlinable public static 
     var __attribute__:Self 
     {
         self.init(.init(escaped: __name__))
     }
+    /// Returns an instance of the RSS `\(__name__)` attribute, with the given string value.
     @inlinable public static 
     func __attribute__<S>(_ string:S) -> Self where S:StringProtocol 
     {

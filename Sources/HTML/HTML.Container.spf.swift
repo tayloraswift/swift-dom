@@ -115,18 +115,29 @@ extension HTML
 
 extension HTML.Element 
 {
+    /// Creates an HTML `html` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func html<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .html(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `html` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``html(escaped:attributes:)``.
     @inlinable public static 
     func html<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .html(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `html` element. 
     @inlinable public static 
     func html(attributes:[Attribute] = []) -> Self 
     {
@@ -148,18 +159,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `head` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func head<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .head(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `head` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``head(escaped:attributes:)``.
     @inlinable public static 
     func head<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .head(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `head` element. 
     @inlinable public static 
     func head(attributes:[Attribute] = []) -> Self 
     {
@@ -181,18 +203,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `body` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func body<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .body(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `body` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``body(escaped:attributes:)``.
     @inlinable public static 
     func body<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .body(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `body` element. 
     @inlinable public static 
     func body(attributes:[Attribute] = []) -> Self 
     {
@@ -214,18 +247,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `a` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func a<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .a(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `a` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``a(escaped:attributes:)``.
     @inlinable public static 
     func a<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .a(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `a` element. 
     @inlinable public static 
     func a(attributes:[Attribute] = []) -> Self 
     {
@@ -247,18 +291,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `abbr` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func abbr<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .abbr(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `abbr` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``abbr(escaped:attributes:)``.
     @inlinable public static 
     func abbr<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .abbr(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `abbr` element. 
     @inlinable public static 
     func abbr(attributes:[Attribute] = []) -> Self 
     {
@@ -280,18 +335,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `audio` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func audio<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .audio(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `audio` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``audio(escaped:attributes:)``.
     @inlinable public static 
     func audio<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .audio(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `audio` element. 
     @inlinable public static 
     func audio(attributes:[Attribute] = []) -> Self 
     {
@@ -313,18 +379,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `b` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func b<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .b(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `b` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``b(escaped:attributes:)``.
     @inlinable public static 
     func b<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .b(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `b` element. 
     @inlinable public static 
     func b(attributes:[Attribute] = []) -> Self 
     {
@@ -346,18 +423,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `bdi` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func bdi<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .bdi(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `bdi` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``bdi(escaped:attributes:)``.
     @inlinable public static 
     func bdi<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .bdi(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `bdi` element. 
     @inlinable public static 
     func bdi(attributes:[Attribute] = []) -> Self 
     {
@@ -379,18 +467,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `bdo` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func bdo<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .bdo(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `bdo` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``bdo(escaped:attributes:)``.
     @inlinable public static 
     func bdo<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .bdo(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `bdo` element. 
     @inlinable public static 
     func bdo(attributes:[Attribute] = []) -> Self 
     {
@@ -412,18 +511,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `address` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func address<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .address(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `address` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``address(escaped:attributes:)``.
     @inlinable public static 
     func address<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .address(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `address` element. 
     @inlinable public static 
     func address(attributes:[Attribute] = []) -> Self 
     {
@@ -445,18 +555,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `article` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func article<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .article(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `article` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``article(escaped:attributes:)``.
     @inlinable public static 
     func article<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .article(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `article` element. 
     @inlinable public static 
     func article(attributes:[Attribute] = []) -> Self 
     {
@@ -478,18 +599,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `aside` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func aside<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .aside(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `aside` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``aside(escaped:attributes:)``.
     @inlinable public static 
     func aside<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .aside(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `aside` element. 
     @inlinable public static 
     func aside(attributes:[Attribute] = []) -> Self 
     {
@@ -511,18 +643,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `blockquote` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func blockquote<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .blockquote(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `blockquote` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``blockquote(escaped:attributes:)``.
     @inlinable public static 
     func blockquote<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .blockquote(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `blockquote` element. 
     @inlinable public static 
     func blockquote(attributes:[Attribute] = []) -> Self 
     {
@@ -544,18 +687,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `button` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func button<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .button(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `button` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``button(escaped:attributes:)``.
     @inlinable public static 
     func button<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .button(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `button` element. 
     @inlinable public static 
     func button(attributes:[Attribute] = []) -> Self 
     {
@@ -577,18 +731,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `canvas` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func canvas<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .canvas(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `canvas` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``canvas(escaped:attributes:)``.
     @inlinable public static 
     func canvas<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .canvas(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `canvas` element. 
     @inlinable public static 
     func canvas(attributes:[Attribute] = []) -> Self 
     {
@@ -610,18 +775,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `caption` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func caption<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .caption(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `caption` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``caption(escaped:attributes:)``.
     @inlinable public static 
     func caption<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .caption(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `caption` element. 
     @inlinable public static 
     func caption(attributes:[Attribute] = []) -> Self 
     {
@@ -643,18 +819,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `code` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func code<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .code(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `code` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``code(escaped:attributes:)``.
     @inlinable public static 
     func code<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .code(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `code` element. 
     @inlinable public static 
     func code(attributes:[Attribute] = []) -> Self 
     {
@@ -676,18 +863,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `colgroup` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func colgroup<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .colgroup(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `colgroup` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``colgroup(escaped:attributes:)``.
     @inlinable public static 
     func colgroup<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .colgroup(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `colgroup` element. 
     @inlinable public static 
     func colgroup(attributes:[Attribute] = []) -> Self 
     {
@@ -709,18 +907,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `cite` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func cite<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .cite(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `cite` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``cite(escaped:attributes:)``.
     @inlinable public static 
     func cite<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .cite(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `cite` element. 
     @inlinable public static 
     func cite(attributes:[Attribute] = []) -> Self 
     {
@@ -742,18 +951,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `data` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func data<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .data(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `data` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``data(escaped:attributes:)``.
     @inlinable public static 
     func data<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .data(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `data` element. 
     @inlinable public static 
     func data(attributes:[Attribute] = []) -> Self 
     {
@@ -775,18 +995,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `datalist` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func datalist<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .datalist(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `datalist` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``datalist(escaped:attributes:)``.
     @inlinable public static 
     func datalist<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .datalist(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `datalist` element. 
     @inlinable public static 
     func datalist(attributes:[Attribute] = []) -> Self 
     {
@@ -808,18 +1039,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `del` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func del<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .del(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `del` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``del(escaped:attributes:)``.
     @inlinable public static 
     func del<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .del(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `del` element. 
     @inlinable public static 
     func del(attributes:[Attribute] = []) -> Self 
     {
@@ -841,18 +1083,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `details` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func details<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .details(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `details` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``details(escaped:attributes:)``.
     @inlinable public static 
     func details<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .details(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `details` element. 
     @inlinable public static 
     func details(attributes:[Attribute] = []) -> Self 
     {
@@ -874,18 +1127,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `dialog` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func dialog<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .dialog(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `dialog` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``dialog(escaped:attributes:)``.
     @inlinable public static 
     func dialog<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .dialog(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `dialog` element. 
     @inlinable public static 
     func dialog(attributes:[Attribute] = []) -> Self 
     {
@@ -907,18 +1171,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `dfn` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func dfn<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .dfn(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `dfn` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``dfn(escaped:attributes:)``.
     @inlinable public static 
     func dfn<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .dfn(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `dfn` element. 
     @inlinable public static 
     func dfn(attributes:[Attribute] = []) -> Self 
     {
@@ -940,18 +1215,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `div` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func div<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .div(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `div` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``div(escaped:attributes:)``.
     @inlinable public static 
     func div<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .div(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `div` element. 
     @inlinable public static 
     func div(attributes:[Attribute] = []) -> Self 
     {
@@ -973,18 +1259,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `dl` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func dl<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .dl(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `dl` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``dl(escaped:attributes:)``.
     @inlinable public static 
     func dl<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .dl(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `dl` element. 
     @inlinable public static 
     func dl(attributes:[Attribute] = []) -> Self 
     {
@@ -1006,18 +1303,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `dt` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func dt<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .dt(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `dt` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``dt(escaped:attributes:)``.
     @inlinable public static 
     func dt<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .dt(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `dt` element. 
     @inlinable public static 
     func dt(attributes:[Attribute] = []) -> Self 
     {
@@ -1039,18 +1347,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `dd` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func dd<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .dd(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `dd` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``dd(escaped:attributes:)``.
     @inlinable public static 
     func dd<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .dd(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `dd` element. 
     @inlinable public static 
     func dd(attributes:[Attribute] = []) -> Self 
     {
@@ -1072,18 +1391,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `em` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func em<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .em(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `em` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``em(escaped:attributes:)``.
     @inlinable public static 
     func em<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .em(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `em` element. 
     @inlinable public static 
     func em(attributes:[Attribute] = []) -> Self 
     {
@@ -1105,18 +1435,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `embed` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func embed<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .embed(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `embed` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``embed(escaped:attributes:)``.
     @inlinable public static 
     func embed<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .embed(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `embed` element. 
     @inlinable public static 
     func embed(attributes:[Attribute] = []) -> Self 
     {
@@ -1138,18 +1479,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `fieldset` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func fieldset<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .fieldset(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `fieldset` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``fieldset(escaped:attributes:)``.
     @inlinable public static 
     func fieldset<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .fieldset(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `fieldset` element. 
     @inlinable public static 
     func fieldset(attributes:[Attribute] = []) -> Self 
     {
@@ -1171,18 +1523,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `figcaption` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func figcaption<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .figcaption(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `figcaption` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``figcaption(escaped:attributes:)``.
     @inlinable public static 
     func figcaption<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .figcaption(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `figcaption` element. 
     @inlinable public static 
     func figcaption(attributes:[Attribute] = []) -> Self 
     {
@@ -1204,18 +1567,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `figure` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func figure<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .figure(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `figure` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``figure(escaped:attributes:)``.
     @inlinable public static 
     func figure<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .figure(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `figure` element. 
     @inlinable public static 
     func figure(attributes:[Attribute] = []) -> Self 
     {
@@ -1237,18 +1611,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `footer` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func footer<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .footer(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `footer` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``footer(escaped:attributes:)``.
     @inlinable public static 
     func footer<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .footer(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `footer` element. 
     @inlinable public static 
     func footer(attributes:[Attribute] = []) -> Self 
     {
@@ -1270,18 +1655,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `form` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func form<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .form(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `form` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``form(escaped:attributes:)``.
     @inlinable public static 
     func form<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .form(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `form` element. 
     @inlinable public static 
     func form(attributes:[Attribute] = []) -> Self 
     {
@@ -1303,18 +1699,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `h1` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func h1<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .h1(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `h1` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``h1(escaped:attributes:)``.
     @inlinable public static 
     func h1<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .h1(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `h1` element. 
     @inlinable public static 
     func h1(attributes:[Attribute] = []) -> Self 
     {
@@ -1336,18 +1743,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `h2` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func h2<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .h2(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `h2` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``h2(escaped:attributes:)``.
     @inlinable public static 
     func h2<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .h2(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `h2` element. 
     @inlinable public static 
     func h2(attributes:[Attribute] = []) -> Self 
     {
@@ -1369,18 +1787,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `h3` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func h3<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .h3(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `h3` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``h3(escaped:attributes:)``.
     @inlinable public static 
     func h3<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .h3(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `h3` element. 
     @inlinable public static 
     func h3(attributes:[Attribute] = []) -> Self 
     {
@@ -1402,18 +1831,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `h4` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func h4<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .h4(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `h4` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``h4(escaped:attributes:)``.
     @inlinable public static 
     func h4<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .h4(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `h4` element. 
     @inlinable public static 
     func h4(attributes:[Attribute] = []) -> Self 
     {
@@ -1435,18 +1875,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `h5` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func h5<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .h5(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `h5` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``h5(escaped:attributes:)``.
     @inlinable public static 
     func h5<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .h5(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `h5` element. 
     @inlinable public static 
     func h5(attributes:[Attribute] = []) -> Self 
     {
@@ -1468,18 +1919,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `h6` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func h6<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .h6(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `h6` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``h6(escaped:attributes:)``.
     @inlinable public static 
     func h6<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .h6(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `h6` element. 
     @inlinable public static 
     func h6(attributes:[Attribute] = []) -> Self 
     {
@@ -1501,18 +1963,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `header` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func header<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .header(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `header` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``header(escaped:attributes:)``.
     @inlinable public static 
     func header<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .header(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `header` element. 
     @inlinable public static 
     func header(attributes:[Attribute] = []) -> Self 
     {
@@ -1534,18 +2007,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `i` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func i<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .i(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `i` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``i(escaped:attributes:)``.
     @inlinable public static 
     func i<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .i(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `i` element. 
     @inlinable public static 
     func i(attributes:[Attribute] = []) -> Self 
     {
@@ -1567,18 +2051,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `iframe` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func iframe<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .iframe(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `iframe` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``iframe(escaped:attributes:)``.
     @inlinable public static 
     func iframe<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .iframe(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `iframe` element. 
     @inlinable public static 
     func iframe(attributes:[Attribute] = []) -> Self 
     {
@@ -1600,18 +2095,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `ins` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func ins<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .ins(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `ins` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``ins(escaped:attributes:)``.
     @inlinable public static 
     func ins<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .ins(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `ins` element. 
     @inlinable public static 
     func ins(attributes:[Attribute] = []) -> Self 
     {
@@ -1633,18 +2139,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `kbd` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func kbd<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .kbd(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `kbd` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``kbd(escaped:attributes:)``.
     @inlinable public static 
     func kbd<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .kbd(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `kbd` element. 
     @inlinable public static 
     func kbd(attributes:[Attribute] = []) -> Self 
     {
@@ -1666,18 +2183,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `label` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func label<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .label(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `label` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``label(escaped:attributes:)``.
     @inlinable public static 
     func label<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .label(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `label` element. 
     @inlinable public static 
     func label(attributes:[Attribute] = []) -> Self 
     {
@@ -1699,18 +2227,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `legend` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func legend<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .legend(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `legend` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``legend(escaped:attributes:)``.
     @inlinable public static 
     func legend<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .legend(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `legend` element. 
     @inlinable public static 
     func legend(attributes:[Attribute] = []) -> Self 
     {
@@ -1732,18 +2271,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `li` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func li<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .li(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `li` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``li(escaped:attributes:)``.
     @inlinable public static 
     func li<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .li(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `li` element. 
     @inlinable public static 
     func li(attributes:[Attribute] = []) -> Self 
     {
@@ -1765,18 +2315,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `main` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func main<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .main(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `main` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``main(escaped:attributes:)``.
     @inlinable public static 
     func main<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .main(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `main` element. 
     @inlinable public static 
     func main(attributes:[Attribute] = []) -> Self 
     {
@@ -1798,18 +2359,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `map` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func map<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .map(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `map` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``map(escaped:attributes:)``.
     @inlinable public static 
     func map<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .map(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `map` element. 
     @inlinable public static 
     func map(attributes:[Attribute] = []) -> Self 
     {
@@ -1831,18 +2403,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `mark` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func mark<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .mark(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `mark` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``mark(escaped:attributes:)``.
     @inlinable public static 
     func mark<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .mark(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `mark` element. 
     @inlinable public static 
     func mark(attributes:[Attribute] = []) -> Self 
     {
@@ -1864,18 +2447,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `menu` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func menu<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .menu(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `menu` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``menu(escaped:attributes:)``.
     @inlinable public static 
     func menu<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .menu(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `menu` element. 
     @inlinable public static 
     func menu(attributes:[Attribute] = []) -> Self 
     {
@@ -1897,18 +2491,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `meter` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func meter<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .meter(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `meter` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``meter(escaped:attributes:)``.
     @inlinable public static 
     func meter<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .meter(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `meter` element. 
     @inlinable public static 
     func meter(attributes:[Attribute] = []) -> Self 
     {
@@ -1930,18 +2535,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `nav` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func nav<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .nav(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `nav` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``nav(escaped:attributes:)``.
     @inlinable public static 
     func nav<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .nav(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `nav` element. 
     @inlinable public static 
     func nav(attributes:[Attribute] = []) -> Self 
     {
@@ -1963,18 +2579,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `noscript` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func noscript<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .noscript(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `noscript` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``noscript(escaped:attributes:)``.
     @inlinable public static 
     func noscript<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .noscript(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `noscript` element. 
     @inlinable public static 
     func noscript(attributes:[Attribute] = []) -> Self 
     {
@@ -1996,18 +2623,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `ol` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func ol<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .ol(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `ol` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``ol(escaped:attributes:)``.
     @inlinable public static 
     func ol<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .ol(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `ol` element. 
     @inlinable public static 
     func ol(attributes:[Attribute] = []) -> Self 
     {
@@ -2029,18 +2667,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `object` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func object<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .object(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `object` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``object(escaped:attributes:)``.
     @inlinable public static 
     func object<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .object(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `object` element. 
     @inlinable public static 
     func object(attributes:[Attribute] = []) -> Self 
     {
@@ -2062,18 +2711,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `optgroup` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func optgroup<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .optgroup(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `optgroup` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``optgroup(escaped:attributes:)``.
     @inlinable public static 
     func optgroup<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .optgroup(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `optgroup` element. 
     @inlinable public static 
     func optgroup(attributes:[Attribute] = []) -> Self 
     {
@@ -2095,18 +2755,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `option` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func option<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .option(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `option` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``option(escaped:attributes:)``.
     @inlinable public static 
     func option<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .option(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `option` element. 
     @inlinable public static 
     func option(attributes:[Attribute] = []) -> Self 
     {
@@ -2128,18 +2799,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `output` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func output<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .output(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `output` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``output(escaped:attributes:)``.
     @inlinable public static 
     func output<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .output(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `output` element. 
     @inlinable public static 
     func output(attributes:[Attribute] = []) -> Self 
     {
@@ -2161,18 +2843,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `p` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func p<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .p(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `p` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``p(escaped:attributes:)``.
     @inlinable public static 
     func p<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .p(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `p` element. 
     @inlinable public static 
     func p(attributes:[Attribute] = []) -> Self 
     {
@@ -2194,18 +2887,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `picture` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func picture<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .picture(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `picture` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``picture(escaped:attributes:)``.
     @inlinable public static 
     func picture<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .picture(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `picture` element. 
     @inlinable public static 
     func picture(attributes:[Attribute] = []) -> Self 
     {
@@ -2227,18 +2931,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `portal` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func portal<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .portal(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `portal` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``portal(escaped:attributes:)``.
     @inlinable public static 
     func portal<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .portal(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `portal` element. 
     @inlinable public static 
     func portal(attributes:[Attribute] = []) -> Self 
     {
@@ -2260,18 +2975,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `pre` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func pre<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .pre(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `pre` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``pre(escaped:attributes:)``.
     @inlinable public static 
     func pre<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .pre(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `pre` element. 
     @inlinable public static 
     func pre(attributes:[Attribute] = []) -> Self 
     {
@@ -2293,18 +3019,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `progress` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func progress<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .progress(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `progress` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``progress(escaped:attributes:)``.
     @inlinable public static 
     func progress<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .progress(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `progress` element. 
     @inlinable public static 
     func progress(attributes:[Attribute] = []) -> Self 
     {
@@ -2326,18 +3063,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `q` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func q<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .q(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `q` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``q(escaped:attributes:)``.
     @inlinable public static 
     func q<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .q(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `q` element. 
     @inlinable public static 
     func q(attributes:[Attribute] = []) -> Self 
     {
@@ -2359,18 +3107,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `rp` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func rp<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .rp(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `rp` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``rp(escaped:attributes:)``.
     @inlinable public static 
     func rp<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .rp(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `rp` element. 
     @inlinable public static 
     func rp(attributes:[Attribute] = []) -> Self 
     {
@@ -2392,18 +3151,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `rt` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func rt<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .rt(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `rt` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``rt(escaped:attributes:)``.
     @inlinable public static 
     func rt<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .rt(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `rt` element. 
     @inlinable public static 
     func rt(attributes:[Attribute] = []) -> Self 
     {
@@ -2425,18 +3195,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `ruby` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func ruby<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .ruby(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `ruby` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``ruby(escaped:attributes:)``.
     @inlinable public static 
     func ruby<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .ruby(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `ruby` element. 
     @inlinable public static 
     func ruby(attributes:[Attribute] = []) -> Self 
     {
@@ -2458,18 +3239,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `s` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func s<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .s(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `s` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``s(escaped:attributes:)``.
     @inlinable public static 
     func s<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .s(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `s` element. 
     @inlinable public static 
     func s(attributes:[Attribute] = []) -> Self 
     {
@@ -2491,18 +3283,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `samp` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func samp<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .samp(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `samp` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``samp(escaped:attributes:)``.
     @inlinable public static 
     func samp<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .samp(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `samp` element. 
     @inlinable public static 
     func samp(attributes:[Attribute] = []) -> Self 
     {
@@ -2524,18 +3327,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `small` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func small<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .small(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `small` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``small(escaped:attributes:)``.
     @inlinable public static 
     func small<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .small(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `small` element. 
     @inlinable public static 
     func small(attributes:[Attribute] = []) -> Self 
     {
@@ -2557,18 +3371,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `section` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func section<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .section(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `section` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``section(escaped:attributes:)``.
     @inlinable public static 
     func section<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .section(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `section` element. 
     @inlinable public static 
     func section(attributes:[Attribute] = []) -> Self 
     {
@@ -2590,18 +3415,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `span` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func span<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .span(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `span` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``span(escaped:attributes:)``.
     @inlinable public static 
     func span<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .span(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `span` element. 
     @inlinable public static 
     func span(attributes:[Attribute] = []) -> Self 
     {
@@ -2623,18 +3459,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `script` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func script<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .script(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `script` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``script(escaped:attributes:)``.
     @inlinable public static 
     func script<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .script(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `script` element. 
     @inlinable public static 
     func script(attributes:[Attribute] = []) -> Self 
     {
@@ -2656,18 +3503,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `select` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func select<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .select(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `select` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``select(escaped:attributes:)``.
     @inlinable public static 
     func select<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .select(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `select` element. 
     @inlinable public static 
     func select(attributes:[Attribute] = []) -> Self 
     {
@@ -2689,18 +3547,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `slot` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func slot<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .slot(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `slot` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``slot(escaped:attributes:)``.
     @inlinable public static 
     func slot<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .slot(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `slot` element. 
     @inlinable public static 
     func slot(attributes:[Attribute] = []) -> Self 
     {
@@ -2722,18 +3591,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `strong` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func strong<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .strong(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `strong` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``strong(escaped:attributes:)``.
     @inlinable public static 
     func strong<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .strong(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `strong` element. 
     @inlinable public static 
     func strong(attributes:[Attribute] = []) -> Self 
     {
@@ -2755,18 +3635,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `style` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func style<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .style(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `style` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``style(escaped:attributes:)``.
     @inlinable public static 
     func style<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .style(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `style` element. 
     @inlinable public static 
     func style(attributes:[Attribute] = []) -> Self 
     {
@@ -2788,18 +3679,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `sub` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func sub<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .sub(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `sub` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``sub(escaped:attributes:)``.
     @inlinable public static 
     func sub<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .sub(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `sub` element. 
     @inlinable public static 
     func sub(attributes:[Attribute] = []) -> Self 
     {
@@ -2821,18 +3723,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `summary` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func summary<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .summary(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `summary` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``summary(escaped:attributes:)``.
     @inlinable public static 
     func summary<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .summary(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `summary` element. 
     @inlinable public static 
     func summary(attributes:[Attribute] = []) -> Self 
     {
@@ -2854,18 +3767,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `sup` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func sup<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .sup(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `sup` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``sup(escaped:attributes:)``.
     @inlinable public static 
     func sup<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .sup(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `sup` element. 
     @inlinable public static 
     func sup(attributes:[Attribute] = []) -> Self 
     {
@@ -2887,18 +3811,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `table` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func table<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .table(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `table` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``table(escaped:attributes:)``.
     @inlinable public static 
     func table<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .table(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `table` element. 
     @inlinable public static 
     func table(attributes:[Attribute] = []) -> Self 
     {
@@ -2920,18 +3855,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `tbody` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func tbody<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .tbody(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `tbody` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``tbody(escaped:attributes:)``.
     @inlinable public static 
     func tbody<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .tbody(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `tbody` element. 
     @inlinable public static 
     func tbody(attributes:[Attribute] = []) -> Self 
     {
@@ -2953,18 +3899,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `td` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func td<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .td(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `td` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``td(escaped:attributes:)``.
     @inlinable public static 
     func td<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .td(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `td` element. 
     @inlinable public static 
     func td(attributes:[Attribute] = []) -> Self 
     {
@@ -2986,18 +3943,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `template` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func template<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .template(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `template` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``template(escaped:attributes:)``.
     @inlinable public static 
     func template<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .template(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `template` element. 
     @inlinable public static 
     func template(attributes:[Attribute] = []) -> Self 
     {
@@ -3019,18 +3987,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `textarea` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func textarea<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .textarea(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `textarea` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``textarea(escaped:attributes:)``.
     @inlinable public static 
     func textarea<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .textarea(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `textarea` element. 
     @inlinable public static 
     func textarea(attributes:[Attribute] = []) -> Self 
     {
@@ -3052,18 +4031,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `tfoot` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func tfoot<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .tfoot(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `tfoot` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``tfoot(escaped:attributes:)``.
     @inlinable public static 
     func tfoot<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .tfoot(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `tfoot` element. 
     @inlinable public static 
     func tfoot(attributes:[Attribute] = []) -> Self 
     {
@@ -3085,18 +4075,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `th` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func th<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .th(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `th` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``th(escaped:attributes:)``.
     @inlinable public static 
     func th<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .th(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `th` element. 
     @inlinable public static 
     func th(attributes:[Attribute] = []) -> Self 
     {
@@ -3118,18 +4119,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `thead` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func thead<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .thead(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `thead` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``thead(escaped:attributes:)``.
     @inlinable public static 
     func thead<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .thead(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `thead` element. 
     @inlinable public static 
     func thead(attributes:[Attribute] = []) -> Self 
     {
@@ -3151,18 +4163,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `time` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func time<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .time(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `time` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``time(escaped:attributes:)``.
     @inlinable public static 
     func time<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .time(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `time` element. 
     @inlinable public static 
     func time(attributes:[Attribute] = []) -> Self 
     {
@@ -3184,18 +4207,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `title` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func title<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .title(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `title` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``title(escaped:attributes:)``.
     @inlinable public static 
     func title<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .title(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `title` element. 
     @inlinable public static 
     func title(attributes:[Attribute] = []) -> Self 
     {
@@ -3217,18 +4251,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `tr` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func tr<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .tr(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `tr` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``tr(escaped:attributes:)``.
     @inlinable public static 
     func tr<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .tr(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `tr` element. 
     @inlinable public static 
     func tr(attributes:[Attribute] = []) -> Self 
     {
@@ -3250,18 +4295,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `u` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func u<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .u(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `u` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``u(escaped:attributes:)``.
     @inlinable public static 
     func u<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .u(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `u` element. 
     @inlinable public static 
     func u(attributes:[Attribute] = []) -> Self 
     {
@@ -3283,18 +4339,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `ul` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func ul<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .ul(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `ul` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``ul(escaped:attributes:)``.
     @inlinable public static 
     func ul<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .ul(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `ul` element. 
     @inlinable public static 
     func ul(attributes:[Attribute] = []) -> Self 
     {
@@ -3316,18 +4383,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML ``var`` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func `var`<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .`var`(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML ``var`` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ```var`(escaped:attributes:)``.
     @inlinable public static 
     func `var`<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .`var`(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML ``var`` element. 
     @inlinable public static 
     func `var`(attributes:[Attribute] = []) -> Self 
     {
@@ -3349,18 +4427,29 @@ extension HTML.Element
 
 extension HTML.Element 
 {
+    /// Creates an HTML `video` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func video<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .video(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an HTML `video` element containing the given string, 
+    /// converting XML structural characters to HTML entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``video(escaped:attributes:)``.
     @inlinable public static 
     func video<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .video(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty HTML `video` element. 
     @inlinable public static 
     func video(attributes:[Attribute] = []) -> Self 
     {

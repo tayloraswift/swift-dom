@@ -74,7 +74,7 @@ struct Main
         line:Int = #line, 
         column:Int = #column) 
     {
-        if let error:AssertEquivalenceFailure<T>
+        if let error:AssertEquivalenceFailure<T> = error
         {
             print("\(file):\(line):\(column): \(error)")
             self.failed.append(error)
