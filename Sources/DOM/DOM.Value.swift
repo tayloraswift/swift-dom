@@ -36,6 +36,7 @@ extension DOM
             let count:Int = utf8.count
             if  MemoryLayout<InlineUTF8>.size < count
             {
+                #if swift(>=5.6)
                 self = .inline(utf8: withUnsafeTemporaryAllocation(
                     byteCount: MemoryLayout<InlineUTF8>.size, 
                     alignment: MemoryLayout<InlineUTF8>.alignment)
@@ -43,6 +44,14 @@ extension DOM
                     $0.copyBytes(from: utf8)
                     return $0.load(as: InlineUTF8.self)
                 }, count: .init(count))
+                #else
+                var inlined:InlineUTF8 = (0, 0, 0, 0)
+                self = .inline(utf8: withUnsafeMutableBytes(of: &inlined)
+                {
+                    $0.copyBytes(from: utf8)
+                    return $0.load(as: InlineUTF8.self)
+                }, count: .init(count))
+                #endif 
             }
             else 
             {

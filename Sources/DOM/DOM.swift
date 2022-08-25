@@ -1,3 +1,4 @@
+/// A namespace for all functionality in this module.
 public 
 enum DOM 
 {
@@ -5,6 +6,7 @@ enum DOM
     public 
     typealias Template = Flattened 
 
+    /// Escapes the given string as 
     @inlinable public static 
     func escape<S>(_ unescaped:S) -> String where S:StringProtocol
     {
