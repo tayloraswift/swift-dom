@@ -1,6 +1,10 @@
 public 
 enum DOM 
 {
+    @available(*, deprecated, renamed: "Flattened")
+    public 
+    typealias Template = Flattened 
+
     @inlinable public static 
     func escape<S>(_ unescaped:S) -> String where S:StringProtocol
     {
@@ -18,110 +22,5 @@ enum DOM
             }
         }
         return string
-    }
-}
-
-public 
-protocol TagDomain:Equatable
-{
-    var name:String 
-    {
-        get 
-    }
-}
-extension TagDomain where Self:RawRepresentable, RawValue == String
-{
-    @inlinable public
-    var name:String
-    { 
-        self.rawValue 
-    }
-}
-public 
-protocol LeafDomain:TagDomain
-{
-    // indicates if the leaf should be rendered '<example>' (true) or '<example/>' (false)
-    var void:Bool 
-    {
-        get 
-    }
-}
-public 
-protocol ContainerDomain:TagDomain
-{
-    static 
-    var root:Self
-    {
-        get 
-    }
-}
-public 
-protocol DocumentDomain 
-{
-    associatedtype Container    where Container:ContainerDomain
-    associatedtype Leaf         where      Leaf:LeafDomain
-}
-extension DocumentDomain 
-{
-    public 
-    typealias StaticElement = DOM.Element<Self, Never>
-    public 
-    typealias Element<Anchor> = DOM.Element<Self, Anchor> 
-    public 
-    typealias Root<Anchor> = DOM.Root<Self, Anchor> 
-}
-
-public 
-protocol DocumentArrayBuilder 
-{
-    associatedtype Element 
-}
-extension DocumentArrayBuilder
-{
-    @inlinable public static 
-    func buildExpression(_ element:Element?) -> [Element]
-    {
-        element.map{ [$0] } ?? []
-    }
-    @inlinable public static 
-    func buildExpression(_ element:Element) -> [Element]
-    {
-        [element]
-    }
-    @inlinable public static 
-    func buildExpression(_ elements:[Element]) -> [Element]
-    {
-        elements
-    }
-    @inlinable public static 
-    func buildExpression<S>(_ elements:S) -> [Element]
-        where S:Sequence, S.Element == Element 
-    {
-        [Element].init(elements)
-    }
-    @inlinable public static 
-    func buildBlock(_ elements:[Element]...) -> [Element]
-    {
-        elements.flatMap{ $0 }
-    }
-    @inlinable public static 
-    func buildArray(_ elements:[[Element]]) -> [Element]
-    {
-        elements.flatMap{ $0 }
-    }
-    @inlinable public static 
-    func buildOptional(_ element:[Element]?) -> [Element]
-    {
-        element ?? []
-    }
-    @inlinable public static 
-    func buildEither(first:[Element]) -> [Element]
-    {
-        first
-    }
-    @inlinable public static 
-    func buildEither(second:[Element]) -> [Element]
-    {
-        second
     }
 }

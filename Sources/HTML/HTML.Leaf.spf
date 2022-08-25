@@ -1,0 +1,45 @@
+import DOM 
+
+@basis 
+let leaves:[Never] = 
+[
+    area,
+    base,
+    br,
+    col,
+    hr,
+    img,
+    input,
+    link,
+    meta,
+    param,
+    source,
+    track,
+    wbr,
+]
+
+extension HTML 
+{
+    @frozen public 
+    enum Leaf:String, CustomStringConvertible, Sendable
+    {
+        @matrix(__leaf__: leaves)
+        case __leaf__
+
+        @inlinable public 
+        var description:String
+        {
+            self.rawValue
+        }
+    }
+}
+
+@matrix(__leaf__: leaves)
+extension HTML.Element 
+{
+    @inlinable public static 
+    func __leaf__(attributes:[Attribute] = []) -> Self 
+    {
+        .init(node: .leaf(.__leaf__, attributes: attributes.map(\.value)))
+    }
+}

@@ -1,0 +1,155 @@
+import DOM 
+
+@basis 
+let containers:[Never] = 
+[
+    html,
+    head,
+    body,
+    a,
+    abbr,
+    audio,
+    b,
+    bdi,
+    bdo,
+    address,
+    article,
+    aside,
+    blockquote,
+    button,
+    canvas,
+    caption,
+    code,
+    colgroup,
+    cite,
+    data,
+    datalist,
+    del,
+    details,
+    dialog,
+    dfn,
+    div,
+    dl,
+    dt,
+    dd,
+    em,
+    embed,
+    fieldset,
+    figcaption,
+    figure,
+    footer,
+    form,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    header,
+    i,
+    iframe,
+    ins,
+    kbd,
+    label,
+    legend,
+    li,
+    main,
+    map,
+    mark,
+    menu,
+    meter,
+    nav,
+    noscript,
+    ol,
+    object,
+    optgroup,
+    option,
+    output,
+    p,
+    picture,
+    portal,
+    pre,
+    progress,
+    q,
+    rp,
+    rt,
+    ruby,
+    s,
+    samp,
+    small,
+    section,
+    span,
+    script,
+    select,
+    slot,
+    strong,
+    style,
+    sub,
+    summary,
+    sup,
+    table,
+    tbody,
+    td,
+    template,
+    textarea,
+    tfoot,
+    th,
+    thead,
+    time,
+    title,
+    tr,
+    u,
+    ul,
+    `var`,
+    video,
+]
+
+extension HTML 
+{
+    @frozen public 
+    enum Container:String, CustomStringConvertible, Sendable
+    {
+        @matrix(__container__: containers)
+        case __container__
+
+        @inlinable public 
+        var description:String
+        {
+            self.rawValue
+        }
+    }
+}
+
+@matrix(__container__: containers)
+extension HTML.Element 
+{
+    @inlinable public static 
+    func __container__<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
+        where S:StringProtocol
+    {
+        .__container__(Self.init(escaped: string), attributes: attributes)
+    }
+    @inlinable public static 
+    func __container__<S>(_ string:S, attributes:[Attribute] = []) -> Self 
+        where S:StringProtocol
+    {
+        .__container__(Self.init(string), attributes: attributes)
+    }
+    @inlinable public static 
+    func __container__(attributes:[Attribute] = []) -> Self 
+    {
+        .__container__(EmptyCollection<Self>.init(), attributes: attributes)
+    }
+    @inlinable public static 
+    func __container__(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
+    {
+        .__container__(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+    }
+    @inlinable public static 
+    func __container__<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
+        where Content:Sequence, Content.Element == Self 
+    {
+        .init(node: .container(.__container__, 
+            attributes: attributes.map(\.value), content: content.map(\.node)))
+    }
+}
