@@ -1,0 +1,21 @@
+name: build-devices
+
+on:
+    push:
+        branches: [ master ]
+    pull_request:
+        branches: [ master ]
+
+jobs:
+    devices:
+        runs-on: ${{ matrix.os }}
+        strategy:
+            matrix:
+                os: [macos-12]
+                device: [ios, tvos, watchos]
+        steps:
+            -   uses: actions/checkout@v2
+            -   name: build 
+                run: |
+                    swift --version
+                    xcrun xcodebuild build -scheme "swift-grammar" -destination "generic/platform=${{ matrix.device }}"
