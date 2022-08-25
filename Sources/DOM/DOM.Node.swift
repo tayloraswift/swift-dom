@@ -92,7 +92,7 @@ extension DOM.Node
         }
         output.append(0x3e) // '>'
 
-        guard let children:[Self] 
+        guard let children:[Self] = children
         else 
         {
             return 

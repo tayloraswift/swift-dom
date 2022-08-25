@@ -18,4 +18,4 @@ jobs:
             -   name: build 
                 run: |
                     swift --version
-                    xcrun xcodebuild build -scheme "swift-grammar" -destination "generic/platform=${{ matrix.device }}"
+                    xcrun xcodebuild build -scheme "swift-dom" -destination "generic/platform=${{ matrix.device }}"
