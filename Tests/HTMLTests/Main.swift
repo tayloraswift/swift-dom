@@ -119,7 +119,11 @@ struct Main
     }
 
     var passed:Int 
+    #if swift (>=5.6)
     var failed:[any Error]
+    #else 
+    var failed:[Error]
+    #endif 
 
     init() 
     {
