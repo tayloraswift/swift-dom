@@ -26,3 +26,6 @@ jobs:
                 run: | 
                     swift --version
                     swift build
+            -   name: test 
+                run: | 
+                    swift run HTMLTests

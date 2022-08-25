@@ -24,6 +24,11 @@ enum HTML
         {
             self.init(node: .init(escaped: string))
         }
+        @inlinable public 
+        init(anchor:Anchor) 
+        {
+            self.init(node: .value(.anchor(anchor)))
+        }
     }
 }
 

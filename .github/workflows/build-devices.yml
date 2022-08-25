@@ -18,4 +18,5 @@ jobs:
             -   name: build 
                 run: |
                     swift --version
+                    xcrun xcodebuild -list"
                     xcrun xcodebuild build -scheme "swift-dom" -destination "generic/platform=${{ matrix.device }}"

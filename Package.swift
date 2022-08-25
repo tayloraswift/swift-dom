@@ -12,17 +12,38 @@ var plugins:[Package.Dependency] = []
         branch: "swift-DEVELOPMENT-SNAPSHOT-2022-08-18-a"))
 #endif 
 
+#if os(iOS) || os(tvOS) || os(watchOS) 
+let executables:[Product] = []
+let executableTargets:[Target] = []
+#else 
+let executables:[Product] = 
+[
+    .executable(name: "HTMLTests", targets: ["HTMLTests"]),
+]
+let executableTargets:[Target] = 
+[
+    .executableTarget(name: "HTMLTests",
+        dependencies: 
+        [
+            .target(name: "HTML"),
+        ],
+        path: "Tests/HTMLTests"),
+]
+#endif 
+
 let package = Package(
     name: "swift-dom",
-    products: 
+    products: executables + 
     [
         .library(name: "DOM",   targets: ["DOM"]),
         .library(name: "HTML",  targets: ["HTML"]),
         .library(name: "RSS",   targets: ["RSS"]),
         .library(name: "SVG",   targets: ["SVG"]),
+
+        
     ],
     dependencies: plugins,
-    targets: 
+    targets: executableTargets + 
     [
         .target(name: "DOM"),
         .target(name: "HTML",

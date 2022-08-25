@@ -16,7 +16,7 @@ extension DOM
         @inlinable public 
         init<S>(key:String, escaped value:S) where S:StringProtocol
         {
-            self.init(escaped: "\(key)=\(value)")
+            self.init(escaped: "\(key)=\"\(value)\"")
         }
 
         @inlinable public 

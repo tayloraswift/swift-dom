@@ -13,6 +13,11 @@ extension RSS.Element
         {
             self.value = value
         }
+        @inlinable public 
+        init(anchor:Anchor)
+        {
+            self.init(.anchor(anchor))
+        }
     }
 }
 @matrix(
