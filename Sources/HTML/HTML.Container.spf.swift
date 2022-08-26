@@ -139,17 +139,11 @@ extension HTML.Element
     {
         .html(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `html` element. 
+    /// Creates an HTML `html` element with the given children. 
     @inlinable public static 
-    func html(attributes:[Attribute] = []) -> Self 
+    func html(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .html(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `html` element containing a single child element. 
-    @inlinable public static 
-    func html(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .html(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .html(content, attributes: attributes)
     }
     /// Creates an HTML `html` element with the given content. 
     @inlinable public static 
@@ -185,17 +179,11 @@ extension HTML.Element
     {
         .head(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `head` element. 
+    /// Creates an HTML `head` element with the given children. 
     @inlinable public static 
-    func head(attributes:[Attribute] = []) -> Self 
+    func head(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .head(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `head` element containing a single child element. 
-    @inlinable public static 
-    func head(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .head(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .head(content, attributes: attributes)
     }
     /// Creates an HTML `head` element with the given content. 
     @inlinable public static 
@@ -231,17 +219,11 @@ extension HTML.Element
     {
         .body(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `body` element. 
+    /// Creates an HTML `body` element with the given children. 
     @inlinable public static 
-    func body(attributes:[Attribute] = []) -> Self 
+    func body(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .body(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `body` element containing a single child element. 
-    @inlinable public static 
-    func body(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .body(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .body(content, attributes: attributes)
     }
     /// Creates an HTML `body` element with the given content. 
     @inlinable public static 
@@ -277,17 +259,11 @@ extension HTML.Element
     {
         .a(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `a` element. 
+    /// Creates an HTML `a` element with the given children. 
     @inlinable public static 
-    func a(attributes:[Attribute] = []) -> Self 
+    func a(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .a(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `a` element containing a single child element. 
-    @inlinable public static 
-    func a(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .a(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .a(content, attributes: attributes)
     }
     /// Creates an HTML `a` element with the given content. 
     @inlinable public static 
@@ -323,17 +299,11 @@ extension HTML.Element
     {
         .abbr(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `abbr` element. 
+    /// Creates an HTML `abbr` element with the given children. 
     @inlinable public static 
-    func abbr(attributes:[Attribute] = []) -> Self 
+    func abbr(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .abbr(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `abbr` element containing a single child element. 
-    @inlinable public static 
-    func abbr(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .abbr(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .abbr(content, attributes: attributes)
     }
     /// Creates an HTML `abbr` element with the given content. 
     @inlinable public static 
@@ -369,17 +339,11 @@ extension HTML.Element
     {
         .audio(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `audio` element. 
+    /// Creates an HTML `audio` element with the given children. 
     @inlinable public static 
-    func audio(attributes:[Attribute] = []) -> Self 
+    func audio(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .audio(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `audio` element containing a single child element. 
-    @inlinable public static 
-    func audio(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .audio(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .audio(content, attributes: attributes)
     }
     /// Creates an HTML `audio` element with the given content. 
     @inlinable public static 
@@ -415,17 +379,11 @@ extension HTML.Element
     {
         .b(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `b` element. 
+    /// Creates an HTML `b` element with the given children. 
     @inlinable public static 
-    func b(attributes:[Attribute] = []) -> Self 
+    func b(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .b(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `b` element containing a single child element. 
-    @inlinable public static 
-    func b(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .b(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .b(content, attributes: attributes)
     }
     /// Creates an HTML `b` element with the given content. 
     @inlinable public static 
@@ -461,17 +419,11 @@ extension HTML.Element
     {
         .bdi(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `bdi` element. 
+    /// Creates an HTML `bdi` element with the given children. 
     @inlinable public static 
-    func bdi(attributes:[Attribute] = []) -> Self 
+    func bdi(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .bdi(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `bdi` element containing a single child element. 
-    @inlinable public static 
-    func bdi(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .bdi(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .bdi(content, attributes: attributes)
     }
     /// Creates an HTML `bdi` element with the given content. 
     @inlinable public static 
@@ -507,17 +459,11 @@ extension HTML.Element
     {
         .bdo(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `bdo` element. 
+    /// Creates an HTML `bdo` element with the given children. 
     @inlinable public static 
-    func bdo(attributes:[Attribute] = []) -> Self 
+    func bdo(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .bdo(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `bdo` element containing a single child element. 
-    @inlinable public static 
-    func bdo(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .bdo(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .bdo(content, attributes: attributes)
     }
     /// Creates an HTML `bdo` element with the given content. 
     @inlinable public static 
@@ -553,17 +499,11 @@ extension HTML.Element
     {
         .address(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `address` element. 
+    /// Creates an HTML `address` element with the given children. 
     @inlinable public static 
-    func address(attributes:[Attribute] = []) -> Self 
+    func address(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .address(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `address` element containing a single child element. 
-    @inlinable public static 
-    func address(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .address(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .address(content, attributes: attributes)
     }
     /// Creates an HTML `address` element with the given content. 
     @inlinable public static 
@@ -599,17 +539,11 @@ extension HTML.Element
     {
         .article(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `article` element. 
+    /// Creates an HTML `article` element with the given children. 
     @inlinable public static 
-    func article(attributes:[Attribute] = []) -> Self 
+    func article(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .article(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `article` element containing a single child element. 
-    @inlinable public static 
-    func article(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .article(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .article(content, attributes: attributes)
     }
     /// Creates an HTML `article` element with the given content. 
     @inlinable public static 
@@ -645,17 +579,11 @@ extension HTML.Element
     {
         .aside(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `aside` element. 
+    /// Creates an HTML `aside` element with the given children. 
     @inlinable public static 
-    func aside(attributes:[Attribute] = []) -> Self 
+    func aside(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .aside(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `aside` element containing a single child element. 
-    @inlinable public static 
-    func aside(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .aside(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .aside(content, attributes: attributes)
     }
     /// Creates an HTML `aside` element with the given content. 
     @inlinable public static 
@@ -691,17 +619,11 @@ extension HTML.Element
     {
         .blockquote(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `blockquote` element. 
+    /// Creates an HTML `blockquote` element with the given children. 
     @inlinable public static 
-    func blockquote(attributes:[Attribute] = []) -> Self 
+    func blockquote(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .blockquote(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `blockquote` element containing a single child element. 
-    @inlinable public static 
-    func blockquote(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .blockquote(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .blockquote(content, attributes: attributes)
     }
     /// Creates an HTML `blockquote` element with the given content. 
     @inlinable public static 
@@ -737,17 +659,11 @@ extension HTML.Element
     {
         .button(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `button` element. 
+    /// Creates an HTML `button` element with the given children. 
     @inlinable public static 
-    func button(attributes:[Attribute] = []) -> Self 
+    func button(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .button(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `button` element containing a single child element. 
-    @inlinable public static 
-    func button(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .button(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .button(content, attributes: attributes)
     }
     /// Creates an HTML `button` element with the given content. 
     @inlinable public static 
@@ -783,17 +699,11 @@ extension HTML.Element
     {
         .canvas(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `canvas` element. 
+    /// Creates an HTML `canvas` element with the given children. 
     @inlinable public static 
-    func canvas(attributes:[Attribute] = []) -> Self 
+    func canvas(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .canvas(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `canvas` element containing a single child element. 
-    @inlinable public static 
-    func canvas(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .canvas(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .canvas(content, attributes: attributes)
     }
     /// Creates an HTML `canvas` element with the given content. 
     @inlinable public static 
@@ -829,17 +739,11 @@ extension HTML.Element
     {
         .caption(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `caption` element. 
+    /// Creates an HTML `caption` element with the given children. 
     @inlinable public static 
-    func caption(attributes:[Attribute] = []) -> Self 
+    func caption(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .caption(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `caption` element containing a single child element. 
-    @inlinable public static 
-    func caption(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .caption(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .caption(content, attributes: attributes)
     }
     /// Creates an HTML `caption` element with the given content. 
     @inlinable public static 
@@ -875,17 +779,11 @@ extension HTML.Element
     {
         .code(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `code` element. 
+    /// Creates an HTML `code` element with the given children. 
     @inlinable public static 
-    func code(attributes:[Attribute] = []) -> Self 
+    func code(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .code(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `code` element containing a single child element. 
-    @inlinable public static 
-    func code(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .code(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .code(content, attributes: attributes)
     }
     /// Creates an HTML `code` element with the given content. 
     @inlinable public static 
@@ -921,17 +819,11 @@ extension HTML.Element
     {
         .colgroup(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `colgroup` element. 
+    /// Creates an HTML `colgroup` element with the given children. 
     @inlinable public static 
-    func colgroup(attributes:[Attribute] = []) -> Self 
+    func colgroup(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .colgroup(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `colgroup` element containing a single child element. 
-    @inlinable public static 
-    func colgroup(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .colgroup(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .colgroup(content, attributes: attributes)
     }
     /// Creates an HTML `colgroup` element with the given content. 
     @inlinable public static 
@@ -967,17 +859,11 @@ extension HTML.Element
     {
         .cite(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `cite` element. 
+    /// Creates an HTML `cite` element with the given children. 
     @inlinable public static 
-    func cite(attributes:[Attribute] = []) -> Self 
+    func cite(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .cite(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `cite` element containing a single child element. 
-    @inlinable public static 
-    func cite(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .cite(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .cite(content, attributes: attributes)
     }
     /// Creates an HTML `cite` element with the given content. 
     @inlinable public static 
@@ -1013,17 +899,11 @@ extension HTML.Element
     {
         .data(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `data` element. 
+    /// Creates an HTML `data` element with the given children. 
     @inlinable public static 
-    func data(attributes:[Attribute] = []) -> Self 
+    func data(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .data(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `data` element containing a single child element. 
-    @inlinable public static 
-    func data(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .data(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .data(content, attributes: attributes)
     }
     /// Creates an HTML `data` element with the given content. 
     @inlinable public static 
@@ -1059,17 +939,11 @@ extension HTML.Element
     {
         .datalist(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `datalist` element. 
+    /// Creates an HTML `datalist` element with the given children. 
     @inlinable public static 
-    func datalist(attributes:[Attribute] = []) -> Self 
+    func datalist(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .datalist(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `datalist` element containing a single child element. 
-    @inlinable public static 
-    func datalist(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .datalist(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .datalist(content, attributes: attributes)
     }
     /// Creates an HTML `datalist` element with the given content. 
     @inlinable public static 
@@ -1105,17 +979,11 @@ extension HTML.Element
     {
         .del(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `del` element. 
+    /// Creates an HTML `del` element with the given children. 
     @inlinable public static 
-    func del(attributes:[Attribute] = []) -> Self 
+    func del(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .del(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `del` element containing a single child element. 
-    @inlinable public static 
-    func del(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .del(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .del(content, attributes: attributes)
     }
     /// Creates an HTML `del` element with the given content. 
     @inlinable public static 
@@ -1151,17 +1019,11 @@ extension HTML.Element
     {
         .details(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `details` element. 
+    /// Creates an HTML `details` element with the given children. 
     @inlinable public static 
-    func details(attributes:[Attribute] = []) -> Self 
+    func details(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .details(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `details` element containing a single child element. 
-    @inlinable public static 
-    func details(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .details(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .details(content, attributes: attributes)
     }
     /// Creates an HTML `details` element with the given content. 
     @inlinable public static 
@@ -1197,17 +1059,11 @@ extension HTML.Element
     {
         .dialog(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `dialog` element. 
+    /// Creates an HTML `dialog` element with the given children. 
     @inlinable public static 
-    func dialog(attributes:[Attribute] = []) -> Self 
+    func dialog(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .dialog(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `dialog` element containing a single child element. 
-    @inlinable public static 
-    func dialog(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .dialog(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .dialog(content, attributes: attributes)
     }
     /// Creates an HTML `dialog` element with the given content. 
     @inlinable public static 
@@ -1243,17 +1099,11 @@ extension HTML.Element
     {
         .dfn(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `dfn` element. 
+    /// Creates an HTML `dfn` element with the given children. 
     @inlinable public static 
-    func dfn(attributes:[Attribute] = []) -> Self 
+    func dfn(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .dfn(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `dfn` element containing a single child element. 
-    @inlinable public static 
-    func dfn(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .dfn(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .dfn(content, attributes: attributes)
     }
     /// Creates an HTML `dfn` element with the given content. 
     @inlinable public static 
@@ -1289,17 +1139,11 @@ extension HTML.Element
     {
         .div(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `div` element. 
+    /// Creates an HTML `div` element with the given children. 
     @inlinable public static 
-    func div(attributes:[Attribute] = []) -> Self 
+    func div(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .div(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `div` element containing a single child element. 
-    @inlinable public static 
-    func div(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .div(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .div(content, attributes: attributes)
     }
     /// Creates an HTML `div` element with the given content. 
     @inlinable public static 
@@ -1335,17 +1179,11 @@ extension HTML.Element
     {
         .dl(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `dl` element. 
+    /// Creates an HTML `dl` element with the given children. 
     @inlinable public static 
-    func dl(attributes:[Attribute] = []) -> Self 
+    func dl(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .dl(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `dl` element containing a single child element. 
-    @inlinable public static 
-    func dl(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .dl(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .dl(content, attributes: attributes)
     }
     /// Creates an HTML `dl` element with the given content. 
     @inlinable public static 
@@ -1381,17 +1219,11 @@ extension HTML.Element
     {
         .dt(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `dt` element. 
+    /// Creates an HTML `dt` element with the given children. 
     @inlinable public static 
-    func dt(attributes:[Attribute] = []) -> Self 
+    func dt(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .dt(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `dt` element containing a single child element. 
-    @inlinable public static 
-    func dt(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .dt(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .dt(content, attributes: attributes)
     }
     /// Creates an HTML `dt` element with the given content. 
     @inlinable public static 
@@ -1427,17 +1259,11 @@ extension HTML.Element
     {
         .dd(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `dd` element. 
+    /// Creates an HTML `dd` element with the given children. 
     @inlinable public static 
-    func dd(attributes:[Attribute] = []) -> Self 
+    func dd(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .dd(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `dd` element containing a single child element. 
-    @inlinable public static 
-    func dd(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .dd(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .dd(content, attributes: attributes)
     }
     /// Creates an HTML `dd` element with the given content. 
     @inlinable public static 
@@ -1473,17 +1299,11 @@ extension HTML.Element
     {
         .em(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `em` element. 
+    /// Creates an HTML `em` element with the given children. 
     @inlinable public static 
-    func em(attributes:[Attribute] = []) -> Self 
+    func em(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .em(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `em` element containing a single child element. 
-    @inlinable public static 
-    func em(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .em(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .em(content, attributes: attributes)
     }
     /// Creates an HTML `em` element with the given content. 
     @inlinable public static 
@@ -1519,17 +1339,11 @@ extension HTML.Element
     {
         .embed(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `embed` element. 
+    /// Creates an HTML `embed` element with the given children. 
     @inlinable public static 
-    func embed(attributes:[Attribute] = []) -> Self 
+    func embed(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .embed(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `embed` element containing a single child element. 
-    @inlinable public static 
-    func embed(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .embed(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .embed(content, attributes: attributes)
     }
     /// Creates an HTML `embed` element with the given content. 
     @inlinable public static 
@@ -1565,17 +1379,11 @@ extension HTML.Element
     {
         .fieldset(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `fieldset` element. 
+    /// Creates an HTML `fieldset` element with the given children. 
     @inlinable public static 
-    func fieldset(attributes:[Attribute] = []) -> Self 
+    func fieldset(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .fieldset(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `fieldset` element containing a single child element. 
-    @inlinable public static 
-    func fieldset(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .fieldset(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .fieldset(content, attributes: attributes)
     }
     /// Creates an HTML `fieldset` element with the given content. 
     @inlinable public static 
@@ -1611,17 +1419,11 @@ extension HTML.Element
     {
         .figcaption(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `figcaption` element. 
+    /// Creates an HTML `figcaption` element with the given children. 
     @inlinable public static 
-    func figcaption(attributes:[Attribute] = []) -> Self 
+    func figcaption(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .figcaption(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `figcaption` element containing a single child element. 
-    @inlinable public static 
-    func figcaption(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .figcaption(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .figcaption(content, attributes: attributes)
     }
     /// Creates an HTML `figcaption` element with the given content. 
     @inlinable public static 
@@ -1657,17 +1459,11 @@ extension HTML.Element
     {
         .figure(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `figure` element. 
+    /// Creates an HTML `figure` element with the given children. 
     @inlinable public static 
-    func figure(attributes:[Attribute] = []) -> Self 
+    func figure(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .figure(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `figure` element containing a single child element. 
-    @inlinable public static 
-    func figure(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .figure(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .figure(content, attributes: attributes)
     }
     /// Creates an HTML `figure` element with the given content. 
     @inlinable public static 
@@ -1703,17 +1499,11 @@ extension HTML.Element
     {
         .footer(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `footer` element. 
+    /// Creates an HTML `footer` element with the given children. 
     @inlinable public static 
-    func footer(attributes:[Attribute] = []) -> Self 
+    func footer(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .footer(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `footer` element containing a single child element. 
-    @inlinable public static 
-    func footer(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .footer(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .footer(content, attributes: attributes)
     }
     /// Creates an HTML `footer` element with the given content. 
     @inlinable public static 
@@ -1749,17 +1539,11 @@ extension HTML.Element
     {
         .form(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `form` element. 
+    /// Creates an HTML `form` element with the given children. 
     @inlinable public static 
-    func form(attributes:[Attribute] = []) -> Self 
+    func form(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .form(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `form` element containing a single child element. 
-    @inlinable public static 
-    func form(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .form(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .form(content, attributes: attributes)
     }
     /// Creates an HTML `form` element with the given content. 
     @inlinable public static 
@@ -1795,17 +1579,11 @@ extension HTML.Element
     {
         .h1(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `h1` element. 
+    /// Creates an HTML `h1` element with the given children. 
     @inlinable public static 
-    func h1(attributes:[Attribute] = []) -> Self 
+    func h1(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .h1(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `h1` element containing a single child element. 
-    @inlinable public static 
-    func h1(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .h1(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .h1(content, attributes: attributes)
     }
     /// Creates an HTML `h1` element with the given content. 
     @inlinable public static 
@@ -1841,17 +1619,11 @@ extension HTML.Element
     {
         .h2(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `h2` element. 
+    /// Creates an HTML `h2` element with the given children. 
     @inlinable public static 
-    func h2(attributes:[Attribute] = []) -> Self 
+    func h2(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .h2(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `h2` element containing a single child element. 
-    @inlinable public static 
-    func h2(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .h2(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .h2(content, attributes: attributes)
     }
     /// Creates an HTML `h2` element with the given content. 
     @inlinable public static 
@@ -1887,17 +1659,11 @@ extension HTML.Element
     {
         .h3(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `h3` element. 
+    /// Creates an HTML `h3` element with the given children. 
     @inlinable public static 
-    func h3(attributes:[Attribute] = []) -> Self 
+    func h3(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .h3(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `h3` element containing a single child element. 
-    @inlinable public static 
-    func h3(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .h3(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .h3(content, attributes: attributes)
     }
     /// Creates an HTML `h3` element with the given content. 
     @inlinable public static 
@@ -1933,17 +1699,11 @@ extension HTML.Element
     {
         .h4(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `h4` element. 
+    /// Creates an HTML `h4` element with the given children. 
     @inlinable public static 
-    func h4(attributes:[Attribute] = []) -> Self 
+    func h4(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .h4(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `h4` element containing a single child element. 
-    @inlinable public static 
-    func h4(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .h4(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .h4(content, attributes: attributes)
     }
     /// Creates an HTML `h4` element with the given content. 
     @inlinable public static 
@@ -1979,17 +1739,11 @@ extension HTML.Element
     {
         .h5(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `h5` element. 
+    /// Creates an HTML `h5` element with the given children. 
     @inlinable public static 
-    func h5(attributes:[Attribute] = []) -> Self 
+    func h5(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .h5(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `h5` element containing a single child element. 
-    @inlinable public static 
-    func h5(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .h5(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .h5(content, attributes: attributes)
     }
     /// Creates an HTML `h5` element with the given content. 
     @inlinable public static 
@@ -2025,17 +1779,11 @@ extension HTML.Element
     {
         .h6(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `h6` element. 
+    /// Creates an HTML `h6` element with the given children. 
     @inlinable public static 
-    func h6(attributes:[Attribute] = []) -> Self 
+    func h6(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .h6(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `h6` element containing a single child element. 
-    @inlinable public static 
-    func h6(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .h6(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .h6(content, attributes: attributes)
     }
     /// Creates an HTML `h6` element with the given content. 
     @inlinable public static 
@@ -2071,17 +1819,11 @@ extension HTML.Element
     {
         .header(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `header` element. 
+    /// Creates an HTML `header` element with the given children. 
     @inlinable public static 
-    func header(attributes:[Attribute] = []) -> Self 
+    func header(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .header(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `header` element containing a single child element. 
-    @inlinable public static 
-    func header(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .header(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .header(content, attributes: attributes)
     }
     /// Creates an HTML `header` element with the given content. 
     @inlinable public static 
@@ -2117,17 +1859,11 @@ extension HTML.Element
     {
         .i(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `i` element. 
+    /// Creates an HTML `i` element with the given children. 
     @inlinable public static 
-    func i(attributes:[Attribute] = []) -> Self 
+    func i(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .i(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `i` element containing a single child element. 
-    @inlinable public static 
-    func i(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .i(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .i(content, attributes: attributes)
     }
     /// Creates an HTML `i` element with the given content. 
     @inlinable public static 
@@ -2163,17 +1899,11 @@ extension HTML.Element
     {
         .iframe(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `iframe` element. 
+    /// Creates an HTML `iframe` element with the given children. 
     @inlinable public static 
-    func iframe(attributes:[Attribute] = []) -> Self 
+    func iframe(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .iframe(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `iframe` element containing a single child element. 
-    @inlinable public static 
-    func iframe(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .iframe(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .iframe(content, attributes: attributes)
     }
     /// Creates an HTML `iframe` element with the given content. 
     @inlinable public static 
@@ -2209,17 +1939,11 @@ extension HTML.Element
     {
         .ins(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `ins` element. 
+    /// Creates an HTML `ins` element with the given children. 
     @inlinable public static 
-    func ins(attributes:[Attribute] = []) -> Self 
+    func ins(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .ins(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `ins` element containing a single child element. 
-    @inlinable public static 
-    func ins(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .ins(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .ins(content, attributes: attributes)
     }
     /// Creates an HTML `ins` element with the given content. 
     @inlinable public static 
@@ -2255,17 +1979,11 @@ extension HTML.Element
     {
         .kbd(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `kbd` element. 
+    /// Creates an HTML `kbd` element with the given children. 
     @inlinable public static 
-    func kbd(attributes:[Attribute] = []) -> Self 
+    func kbd(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .kbd(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `kbd` element containing a single child element. 
-    @inlinable public static 
-    func kbd(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .kbd(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .kbd(content, attributes: attributes)
     }
     /// Creates an HTML `kbd` element with the given content. 
     @inlinable public static 
@@ -2301,17 +2019,11 @@ extension HTML.Element
     {
         .label(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `label` element. 
+    /// Creates an HTML `label` element with the given children. 
     @inlinable public static 
-    func label(attributes:[Attribute] = []) -> Self 
+    func label(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .label(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `label` element containing a single child element. 
-    @inlinable public static 
-    func label(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .label(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .label(content, attributes: attributes)
     }
     /// Creates an HTML `label` element with the given content. 
     @inlinable public static 
@@ -2347,17 +2059,11 @@ extension HTML.Element
     {
         .legend(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `legend` element. 
+    /// Creates an HTML `legend` element with the given children. 
     @inlinable public static 
-    func legend(attributes:[Attribute] = []) -> Self 
+    func legend(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .legend(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `legend` element containing a single child element. 
-    @inlinable public static 
-    func legend(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .legend(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .legend(content, attributes: attributes)
     }
     /// Creates an HTML `legend` element with the given content. 
     @inlinable public static 
@@ -2393,17 +2099,11 @@ extension HTML.Element
     {
         .li(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `li` element. 
+    /// Creates an HTML `li` element with the given children. 
     @inlinable public static 
-    func li(attributes:[Attribute] = []) -> Self 
+    func li(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .li(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `li` element containing a single child element. 
-    @inlinable public static 
-    func li(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .li(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .li(content, attributes: attributes)
     }
     /// Creates an HTML `li` element with the given content. 
     @inlinable public static 
@@ -2439,17 +2139,11 @@ extension HTML.Element
     {
         .main(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `main` element. 
+    /// Creates an HTML `main` element with the given children. 
     @inlinable public static 
-    func main(attributes:[Attribute] = []) -> Self 
+    func main(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .main(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `main` element containing a single child element. 
-    @inlinable public static 
-    func main(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .main(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .main(content, attributes: attributes)
     }
     /// Creates an HTML `main` element with the given content. 
     @inlinable public static 
@@ -2485,17 +2179,11 @@ extension HTML.Element
     {
         .map(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `map` element. 
+    /// Creates an HTML `map` element with the given children. 
     @inlinable public static 
-    func map(attributes:[Attribute] = []) -> Self 
+    func map(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .map(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `map` element containing a single child element. 
-    @inlinable public static 
-    func map(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .map(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .map(content, attributes: attributes)
     }
     /// Creates an HTML `map` element with the given content. 
     @inlinable public static 
@@ -2531,17 +2219,11 @@ extension HTML.Element
     {
         .mark(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `mark` element. 
+    /// Creates an HTML `mark` element with the given children. 
     @inlinable public static 
-    func mark(attributes:[Attribute] = []) -> Self 
+    func mark(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .mark(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `mark` element containing a single child element. 
-    @inlinable public static 
-    func mark(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .mark(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .mark(content, attributes: attributes)
     }
     /// Creates an HTML `mark` element with the given content. 
     @inlinable public static 
@@ -2577,17 +2259,11 @@ extension HTML.Element
     {
         .menu(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `menu` element. 
+    /// Creates an HTML `menu` element with the given children. 
     @inlinable public static 
-    func menu(attributes:[Attribute] = []) -> Self 
+    func menu(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .menu(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `menu` element containing a single child element. 
-    @inlinable public static 
-    func menu(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .menu(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .menu(content, attributes: attributes)
     }
     /// Creates an HTML `menu` element with the given content. 
     @inlinable public static 
@@ -2623,17 +2299,11 @@ extension HTML.Element
     {
         .meter(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `meter` element. 
+    /// Creates an HTML `meter` element with the given children. 
     @inlinable public static 
-    func meter(attributes:[Attribute] = []) -> Self 
+    func meter(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .meter(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `meter` element containing a single child element. 
-    @inlinable public static 
-    func meter(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .meter(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .meter(content, attributes: attributes)
     }
     /// Creates an HTML `meter` element with the given content. 
     @inlinable public static 
@@ -2669,17 +2339,11 @@ extension HTML.Element
     {
         .nav(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `nav` element. 
+    /// Creates an HTML `nav` element with the given children. 
     @inlinable public static 
-    func nav(attributes:[Attribute] = []) -> Self 
+    func nav(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .nav(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `nav` element containing a single child element. 
-    @inlinable public static 
-    func nav(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .nav(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .nav(content, attributes: attributes)
     }
     /// Creates an HTML `nav` element with the given content. 
     @inlinable public static 
@@ -2715,17 +2379,11 @@ extension HTML.Element
     {
         .noscript(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `noscript` element. 
+    /// Creates an HTML `noscript` element with the given children. 
     @inlinable public static 
-    func noscript(attributes:[Attribute] = []) -> Self 
+    func noscript(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .noscript(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `noscript` element containing a single child element. 
-    @inlinable public static 
-    func noscript(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .noscript(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .noscript(content, attributes: attributes)
     }
     /// Creates an HTML `noscript` element with the given content. 
     @inlinable public static 
@@ -2761,17 +2419,11 @@ extension HTML.Element
     {
         .ol(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `ol` element. 
+    /// Creates an HTML `ol` element with the given children. 
     @inlinable public static 
-    func ol(attributes:[Attribute] = []) -> Self 
+    func ol(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .ol(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `ol` element containing a single child element. 
-    @inlinable public static 
-    func ol(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .ol(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .ol(content, attributes: attributes)
     }
     /// Creates an HTML `ol` element with the given content. 
     @inlinable public static 
@@ -2807,17 +2459,11 @@ extension HTML.Element
     {
         .object(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `object` element. 
+    /// Creates an HTML `object` element with the given children. 
     @inlinable public static 
-    func object(attributes:[Attribute] = []) -> Self 
+    func object(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .object(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `object` element containing a single child element. 
-    @inlinable public static 
-    func object(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .object(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .object(content, attributes: attributes)
     }
     /// Creates an HTML `object` element with the given content. 
     @inlinable public static 
@@ -2853,17 +2499,11 @@ extension HTML.Element
     {
         .optgroup(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `optgroup` element. 
+    /// Creates an HTML `optgroup` element with the given children. 
     @inlinable public static 
-    func optgroup(attributes:[Attribute] = []) -> Self 
+    func optgroup(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .optgroup(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `optgroup` element containing a single child element. 
-    @inlinable public static 
-    func optgroup(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .optgroup(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .optgroup(content, attributes: attributes)
     }
     /// Creates an HTML `optgroup` element with the given content. 
     @inlinable public static 
@@ -2899,17 +2539,11 @@ extension HTML.Element
     {
         .option(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `option` element. 
+    /// Creates an HTML `option` element with the given children. 
     @inlinable public static 
-    func option(attributes:[Attribute] = []) -> Self 
+    func option(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .option(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `option` element containing a single child element. 
-    @inlinable public static 
-    func option(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .option(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .option(content, attributes: attributes)
     }
     /// Creates an HTML `option` element with the given content. 
     @inlinable public static 
@@ -2945,17 +2579,11 @@ extension HTML.Element
     {
         .output(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `output` element. 
+    /// Creates an HTML `output` element with the given children. 
     @inlinable public static 
-    func output(attributes:[Attribute] = []) -> Self 
+    func output(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .output(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `output` element containing a single child element. 
-    @inlinable public static 
-    func output(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .output(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .output(content, attributes: attributes)
     }
     /// Creates an HTML `output` element with the given content. 
     @inlinable public static 
@@ -2991,17 +2619,11 @@ extension HTML.Element
     {
         .p(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `p` element. 
+    /// Creates an HTML `p` element with the given children. 
     @inlinable public static 
-    func p(attributes:[Attribute] = []) -> Self 
+    func p(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .p(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `p` element containing a single child element. 
-    @inlinable public static 
-    func p(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .p(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .p(content, attributes: attributes)
     }
     /// Creates an HTML `p` element with the given content. 
     @inlinable public static 
@@ -3037,17 +2659,11 @@ extension HTML.Element
     {
         .picture(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `picture` element. 
+    /// Creates an HTML `picture` element with the given children. 
     @inlinable public static 
-    func picture(attributes:[Attribute] = []) -> Self 
+    func picture(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .picture(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `picture` element containing a single child element. 
-    @inlinable public static 
-    func picture(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .picture(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .picture(content, attributes: attributes)
     }
     /// Creates an HTML `picture` element with the given content. 
     @inlinable public static 
@@ -3083,17 +2699,11 @@ extension HTML.Element
     {
         .portal(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `portal` element. 
+    /// Creates an HTML `portal` element with the given children. 
     @inlinable public static 
-    func portal(attributes:[Attribute] = []) -> Self 
+    func portal(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .portal(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `portal` element containing a single child element. 
-    @inlinable public static 
-    func portal(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .portal(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .portal(content, attributes: attributes)
     }
     /// Creates an HTML `portal` element with the given content. 
     @inlinable public static 
@@ -3129,17 +2739,11 @@ extension HTML.Element
     {
         .pre(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `pre` element. 
+    /// Creates an HTML `pre` element with the given children. 
     @inlinable public static 
-    func pre(attributes:[Attribute] = []) -> Self 
+    func pre(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .pre(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `pre` element containing a single child element. 
-    @inlinable public static 
-    func pre(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .pre(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .pre(content, attributes: attributes)
     }
     /// Creates an HTML `pre` element with the given content. 
     @inlinable public static 
@@ -3175,17 +2779,11 @@ extension HTML.Element
     {
         .progress(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `progress` element. 
+    /// Creates an HTML `progress` element with the given children. 
     @inlinable public static 
-    func progress(attributes:[Attribute] = []) -> Self 
+    func progress(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .progress(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `progress` element containing a single child element. 
-    @inlinable public static 
-    func progress(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .progress(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .progress(content, attributes: attributes)
     }
     /// Creates an HTML `progress` element with the given content. 
     @inlinable public static 
@@ -3221,17 +2819,11 @@ extension HTML.Element
     {
         .q(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `q` element. 
+    /// Creates an HTML `q` element with the given children. 
     @inlinable public static 
-    func q(attributes:[Attribute] = []) -> Self 
+    func q(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .q(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `q` element containing a single child element. 
-    @inlinable public static 
-    func q(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .q(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .q(content, attributes: attributes)
     }
     /// Creates an HTML `q` element with the given content. 
     @inlinable public static 
@@ -3267,17 +2859,11 @@ extension HTML.Element
     {
         .rp(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `rp` element. 
+    /// Creates an HTML `rp` element with the given children. 
     @inlinable public static 
-    func rp(attributes:[Attribute] = []) -> Self 
+    func rp(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .rp(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `rp` element containing a single child element. 
-    @inlinable public static 
-    func rp(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .rp(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .rp(content, attributes: attributes)
     }
     /// Creates an HTML `rp` element with the given content. 
     @inlinable public static 
@@ -3313,17 +2899,11 @@ extension HTML.Element
     {
         .rt(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `rt` element. 
+    /// Creates an HTML `rt` element with the given children. 
     @inlinable public static 
-    func rt(attributes:[Attribute] = []) -> Self 
+    func rt(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .rt(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `rt` element containing a single child element. 
-    @inlinable public static 
-    func rt(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .rt(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .rt(content, attributes: attributes)
     }
     /// Creates an HTML `rt` element with the given content. 
     @inlinable public static 
@@ -3359,17 +2939,11 @@ extension HTML.Element
     {
         .ruby(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `ruby` element. 
+    /// Creates an HTML `ruby` element with the given children. 
     @inlinable public static 
-    func ruby(attributes:[Attribute] = []) -> Self 
+    func ruby(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .ruby(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `ruby` element containing a single child element. 
-    @inlinable public static 
-    func ruby(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .ruby(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .ruby(content, attributes: attributes)
     }
     /// Creates an HTML `ruby` element with the given content. 
     @inlinable public static 
@@ -3405,17 +2979,11 @@ extension HTML.Element
     {
         .s(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `s` element. 
+    /// Creates an HTML `s` element with the given children. 
     @inlinable public static 
-    func s(attributes:[Attribute] = []) -> Self 
+    func s(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .s(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `s` element containing a single child element. 
-    @inlinable public static 
-    func s(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .s(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .s(content, attributes: attributes)
     }
     /// Creates an HTML `s` element with the given content. 
     @inlinable public static 
@@ -3451,17 +3019,11 @@ extension HTML.Element
     {
         .samp(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `samp` element. 
+    /// Creates an HTML `samp` element with the given children. 
     @inlinable public static 
-    func samp(attributes:[Attribute] = []) -> Self 
+    func samp(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .samp(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `samp` element containing a single child element. 
-    @inlinable public static 
-    func samp(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .samp(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .samp(content, attributes: attributes)
     }
     /// Creates an HTML `samp` element with the given content. 
     @inlinable public static 
@@ -3497,17 +3059,11 @@ extension HTML.Element
     {
         .small(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `small` element. 
+    /// Creates an HTML `small` element with the given children. 
     @inlinable public static 
-    func small(attributes:[Attribute] = []) -> Self 
+    func small(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .small(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `small` element containing a single child element. 
-    @inlinable public static 
-    func small(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .small(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .small(content, attributes: attributes)
     }
     /// Creates an HTML `small` element with the given content. 
     @inlinable public static 
@@ -3543,17 +3099,11 @@ extension HTML.Element
     {
         .section(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `section` element. 
+    /// Creates an HTML `section` element with the given children. 
     @inlinable public static 
-    func section(attributes:[Attribute] = []) -> Self 
+    func section(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .section(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `section` element containing a single child element. 
-    @inlinable public static 
-    func section(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .section(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .section(content, attributes: attributes)
     }
     /// Creates an HTML `section` element with the given content. 
     @inlinable public static 
@@ -3589,17 +3139,11 @@ extension HTML.Element
     {
         .span(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `span` element. 
+    /// Creates an HTML `span` element with the given children. 
     @inlinable public static 
-    func span(attributes:[Attribute] = []) -> Self 
+    func span(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .span(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `span` element containing a single child element. 
-    @inlinable public static 
-    func span(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .span(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .span(content, attributes: attributes)
     }
     /// Creates an HTML `span` element with the given content. 
     @inlinable public static 
@@ -3635,17 +3179,11 @@ extension HTML.Element
     {
         .script(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `script` element. 
+    /// Creates an HTML `script` element with the given children. 
     @inlinable public static 
-    func script(attributes:[Attribute] = []) -> Self 
+    func script(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .script(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `script` element containing a single child element. 
-    @inlinable public static 
-    func script(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .script(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .script(content, attributes: attributes)
     }
     /// Creates an HTML `script` element with the given content. 
     @inlinable public static 
@@ -3681,17 +3219,11 @@ extension HTML.Element
     {
         .select(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `select` element. 
+    /// Creates an HTML `select` element with the given children. 
     @inlinable public static 
-    func select(attributes:[Attribute] = []) -> Self 
+    func select(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .select(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `select` element containing a single child element. 
-    @inlinable public static 
-    func select(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .select(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .select(content, attributes: attributes)
     }
     /// Creates an HTML `select` element with the given content. 
     @inlinable public static 
@@ -3727,17 +3259,11 @@ extension HTML.Element
     {
         .slot(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `slot` element. 
+    /// Creates an HTML `slot` element with the given children. 
     @inlinable public static 
-    func slot(attributes:[Attribute] = []) -> Self 
+    func slot(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .slot(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `slot` element containing a single child element. 
-    @inlinable public static 
-    func slot(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .slot(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .slot(content, attributes: attributes)
     }
     /// Creates an HTML `slot` element with the given content. 
     @inlinable public static 
@@ -3773,17 +3299,11 @@ extension HTML.Element
     {
         .strong(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `strong` element. 
+    /// Creates an HTML `strong` element with the given children. 
     @inlinable public static 
-    func strong(attributes:[Attribute] = []) -> Self 
+    func strong(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .strong(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `strong` element containing a single child element. 
-    @inlinable public static 
-    func strong(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .strong(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .strong(content, attributes: attributes)
     }
     /// Creates an HTML `strong` element with the given content. 
     @inlinable public static 
@@ -3819,17 +3339,11 @@ extension HTML.Element
     {
         .style(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `style` element. 
+    /// Creates an HTML `style` element with the given children. 
     @inlinable public static 
-    func style(attributes:[Attribute] = []) -> Self 
+    func style(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .style(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `style` element containing a single child element. 
-    @inlinable public static 
-    func style(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .style(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .style(content, attributes: attributes)
     }
     /// Creates an HTML `style` element with the given content. 
     @inlinable public static 
@@ -3865,17 +3379,11 @@ extension HTML.Element
     {
         .sub(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `sub` element. 
+    /// Creates an HTML `sub` element with the given children. 
     @inlinable public static 
-    func sub(attributes:[Attribute] = []) -> Self 
+    func sub(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .sub(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `sub` element containing a single child element. 
-    @inlinable public static 
-    func sub(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .sub(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .sub(content, attributes: attributes)
     }
     /// Creates an HTML `sub` element with the given content. 
     @inlinable public static 
@@ -3911,17 +3419,11 @@ extension HTML.Element
     {
         .summary(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `summary` element. 
+    /// Creates an HTML `summary` element with the given children. 
     @inlinable public static 
-    func summary(attributes:[Attribute] = []) -> Self 
+    func summary(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .summary(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `summary` element containing a single child element. 
-    @inlinable public static 
-    func summary(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .summary(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .summary(content, attributes: attributes)
     }
     /// Creates an HTML `summary` element with the given content. 
     @inlinable public static 
@@ -3957,17 +3459,11 @@ extension HTML.Element
     {
         .sup(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `sup` element. 
+    /// Creates an HTML `sup` element with the given children. 
     @inlinable public static 
-    func sup(attributes:[Attribute] = []) -> Self 
+    func sup(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .sup(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `sup` element containing a single child element. 
-    @inlinable public static 
-    func sup(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .sup(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .sup(content, attributes: attributes)
     }
     /// Creates an HTML `sup` element with the given content. 
     @inlinable public static 
@@ -4003,17 +3499,11 @@ extension HTML.Element
     {
         .table(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `table` element. 
+    /// Creates an HTML `table` element with the given children. 
     @inlinable public static 
-    func table(attributes:[Attribute] = []) -> Self 
+    func table(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .table(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `table` element containing a single child element. 
-    @inlinable public static 
-    func table(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .table(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .table(content, attributes: attributes)
     }
     /// Creates an HTML `table` element with the given content. 
     @inlinable public static 
@@ -4049,17 +3539,11 @@ extension HTML.Element
     {
         .tbody(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `tbody` element. 
+    /// Creates an HTML `tbody` element with the given children. 
     @inlinable public static 
-    func tbody(attributes:[Attribute] = []) -> Self 
+    func tbody(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .tbody(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `tbody` element containing a single child element. 
-    @inlinable public static 
-    func tbody(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .tbody(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .tbody(content, attributes: attributes)
     }
     /// Creates an HTML `tbody` element with the given content. 
     @inlinable public static 
@@ -4095,17 +3579,11 @@ extension HTML.Element
     {
         .td(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `td` element. 
+    /// Creates an HTML `td` element with the given children. 
     @inlinable public static 
-    func td(attributes:[Attribute] = []) -> Self 
+    func td(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .td(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `td` element containing a single child element. 
-    @inlinable public static 
-    func td(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .td(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .td(content, attributes: attributes)
     }
     /// Creates an HTML `td` element with the given content. 
     @inlinable public static 
@@ -4141,17 +3619,11 @@ extension HTML.Element
     {
         .template(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `template` element. 
+    /// Creates an HTML `template` element with the given children. 
     @inlinable public static 
-    func template(attributes:[Attribute] = []) -> Self 
+    func template(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .template(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `template` element containing a single child element. 
-    @inlinable public static 
-    func template(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .template(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .template(content, attributes: attributes)
     }
     /// Creates an HTML `template` element with the given content. 
     @inlinable public static 
@@ -4187,17 +3659,11 @@ extension HTML.Element
     {
         .textarea(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `textarea` element. 
+    /// Creates an HTML `textarea` element with the given children. 
     @inlinable public static 
-    func textarea(attributes:[Attribute] = []) -> Self 
+    func textarea(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .textarea(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `textarea` element containing a single child element. 
-    @inlinable public static 
-    func textarea(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .textarea(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .textarea(content, attributes: attributes)
     }
     /// Creates an HTML `textarea` element with the given content. 
     @inlinable public static 
@@ -4233,17 +3699,11 @@ extension HTML.Element
     {
         .tfoot(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `tfoot` element. 
+    /// Creates an HTML `tfoot` element with the given children. 
     @inlinable public static 
-    func tfoot(attributes:[Attribute] = []) -> Self 
+    func tfoot(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .tfoot(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `tfoot` element containing a single child element. 
-    @inlinable public static 
-    func tfoot(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .tfoot(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .tfoot(content, attributes: attributes)
     }
     /// Creates an HTML `tfoot` element with the given content. 
     @inlinable public static 
@@ -4279,17 +3739,11 @@ extension HTML.Element
     {
         .th(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `th` element. 
+    /// Creates an HTML `th` element with the given children. 
     @inlinable public static 
-    func th(attributes:[Attribute] = []) -> Self 
+    func th(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .th(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `th` element containing a single child element. 
-    @inlinable public static 
-    func th(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .th(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .th(content, attributes: attributes)
     }
     /// Creates an HTML `th` element with the given content. 
     @inlinable public static 
@@ -4325,17 +3779,11 @@ extension HTML.Element
     {
         .thead(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `thead` element. 
+    /// Creates an HTML `thead` element with the given children. 
     @inlinable public static 
-    func thead(attributes:[Attribute] = []) -> Self 
+    func thead(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .thead(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `thead` element containing a single child element. 
-    @inlinable public static 
-    func thead(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .thead(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .thead(content, attributes: attributes)
     }
     /// Creates an HTML `thead` element with the given content. 
     @inlinable public static 
@@ -4371,17 +3819,11 @@ extension HTML.Element
     {
         .time(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `time` element. 
+    /// Creates an HTML `time` element with the given children. 
     @inlinable public static 
-    func time(attributes:[Attribute] = []) -> Self 
+    func time(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .time(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `time` element containing a single child element. 
-    @inlinable public static 
-    func time(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .time(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .time(content, attributes: attributes)
     }
     /// Creates an HTML `time` element with the given content. 
     @inlinable public static 
@@ -4417,17 +3859,11 @@ extension HTML.Element
     {
         .title(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `title` element. 
+    /// Creates an HTML `title` element with the given children. 
     @inlinable public static 
-    func title(attributes:[Attribute] = []) -> Self 
+    func title(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .title(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `title` element containing a single child element. 
-    @inlinable public static 
-    func title(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .title(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .title(content, attributes: attributes)
     }
     /// Creates an HTML `title` element with the given content. 
     @inlinable public static 
@@ -4463,17 +3899,11 @@ extension HTML.Element
     {
         .tr(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `tr` element. 
+    /// Creates an HTML `tr` element with the given children. 
     @inlinable public static 
-    func tr(attributes:[Attribute] = []) -> Self 
+    func tr(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .tr(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `tr` element containing a single child element. 
-    @inlinable public static 
-    func tr(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .tr(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .tr(content, attributes: attributes)
     }
     /// Creates an HTML `tr` element with the given content. 
     @inlinable public static 
@@ -4509,17 +3939,11 @@ extension HTML.Element
     {
         .u(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `u` element. 
+    /// Creates an HTML `u` element with the given children. 
     @inlinable public static 
-    func u(attributes:[Attribute] = []) -> Self 
+    func u(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .u(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `u` element containing a single child element. 
-    @inlinable public static 
-    func u(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .u(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .u(content, attributes: attributes)
     }
     /// Creates an HTML `u` element with the given content. 
     @inlinable public static 
@@ -4555,17 +3979,11 @@ extension HTML.Element
     {
         .ul(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `ul` element. 
+    /// Creates an HTML `ul` element with the given children. 
     @inlinable public static 
-    func ul(attributes:[Attribute] = []) -> Self 
+    func ul(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .ul(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `ul` element containing a single child element. 
-    @inlinable public static 
-    func ul(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .ul(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .ul(content, attributes: attributes)
     }
     /// Creates an HTML `ul` element with the given content. 
     @inlinable public static 
@@ -4601,17 +4019,11 @@ extension HTML.Element
     {
         .`var`(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML ``var`` element. 
+    /// Creates an HTML ``var`` element with the given children. 
     @inlinable public static 
-    func `var`(attributes:[Attribute] = []) -> Self 
+    func `var`(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .`var`(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML ``var`` element containing a single child element. 
-    @inlinable public static 
-    func `var`(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .`var`(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .`var`(content, attributes: attributes)
     }
     /// Creates an HTML ``var`` element with the given content. 
     @inlinable public static 
@@ -4647,17 +4059,11 @@ extension HTML.Element
     {
         .video(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty HTML `video` element. 
+    /// Creates an HTML `video` element with the given children. 
     @inlinable public static 
-    func video(attributes:[Attribute] = []) -> Self 
+    func video(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .video(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an HTML `video` element containing a single child element. 
-    @inlinable public static 
-    func video(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .video(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .video(content, attributes: attributes)
     }
     /// Creates an HTML `video` element with the given content. 
     @inlinable public static 

@@ -18,9 +18,9 @@ extension HTML
         }
 
         @inlinable public 
-        init(_ wrapped:Element<Anchor>, attributes:[Element<Anchor>.Attribute] = [])
+        init(_ content:Element<Anchor>..., attributes:[Element<Anchor>.Attribute] = [])
         {
-            self.init(CollectionOfOne<Element<Anchor>>.init(wrapped), attributes: attributes)
+            self.init(content, attributes: attributes)
         }
         @inlinable public 
         init<Content>(_ content:Content, attributes:[Element<Anchor>.Attribute] = []) 
