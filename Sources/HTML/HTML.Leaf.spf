@@ -20,12 +20,14 @@ let leaves:[Never] =
 
 extension HTML 
 {
+    /// An HTML element type that cannot have children.
     @frozen public 
     enum Leaf:String, CustomStringConvertible, Sendable
     {
         @matrix(__leaf__: leaves)
         case __leaf__
 
+        /// The name of this HTML leaf element.
         @inlinable public 
         var description:String
         {
@@ -37,8 +39,15 @@ extension HTML
 @matrix(__leaf__: leaves)
 extension HTML.Element 
 {
+    /// Creates an HTML `\(__leaf__)` element. 
     @inlinable public static 
-    func __leaf__(attributes:[Attribute] = []) -> Self 
+    var __leaf__:Self 
+    {
+        .__leaf__(attributes: [])
+    }
+    /// Creates an HTML `\(__leaf__)` element with the given attributes. 
+    @inlinable public static 
+    func __leaf__(attributes:[Attribute]) -> Self 
     {
         .init(node: .leaf(.__leaf__, attributes: attributes.map(\.value)))
     }

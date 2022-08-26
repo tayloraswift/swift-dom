@@ -2,6 +2,7 @@ import DOM
 
 extension HTML 
 {
+    /// An HTML element type that can have children.
     @frozen public 
     enum Container:String, CustomStringConvertible, Sendable
     {
@@ -105,6 +106,7 @@ extension HTML
         case `var`
         case video
 
+        /// The name of this HTML container element.
         @inlinable public 
         var description:String
         {
@@ -143,11 +145,13 @@ extension HTML.Element
     {
         .html(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `html` element containing a single child element. 
     @inlinable public static 
     func html(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .html(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `html` element with the given content. 
     @inlinable public static 
     func html<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -187,11 +191,13 @@ extension HTML.Element
     {
         .head(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `head` element containing a single child element. 
     @inlinable public static 
     func head(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .head(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `head` element with the given content. 
     @inlinable public static 
     func head<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -231,11 +237,13 @@ extension HTML.Element
     {
         .body(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `body` element containing a single child element. 
     @inlinable public static 
     func body(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .body(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `body` element with the given content. 
     @inlinable public static 
     func body<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -275,11 +283,13 @@ extension HTML.Element
     {
         .a(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `a` element containing a single child element. 
     @inlinable public static 
     func a(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .a(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `a` element with the given content. 
     @inlinable public static 
     func a<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -319,11 +329,13 @@ extension HTML.Element
     {
         .abbr(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `abbr` element containing a single child element. 
     @inlinable public static 
     func abbr(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .abbr(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `abbr` element with the given content. 
     @inlinable public static 
     func abbr<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -363,11 +375,13 @@ extension HTML.Element
     {
         .audio(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `audio` element containing a single child element. 
     @inlinable public static 
     func audio(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .audio(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `audio` element with the given content. 
     @inlinable public static 
     func audio<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -407,11 +421,13 @@ extension HTML.Element
     {
         .b(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `b` element containing a single child element. 
     @inlinable public static 
     func b(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .b(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `b` element with the given content. 
     @inlinable public static 
     func b<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -451,11 +467,13 @@ extension HTML.Element
     {
         .bdi(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `bdi` element containing a single child element. 
     @inlinable public static 
     func bdi(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .bdi(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `bdi` element with the given content. 
     @inlinable public static 
     func bdi<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -495,11 +513,13 @@ extension HTML.Element
     {
         .bdo(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `bdo` element containing a single child element. 
     @inlinable public static 
     func bdo(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .bdo(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `bdo` element with the given content. 
     @inlinable public static 
     func bdo<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -539,11 +559,13 @@ extension HTML.Element
     {
         .address(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `address` element containing a single child element. 
     @inlinable public static 
     func address(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .address(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `address` element with the given content. 
     @inlinable public static 
     func address<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -583,11 +605,13 @@ extension HTML.Element
     {
         .article(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `article` element containing a single child element. 
     @inlinable public static 
     func article(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .article(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `article` element with the given content. 
     @inlinable public static 
     func article<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -627,11 +651,13 @@ extension HTML.Element
     {
         .aside(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `aside` element containing a single child element. 
     @inlinable public static 
     func aside(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .aside(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `aside` element with the given content. 
     @inlinable public static 
     func aside<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -671,11 +697,13 @@ extension HTML.Element
     {
         .blockquote(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `blockquote` element containing a single child element. 
     @inlinable public static 
     func blockquote(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .blockquote(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `blockquote` element with the given content. 
     @inlinable public static 
     func blockquote<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -715,11 +743,13 @@ extension HTML.Element
     {
         .button(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `button` element containing a single child element. 
     @inlinable public static 
     func button(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .button(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `button` element with the given content. 
     @inlinable public static 
     func button<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -759,11 +789,13 @@ extension HTML.Element
     {
         .canvas(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `canvas` element containing a single child element. 
     @inlinable public static 
     func canvas(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .canvas(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `canvas` element with the given content. 
     @inlinable public static 
     func canvas<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -803,11 +835,13 @@ extension HTML.Element
     {
         .caption(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `caption` element containing a single child element. 
     @inlinable public static 
     func caption(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .caption(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `caption` element with the given content. 
     @inlinable public static 
     func caption<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -847,11 +881,13 @@ extension HTML.Element
     {
         .code(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `code` element containing a single child element. 
     @inlinable public static 
     func code(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .code(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `code` element with the given content. 
     @inlinable public static 
     func code<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -891,11 +927,13 @@ extension HTML.Element
     {
         .colgroup(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `colgroup` element containing a single child element. 
     @inlinable public static 
     func colgroup(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .colgroup(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `colgroup` element with the given content. 
     @inlinable public static 
     func colgroup<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -935,11 +973,13 @@ extension HTML.Element
     {
         .cite(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `cite` element containing a single child element. 
     @inlinable public static 
     func cite(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .cite(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `cite` element with the given content. 
     @inlinable public static 
     func cite<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -979,11 +1019,13 @@ extension HTML.Element
     {
         .data(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `data` element containing a single child element. 
     @inlinable public static 
     func data(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .data(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `data` element with the given content. 
     @inlinable public static 
     func data<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1023,11 +1065,13 @@ extension HTML.Element
     {
         .datalist(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `datalist` element containing a single child element. 
     @inlinable public static 
     func datalist(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .datalist(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `datalist` element with the given content. 
     @inlinable public static 
     func datalist<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1067,11 +1111,13 @@ extension HTML.Element
     {
         .del(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `del` element containing a single child element. 
     @inlinable public static 
     func del(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .del(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `del` element with the given content. 
     @inlinable public static 
     func del<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1111,11 +1157,13 @@ extension HTML.Element
     {
         .details(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `details` element containing a single child element. 
     @inlinable public static 
     func details(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .details(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `details` element with the given content. 
     @inlinable public static 
     func details<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1155,11 +1203,13 @@ extension HTML.Element
     {
         .dialog(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `dialog` element containing a single child element. 
     @inlinable public static 
     func dialog(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .dialog(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `dialog` element with the given content. 
     @inlinable public static 
     func dialog<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1199,11 +1249,13 @@ extension HTML.Element
     {
         .dfn(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `dfn` element containing a single child element. 
     @inlinable public static 
     func dfn(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .dfn(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `dfn` element with the given content. 
     @inlinable public static 
     func dfn<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1243,11 +1295,13 @@ extension HTML.Element
     {
         .div(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `div` element containing a single child element. 
     @inlinable public static 
     func div(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .div(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `div` element with the given content. 
     @inlinable public static 
     func div<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1287,11 +1341,13 @@ extension HTML.Element
     {
         .dl(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `dl` element containing a single child element. 
     @inlinable public static 
     func dl(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .dl(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `dl` element with the given content. 
     @inlinable public static 
     func dl<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1331,11 +1387,13 @@ extension HTML.Element
     {
         .dt(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `dt` element containing a single child element. 
     @inlinable public static 
     func dt(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .dt(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `dt` element with the given content. 
     @inlinable public static 
     func dt<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1375,11 +1433,13 @@ extension HTML.Element
     {
         .dd(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `dd` element containing a single child element. 
     @inlinable public static 
     func dd(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .dd(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `dd` element with the given content. 
     @inlinable public static 
     func dd<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1419,11 +1479,13 @@ extension HTML.Element
     {
         .em(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `em` element containing a single child element. 
     @inlinable public static 
     func em(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .em(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `em` element with the given content. 
     @inlinable public static 
     func em<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1463,11 +1525,13 @@ extension HTML.Element
     {
         .embed(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `embed` element containing a single child element. 
     @inlinable public static 
     func embed(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .embed(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `embed` element with the given content. 
     @inlinable public static 
     func embed<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1507,11 +1571,13 @@ extension HTML.Element
     {
         .fieldset(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `fieldset` element containing a single child element. 
     @inlinable public static 
     func fieldset(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .fieldset(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `fieldset` element with the given content. 
     @inlinable public static 
     func fieldset<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1551,11 +1617,13 @@ extension HTML.Element
     {
         .figcaption(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `figcaption` element containing a single child element. 
     @inlinable public static 
     func figcaption(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .figcaption(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `figcaption` element with the given content. 
     @inlinable public static 
     func figcaption<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1595,11 +1663,13 @@ extension HTML.Element
     {
         .figure(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `figure` element containing a single child element. 
     @inlinable public static 
     func figure(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .figure(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `figure` element with the given content. 
     @inlinable public static 
     func figure<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1639,11 +1709,13 @@ extension HTML.Element
     {
         .footer(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `footer` element containing a single child element. 
     @inlinable public static 
     func footer(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .footer(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `footer` element with the given content. 
     @inlinable public static 
     func footer<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1683,11 +1755,13 @@ extension HTML.Element
     {
         .form(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `form` element containing a single child element. 
     @inlinable public static 
     func form(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .form(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `form` element with the given content. 
     @inlinable public static 
     func form<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1727,11 +1801,13 @@ extension HTML.Element
     {
         .h1(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `h1` element containing a single child element. 
     @inlinable public static 
     func h1(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .h1(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `h1` element with the given content. 
     @inlinable public static 
     func h1<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1771,11 +1847,13 @@ extension HTML.Element
     {
         .h2(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `h2` element containing a single child element. 
     @inlinable public static 
     func h2(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .h2(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `h2` element with the given content. 
     @inlinable public static 
     func h2<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1815,11 +1893,13 @@ extension HTML.Element
     {
         .h3(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `h3` element containing a single child element. 
     @inlinable public static 
     func h3(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .h3(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `h3` element with the given content. 
     @inlinable public static 
     func h3<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1859,11 +1939,13 @@ extension HTML.Element
     {
         .h4(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `h4` element containing a single child element. 
     @inlinable public static 
     func h4(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .h4(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `h4` element with the given content. 
     @inlinable public static 
     func h4<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1903,11 +1985,13 @@ extension HTML.Element
     {
         .h5(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `h5` element containing a single child element. 
     @inlinable public static 
     func h5(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .h5(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `h5` element with the given content. 
     @inlinable public static 
     func h5<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1947,11 +2031,13 @@ extension HTML.Element
     {
         .h6(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `h6` element containing a single child element. 
     @inlinable public static 
     func h6(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .h6(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `h6` element with the given content. 
     @inlinable public static 
     func h6<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -1991,11 +2077,13 @@ extension HTML.Element
     {
         .header(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `header` element containing a single child element. 
     @inlinable public static 
     func header(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .header(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `header` element with the given content. 
     @inlinable public static 
     func header<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2035,11 +2123,13 @@ extension HTML.Element
     {
         .i(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `i` element containing a single child element. 
     @inlinable public static 
     func i(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .i(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `i` element with the given content. 
     @inlinable public static 
     func i<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2079,11 +2169,13 @@ extension HTML.Element
     {
         .iframe(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `iframe` element containing a single child element. 
     @inlinable public static 
     func iframe(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .iframe(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `iframe` element with the given content. 
     @inlinable public static 
     func iframe<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2123,11 +2215,13 @@ extension HTML.Element
     {
         .ins(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `ins` element containing a single child element. 
     @inlinable public static 
     func ins(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .ins(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `ins` element with the given content. 
     @inlinable public static 
     func ins<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2167,11 +2261,13 @@ extension HTML.Element
     {
         .kbd(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `kbd` element containing a single child element. 
     @inlinable public static 
     func kbd(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .kbd(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `kbd` element with the given content. 
     @inlinable public static 
     func kbd<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2211,11 +2307,13 @@ extension HTML.Element
     {
         .label(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `label` element containing a single child element. 
     @inlinable public static 
     func label(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .label(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `label` element with the given content. 
     @inlinable public static 
     func label<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2255,11 +2353,13 @@ extension HTML.Element
     {
         .legend(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `legend` element containing a single child element. 
     @inlinable public static 
     func legend(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .legend(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `legend` element with the given content. 
     @inlinable public static 
     func legend<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2299,11 +2399,13 @@ extension HTML.Element
     {
         .li(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `li` element containing a single child element. 
     @inlinable public static 
     func li(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .li(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `li` element with the given content. 
     @inlinable public static 
     func li<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2343,11 +2445,13 @@ extension HTML.Element
     {
         .main(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `main` element containing a single child element. 
     @inlinable public static 
     func main(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .main(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `main` element with the given content. 
     @inlinable public static 
     func main<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2387,11 +2491,13 @@ extension HTML.Element
     {
         .map(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `map` element containing a single child element. 
     @inlinable public static 
     func map(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .map(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `map` element with the given content. 
     @inlinable public static 
     func map<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2431,11 +2537,13 @@ extension HTML.Element
     {
         .mark(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `mark` element containing a single child element. 
     @inlinable public static 
     func mark(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .mark(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `mark` element with the given content. 
     @inlinable public static 
     func mark<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2475,11 +2583,13 @@ extension HTML.Element
     {
         .menu(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `menu` element containing a single child element. 
     @inlinable public static 
     func menu(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .menu(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `menu` element with the given content. 
     @inlinable public static 
     func menu<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2519,11 +2629,13 @@ extension HTML.Element
     {
         .meter(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `meter` element containing a single child element. 
     @inlinable public static 
     func meter(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .meter(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `meter` element with the given content. 
     @inlinable public static 
     func meter<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2563,11 +2675,13 @@ extension HTML.Element
     {
         .nav(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `nav` element containing a single child element. 
     @inlinable public static 
     func nav(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .nav(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `nav` element with the given content. 
     @inlinable public static 
     func nav<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2607,11 +2721,13 @@ extension HTML.Element
     {
         .noscript(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `noscript` element containing a single child element. 
     @inlinable public static 
     func noscript(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .noscript(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `noscript` element with the given content. 
     @inlinable public static 
     func noscript<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2651,11 +2767,13 @@ extension HTML.Element
     {
         .ol(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `ol` element containing a single child element. 
     @inlinable public static 
     func ol(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .ol(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `ol` element with the given content. 
     @inlinable public static 
     func ol<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2695,11 +2813,13 @@ extension HTML.Element
     {
         .object(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `object` element containing a single child element. 
     @inlinable public static 
     func object(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .object(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `object` element with the given content. 
     @inlinable public static 
     func object<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2739,11 +2859,13 @@ extension HTML.Element
     {
         .optgroup(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `optgroup` element containing a single child element. 
     @inlinable public static 
     func optgroup(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .optgroup(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `optgroup` element with the given content. 
     @inlinable public static 
     func optgroup<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2783,11 +2905,13 @@ extension HTML.Element
     {
         .option(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `option` element containing a single child element. 
     @inlinable public static 
     func option(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .option(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `option` element with the given content. 
     @inlinable public static 
     func option<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2827,11 +2951,13 @@ extension HTML.Element
     {
         .output(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `output` element containing a single child element. 
     @inlinable public static 
     func output(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .output(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `output` element with the given content. 
     @inlinable public static 
     func output<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2871,11 +2997,13 @@ extension HTML.Element
     {
         .p(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `p` element containing a single child element. 
     @inlinable public static 
     func p(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .p(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `p` element with the given content. 
     @inlinable public static 
     func p<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2915,11 +3043,13 @@ extension HTML.Element
     {
         .picture(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `picture` element containing a single child element. 
     @inlinable public static 
     func picture(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .picture(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `picture` element with the given content. 
     @inlinable public static 
     func picture<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -2959,11 +3089,13 @@ extension HTML.Element
     {
         .portal(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `portal` element containing a single child element. 
     @inlinable public static 
     func portal(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .portal(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `portal` element with the given content. 
     @inlinable public static 
     func portal<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3003,11 +3135,13 @@ extension HTML.Element
     {
         .pre(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `pre` element containing a single child element. 
     @inlinable public static 
     func pre(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .pre(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `pre` element with the given content. 
     @inlinable public static 
     func pre<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3047,11 +3181,13 @@ extension HTML.Element
     {
         .progress(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `progress` element containing a single child element. 
     @inlinable public static 
     func progress(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .progress(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `progress` element with the given content. 
     @inlinable public static 
     func progress<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3091,11 +3227,13 @@ extension HTML.Element
     {
         .q(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `q` element containing a single child element. 
     @inlinable public static 
     func q(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .q(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `q` element with the given content. 
     @inlinable public static 
     func q<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3135,11 +3273,13 @@ extension HTML.Element
     {
         .rp(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `rp` element containing a single child element. 
     @inlinable public static 
     func rp(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .rp(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `rp` element with the given content. 
     @inlinable public static 
     func rp<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3179,11 +3319,13 @@ extension HTML.Element
     {
         .rt(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `rt` element containing a single child element. 
     @inlinable public static 
     func rt(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .rt(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `rt` element with the given content. 
     @inlinable public static 
     func rt<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3223,11 +3365,13 @@ extension HTML.Element
     {
         .ruby(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `ruby` element containing a single child element. 
     @inlinable public static 
     func ruby(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .ruby(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `ruby` element with the given content. 
     @inlinable public static 
     func ruby<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3267,11 +3411,13 @@ extension HTML.Element
     {
         .s(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `s` element containing a single child element. 
     @inlinable public static 
     func s(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .s(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `s` element with the given content. 
     @inlinable public static 
     func s<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3311,11 +3457,13 @@ extension HTML.Element
     {
         .samp(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `samp` element containing a single child element. 
     @inlinable public static 
     func samp(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .samp(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `samp` element with the given content. 
     @inlinable public static 
     func samp<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3355,11 +3503,13 @@ extension HTML.Element
     {
         .small(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `small` element containing a single child element. 
     @inlinable public static 
     func small(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .small(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `small` element with the given content. 
     @inlinable public static 
     func small<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3399,11 +3549,13 @@ extension HTML.Element
     {
         .section(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `section` element containing a single child element. 
     @inlinable public static 
     func section(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .section(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `section` element with the given content. 
     @inlinable public static 
     func section<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3443,11 +3595,13 @@ extension HTML.Element
     {
         .span(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `span` element containing a single child element. 
     @inlinable public static 
     func span(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .span(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `span` element with the given content. 
     @inlinable public static 
     func span<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3487,11 +3641,13 @@ extension HTML.Element
     {
         .script(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `script` element containing a single child element. 
     @inlinable public static 
     func script(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .script(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `script` element with the given content. 
     @inlinable public static 
     func script<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3531,11 +3687,13 @@ extension HTML.Element
     {
         .select(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `select` element containing a single child element. 
     @inlinable public static 
     func select(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .select(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `select` element with the given content. 
     @inlinable public static 
     func select<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3575,11 +3733,13 @@ extension HTML.Element
     {
         .slot(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `slot` element containing a single child element. 
     @inlinable public static 
     func slot(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .slot(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `slot` element with the given content. 
     @inlinable public static 
     func slot<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3619,11 +3779,13 @@ extension HTML.Element
     {
         .strong(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `strong` element containing a single child element. 
     @inlinable public static 
     func strong(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .strong(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `strong` element with the given content. 
     @inlinable public static 
     func strong<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3663,11 +3825,13 @@ extension HTML.Element
     {
         .style(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `style` element containing a single child element. 
     @inlinable public static 
     func style(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .style(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `style` element with the given content. 
     @inlinable public static 
     func style<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3707,11 +3871,13 @@ extension HTML.Element
     {
         .sub(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `sub` element containing a single child element. 
     @inlinable public static 
     func sub(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .sub(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `sub` element with the given content. 
     @inlinable public static 
     func sub<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3751,11 +3917,13 @@ extension HTML.Element
     {
         .summary(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `summary` element containing a single child element. 
     @inlinable public static 
     func summary(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .summary(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `summary` element with the given content. 
     @inlinable public static 
     func summary<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3795,11 +3963,13 @@ extension HTML.Element
     {
         .sup(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `sup` element containing a single child element. 
     @inlinable public static 
     func sup(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .sup(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `sup` element with the given content. 
     @inlinable public static 
     func sup<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3839,11 +4009,13 @@ extension HTML.Element
     {
         .table(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `table` element containing a single child element. 
     @inlinable public static 
     func table(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .table(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `table` element with the given content. 
     @inlinable public static 
     func table<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3883,11 +4055,13 @@ extension HTML.Element
     {
         .tbody(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `tbody` element containing a single child element. 
     @inlinable public static 
     func tbody(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .tbody(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `tbody` element with the given content. 
     @inlinable public static 
     func tbody<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3927,11 +4101,13 @@ extension HTML.Element
     {
         .td(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `td` element containing a single child element. 
     @inlinable public static 
     func td(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .td(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `td` element with the given content. 
     @inlinable public static 
     func td<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -3971,11 +4147,13 @@ extension HTML.Element
     {
         .template(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `template` element containing a single child element. 
     @inlinable public static 
     func template(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .template(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `template` element with the given content. 
     @inlinable public static 
     func template<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -4015,11 +4193,13 @@ extension HTML.Element
     {
         .textarea(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `textarea` element containing a single child element. 
     @inlinable public static 
     func textarea(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .textarea(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `textarea` element with the given content. 
     @inlinable public static 
     func textarea<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -4059,11 +4239,13 @@ extension HTML.Element
     {
         .tfoot(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `tfoot` element containing a single child element. 
     @inlinable public static 
     func tfoot(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .tfoot(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `tfoot` element with the given content. 
     @inlinable public static 
     func tfoot<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -4103,11 +4285,13 @@ extension HTML.Element
     {
         .th(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `th` element containing a single child element. 
     @inlinable public static 
     func th(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .th(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `th` element with the given content. 
     @inlinable public static 
     func th<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -4147,11 +4331,13 @@ extension HTML.Element
     {
         .thead(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `thead` element containing a single child element. 
     @inlinable public static 
     func thead(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .thead(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `thead` element with the given content. 
     @inlinable public static 
     func thead<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -4191,11 +4377,13 @@ extension HTML.Element
     {
         .time(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `time` element containing a single child element. 
     @inlinable public static 
     func time(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .time(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `time` element with the given content. 
     @inlinable public static 
     func time<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -4235,11 +4423,13 @@ extension HTML.Element
     {
         .title(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `title` element containing a single child element. 
     @inlinable public static 
     func title(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .title(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `title` element with the given content. 
     @inlinable public static 
     func title<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -4279,11 +4469,13 @@ extension HTML.Element
     {
         .tr(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `tr` element containing a single child element. 
     @inlinable public static 
     func tr(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .tr(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `tr` element with the given content. 
     @inlinable public static 
     func tr<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -4323,11 +4515,13 @@ extension HTML.Element
     {
         .u(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `u` element containing a single child element. 
     @inlinable public static 
     func u(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .u(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `u` element with the given content. 
     @inlinable public static 
     func u<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -4367,11 +4561,13 @@ extension HTML.Element
     {
         .ul(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `ul` element containing a single child element. 
     @inlinable public static 
     func ul(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .ul(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `ul` element with the given content. 
     @inlinable public static 
     func ul<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -4411,11 +4607,13 @@ extension HTML.Element
     {
         .`var`(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML ``var`` element containing a single child element. 
     @inlinable public static 
     func `var`(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .`var`(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML ``var`` element with the given content. 
     @inlinable public static 
     func `var`<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 
@@ -4455,11 +4653,13 @@ extension HTML.Element
     {
         .video(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an HTML `video` element containing a single child element. 
     @inlinable public static 
     func video(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .video(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an HTML `video` element with the given content. 
     @inlinable public static 
     func video<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 

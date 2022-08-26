@@ -142,7 +142,7 @@ struct Main
     mutating 
     func main() 
     {
-        self.assert(HTML.Element<Never>.br().node.rendered(as: [UInt8].self) 
+        self.assert(HTML.Element<Never>.br.node.rendered(as: [UInt8].self) 
         ==? 
         """
         <br>
