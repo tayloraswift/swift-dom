@@ -1,0 +1,9 @@
+version: 1
+builder:
+    configs:
+    -   platform: ios
+        scheme: HTML 
+    -   platform: tvos
+        scheme: HTML 
+    -   platform: watchos
+        scheme: HTML 

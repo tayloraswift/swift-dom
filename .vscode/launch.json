@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug HTMLTests",
+            "program": "${workspaceFolder:swift-dom}/.build/debug/HTMLTests",
+            "args": [],
+            "cwd": "${workspaceFolder:swift-dom}",
+            "preLaunchTask": "swift: Build Debug HTMLTests"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Release HTMLTests",
+            "program": "${workspaceFolder:swift-dom}/.build/release/HTMLTests",
+            "args": [],
+            "cwd": "${workspaceFolder:swift-dom}",
+            "preLaunchTask": "swift: Build Release HTMLTests"
+        }
+    ]
+}
