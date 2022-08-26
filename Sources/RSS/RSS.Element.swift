@@ -44,23 +44,22 @@ enum RSS
 extension DOM.Flattened 
 {
     @inlinable public 
+    init(freezing elements:RSS.Element<Key>...)
+    {
+        self.init(freezing: elements)
+    }
+    @inlinable public 
     init<Elements>(freezing elements:Elements)
         where Elements:Sequence, Elements.Element == RSS.Element<Key>
     {
         self.init()
         self.freeze(elements)
     }
-    @inlinable public 
-    init(freezing element:RSS.Element<Key>)
-    {
-        self.init()
-        self.freeze(element)
-    }
     
     @inlinable public mutating 
-    func freeze(_ element:RSS.Element<Key>)
+    func freeze(_ elements:RSS.Element<Key>...)
     {
-        element.node.rendered(into: &self.literals, anchors: &self.anchors)
+        self.freeze(elements)
     }
     @inlinable public mutating 
     func freeze<Elements>(_ elements:Elements)
