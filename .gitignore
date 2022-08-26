@@ -1,2 +1,6 @@
 .build/
-Package.resolved
+
+/swift-biome/
+
+Package.catalog
+*.ss
