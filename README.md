@@ -1,6 +1,6 @@
 <div align="center">
 
-***`dom`***<br>`0.5.0`
+***`dom`***<br>`0.5.2`
 
 [![ci status](https://github.com/kelvin13/swift-dom/actions/workflows/build.yml/badge.svg)](https://github.com/kelvin13/swift-dom/actions/workflows/build.yml)
 [![ci status](https://github.com/kelvin13/swift-dom/actions/workflows/build-devices.yml/badge.svg)](https://github.com/kelvin13/swift-dom/actions/workflows/build-devices.yml)
