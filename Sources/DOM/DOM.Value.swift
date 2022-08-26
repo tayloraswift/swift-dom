@@ -34,7 +34,7 @@ extension DOM
         {
             typealias InlineUTF8 = (UInt, UInt, UInt32, UInt16)
             let count:Int = utf8.count
-            if  MemoryLayout<InlineUTF8>.size < count
+            if  count <= MemoryLayout<InlineUTF8>.size 
             {
                 #if swift(>=5.6)
                 self = .inline(utf8: withUnsafeTemporaryAllocation(
