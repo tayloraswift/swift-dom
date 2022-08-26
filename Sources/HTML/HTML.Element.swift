@@ -37,23 +37,22 @@ enum HTML
 extension DOM.Flattened 
 {
     @inlinable public 
+    init(freezing elements:HTML.Element<Key>...)
+    {
+        self.init(freezing: elements)
+    }
+    @inlinable public 
     init<Elements>(freezing elements:Elements)
         where Elements:Sequence, Elements.Element == HTML.Element<Key>
     {
         self.init()
         self.freeze(elements)
     }
-    @inlinable public 
-    init(freezing element:HTML.Element<Key>)
-    {
-        self.init()
-        self.freeze(element)
-    }
     
     @inlinable public mutating 
-    func freeze(_ element:HTML.Element<Key>)
+    func freeze(_ elements:HTML.Element<Key>...)
     {
-        element.node.rendered(into: &self.literals, anchors: &self.anchors)
+        self.freeze(elements)
     }
     @inlinable public mutating 
     func freeze<Elements>(_ elements:Elements)

@@ -183,7 +183,7 @@ struct Main
         <!DOCTYPE html><html lang="en"><head></head></html>
         """.utf8)
 
-        self.assert(HTML.Root<Never>.init([.head(), .body()], attributes:
+        self.assert(HTML.Root<Never>.init(.head(), .body(), attributes:
         [
             .lang("en"),
         ]).rendered(as: [UInt8].self) 
@@ -193,10 +193,8 @@ struct Main
         """.utf8)
 
          self.assert(DOM.Flattened<String>.init(freezing: .init(
-                [
-                    .head(),
-                    .body(.init(anchor: "body")),
-                ], 
+                .head(),
+                .body(.init(anchor: "body")), 
                 attributes: 
                 [
                     .init(anchor: "language"),

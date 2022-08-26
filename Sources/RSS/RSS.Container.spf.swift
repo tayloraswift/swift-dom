@@ -49,17 +49,11 @@ extension RSS.Element
     {
         .rss(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty RSS `rss` element. 
+    /// Creates an RSS `rss` element with the given children. 
     @inlinable public static 
-    func rss(attributes:[Attribute] = []) -> Self 
+    func rss(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .rss(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an RSS `rss` element containing a single child element. 
-    @inlinable public static 
-    func rss(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .rss(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .rss(content, attributes: attributes)
     }
     /// Creates an RSS `rss` element with the given content. 
     @inlinable public static 
@@ -95,17 +89,11 @@ extension RSS.Element
     {
         .channel(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty RSS `channel` element. 
+    /// Creates an RSS `channel` element with the given children. 
     @inlinable public static 
-    func channel(attributes:[Attribute] = []) -> Self 
+    func channel(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .channel(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an RSS `channel` element containing a single child element. 
-    @inlinable public static 
-    func channel(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .channel(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .channel(content, attributes: attributes)
     }
     /// Creates an RSS `channel` element with the given content. 
     @inlinable public static 
@@ -141,17 +129,11 @@ extension RSS.Element
     {
         .title(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty RSS `title` element. 
+    /// Creates an RSS `title` element with the given children. 
     @inlinable public static 
-    func title(attributes:[Attribute] = []) -> Self 
+    func title(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .title(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an RSS `title` element containing a single child element. 
-    @inlinable public static 
-    func title(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .title(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .title(content, attributes: attributes)
     }
     /// Creates an RSS `title` element with the given content. 
     @inlinable public static 
@@ -187,17 +169,11 @@ extension RSS.Element
     {
         .description(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty RSS `description` element. 
+    /// Creates an RSS `description` element with the given children. 
     @inlinable public static 
-    func description(attributes:[Attribute] = []) -> Self 
+    func description(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .description(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an RSS `description` element containing a single child element. 
-    @inlinable public static 
-    func description(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .description(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .description(content, attributes: attributes)
     }
     /// Creates an RSS `description` element with the given content. 
     @inlinable public static 
@@ -233,17 +209,11 @@ extension RSS.Element
     {
         .link(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty RSS `link` element. 
+    /// Creates an RSS `link` element with the given children. 
     @inlinable public static 
-    func link(attributes:[Attribute] = []) -> Self 
+    func link(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .link(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an RSS `link` element containing a single child element. 
-    @inlinable public static 
-    func link(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .link(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .link(content, attributes: attributes)
     }
     /// Creates an RSS `link` element with the given content. 
     @inlinable public static 
@@ -279,17 +249,11 @@ extension RSS.Element
     {
         .copyright(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty RSS `copyright` element. 
+    /// Creates an RSS `copyright` element with the given children. 
     @inlinable public static 
-    func copyright(attributes:[Attribute] = []) -> Self 
+    func copyright(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .copyright(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an RSS `copyright` element containing a single child element. 
-    @inlinable public static 
-    func copyright(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .copyright(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .copyright(content, attributes: attributes)
     }
     /// Creates an RSS `copyright` element with the given content. 
     @inlinable public static 
@@ -325,17 +289,11 @@ extension RSS.Element
     {
         .lastBuildDate(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty RSS `lastBuildDate` element. 
+    /// Creates an RSS `lastBuildDate` element with the given children. 
     @inlinable public static 
-    func lastBuildDate(attributes:[Attribute] = []) -> Self 
+    func lastBuildDate(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .lastBuildDate(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an RSS `lastBuildDate` element containing a single child element. 
-    @inlinable public static 
-    func lastBuildDate(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .lastBuildDate(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .lastBuildDate(content, attributes: attributes)
     }
     /// Creates an RSS `lastBuildDate` element with the given content. 
     @inlinable public static 
@@ -371,17 +329,11 @@ extension RSS.Element
     {
         .pubDate(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty RSS `pubDate` element. 
+    /// Creates an RSS `pubDate` element with the given children. 
     @inlinable public static 
-    func pubDate(attributes:[Attribute] = []) -> Self 
+    func pubDate(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .pubDate(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an RSS `pubDate` element containing a single child element. 
-    @inlinable public static 
-    func pubDate(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .pubDate(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .pubDate(content, attributes: attributes)
     }
     /// Creates an RSS `pubDate` element with the given content. 
     @inlinable public static 
@@ -417,17 +369,11 @@ extension RSS.Element
     {
         .ttl(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty RSS `ttl` element. 
+    /// Creates an RSS `ttl` element with the given children. 
     @inlinable public static 
-    func ttl(attributes:[Attribute] = []) -> Self 
+    func ttl(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .ttl(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an RSS `ttl` element containing a single child element. 
-    @inlinable public static 
-    func ttl(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .ttl(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .ttl(content, attributes: attributes)
     }
     /// Creates an RSS `ttl` element with the given content. 
     @inlinable public static 
@@ -463,17 +409,11 @@ extension RSS.Element
     {
         .item(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty RSS `item` element. 
+    /// Creates an RSS `item` element with the given children. 
     @inlinable public static 
-    func item(attributes:[Attribute] = []) -> Self 
+    func item(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .item(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an RSS `item` element containing a single child element. 
-    @inlinable public static 
-    func item(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .item(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .item(content, attributes: attributes)
     }
     /// Creates an RSS `item` element with the given content. 
     @inlinable public static 

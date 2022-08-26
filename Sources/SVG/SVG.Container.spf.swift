@@ -104,17 +104,11 @@ extension SVG.Element
     {
         .a(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `a` element. 
+    /// Creates an SVG `a` element with the given children. 
     @inlinable public static 
-    func a(attributes:[Attribute] = []) -> Self 
+    func a(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .a(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `a` element containing a single child element. 
-    @inlinable public static 
-    func a(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .a(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .a(content, attributes: attributes)
     }
     /// Creates an SVG `a` element with the given content. 
     @inlinable public static 
@@ -150,17 +144,11 @@ extension SVG.Element
     {
         .animate(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `animate` element. 
+    /// Creates an SVG `animate` element with the given children. 
     @inlinable public static 
-    func animate(attributes:[Attribute] = []) -> Self 
+    func animate(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .animate(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `animate` element containing a single child element. 
-    @inlinable public static 
-    func animate(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .animate(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .animate(content, attributes: attributes)
     }
     /// Creates an SVG `animate` element with the given content. 
     @inlinable public static 
@@ -196,17 +184,11 @@ extension SVG.Element
     {
         .animateMotion(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `animateMotion` element. 
+    /// Creates an SVG `animateMotion` element with the given children. 
     @inlinable public static 
-    func animateMotion(attributes:[Attribute] = []) -> Self 
+    func animateMotion(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .animateMotion(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `animateMotion` element containing a single child element. 
-    @inlinable public static 
-    func animateMotion(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .animateMotion(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .animateMotion(content, attributes: attributes)
     }
     /// Creates an SVG `animateMotion` element with the given content. 
     @inlinable public static 
@@ -242,17 +224,11 @@ extension SVG.Element
     {
         .animateTransform(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `animateTransform` element. 
+    /// Creates an SVG `animateTransform` element with the given children. 
     @inlinable public static 
-    func animateTransform(attributes:[Attribute] = []) -> Self 
+    func animateTransform(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .animateTransform(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `animateTransform` element containing a single child element. 
-    @inlinable public static 
-    func animateTransform(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .animateTransform(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .animateTransform(content, attributes: attributes)
     }
     /// Creates an SVG `animateTransform` element with the given content. 
     @inlinable public static 
@@ -288,17 +264,11 @@ extension SVG.Element
     {
         .circle(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `circle` element. 
+    /// Creates an SVG `circle` element with the given children. 
     @inlinable public static 
-    func circle(attributes:[Attribute] = []) -> Self 
+    func circle(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .circle(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `circle` element containing a single child element. 
-    @inlinable public static 
-    func circle(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .circle(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .circle(content, attributes: attributes)
     }
     /// Creates an SVG `circle` element with the given content. 
     @inlinable public static 
@@ -334,17 +304,11 @@ extension SVG.Element
     {
         .clipPath(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `clipPath` element. 
+    /// Creates an SVG `clipPath` element with the given children. 
     @inlinable public static 
-    func clipPath(attributes:[Attribute] = []) -> Self 
+    func clipPath(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .clipPath(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `clipPath` element containing a single child element. 
-    @inlinable public static 
-    func clipPath(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .clipPath(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .clipPath(content, attributes: attributes)
     }
     /// Creates an SVG `clipPath` element with the given content. 
     @inlinable public static 
@@ -380,17 +344,11 @@ extension SVG.Element
     {
         .defs(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `defs` element. 
+    /// Creates an SVG `defs` element with the given children. 
     @inlinable public static 
-    func defs(attributes:[Attribute] = []) -> Self 
+    func defs(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .defs(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `defs` element containing a single child element. 
-    @inlinable public static 
-    func defs(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .defs(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .defs(content, attributes: attributes)
     }
     /// Creates an SVG `defs` element with the given content. 
     @inlinable public static 
@@ -426,17 +384,11 @@ extension SVG.Element
     {
         .desc(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `desc` element. 
+    /// Creates an SVG `desc` element with the given children. 
     @inlinable public static 
-    func desc(attributes:[Attribute] = []) -> Self 
+    func desc(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .desc(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `desc` element containing a single child element. 
-    @inlinable public static 
-    func desc(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .desc(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .desc(content, attributes: attributes)
     }
     /// Creates an SVG `desc` element with the given content. 
     @inlinable public static 
@@ -472,17 +424,11 @@ extension SVG.Element
     {
         .discard(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `discard` element. 
+    /// Creates an SVG `discard` element with the given children. 
     @inlinable public static 
-    func discard(attributes:[Attribute] = []) -> Self 
+    func discard(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .discard(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `discard` element containing a single child element. 
-    @inlinable public static 
-    func discard(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .discard(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .discard(content, attributes: attributes)
     }
     /// Creates an SVG `discard` element with the given content. 
     @inlinable public static 
@@ -518,17 +464,11 @@ extension SVG.Element
     {
         .ellipse(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `ellipse` element. 
+    /// Creates an SVG `ellipse` element with the given children. 
     @inlinable public static 
-    func ellipse(attributes:[Attribute] = []) -> Self 
+    func ellipse(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .ellipse(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `ellipse` element containing a single child element. 
-    @inlinable public static 
-    func ellipse(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .ellipse(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .ellipse(content, attributes: attributes)
     }
     /// Creates an SVG `ellipse` element with the given content. 
     @inlinable public static 
@@ -564,17 +504,11 @@ extension SVG.Element
     {
         .feBlend(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feBlend` element. 
+    /// Creates an SVG `feBlend` element with the given children. 
     @inlinable public static 
-    func feBlend(attributes:[Attribute] = []) -> Self 
+    func feBlend(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feBlend(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feBlend` element containing a single child element. 
-    @inlinable public static 
-    func feBlend(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feBlend(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feBlend(content, attributes: attributes)
     }
     /// Creates an SVG `feBlend` element with the given content. 
     @inlinable public static 
@@ -610,17 +544,11 @@ extension SVG.Element
     {
         .feColorMatrix(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feColorMatrix` element. 
+    /// Creates an SVG `feColorMatrix` element with the given children. 
     @inlinable public static 
-    func feColorMatrix(attributes:[Attribute] = []) -> Self 
+    func feColorMatrix(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feColorMatrix(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feColorMatrix` element containing a single child element. 
-    @inlinable public static 
-    func feColorMatrix(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feColorMatrix(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feColorMatrix(content, attributes: attributes)
     }
     /// Creates an SVG `feColorMatrix` element with the given content. 
     @inlinable public static 
@@ -656,17 +584,11 @@ extension SVG.Element
     {
         .feComponentTransfer(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feComponentTransfer` element. 
+    /// Creates an SVG `feComponentTransfer` element with the given children. 
     @inlinable public static 
-    func feComponentTransfer(attributes:[Attribute] = []) -> Self 
+    func feComponentTransfer(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feComponentTransfer(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feComponentTransfer` element containing a single child element. 
-    @inlinable public static 
-    func feComponentTransfer(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feComponentTransfer(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feComponentTransfer(content, attributes: attributes)
     }
     /// Creates an SVG `feComponentTransfer` element with the given content. 
     @inlinable public static 
@@ -702,17 +624,11 @@ extension SVG.Element
     {
         .feComposite(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feComposite` element. 
+    /// Creates an SVG `feComposite` element with the given children. 
     @inlinable public static 
-    func feComposite(attributes:[Attribute] = []) -> Self 
+    func feComposite(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feComposite(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feComposite` element containing a single child element. 
-    @inlinable public static 
-    func feComposite(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feComposite(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feComposite(content, attributes: attributes)
     }
     /// Creates an SVG `feComposite` element with the given content. 
     @inlinable public static 
@@ -748,17 +664,11 @@ extension SVG.Element
     {
         .feConvolveMatrix(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feConvolveMatrix` element. 
+    /// Creates an SVG `feConvolveMatrix` element with the given children. 
     @inlinable public static 
-    func feConvolveMatrix(attributes:[Attribute] = []) -> Self 
+    func feConvolveMatrix(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feConvolveMatrix(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feConvolveMatrix` element containing a single child element. 
-    @inlinable public static 
-    func feConvolveMatrix(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feConvolveMatrix(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feConvolveMatrix(content, attributes: attributes)
     }
     /// Creates an SVG `feConvolveMatrix` element with the given content. 
     @inlinable public static 
@@ -794,17 +704,11 @@ extension SVG.Element
     {
         .feDiffuseLighting(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feDiffuseLighting` element. 
+    /// Creates an SVG `feDiffuseLighting` element with the given children. 
     @inlinable public static 
-    func feDiffuseLighting(attributes:[Attribute] = []) -> Self 
+    func feDiffuseLighting(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feDiffuseLighting(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feDiffuseLighting` element containing a single child element. 
-    @inlinable public static 
-    func feDiffuseLighting(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feDiffuseLighting(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feDiffuseLighting(content, attributes: attributes)
     }
     /// Creates an SVG `feDiffuseLighting` element with the given content. 
     @inlinable public static 
@@ -840,17 +744,11 @@ extension SVG.Element
     {
         .feDisplacementMap(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feDisplacementMap` element. 
+    /// Creates an SVG `feDisplacementMap` element with the given children. 
     @inlinable public static 
-    func feDisplacementMap(attributes:[Attribute] = []) -> Self 
+    func feDisplacementMap(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feDisplacementMap(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feDisplacementMap` element containing a single child element. 
-    @inlinable public static 
-    func feDisplacementMap(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feDisplacementMap(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feDisplacementMap(content, attributes: attributes)
     }
     /// Creates an SVG `feDisplacementMap` element with the given content. 
     @inlinable public static 
@@ -886,17 +784,11 @@ extension SVG.Element
     {
         .feDistantLight(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feDistantLight` element. 
+    /// Creates an SVG `feDistantLight` element with the given children. 
     @inlinable public static 
-    func feDistantLight(attributes:[Attribute] = []) -> Self 
+    func feDistantLight(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feDistantLight(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feDistantLight` element containing a single child element. 
-    @inlinable public static 
-    func feDistantLight(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feDistantLight(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feDistantLight(content, attributes: attributes)
     }
     /// Creates an SVG `feDistantLight` element with the given content. 
     @inlinable public static 
@@ -932,17 +824,11 @@ extension SVG.Element
     {
         .feDropShadow(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feDropShadow` element. 
+    /// Creates an SVG `feDropShadow` element with the given children. 
     @inlinable public static 
-    func feDropShadow(attributes:[Attribute] = []) -> Self 
+    func feDropShadow(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feDropShadow(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feDropShadow` element containing a single child element. 
-    @inlinable public static 
-    func feDropShadow(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feDropShadow(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feDropShadow(content, attributes: attributes)
     }
     /// Creates an SVG `feDropShadow` element with the given content. 
     @inlinable public static 
@@ -978,17 +864,11 @@ extension SVG.Element
     {
         .feFlood(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feFlood` element. 
+    /// Creates an SVG `feFlood` element with the given children. 
     @inlinable public static 
-    func feFlood(attributes:[Attribute] = []) -> Self 
+    func feFlood(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feFlood(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feFlood` element containing a single child element. 
-    @inlinable public static 
-    func feFlood(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feFlood(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feFlood(content, attributes: attributes)
     }
     /// Creates an SVG `feFlood` element with the given content. 
     @inlinable public static 
@@ -1024,17 +904,11 @@ extension SVG.Element
     {
         .feFuncA(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feFuncA` element. 
+    /// Creates an SVG `feFuncA` element with the given children. 
     @inlinable public static 
-    func feFuncA(attributes:[Attribute] = []) -> Self 
+    func feFuncA(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feFuncA(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feFuncA` element containing a single child element. 
-    @inlinable public static 
-    func feFuncA(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feFuncA(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feFuncA(content, attributes: attributes)
     }
     /// Creates an SVG `feFuncA` element with the given content. 
     @inlinable public static 
@@ -1070,17 +944,11 @@ extension SVG.Element
     {
         .feFuncB(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feFuncB` element. 
+    /// Creates an SVG `feFuncB` element with the given children. 
     @inlinable public static 
-    func feFuncB(attributes:[Attribute] = []) -> Self 
+    func feFuncB(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feFuncB(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feFuncB` element containing a single child element. 
-    @inlinable public static 
-    func feFuncB(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feFuncB(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feFuncB(content, attributes: attributes)
     }
     /// Creates an SVG `feFuncB` element with the given content. 
     @inlinable public static 
@@ -1116,17 +984,11 @@ extension SVG.Element
     {
         .feFuncG(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feFuncG` element. 
+    /// Creates an SVG `feFuncG` element with the given children. 
     @inlinable public static 
-    func feFuncG(attributes:[Attribute] = []) -> Self 
+    func feFuncG(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feFuncG(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feFuncG` element containing a single child element. 
-    @inlinable public static 
-    func feFuncG(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feFuncG(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feFuncG(content, attributes: attributes)
     }
     /// Creates an SVG `feFuncG` element with the given content. 
     @inlinable public static 
@@ -1162,17 +1024,11 @@ extension SVG.Element
     {
         .feFuncR(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feFuncR` element. 
+    /// Creates an SVG `feFuncR` element with the given children. 
     @inlinable public static 
-    func feFuncR(attributes:[Attribute] = []) -> Self 
+    func feFuncR(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feFuncR(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feFuncR` element containing a single child element. 
-    @inlinable public static 
-    func feFuncR(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feFuncR(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feFuncR(content, attributes: attributes)
     }
     /// Creates an SVG `feFuncR` element with the given content. 
     @inlinable public static 
@@ -1208,17 +1064,11 @@ extension SVG.Element
     {
         .feGaussianBlur(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feGaussianBlur` element. 
+    /// Creates an SVG `feGaussianBlur` element with the given children. 
     @inlinable public static 
-    func feGaussianBlur(attributes:[Attribute] = []) -> Self 
+    func feGaussianBlur(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feGaussianBlur(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feGaussianBlur` element containing a single child element. 
-    @inlinable public static 
-    func feGaussianBlur(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feGaussianBlur(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feGaussianBlur(content, attributes: attributes)
     }
     /// Creates an SVG `feGaussianBlur` element with the given content. 
     @inlinable public static 
@@ -1254,17 +1104,11 @@ extension SVG.Element
     {
         .feImage(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feImage` element. 
+    /// Creates an SVG `feImage` element with the given children. 
     @inlinable public static 
-    func feImage(attributes:[Attribute] = []) -> Self 
+    func feImage(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feImage(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feImage` element containing a single child element. 
-    @inlinable public static 
-    func feImage(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feImage(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feImage(content, attributes: attributes)
     }
     /// Creates an SVG `feImage` element with the given content. 
     @inlinable public static 
@@ -1300,17 +1144,11 @@ extension SVG.Element
     {
         .feMerge(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feMerge` element. 
+    /// Creates an SVG `feMerge` element with the given children. 
     @inlinable public static 
-    func feMerge(attributes:[Attribute] = []) -> Self 
+    func feMerge(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feMerge(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feMerge` element containing a single child element. 
-    @inlinable public static 
-    func feMerge(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feMerge(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feMerge(content, attributes: attributes)
     }
     /// Creates an SVG `feMerge` element with the given content. 
     @inlinable public static 
@@ -1346,17 +1184,11 @@ extension SVG.Element
     {
         .feMergeNode(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feMergeNode` element. 
+    /// Creates an SVG `feMergeNode` element with the given children. 
     @inlinable public static 
-    func feMergeNode(attributes:[Attribute] = []) -> Self 
+    func feMergeNode(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feMergeNode(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feMergeNode` element containing a single child element. 
-    @inlinable public static 
-    func feMergeNode(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feMergeNode(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feMergeNode(content, attributes: attributes)
     }
     /// Creates an SVG `feMergeNode` element with the given content. 
     @inlinable public static 
@@ -1392,17 +1224,11 @@ extension SVG.Element
     {
         .feMorphology(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feMorphology` element. 
+    /// Creates an SVG `feMorphology` element with the given children. 
     @inlinable public static 
-    func feMorphology(attributes:[Attribute] = []) -> Self 
+    func feMorphology(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feMorphology(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feMorphology` element containing a single child element. 
-    @inlinable public static 
-    func feMorphology(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feMorphology(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feMorphology(content, attributes: attributes)
     }
     /// Creates an SVG `feMorphology` element with the given content. 
     @inlinable public static 
@@ -1438,17 +1264,11 @@ extension SVG.Element
     {
         .feOffset(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feOffset` element. 
+    /// Creates an SVG `feOffset` element with the given children. 
     @inlinable public static 
-    func feOffset(attributes:[Attribute] = []) -> Self 
+    func feOffset(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feOffset(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feOffset` element containing a single child element. 
-    @inlinable public static 
-    func feOffset(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feOffset(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feOffset(content, attributes: attributes)
     }
     /// Creates an SVG `feOffset` element with the given content. 
     @inlinable public static 
@@ -1484,17 +1304,11 @@ extension SVG.Element
     {
         .fePointLight(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `fePointLight` element. 
+    /// Creates an SVG `fePointLight` element with the given children. 
     @inlinable public static 
-    func fePointLight(attributes:[Attribute] = []) -> Self 
+    func fePointLight(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .fePointLight(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `fePointLight` element containing a single child element. 
-    @inlinable public static 
-    func fePointLight(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .fePointLight(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .fePointLight(content, attributes: attributes)
     }
     /// Creates an SVG `fePointLight` element with the given content. 
     @inlinable public static 
@@ -1530,17 +1344,11 @@ extension SVG.Element
     {
         .feSpecularLighting(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feSpecularLighting` element. 
+    /// Creates an SVG `feSpecularLighting` element with the given children. 
     @inlinable public static 
-    func feSpecularLighting(attributes:[Attribute] = []) -> Self 
+    func feSpecularLighting(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feSpecularLighting(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feSpecularLighting` element containing a single child element. 
-    @inlinable public static 
-    func feSpecularLighting(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feSpecularLighting(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feSpecularLighting(content, attributes: attributes)
     }
     /// Creates an SVG `feSpecularLighting` element with the given content. 
     @inlinable public static 
@@ -1576,17 +1384,11 @@ extension SVG.Element
     {
         .feSpotLight(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feSpotLight` element. 
+    /// Creates an SVG `feSpotLight` element with the given children. 
     @inlinable public static 
-    func feSpotLight(attributes:[Attribute] = []) -> Self 
+    func feSpotLight(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feSpotLight(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feSpotLight` element containing a single child element. 
-    @inlinable public static 
-    func feSpotLight(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feSpotLight(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feSpotLight(content, attributes: attributes)
     }
     /// Creates an SVG `feSpotLight` element with the given content. 
     @inlinable public static 
@@ -1622,17 +1424,11 @@ extension SVG.Element
     {
         .feTile(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feTile` element. 
+    /// Creates an SVG `feTile` element with the given children. 
     @inlinable public static 
-    func feTile(attributes:[Attribute] = []) -> Self 
+    func feTile(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feTile(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feTile` element containing a single child element. 
-    @inlinable public static 
-    func feTile(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feTile(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feTile(content, attributes: attributes)
     }
     /// Creates an SVG `feTile` element with the given content. 
     @inlinable public static 
@@ -1668,17 +1464,11 @@ extension SVG.Element
     {
         .feTurbulence(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `feTurbulence` element. 
+    /// Creates an SVG `feTurbulence` element with the given children. 
     @inlinable public static 
-    func feTurbulence(attributes:[Attribute] = []) -> Self 
+    func feTurbulence(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .feTurbulence(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `feTurbulence` element containing a single child element. 
-    @inlinable public static 
-    func feTurbulence(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .feTurbulence(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .feTurbulence(content, attributes: attributes)
     }
     /// Creates an SVG `feTurbulence` element with the given content. 
     @inlinable public static 
@@ -1714,17 +1504,11 @@ extension SVG.Element
     {
         .filter(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `filter` element. 
+    /// Creates an SVG `filter` element with the given children. 
     @inlinable public static 
-    func filter(attributes:[Attribute] = []) -> Self 
+    func filter(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .filter(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `filter` element containing a single child element. 
-    @inlinable public static 
-    func filter(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .filter(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .filter(content, attributes: attributes)
     }
     /// Creates an SVG `filter` element with the given content. 
     @inlinable public static 
@@ -1760,17 +1544,11 @@ extension SVG.Element
     {
         .foreignObject(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `foreignObject` element. 
+    /// Creates an SVG `foreignObject` element with the given children. 
     @inlinable public static 
-    func foreignObject(attributes:[Attribute] = []) -> Self 
+    func foreignObject(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .foreignObject(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `foreignObject` element containing a single child element. 
-    @inlinable public static 
-    func foreignObject(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .foreignObject(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .foreignObject(content, attributes: attributes)
     }
     /// Creates an SVG `foreignObject` element with the given content. 
     @inlinable public static 
@@ -1806,17 +1584,11 @@ extension SVG.Element
     {
         .g(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `g` element. 
+    /// Creates an SVG `g` element with the given children. 
     @inlinable public static 
-    func g(attributes:[Attribute] = []) -> Self 
+    func g(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .g(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `g` element containing a single child element. 
-    @inlinable public static 
-    func g(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .g(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .g(content, attributes: attributes)
     }
     /// Creates an SVG `g` element with the given content. 
     @inlinable public static 
@@ -1852,17 +1624,11 @@ extension SVG.Element
     {
         .hatch(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `hatch` element. 
+    /// Creates an SVG `hatch` element with the given children. 
     @inlinable public static 
-    func hatch(attributes:[Attribute] = []) -> Self 
+    func hatch(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .hatch(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `hatch` element containing a single child element. 
-    @inlinable public static 
-    func hatch(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .hatch(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .hatch(content, attributes: attributes)
     }
     /// Creates an SVG `hatch` element with the given content. 
     @inlinable public static 
@@ -1898,17 +1664,11 @@ extension SVG.Element
     {
         .hatchpath(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `hatchpath` element. 
+    /// Creates an SVG `hatchpath` element with the given children. 
     @inlinable public static 
-    func hatchpath(attributes:[Attribute] = []) -> Self 
+    func hatchpath(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .hatchpath(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `hatchpath` element containing a single child element. 
-    @inlinable public static 
-    func hatchpath(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .hatchpath(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .hatchpath(content, attributes: attributes)
     }
     /// Creates an SVG `hatchpath` element with the given content. 
     @inlinable public static 
@@ -1944,17 +1704,11 @@ extension SVG.Element
     {
         .image(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `image` element. 
+    /// Creates an SVG `image` element with the given children. 
     @inlinable public static 
-    func image(attributes:[Attribute] = []) -> Self 
+    func image(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .image(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `image` element containing a single child element. 
-    @inlinable public static 
-    func image(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .image(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .image(content, attributes: attributes)
     }
     /// Creates an SVG `image` element with the given content. 
     @inlinable public static 
@@ -1990,17 +1744,11 @@ extension SVG.Element
     {
         .line(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `line` element. 
+    /// Creates an SVG `line` element with the given children. 
     @inlinable public static 
-    func line(attributes:[Attribute] = []) -> Self 
+    func line(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .line(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `line` element containing a single child element. 
-    @inlinable public static 
-    func line(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .line(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .line(content, attributes: attributes)
     }
     /// Creates an SVG `line` element with the given content. 
     @inlinable public static 
@@ -2036,17 +1784,11 @@ extension SVG.Element
     {
         .linearGradient(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `linearGradient` element. 
+    /// Creates an SVG `linearGradient` element with the given children. 
     @inlinable public static 
-    func linearGradient(attributes:[Attribute] = []) -> Self 
+    func linearGradient(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .linearGradient(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `linearGradient` element containing a single child element. 
-    @inlinable public static 
-    func linearGradient(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .linearGradient(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .linearGradient(content, attributes: attributes)
     }
     /// Creates an SVG `linearGradient` element with the given content. 
     @inlinable public static 
@@ -2082,17 +1824,11 @@ extension SVG.Element
     {
         .marker(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `marker` element. 
+    /// Creates an SVG `marker` element with the given children. 
     @inlinable public static 
-    func marker(attributes:[Attribute] = []) -> Self 
+    func marker(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .marker(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `marker` element containing a single child element. 
-    @inlinable public static 
-    func marker(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .marker(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .marker(content, attributes: attributes)
     }
     /// Creates an SVG `marker` element with the given content. 
     @inlinable public static 
@@ -2128,17 +1864,11 @@ extension SVG.Element
     {
         .mask(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `mask` element. 
+    /// Creates an SVG `mask` element with the given children. 
     @inlinable public static 
-    func mask(attributes:[Attribute] = []) -> Self 
+    func mask(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .mask(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `mask` element containing a single child element. 
-    @inlinable public static 
-    func mask(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .mask(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .mask(content, attributes: attributes)
     }
     /// Creates an SVG `mask` element with the given content. 
     @inlinable public static 
@@ -2174,17 +1904,11 @@ extension SVG.Element
     {
         .metadata(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `metadata` element. 
+    /// Creates an SVG `metadata` element with the given children. 
     @inlinable public static 
-    func metadata(attributes:[Attribute] = []) -> Self 
+    func metadata(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .metadata(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `metadata` element containing a single child element. 
-    @inlinable public static 
-    func metadata(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .metadata(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .metadata(content, attributes: attributes)
     }
     /// Creates an SVG `metadata` element with the given content. 
     @inlinable public static 
@@ -2220,17 +1944,11 @@ extension SVG.Element
     {
         .mpath(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `mpath` element. 
+    /// Creates an SVG `mpath` element with the given children. 
     @inlinable public static 
-    func mpath(attributes:[Attribute] = []) -> Self 
+    func mpath(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .mpath(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `mpath` element containing a single child element. 
-    @inlinable public static 
-    func mpath(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .mpath(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .mpath(content, attributes: attributes)
     }
     /// Creates an SVG `mpath` element with the given content. 
     @inlinable public static 
@@ -2266,17 +1984,11 @@ extension SVG.Element
     {
         .path(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `path` element. 
+    /// Creates an SVG `path` element with the given children. 
     @inlinable public static 
-    func path(attributes:[Attribute] = []) -> Self 
+    func path(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .path(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `path` element containing a single child element. 
-    @inlinable public static 
-    func path(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .path(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .path(content, attributes: attributes)
     }
     /// Creates an SVG `path` element with the given content. 
     @inlinable public static 
@@ -2312,17 +2024,11 @@ extension SVG.Element
     {
         .pattern(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `pattern` element. 
+    /// Creates an SVG `pattern` element with the given children. 
     @inlinable public static 
-    func pattern(attributes:[Attribute] = []) -> Self 
+    func pattern(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .pattern(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `pattern` element containing a single child element. 
-    @inlinable public static 
-    func pattern(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .pattern(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .pattern(content, attributes: attributes)
     }
     /// Creates an SVG `pattern` element with the given content. 
     @inlinable public static 
@@ -2358,17 +2064,11 @@ extension SVG.Element
     {
         .polygon(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `polygon` element. 
+    /// Creates an SVG `polygon` element with the given children. 
     @inlinable public static 
-    func polygon(attributes:[Attribute] = []) -> Self 
+    func polygon(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .polygon(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `polygon` element containing a single child element. 
-    @inlinable public static 
-    func polygon(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .polygon(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .polygon(content, attributes: attributes)
     }
     /// Creates an SVG `polygon` element with the given content. 
     @inlinable public static 
@@ -2404,17 +2104,11 @@ extension SVG.Element
     {
         .polyline(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `polyline` element. 
+    /// Creates an SVG `polyline` element with the given children. 
     @inlinable public static 
-    func polyline(attributes:[Attribute] = []) -> Self 
+    func polyline(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .polyline(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `polyline` element containing a single child element. 
-    @inlinable public static 
-    func polyline(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .polyline(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .polyline(content, attributes: attributes)
     }
     /// Creates an SVG `polyline` element with the given content. 
     @inlinable public static 
@@ -2450,17 +2144,11 @@ extension SVG.Element
     {
         .radialGradient(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `radialGradient` element. 
+    /// Creates an SVG `radialGradient` element with the given children. 
     @inlinable public static 
-    func radialGradient(attributes:[Attribute] = []) -> Self 
+    func radialGradient(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .radialGradient(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `radialGradient` element containing a single child element. 
-    @inlinable public static 
-    func radialGradient(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .radialGradient(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .radialGradient(content, attributes: attributes)
     }
     /// Creates an SVG `radialGradient` element with the given content. 
     @inlinable public static 
@@ -2496,17 +2184,11 @@ extension SVG.Element
     {
         .rect(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `rect` element. 
+    /// Creates an SVG `rect` element with the given children. 
     @inlinable public static 
-    func rect(attributes:[Attribute] = []) -> Self 
+    func rect(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .rect(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `rect` element containing a single child element. 
-    @inlinable public static 
-    func rect(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .rect(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .rect(content, attributes: attributes)
     }
     /// Creates an SVG `rect` element with the given content. 
     @inlinable public static 
@@ -2542,17 +2224,11 @@ extension SVG.Element
     {
         .script(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `script` element. 
+    /// Creates an SVG `script` element with the given children. 
     @inlinable public static 
-    func script(attributes:[Attribute] = []) -> Self 
+    func script(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .script(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `script` element containing a single child element. 
-    @inlinable public static 
-    func script(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .script(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .script(content, attributes: attributes)
     }
     /// Creates an SVG `script` element with the given content. 
     @inlinable public static 
@@ -2588,17 +2264,11 @@ extension SVG.Element
     {
         .set(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `set` element. 
+    /// Creates an SVG `set` element with the given children. 
     @inlinable public static 
-    func set(attributes:[Attribute] = []) -> Self 
+    func set(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .set(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `set` element containing a single child element. 
-    @inlinable public static 
-    func set(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .set(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .set(content, attributes: attributes)
     }
     /// Creates an SVG `set` element with the given content. 
     @inlinable public static 
@@ -2634,17 +2304,11 @@ extension SVG.Element
     {
         .stop(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `stop` element. 
+    /// Creates an SVG `stop` element with the given children. 
     @inlinable public static 
-    func stop(attributes:[Attribute] = []) -> Self 
+    func stop(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .stop(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `stop` element containing a single child element. 
-    @inlinable public static 
-    func stop(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .stop(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .stop(content, attributes: attributes)
     }
     /// Creates an SVG `stop` element with the given content. 
     @inlinable public static 
@@ -2680,17 +2344,11 @@ extension SVG.Element
     {
         .style(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `style` element. 
+    /// Creates an SVG `style` element with the given children. 
     @inlinable public static 
-    func style(attributes:[Attribute] = []) -> Self 
+    func style(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .style(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `style` element containing a single child element. 
-    @inlinable public static 
-    func style(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .style(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .style(content, attributes: attributes)
     }
     /// Creates an SVG `style` element with the given content. 
     @inlinable public static 
@@ -2726,17 +2384,11 @@ extension SVG.Element
     {
         .svg(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `svg` element. 
+    /// Creates an SVG `svg` element with the given children. 
     @inlinable public static 
-    func svg(attributes:[Attribute] = []) -> Self 
+    func svg(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .svg(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `svg` element containing a single child element. 
-    @inlinable public static 
-    func svg(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .svg(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .svg(content, attributes: attributes)
     }
     /// Creates an SVG `svg` element with the given content. 
     @inlinable public static 
@@ -2772,17 +2424,11 @@ extension SVG.Element
     {
         .`switch`(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG ``switch`` element. 
+    /// Creates an SVG ``switch`` element with the given children. 
     @inlinable public static 
-    func `switch`(attributes:[Attribute] = []) -> Self 
+    func `switch`(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .`switch`(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG ``switch`` element containing a single child element. 
-    @inlinable public static 
-    func `switch`(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .`switch`(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .`switch`(content, attributes: attributes)
     }
     /// Creates an SVG ``switch`` element with the given content. 
     @inlinable public static 
@@ -2818,17 +2464,11 @@ extension SVG.Element
     {
         .symbol(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `symbol` element. 
+    /// Creates an SVG `symbol` element with the given children. 
     @inlinable public static 
-    func symbol(attributes:[Attribute] = []) -> Self 
+    func symbol(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .symbol(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `symbol` element containing a single child element. 
-    @inlinable public static 
-    func symbol(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .symbol(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .symbol(content, attributes: attributes)
     }
     /// Creates an SVG `symbol` element with the given content. 
     @inlinable public static 
@@ -2864,17 +2504,11 @@ extension SVG.Element
     {
         .text(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `text` element. 
+    /// Creates an SVG `text` element with the given children. 
     @inlinable public static 
-    func text(attributes:[Attribute] = []) -> Self 
+    func text(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .text(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `text` element containing a single child element. 
-    @inlinable public static 
-    func text(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .text(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .text(content, attributes: attributes)
     }
     /// Creates an SVG `text` element with the given content. 
     @inlinable public static 
@@ -2910,17 +2544,11 @@ extension SVG.Element
     {
         .textPath(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `textPath` element. 
+    /// Creates an SVG `textPath` element with the given children. 
     @inlinable public static 
-    func textPath(attributes:[Attribute] = []) -> Self 
+    func textPath(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .textPath(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `textPath` element containing a single child element. 
-    @inlinable public static 
-    func textPath(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .textPath(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .textPath(content, attributes: attributes)
     }
     /// Creates an SVG `textPath` element with the given content. 
     @inlinable public static 
@@ -2956,17 +2584,11 @@ extension SVG.Element
     {
         .title(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `title` element. 
+    /// Creates an SVG `title` element with the given children. 
     @inlinable public static 
-    func title(attributes:[Attribute] = []) -> Self 
+    func title(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .title(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `title` element containing a single child element. 
-    @inlinable public static 
-    func title(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .title(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .title(content, attributes: attributes)
     }
     /// Creates an SVG `title` element with the given content. 
     @inlinable public static 
@@ -3002,17 +2624,11 @@ extension SVG.Element
     {
         .tspan(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `tspan` element. 
+    /// Creates an SVG `tspan` element with the given children. 
     @inlinable public static 
-    func tspan(attributes:[Attribute] = []) -> Self 
+    func tspan(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .tspan(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `tspan` element containing a single child element. 
-    @inlinable public static 
-    func tspan(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .tspan(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .tspan(content, attributes: attributes)
     }
     /// Creates an SVG `tspan` element with the given content. 
     @inlinable public static 
@@ -3048,17 +2664,11 @@ extension SVG.Element
     {
         .use(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `use` element. 
+    /// Creates an SVG `use` element with the given children. 
     @inlinable public static 
-    func use(attributes:[Attribute] = []) -> Self 
+    func use(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .use(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `use` element containing a single child element. 
-    @inlinable public static 
-    func use(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .use(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .use(content, attributes: attributes)
     }
     /// Creates an SVG `use` element with the given content. 
     @inlinable public static 
@@ -3094,17 +2704,11 @@ extension SVG.Element
     {
         .view(Self.init(string), attributes: attributes)
     }
-    /// Creates an empty SVG `view` element. 
+    /// Creates an SVG `view` element with the given children. 
     @inlinable public static 
-    func view(attributes:[Attribute] = []) -> Self 
+    func view(_ content:Self..., attributes:[Attribute] = []) -> Self 
     {
-        .view(EmptyCollection<Self>.init(), attributes: attributes)
-    }
-    /// Creates an SVG `view` element containing a single child element. 
-    @inlinable public static 
-    func view(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
-    {
-        .view(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
+        .view(content, attributes: attributes)
     }
     /// Creates an SVG `view` element with the given content. 
     @inlinable public static 
