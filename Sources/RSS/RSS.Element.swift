@@ -34,6 +34,11 @@ enum RSS
             self.init(node: .init(escaped: string))
         }
         @inlinable public 
+        init<UTF8>(escaped utf8:UTF8) where UTF8:Collection, UTF8.Element == UInt8
+        {
+            self.init(node: .init(escaped: utf8))
+        }
+        @inlinable public 
         init(anchor:Anchor) 
         {
             self.init(node: .value(.anchor(anchor)))
