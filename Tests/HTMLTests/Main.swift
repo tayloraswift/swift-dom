@@ -154,6 +154,16 @@ struct Main
         <p></p>
         """.utf8)
 
+        self.assert(HTML.Element<Never>.meta(attributes: 
+        [
+            .name("viewport"), 
+            .content("width=device-width, initial-scale=1")
+        ]).node.rendered(as: [UInt8].self) 
+        ==? 
+        """
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        """.utf8)
+    
         self.assert(HTML.Element<Never>.p(attributes:
         [
             .class("paragraph"),
