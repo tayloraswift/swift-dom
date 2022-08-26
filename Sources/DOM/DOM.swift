@@ -6,7 +6,10 @@ enum DOM
     public 
     typealias Template = Flattened 
 
-    /// Escapes the given string as 
+    /// Replaces XML structural characters in the given string with XML character entities.
+    /// 
+    /// This function escapes the characters [`"<"`](), [`">"`](), [`"&"`](), [`"'"`](), 
+    /// and [`"\""`]().
     @inlinable public static 
     func escape<S>(_ unescaped:S) -> String where S:StringProtocol
     {

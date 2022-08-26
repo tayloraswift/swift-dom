@@ -2,6 +2,7 @@ import DOM
 
 extension SVG 
 {
+    /// A complete SVG document.
     @frozen public 
     struct Root<Anchor>
     {
@@ -33,6 +34,7 @@ extension SVG
 
 extension SVG.Root
 {
+    /// Renders this SVG document with the `<?xml?>` heading prepended to it.
     @inlinable public 
     func rendered<UTF8>(into output:inout UTF8, anchors:inout [(key:Anchor, index:UTF8.Index)]) 
         where UTF8:RangeReplaceableCollection, UTF8.Element == UInt8

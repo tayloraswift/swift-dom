@@ -137,7 +137,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `\(__container__)` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``\(__container__)(escaped:attributes:)``.

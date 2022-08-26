@@ -10,9 +10,11 @@ enum SVG
         public 
         var description:String { fatalError() }
     }
+    /// An SVG element.
     @frozen public 
     struct Element<Anchor>
     {
+        /// The underlying storage of this SVG element.
         public 
         var node:DOM.Node<Container, Leaf, Anchor> 
 

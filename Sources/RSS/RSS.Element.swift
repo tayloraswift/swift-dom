@@ -10,9 +10,11 @@ enum RSS
         public 
         var description:String { fatalError() }
     }
+    /// An RSS element.
     @frozen public 
     struct Element<Anchor>
     {
+        /// The underlying storage of this RSS element.
         public 
         var node:DOM.Node<Container, Leaf, Anchor> 
 

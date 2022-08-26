@@ -2,6 +2,7 @@ import DOM
 
 extension RSS 
 {
+    /// A complete RSS document.
     @frozen public 
     struct Root<Anchor>
     {
@@ -33,6 +34,7 @@ extension RSS
 
 extension RSS.Root
 {
+    /// Renders this RSS document with the `<?xml?>` heading prepended to it.
     @inlinable public 
     func rendered<UTF8>(into output:inout UTF8, anchors:inout [(key:Anchor, index:UTF8.Index)]) 
         where UTF8:RangeReplaceableCollection, UTF8.Element == UInt8

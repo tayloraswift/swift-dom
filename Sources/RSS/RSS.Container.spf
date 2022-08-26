@@ -17,6 +17,7 @@ let containers:[Never] =
 
 extension RSS 
 {
+    /// An RSS element type that can have children.
     @frozen public 
     enum Container:String, CustomStringConvertible, Sendable
     {
@@ -34,28 +35,41 @@ extension RSS
 @matrix(__container__: containers)
 extension RSS.Element 
 {
+    /// Creates an RSS `\(__container__)` element containing the given string.
+    /// 
+    /// This method does not escape the string, and should not be used to wrap 
+    /// arbitrary strings. 
     @inlinable public static 
     func __container__<S>(escaped string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .__container__(Self.init(escaped: string), attributes: attributes)
     }
+    /// @import(DOM)
+    /// Creates an RSS `\(__container__)` element containing the given string, 
+    /// replacing XML structural characters with XML character entities if needed.
+    /// 
+    /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
+    /// passing it to ``\(__container__)(escaped:attributes:)``.
     @inlinable public static 
     func __container__<S>(_ string:S, attributes:[Attribute] = []) -> Self 
         where S:StringProtocol
     {
         .__container__(Self.init(string), attributes: attributes)
     }
+    /// Creates an empty RSS `\(__container__)` element. 
     @inlinable public static 
     func __container__(attributes:[Attribute] = []) -> Self 
     {
         .__container__(EmptyCollection<Self>.init(), attributes: attributes)
     }
+    /// Creates an RSS `\(__container__)` element containing a single child element. 
     @inlinable public static 
     func __container__(_ wrapped:Self, attributes:[Attribute] = []) -> Self 
     {
         .__container__(CollectionOfOne<Self>.init(wrapped), attributes: attributes)
     }
+    /// Creates an RSS `\(__container__)` element with the given content. 
     @inlinable public static 
     func __container__<Content>(_ content:Content, attributes:[Attribute] = []) -> Self 
         where Content:Sequence, Content.Element == Self 

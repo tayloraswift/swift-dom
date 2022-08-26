@@ -3,9 +3,11 @@ import DOM
 public 
 enum HTML 
 {
+    /// An HTML element.
     @frozen public 
     struct Element<Anchor>
     {
+        /// The underlying storage of this HTML element.
         public 
         var node:DOM.Node<Container, Leaf, Anchor> 
 

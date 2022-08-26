@@ -129,7 +129,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `html` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``html(escaped:attributes:)``.
@@ -175,7 +175,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `head` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``head(escaped:attributes:)``.
@@ -221,7 +221,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `body` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``body(escaped:attributes:)``.
@@ -267,7 +267,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `a` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``a(escaped:attributes:)``.
@@ -313,7 +313,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `abbr` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``abbr(escaped:attributes:)``.
@@ -359,7 +359,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `audio` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``audio(escaped:attributes:)``.
@@ -405,7 +405,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `b` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``b(escaped:attributes:)``.
@@ -451,7 +451,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `bdi` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``bdi(escaped:attributes:)``.
@@ -497,7 +497,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `bdo` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``bdo(escaped:attributes:)``.
@@ -543,7 +543,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `address` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``address(escaped:attributes:)``.
@@ -589,7 +589,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `article` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``article(escaped:attributes:)``.
@@ -635,7 +635,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `aside` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``aside(escaped:attributes:)``.
@@ -681,7 +681,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `blockquote` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``blockquote(escaped:attributes:)``.
@@ -727,7 +727,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `button` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``button(escaped:attributes:)``.
@@ -773,7 +773,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `canvas` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``canvas(escaped:attributes:)``.
@@ -819,7 +819,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `caption` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``caption(escaped:attributes:)``.
@@ -865,7 +865,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `code` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``code(escaped:attributes:)``.
@@ -911,7 +911,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `colgroup` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``colgroup(escaped:attributes:)``.
@@ -957,7 +957,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `cite` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``cite(escaped:attributes:)``.
@@ -1003,7 +1003,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `data` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``data(escaped:attributes:)``.
@@ -1049,7 +1049,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `datalist` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``datalist(escaped:attributes:)``.
@@ -1095,7 +1095,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `del` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``del(escaped:attributes:)``.
@@ -1141,7 +1141,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `details` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``details(escaped:attributes:)``.
@@ -1187,7 +1187,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `dialog` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``dialog(escaped:attributes:)``.
@@ -1233,7 +1233,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `dfn` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``dfn(escaped:attributes:)``.
@@ -1279,7 +1279,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `div` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``div(escaped:attributes:)``.
@@ -1325,7 +1325,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `dl` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``dl(escaped:attributes:)``.
@@ -1371,7 +1371,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `dt` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``dt(escaped:attributes:)``.
@@ -1417,7 +1417,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `dd` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``dd(escaped:attributes:)``.
@@ -1463,7 +1463,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `em` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``em(escaped:attributes:)``.
@@ -1509,7 +1509,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `embed` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``embed(escaped:attributes:)``.
@@ -1555,7 +1555,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `fieldset` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``fieldset(escaped:attributes:)``.
@@ -1601,7 +1601,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `figcaption` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``figcaption(escaped:attributes:)``.
@@ -1647,7 +1647,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `figure` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``figure(escaped:attributes:)``.
@@ -1693,7 +1693,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `footer` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``footer(escaped:attributes:)``.
@@ -1739,7 +1739,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `form` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``form(escaped:attributes:)``.
@@ -1785,7 +1785,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `h1` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``h1(escaped:attributes:)``.
@@ -1831,7 +1831,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `h2` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``h2(escaped:attributes:)``.
@@ -1877,7 +1877,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `h3` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``h3(escaped:attributes:)``.
@@ -1923,7 +1923,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `h4` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``h4(escaped:attributes:)``.
@@ -1969,7 +1969,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `h5` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``h5(escaped:attributes:)``.
@@ -2015,7 +2015,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `h6` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``h6(escaped:attributes:)``.
@@ -2061,7 +2061,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `header` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``header(escaped:attributes:)``.
@@ -2107,7 +2107,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `i` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``i(escaped:attributes:)``.
@@ -2153,7 +2153,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `iframe` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``iframe(escaped:attributes:)``.
@@ -2199,7 +2199,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `ins` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``ins(escaped:attributes:)``.
@@ -2245,7 +2245,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `kbd` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``kbd(escaped:attributes:)``.
@@ -2291,7 +2291,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `label` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``label(escaped:attributes:)``.
@@ -2337,7 +2337,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `legend` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``legend(escaped:attributes:)``.
@@ -2383,7 +2383,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `li` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``li(escaped:attributes:)``.
@@ -2429,7 +2429,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `main` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``main(escaped:attributes:)``.
@@ -2475,7 +2475,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `map` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``map(escaped:attributes:)``.
@@ -2521,7 +2521,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `mark` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``mark(escaped:attributes:)``.
@@ -2567,7 +2567,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `menu` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``menu(escaped:attributes:)``.
@@ -2613,7 +2613,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `meter` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``meter(escaped:attributes:)``.
@@ -2659,7 +2659,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `nav` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``nav(escaped:attributes:)``.
@@ -2705,7 +2705,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `noscript` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``noscript(escaped:attributes:)``.
@@ -2751,7 +2751,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `ol` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``ol(escaped:attributes:)``.
@@ -2797,7 +2797,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `object` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``object(escaped:attributes:)``.
@@ -2843,7 +2843,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `optgroup` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``optgroup(escaped:attributes:)``.
@@ -2889,7 +2889,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `option` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``option(escaped:attributes:)``.
@@ -2935,7 +2935,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `output` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``output(escaped:attributes:)``.
@@ -2981,7 +2981,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `p` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``p(escaped:attributes:)``.
@@ -3027,7 +3027,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `picture` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``picture(escaped:attributes:)``.
@@ -3073,7 +3073,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `portal` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``portal(escaped:attributes:)``.
@@ -3119,7 +3119,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `pre` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``pre(escaped:attributes:)``.
@@ -3165,7 +3165,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `progress` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``progress(escaped:attributes:)``.
@@ -3211,7 +3211,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `q` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``q(escaped:attributes:)``.
@@ -3257,7 +3257,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `rp` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``rp(escaped:attributes:)``.
@@ -3303,7 +3303,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `rt` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``rt(escaped:attributes:)``.
@@ -3349,7 +3349,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `ruby` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``ruby(escaped:attributes:)``.
@@ -3395,7 +3395,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `s` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``s(escaped:attributes:)``.
@@ -3441,7 +3441,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `samp` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``samp(escaped:attributes:)``.
@@ -3487,7 +3487,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `small` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``small(escaped:attributes:)``.
@@ -3533,7 +3533,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `section` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``section(escaped:attributes:)``.
@@ -3579,7 +3579,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `span` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``span(escaped:attributes:)``.
@@ -3625,7 +3625,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `script` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``script(escaped:attributes:)``.
@@ -3671,7 +3671,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `select` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``select(escaped:attributes:)``.
@@ -3717,7 +3717,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `slot` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``slot(escaped:attributes:)``.
@@ -3763,7 +3763,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `strong` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``strong(escaped:attributes:)``.
@@ -3809,7 +3809,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `style` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``style(escaped:attributes:)``.
@@ -3855,7 +3855,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `sub` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``sub(escaped:attributes:)``.
@@ -3901,7 +3901,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `summary` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``summary(escaped:attributes:)``.
@@ -3947,7 +3947,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `sup` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``sup(escaped:attributes:)``.
@@ -3993,7 +3993,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `table` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``table(escaped:attributes:)``.
@@ -4039,7 +4039,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `tbody` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``tbody(escaped:attributes:)``.
@@ -4085,7 +4085,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `td` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``td(escaped:attributes:)``.
@@ -4131,7 +4131,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `template` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``template(escaped:attributes:)``.
@@ -4177,7 +4177,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `textarea` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``textarea(escaped:attributes:)``.
@@ -4223,7 +4223,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `tfoot` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``tfoot(escaped:attributes:)``.
@@ -4269,7 +4269,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `th` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``th(escaped:attributes:)``.
@@ -4315,7 +4315,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `thead` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``thead(escaped:attributes:)``.
@@ -4361,7 +4361,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `time` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``time(escaped:attributes:)``.
@@ -4407,7 +4407,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `title` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``title(escaped:attributes:)``.
@@ -4453,7 +4453,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `tr` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``tr(escaped:attributes:)``.
@@ -4499,7 +4499,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `u` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``u(escaped:attributes:)``.
@@ -4545,7 +4545,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `ul` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``ul(escaped:attributes:)``.
@@ -4591,7 +4591,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML ``var`` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ```var`(escaped:attributes:)``.
@@ -4637,7 +4637,7 @@ extension HTML.Element
     }
     /// @import(DOM)
     /// Creates an HTML `video` element containing the given string, 
-    /// converting XML structural characters to HTML entities if needed.
+    /// replacing XML structural characters with XML character entities if needed.
     /// 
     /// This method is equivalent to calling ``DOM.escape(_:)`` on `string`, and 
     /// passing it to ``video(escaped:attributes:)``.
