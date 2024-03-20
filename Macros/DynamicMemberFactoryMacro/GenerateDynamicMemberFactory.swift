@@ -12,5 +12,5 @@
 @attached(member, names: named(Factory))
 public
 macro GenerateDynamicMemberFactory(excluding:String...) = #externalMacro(
-    module: "DynamicMemberMacros",
+    module: "DynamicLookupMacros",
     type: "GenerateDynamicMemberFactory")

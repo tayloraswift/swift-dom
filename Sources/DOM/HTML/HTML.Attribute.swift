@@ -1,4 +1,4 @@
-import DynamicLookupMacro
+import DynamicMemberFactoryMacro
 
 extension HTML
 {
