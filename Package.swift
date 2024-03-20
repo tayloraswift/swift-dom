@@ -6,8 +6,10 @@ let package:Package = .init(
     name: "swift-dom",
     platforms: [.macOS(.v14), .iOS(.v13), .tvOS(.v13), .watchOS(.v6)],
     products: [
+        .library(name: "DOM", targets: ["DOM"]),
         .library(name: "HTML", targets: ["HTML"]),
-        .library(name: "DynamicLookupMacro", targets: ["DynamicLookupMacro"]),
+
+        .library(name: "DynamicMemberFactoryMacro", targets: ["DynamicMemberFactoryMacro"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-syntax", from: "510.0.1"),
@@ -15,7 +17,7 @@ let package:Package = .init(
     targets: [
         .target(name: "DOM",
             dependencies: [
-                .target(name: "DynamicLookupMacro"),
+                .target(name: "DynamicMemberFactoryMacro"),
             ]),
 
         .target(name: "HTML",
@@ -23,16 +25,16 @@ let package:Package = .init(
                 .target(name: "DOM"),
             ]),
 
-        .target(name: "DynamicLookupMacro",
+        .target(name: "DynamicMemberFactoryMacro",
             dependencies: [
-                .target(name: "DynamicMemberMacros"),
+                .target(name: "DynamicLookupMacros"),
             ],
-            path: "Macros/DynamicLookupMacro"),
+            path: "Macros/DynamicMemberFactoryMacro"),
 
-        .macro(name: "DynamicMemberMacros",
+        .macro(name: "DynamicLookupMacros",
             dependencies: [
                 .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
                 .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
             ],
-            path: "Plugins/DynamicMemberMacros"),
+            path: "Macros/DynamicLookupMacros"),
     ])
