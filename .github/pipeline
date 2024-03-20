@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+swift --version
+swift build
+swift build -c release

@@ -1,65 +1,38 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.10
 import PackageDescription
+import CompilerPluginSupport
 
-var plugins:[Package.Dependency] = []
-#if swift(>=5.7) && (os(Linux) || os(macOS))
-    plugins.append(.package(url: "https://github.com/kelvin13/swift-package-catalog", 
-        from: "0.4.0"))
-#endif
-
-#if swift(>=5.8) && (os(Linux) || os(macOS))
-    plugins.append(.package(url: "https://github.com/kelvin13/swift-package-factory", 
-        branch: "swift-DEVELOPMENT-SNAPSHOT-2022-08-18-a"))
-#endif 
-
-#if os(iOS) || os(tvOS) || os(watchOS) 
-let executables:[Product] = []
-let executableTargets:[Target] = []
-#else 
-let executables:[Product] = 
-[
-    .executable(name: "HTMLTests", targets: ["HTMLTests"]),
-]
-let executableTargets:[Target] = 
-[
-    .executableTarget(name: "HTMLTests",
-        dependencies: 
-        [
-            .target(name: "HTML"),
-        ],
-        path: "Tests/HTMLTests"),
-]
-#endif 
-
-let package = Package(
+let package:Package = .init(
     name: "swift-dom",
-    products: executables + 
-    [
-        .library(name: "DOM",   targets: ["DOM"]),
-        .library(name: "HTML",  targets: ["HTML"]),
-        .library(name: "RSS",   targets: ["RSS"]),
-        .library(name: "SVG",   targets: ["SVG"]),
-
-        
+    platforms: [.macOS(.v14), .iOS(.v13), .tvOS(.v13), .watchOS(.v6)],
+    products: [
+        .library(name: "HTML", targets: ["HTML"]),
+        .library(name: "DynamicLookupMacro", targets: ["DynamicLookupMacro"]),
     ],
-    dependencies: plugins,
-    targets: executableTargets + 
-    [
-        .target(name: "DOM"),
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-syntax", from: "510.0.1"),
+    ],
+    targets: [
+        .target(name: "DOM",
+            dependencies: [
+                .target(name: "DynamicLookupMacro"),
+            ]),
+
         .target(name: "HTML",
-            dependencies: 
-            [
+            dependencies: [
                 .target(name: "DOM"),
             ]),
-        .target(name: "RSS",
-            dependencies: 
-            [
-                .target(name: "DOM"),
-            ]),
-        .target(name: "SVG",
-            dependencies: 
-            [
-                .target(name: "DOM"),
-            ]),
-    ]
-)
+
+        .target(name: "DynamicLookupMacro",
+            dependencies: [
+                .target(name: "DynamicMemberMacros"),
+            ],
+            path: "Macros/DynamicLookupMacro"),
+
+        .macro(name: "DynamicMemberMacros",
+            dependencies: [
+                .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
+                .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
+            ],
+            path: "Plugins/DynamicMemberMacros"),
+    ])
