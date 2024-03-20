@@ -1,6 +1,2 @@
 .build/
-
-/swift-biome/
-
-Package.catalog
-*.ss
+.build.unidoc/
