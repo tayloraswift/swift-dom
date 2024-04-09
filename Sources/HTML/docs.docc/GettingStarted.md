@@ -4,8 +4,7 @@ Swift DOM is a DSL for encoding HTML and related formats in pure Swift. Read thi
 learn the basic patterns of and motivations for this library.
 
 Swift DOM is a unidirectional HTML encoder. This means that you can only generate HTML with it;
-you cannot use it to parse HTML. If you really need to parse HTML, you should use a library like
-[SwiftSoup](https://github.com/scinfu/SwiftSoup). However, we recommend architecting your
+you cannot use it to parse HTML. We recommend architecting your
 application to **avoid using HTML as a schema format** in the first place, as HTML is a poor choice
 for data storage. Instead, you should think of HTML as the web equivalent of a render buffer –
 something that is generated dynamically for display purposes and immediately transferred to the
