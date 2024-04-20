@@ -49,6 +49,9 @@ extension HTML.AttributeEncoder
 }
 extension HTML.AttributeEncoder
 {
+    /// Serializes an `data-` attribute with the given name suffix. The suffix should **not**
+    /// include the `data-` prefix, and the encoder will not escape special characters in the
+    /// custom attribute name.
     @inlinable public
     subscript(data suffix:String) -> String?
     {
