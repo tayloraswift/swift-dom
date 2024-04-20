@@ -113,6 +113,7 @@ extension HTML.ContentEncoder
             self.emit(closing: tag)
         }
     }
+    /// Encodes an HTML element with unsafe content. The getter returns an empty string.
     @inlinable public
     subscript(unsafe tag:HTML.UnsafeElement,
         attributes:(inout HTML.AttributeEncoder) -> () = { _ in }) -> String

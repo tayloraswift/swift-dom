@@ -17,7 +17,7 @@ let package:Package = .init(
     targets: [
         .target(name: "DOM",
             dependencies: [
-                .target(name: "DynamicMemberFactoryMacro"),
+                // .target(name: "DynamicMemberFactoryMacro"),
             ],
             //  We are manually inlining the macro-generated code from these two files in order
             //  to enable cross-compilation for this package, and also to improve build speeds.
