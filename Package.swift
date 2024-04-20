@@ -18,6 +18,12 @@ let package:Package = .init(
         .target(name: "DOM",
             dependencies: [
                 .target(name: "DynamicMemberFactoryMacro"),
+            ],
+            //  We are manually inlining the macro-generated code from these two files in order
+            //  to enable cross-compilation for this package, and also to improve build speeds.
+            exclude: [
+                "HTML/HTML.Attribute.swift",
+                "SVG/SVG.Attribute.swift",
             ]),
 
         .target(name: "HTML",
