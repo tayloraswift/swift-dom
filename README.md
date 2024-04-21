@@ -1,6 +1,6 @@
 <div align="center">
 
-***`dom`***<br>`0.6`
+***`dom`***<br>`1.0`
 
 [![ci status](https://github.com/tayloraswift/swift-dom/actions/workflows/ci.yml/badge.svg)](https://github.com/tayloraswift/swift-dom/actions/workflows/ci.yml)
 
@@ -9,6 +9,13 @@
 
 </div>
 
-The ***`swift-dom`*** library is an efficient, expressive DSL for generating HTML (and related formats) with few intermediate allocations.
+The ***`swift-dom`*** library is a cross-platform, efficient, expressive DSL for generating HTML
+(and related formats) with few intermediate allocations.
 
-This library requires Swift 5.10 or later.
+<div align="center">
+
+[documentation](https://swiftinit.org/docs/swift-dom/html) ·
+[license](LICENSE) ·
+[getting started](https://swiftinit.org/docs/swift-dom/html/getting-started)
+
+</div>
