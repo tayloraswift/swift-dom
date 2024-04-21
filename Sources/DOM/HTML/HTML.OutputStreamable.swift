@@ -12,7 +12,8 @@ extension HTML
         /// a shortcut for encoding attributes and to witness it instead by declaring conformances
         /// to well-documented protocols such as ``HTML.OutputStreamableAnchor``.
         static
-        func += (html:inout HTML.AttributeEncoder, self:Self)
+        func |= (html:inout HTML.AttributeEncoder, self:Self)
+
 
         /// Encodes an instance of this type to the provided HTML stream.
         static
@@ -23,8 +24,15 @@ extension HTML.OutputStreamable
 {
     /// Does nothing.
     @inlinable public static
+    func |= (html:inout HTML.AttributeEncoder, self:Self)
+    {
+    }
+
+    @available(*, unavailable, renamed: "|=")
+    public static
     func += (html:inout HTML.AttributeEncoder, self:Self)
     {
+        html |= self
     }
 }
 extension HTML.OutputStreamable where Self:StringProtocol

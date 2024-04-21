@@ -15,7 +15,7 @@ extension Score:HTML.OutputStreamable
 {
     //  snippet.SCORE_WITNESS_ATTRIBUTE
     static
-    func += (html:inout HTML.AttributeEncoder, self:Self)
+    func |= (html:inout HTML.AttributeEncoder, self:Self)
     {
         html.class = "score"
     }
@@ -63,7 +63,7 @@ print("\(html)")
 //  snippet.STATE
 enum State
 {
-    case illinois
+    case alabama
 }
 extension State:Identifiable
 {
@@ -71,7 +71,7 @@ extension State:Identifiable
     {
         switch self
         {
-        case .illinois: "il"
+        case .alabama: "al"
         }
     }
 }
@@ -82,7 +82,7 @@ extension State:HTML.OutputStreamable, HTML.OutputStreamableAnchor
     {
         switch self
         {
-        case .illinois: li += "Illinois"
+        case .alabama: li += "Alabama"
         }
     }
 }
@@ -91,7 +91,7 @@ let states:HTML = .init
 {
     $0[.ul]
     {
-        $0[.li] = State.illinois
+        $0[.li] = State.alabama
     }
 }
 //  snippet.end

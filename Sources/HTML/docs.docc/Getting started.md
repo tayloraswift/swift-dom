@@ -5,10 +5,10 @@ DSL usually involves using a **subscript-assignment** interface alongside a **st
 interface. Read this tutorial to learn the basic patterns to use in order to get the most out of
 this library.
 
-Like Swift result builders, the DSL is a closure-based DSL. But unlike result builders, the
+Like Swift result builders, the HTML DSL is a closure-based DSL. But unlike result builders, the
 library is oriented around mutating an output stream through some type-safe encoding interface.
 The encoder is usually denoted by `$0`, which is understood to be either an
-``HTML.ContentEncoder`` or an ``HTML.AttributeEncoder``.
+``HTML.ContentEncoder`` or an ``HTML.AttributeEncoder``, depending on context.
 
 Swift DOM is a unidirectional HTML encoder. This means that you can only generate HTML with it;
 you cannot use it to parse HTML.
@@ -24,17 +24,22 @@ you cannot use it to parse HTML.
 ## Entrypoints
 
 The main entrypoint for Swift DOM is the ``HTML`` type, which wraps an output stream of UTF-8
-text. You can generate a fragment of HTML using the ``HTML.init(with:)`` initializer.
+text. You can generate a fragment of HTML using ``HTML.init(with:)``.
 
 @Snippet(id: "Entrypoints", slice: "FRAGMENT")
 
-To generate a complete HTML document, use the ``HTML.document(with:)`` constructor, which
-behaves similarly to ``HTML.init(with:)`` except it prepends the `<!DOCTYPE html>` declaration
+```html
+<section>Hi Barbie!</section>
+```
+
+To generate a complete HTML document, use the ``HTML/document(with:)`` constructor, which
+behaves similarly to ``HTML/init(with:)`` except it prepends the `<!DOCTYPE html>` declaration
 to the output stream.
 
 @Snippet(id: "Entrypoints", slice: "DOCUMENT")
 
-You can load a string from the output buffer with string interpolation.
+You can load a string from the output buffer with string interpolation, but many applications
+are better-off loading the UTF-8 buffer directly from ``HTML.utf8``.
 
 @Snippet(id: "Entrypoints", slice: "RENDER")
 
@@ -54,8 +59,6 @@ You can load a string from the output buffer with string interpolation.
 >   Swift DOM always minifies the output HTML. The example outputs in this tutorial have been
 >   reformatted for readability.
 
-Many applications are better-off loading the UTF-8 buffer directly from ``HTML.utf8``.
-
 
 ## Assignment patterns
 
@@ -69,9 +72,10 @@ is worth a thousand words:
 ```
 
 The subscript-assignment pattern works with any type that conforms to ``HTML.OutputStreamable``.
-Although it is possible to retroactively conform types such as ``Int`` to this protocol, we
-generally recommend encoding such types through string interpolation instead, as this makes the
-intent clearer.
+Although you could also retroactively conform types such as ``Int`` to this protocol, we
+recommend encoding such types through string interpolation instead, as this makes the intent
+clearer. You might, for example, want to display integers in a different format elsewhere in
+your application.
 
 @Snippet(id: "Patterns", slice: "DIV_INTERPOLATION")
 
@@ -81,8 +85,8 @@ intent clearer.
 
 ### Subscript-assignment is not idempotent
 
-The subscript-assignment pattern is not idempotent. If you assign to an
-``HTML.ContentEncoder``’s subscript multiple times, you will generate multiple elements.
+The subscript-assignment pattern is not idempotent. If you assign to a
+``HTML/ContentEncoder``’s subscript multiple times, you will generate multiple elements.
 
 @Snippet(id: "Patterns", slice: "DIV_MULTIPLE_ASSIGNMENT")
 
@@ -92,7 +96,7 @@ The subscript-assignment pattern is not idempotent. If you assign to an
 
 ### Subscript-assignment is optional
 
-The getters of ``HTML.ContentEncoder``’s assignable subscripts always return nil. This means
+The getters of ``HTML/ContentEncoder``’s assignable subscripts always return nil. This means
 that the setters also accept nil assignments, which the encoder will always ignore. This is
 useful because it provides a concise syntax for eliding empty elements.
 
@@ -137,10 +141,10 @@ The attribute will only appear in the output if the value is true.
 ```
 
 >   Note:
->   The `<input>` element is a ``HTML/VoidElement``, which means it can never have content. This
->   means you can never assign a value to a subscript that accepts ``HTML/VoidElement``. Swift
->   DOM enforces the distinction between ``HTML.VoidElement`` and ``HTML.ContainerElement`` in
->   the type system to prevent you from making this mistake.
+>   The `<input>` element is a ``HTML/VoidElement``, which means it can never have content. You
+>   can never assign a value to a subscript that accepts ``HTML/VoidElement``. The HTML DSL
+>   enforces the distinction between ``HTML/VoidElement`` and ``HTML/ContainerElement`` in the
+>   type system to prevent you from making this mistake.
 
 ### Encoding attributes with special characters
 
@@ -150,6 +154,15 @@ Swift DOM always escapes special characters in attribute values.
 
 ```html
 <input placeholder='Hawai&#39;i' type='text'>
+```
+
+Unicode characters are not “special” just because they are Unicode. If you spell *Hawaiʻi*
+with the [ʻokina](https://en.wikipedia.org/wiki/ʻOkina), the encoder will not escape it.
+
+@Snippet(id: "Patterns", slice: "ATTRIBUTES_UNICODE")
+
+```html
+<input placeholder='Hawaiʻi' type='text'>
 ```
 
 ### Encoding attributes dynamically
@@ -166,7 +179,7 @@ A slightly more common use case is to encode `data-` attributes using
 <span data-likes='117'>117 likes</span>
 ```
 
->   Warning:
+>   Important:
 >   Although Swift DOM escapes illegal characters in attribute values, it does **not** escape
 >   illegal characters in custom attribute names. It is your responsibility to ensure that
 >   dynamically-supplied attribute names are valid.
@@ -174,20 +187,23 @@ A slightly more common use case is to encode `data-` attributes using
 ### Encoding nested elements
 
 You can encode nested markup by passing an additional trailing closure to the subscript.
-If you are also encoding attributes, you must label the closure `content:`.
+If you are also encoding attributes, you must use `content:` to label the closure.
 
 @Snippet(id: "Patterns", slice: "NESTED_ELEMENTS")
 
 ```html
 <ol id='barbieland-constitution'>
     <li>
-        <h2>Article I</h2><p>Executive branch</p>
+        <h2>Article I</h2>
+        <p>Executive branch</p>
     </li>
     <li>
-        <h2>Article II</h2><p>Legislative branch</p>
+        <h2>Article II</h2>
+        <p>Legislative branch</p>
     </li>
     <li>
-        <h2>Article III</h2><p>Judicial branch</p>
+        <h2>Article III</h2>
+        <p>Judicial branch</p>
     </li>
 </ol>
 ```
@@ -199,7 +215,7 @@ Some users may prefer the equivalent syntax that does not use labeled closures.
 ### Encoding empty elements
 
 Unlike the subscript-assignment pattern, the nested closure syntax always generates the
-container element passed to the subscript, even if nothing is written from within the closure.
+container element passed to the subscript, even if nothing is written inside the closure.
 
 @Snippet(id: "Patterns", slice: "EMPTY_ELEMENTS")
 
@@ -213,7 +229,7 @@ container element passed to the subscript, even if nothing is written from withi
 >   closing tag.
 
 Because Swift DOM distinguishes between void and container elements at compile-time, you can
-also safely omit the trailing braces when encoding empty elements.
+safely omit the trailing braces when encoding empty elements.
 
 @Snippet(id: "Patterns", slice: "EMPTY_ELEMENTS_ALT")
 
@@ -234,9 +250,9 @@ This syntax passes through the variadic ``HTML.ContentEncoder/subscript(_:_:exte
 overload, which applies any associated attributes to the **outermost** element.
 
 >   Note:
->   This interface applies attributes to the outermost element because that is the hardest
->   markup pattern to express without the elision syntax. To aid readability of code that uses
->   the DSL, there is no equivalent syntax for applying attributes to the innermost element.
+>   The DSL applies attributes to the outermost element because that makes it easier for you to
+>   style the markup structure with CSS. To aid the readability of the DSL, there is no
+>   equivalent syntax for applying attributes to the innermost element.
 
 ### Encoding unsafe content
 
@@ -251,12 +267,11 @@ You can encode such elements using the ``HTML.ContentEncoder/subscript(unsafe:_:
 
 ## Streaming patterns
 
-The closure-based encoding pattern comes with a **streaming interface** analogous to the
-subscript-assignment interface.
+The HTML DSL provides a **streaming interface** alongside the subscript-assignment interface.
 
 ### Streaming values
 
-Most prose rendering requires interpolating text nodes with HTML elements. The basic interface
+Most prose rendering involves interpolating text nodes with HTML elements. The basic interface
 to use for interpolated streaming is the ``HTML.OutputStreamable/+=(_:_:) [46UV7]`` operator.
 
 @Snippet(id: "Patterns", slice: "STREAMING")
@@ -277,12 +292,12 @@ Like the subscript-assignment interface, the streaming interface supports elisio
 ```
 
 >   Warning:
->   In many situations, `$0[x] { $0 ?= y }` is equivalent to `$0[x] = y`, but they are not
+>   In many situations, `$0[x] { $0 += y }` is equivalent to `$0[x] = y`, but they are not
 >   exactly the same. Custom types that conform to ``HTML.OutputStreamable`` may support
 >   [streamable attributes](doc:Using-protocols) that only appear if it is statically known
 >   that the element will be the only child of its parent element. Because only the
->   subscript-assignment syntax can provide this guarantee at compile-time, the streaming
->   interface will not include such attributes!
+>   subscript-assignment syntax can provide this guarantee, the streaming interface will not
+>   include such attributes!
 
 
 ### Streaming existentials
@@ -295,3 +310,6 @@ existentials by using the ``HTML.ContentEncoder/*=(_:_:)`` operator.
 ```html
 <p>string</p>
 ```
+
+There is no operator for streaming **optional** existentials. You will need to use normal
+control-flow statements to handle optional existentials.
