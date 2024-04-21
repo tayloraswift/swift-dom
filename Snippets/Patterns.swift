@@ -108,6 +108,7 @@ let streaming:HTML = .init
     //  snippet.STREAMING_EXISTENTIAL
     let message:any HTML.OutputStreamable = "string"
     $0[.p] { $0 *= message }
+    //  snippet.end
 }
 
 print("\(streaming)")
