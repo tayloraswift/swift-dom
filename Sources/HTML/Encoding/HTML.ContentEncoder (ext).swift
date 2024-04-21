@@ -29,7 +29,7 @@ extension HTML.ContentEncoder
         {
             if  let value:Renderable
             {
-                self[exterior, { $0 += value ; attributes(&$0) }]
+                self[exterior, { $0 |= value ; attributes(&$0) }]
                 {
                     for interior:HTML.ContainerElement in interior
                     {
@@ -62,7 +62,7 @@ extension HTML.ContentEncoder
         {
             if  let value:Renderable
             {
-                self[tag, { $0 += value ; attributes(&$0) }] { $0 += value }
+                self[tag, { $0 |= value ; attributes(&$0) }] { $0 += value }
             }
         }
     }
@@ -96,7 +96,7 @@ extension HTML.ContentEncoder
         {
             if  let value:Renderable
             {
-                self[link: target, { $0 += value ; attributes(&$0) }] { $0 += value }
+                self[link: target, { $0 |= value ; attributes(&$0) }] { $0 += value }
             }
         }
     }

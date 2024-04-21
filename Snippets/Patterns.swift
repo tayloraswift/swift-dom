@@ -29,6 +29,8 @@ let assignment:HTML = .init
     } = "Purchase"
     //  snippet.ATTRIBUTES_ESCAPING
     $0[.input] { $0.placeholder = "Hawai'i" ; $0.type = "text" }
+    //  snippet.ATTRIBUTES_UNICODE
+    $0[.input] { $0.placeholder = "Hawaiʻi" ; $0.type = "text" }
     //  snippet.ATTRIBUTES_BOOLEAN
     $0[.input] { $0.disabled = true ; $0.type = "text" }
     $0[.input] { $0.required = false ; $0.type = "text" }

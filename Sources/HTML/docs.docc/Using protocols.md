@@ -1,7 +1,7 @@
-# Using protocols with HTML
+# Using protocols with HTML in Swift
 
 In large projects, generating HTML with nested closure literals can quickly become
-unsustainable. A more-scalable approach is to factor out some of the rendering logic into
+unsustainable. A more scalable approach is to factor out some of the rendering logic into
 protocol conformances on model types. Read this tutorial to learn how to best use protocol
 conformances with the DSL.
 
@@ -13,7 +13,7 @@ not fully inlinable.
 
 ### Built-in conformances
 
-There are several types that have built-in ``HTML.OutputStreamable`` conformances that are
+The standard library string types have built-in ``HTML.OutputStreamable`` conformances that are
 always available.
 
 -   ``String``
@@ -24,16 +24,18 @@ always available.
 ### Custom conformances
 
 You can conform custom types to ``HTML.OutputStreamable`` by implementing the
-``HTML.OutputStreamable/+=(_:_:) [46UV7]`` operator requirement. The protocol has two such
-requirements, but only the ``HTML/ContentEncoder`` requirement needs a user-supplied witness.
+``HTML.OutputStreamable/+=(_:_:) [46UV7]`` and ``HTML.OutputStreamable/|=(_:_:) [3TLKY]``
+operator requirements. The latter has a default implementation (that does nothing), so
+only the ``HTML.OutputStreamable/+=(_:_:) [46UV7]`` requirement needs a user-supplied witness.
 
 -   ``HTML.OutputStreamable.+=(_:_:) [46UV7]``
--   ``HTML.OutputStreamable.+=(_:_:) [7MWYL]``
+-   ``HTML.OutputStreamable.|=(_:_:) [3TLKY]``
 
-The content-encoding witness will always be called when encoding an instance of a conforming
-type. The attribute-encoding witness will only be called when it is statically known that the
-instance will be the only child of its parent element. This means that the two spellings below
-have slightly different semantics, as the latter will not call the attribute-encoding witness.
+The ``HTML.OutputStreamable/+=(_:_:) [46UV7]`` witness will always be called when encoding an
+instance of a conforming type. The ``HTML.OutputStreamable/|=(_:_:) [3TLKY]`` witness will only
+be called when it is statically known that the generated elements will be the only children of
+their parent. This means that the two spellings below have slightly different semantics, as the
+latter will not call the attribute-encoding witness.
 
 @Snippet(id: "Protocols", slice: "ASSIGNMENT")
 @Snippet(id: "Protocols", slice: "STREAMING")
@@ -58,7 +60,7 @@ The attribute-encoding witness adds a class named `score` to the parent element.
 >   The attribute-encoding witness knows nothing about the parent element, so if the parent has
 >   already been assigned a class externally, the witness will **duplicate** the attribute.
 >   Although we use the `class` attribute here as an example, in practice it is a bad idea to
->   use attribute streaming with attributes that are likely to collide with external values.
+>   use attribute streaming with attributes that are likely to conflict with external settings.
 
 ### Streaming content
 
@@ -107,7 +109,7 @@ requires an ``Identifiable`` conformance.
 
 Here is an example of a type that conforms to ``HTML.OutputStreamableAnchor``. It provides an
 ``Identifiable/id [8T2WS]`` that is different from its textual description. The protocol will
-provide a witness for the attribute-encoding ``HTML.OutputStreamable/+=(_:_:) [7MWYL]``
+provide a witness for the attribute-encoding ``HTML.OutputStreamable/|=(_:_:) [3TLKY]``
 requirement that sets the `id` attribute on the parent element.
 
 @Snippet(id: "Protocols", slice: "STATE")
@@ -116,7 +118,7 @@ requirement that sets the `id` attribute on the parent element.
 
 ```html
 <ul>
-    <li id='il'>Illinois</li>
+    <li id='al'>Alabama</li>
 </ul>
 ```
 
@@ -153,3 +155,6 @@ which already conforms to ``HTML.OutputStreamable``, via its
 >   You could have also implemented ``CustomStringConvertible`` for `ProfileHeading` instead,
 >   which would have provided a default implementation for the
 >   ``HTML.OutputStreamableHeading/display [25686]`` requirement.
+
+The real power of the DSL comes from its composability. We used ``String`` as the delegate type
+in the example above, but you could just as easily use a custom type.

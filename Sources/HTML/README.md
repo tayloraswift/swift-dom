@@ -49,6 +49,7 @@ expensive as one might assume when using a different library.
 
 -   <doc:Getting-started>
 -   <doc:Using-protocols>
+-   <doc:Using-inline-SVG>
 
 ### Attributes
 
@@ -73,3 +74,14 @@ expensive as one might assume when using a different library.
 -   ``HTML.OutputStreamable``
 -   ``HTML.OutputStreamableAnchor``
 -   ``HTML.OutputStreamableHeading``
+
+### SVG
+
+-   ``SVG``
+-   ``SVG.Attribute``
+-   ``SVG.ContainerElement``
+-   ``SVG.OutputStreamable``
+
+### SVG helpers
+
+-   ``SVG.Point``

@@ -1,8 +1,8 @@
 extension HTML
 {
-    /// A value-representation of the ``subscript(link:_:)`` encoding interface.
-    /// Use this type to reduce verbosity when encoding with rendering systems
-    /// that generate the link’s display elements and the target together.
+    /// A value-representation of the ``ContentEncoder/subscript(link:_:)`` encoding interface.
+    /// Use this type to reduce verbosity when encoding with rendering systems that generate the
+    /// link’s display elements and the target together.
     @frozen public
     struct Link<Display>
     {

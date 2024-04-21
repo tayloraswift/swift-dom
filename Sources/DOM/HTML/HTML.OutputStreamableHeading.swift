@@ -1,7 +1,7 @@
 extension HTML
 {
-    /// A type that wraps its ``display`` value in an `a` element with `href` set to a
-    /// fragment pointing to its ``id`` value.
+    /// A type that wraps its ``display [25686]`` value in an `a` element with `href` set to a
+    /// fragment pointing to its ``Identifiable/id [8T2WS]`` value.
     public
     protocol OutputStreamableHeading<Display>:HTML.OutputStreamableAnchor
     {
