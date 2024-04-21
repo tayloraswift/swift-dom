@@ -79,6 +79,8 @@ extension SVG.ContentEncoder
             self.close(tag)
         }
     }
+
+    @_disfavoredOverload
     @inlinable public
     subscript(_ tag:SVG.ContainerElement,
         attributes:(inout SVG.AttributeEncoder) -> (),

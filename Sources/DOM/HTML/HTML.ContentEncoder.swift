@@ -79,6 +79,8 @@ extension HTML.ContentEncoder
             self.close(tag)
         }
     }
+
+    @_disfavoredOverload
     @inlinable public
     subscript(_ tag:HTML.ContainerElement,
         attributes:(inout HTML.AttributeEncoder) -> (),
@@ -91,6 +93,7 @@ extension HTML.ContentEncoder
             self.close(tag)
         }
     }
+
     @inlinable public
     subscript(_ tag:HTML.VoidElement,
         attributes:(inout HTML.AttributeEncoder) -> () = { _ in }) -> Void
