@@ -12,7 +12,7 @@ let package:Package = .init(
         .library(name: "DynamicMemberFactoryMacro", targets: ["DynamicMemberFactoryMacro"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-syntax", from: "510.0.1"),
+        .package(url: "https://github.com/apple/swift-syntax", "510.0.1" ..< "601.0.0"),
     ],
     targets: [
         .target(name: "DOM",
