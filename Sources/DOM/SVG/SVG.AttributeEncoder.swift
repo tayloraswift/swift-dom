@@ -46,6 +46,21 @@ extension SVG.AttributeEncoder
             }
         }
     }
+
+    /// Sets the XML namespace, if non-nil. This should almost always be the string
+    /// `"http://www.w3.org/2000/svg"`.
+    @inlinable public
+    var xmlns:String?
+    {
+        get { nil }
+        set (value)
+        {
+            if  let value:String
+            {
+                self.utf8 += DOM.Property<XMLNS>.init(.xmlns, value)
+            }
+        }
+    }
 }
 extension SVG.AttributeEncoder
 {
