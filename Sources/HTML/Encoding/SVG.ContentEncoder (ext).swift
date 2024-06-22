@@ -10,7 +10,7 @@ extension SVG.ContentEncoder
         {
             if  let value:Renderable
             {
-                self[tag, attributes] { $0 += value }
+                self[tag, { $0 |= value ; attributes(&$0) }] { $0 += value }
             }
         }
     }
