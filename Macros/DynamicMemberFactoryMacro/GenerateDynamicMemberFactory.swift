@@ -7,7 +7,7 @@
 /// to the macro. If the case name is written in backticks, the string literal
 /// should not include the backticks.
 ///
-/// The factory type will include an `@inlinable internal` initializer that takes
+/// The factory type will include an `@inlinable` (`internal`) initializer that takes
 /// no arguments. The factory type itself has zero size.
 @attached(member, names: named(Factory))
 public

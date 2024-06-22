@@ -3,10 +3,10 @@ extension XML.Sitemap
     @frozen public
     struct AttributeEncoder:StreamingEncoder
     {
-        @usableFromInline internal
+        @usableFromInline
         var utf8:[UInt8]
 
-        @inlinable internal
+        @inlinable
         init(utf8:[UInt8] = [])
         {
             self.utf8 = utf8

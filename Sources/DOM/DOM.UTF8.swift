@@ -1,12 +1,12 @@
 extension DOM
 {
-    @frozen @usableFromInline internal
+    @frozen @usableFromInline
     struct UTF8
     {
-        @usableFromInline internal
+        @usableFromInline
         let codeunit:UInt8
 
-        @inlinable internal
+        @inlinable
         init(_ codeunit:UInt8)
         {
             self.codeunit = codeunit
@@ -15,7 +15,7 @@ extension DOM
 }
 extension DOM.UTF8
 {
-    @inlinable internal static
+    @inlinable static
     func += (utf8:inout [UInt8], self:Self)
     {
         switch self.codeunit
