@@ -1,5 +1,5 @@
 import HTML
-//  snippet.DOCUMENT
+//  snippet.EMBEDDED
 let html:HTML = .document
 {
     $0[.html]
@@ -28,5 +28,4 @@ let html:HTML = .document
     }
 }
 //  snippet.end
-
 print("\(html)")
