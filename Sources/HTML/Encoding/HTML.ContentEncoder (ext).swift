@@ -79,7 +79,7 @@ extension HTML.ContentEncoder
         {
             if  let value:Renderable
             {
-                self[svg, attributes] { $0 += value }
+                self[svg, { $0 |= value ; attributes(&$0) }] { $0 += value }
             }
         }
     }
