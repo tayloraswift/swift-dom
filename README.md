@@ -1,6 +1,6 @@
 <div align="center">
 
-***`dom`***<br>`1.0`
+***`dom`***<br>`1.1`
 
 [![ci status](https://github.com/tayloraswift/swift-dom/actions/workflows/ci.yml/badge.svg)](https://github.com/tayloraswift/swift-dom/actions/workflows/ci.yml)
 
