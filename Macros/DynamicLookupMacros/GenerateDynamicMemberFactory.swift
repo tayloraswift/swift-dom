@@ -38,7 +38,7 @@ struct GenerateDynamicMemberFactory
     init(for subject:TokenSyntax)
     {
         let initializer:DeclSyntax = """
-        @inlinable internal init() {}
+        @inlinable init() {}
         """
 
         self.members = [.init(decl: initializer)]

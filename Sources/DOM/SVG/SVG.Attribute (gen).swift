@@ -265,7 +265,7 @@ extension SVG
 @frozen public
 struct Factory
 {
-    @inlinable internal init() {
+    @inlinable init() {
     }
     @inlinable public var accent_height : Attribute {
         .accent_height

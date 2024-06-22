@@ -8,6 +8,6 @@ extension DOM
 }
 extension DOM.Attribute where Self:RawRepresentable<String>
 {
-    @inlinable internal
+    @inlinable
     var name:String { self.rawValue }
 }

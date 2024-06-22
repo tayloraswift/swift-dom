@@ -1,4 +1,4 @@
-@usableFromInline internal
+@usableFromInline
 protocol StreamingEncoder
 {
     init(utf8:[UInt8])
@@ -6,7 +6,7 @@ protocol StreamingEncoder
 }
 extension StreamingEncoder
 {
-    @inlinable internal
+    @inlinable
     subscript<Encoder>(as _:Encoder.Type) -> Encoder where Encoder:StreamingEncoder
     {
         _read
@@ -23,19 +23,19 @@ extension StreamingEncoder
 }
 extension StreamingEncoder
 {
-    @inlinable internal static
+    @inlinable static
     var empty:Self { .init(utf8: []) }
 }
 extension StreamingEncoder
 {
-    @inlinable internal static
+    @inlinable static
     func move(_ utf8:inout [UInt8]) -> Self
     {
         defer { utf8 = [] }
         return .init(utf8: utf8)
     }
 
-    @inlinable internal mutating
+    @inlinable mutating
     func move() -> [UInt8]
     {
         defer { self.utf8 = [] }

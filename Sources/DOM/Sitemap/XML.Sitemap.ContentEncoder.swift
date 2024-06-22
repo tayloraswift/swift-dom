@@ -3,10 +3,10 @@ extension XML.Sitemap
     @frozen public
     struct ContentEncoder:StreamingEncoder
     {
-        @usableFromInline internal
+        @usableFromInline
         var utf8:[UInt8]
 
-        @inlinable internal
+        @inlinable
         init(utf8:[UInt8] = [])
         {
             self.utf8 = utf8
@@ -25,7 +25,7 @@ extension XML.Sitemap.ContentEncoder
         self.utf8 += string.utf8
     }
 
-    @inlinable internal static
+    @inlinable  static
     func += (self:inout Self, utf8:some Sequence<UInt8>)
     {
         for codeunit:UInt8 in utf8
@@ -37,7 +37,7 @@ extension XML.Sitemap.ContentEncoder
 //  These cannot be factored into protocols due to mutation of ``utf8``.
 extension XML.Sitemap.ContentEncoder:DOM.ContentEncoder
 {
-    @usableFromInline internal
+    @usableFromInline
     typealias AttributeEncoder = XML.Sitemap.AttributeEncoder
 
     /// Appends a *raw* UTF-8 code unit to the output stream.

@@ -19,7 +19,7 @@ extension XML.Sitemap
     /// Encodes an XML fragment with the provided closure.
     ///
     /// To encode a complete document, use ``document(with:)``.
-    @inlinable internal
+    @inlinable
     init(with encode:(inout ContentEncoder) throws -> ()) rethrows
     {
         self.init()

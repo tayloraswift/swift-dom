@@ -8,7 +8,7 @@ extension HTML.AttributeEncoder
 }
 extension HTML.AttributeEncoder.CustomData:DOM.Attribute
 {
-    @inlinable internal
+    @inlinable
     var name:String
     {
         switch self

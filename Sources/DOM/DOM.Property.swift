@@ -3,12 +3,12 @@ extension DOM
     @frozen @usableFromInline
     struct Property<ID> where ID:Attribute
     {
-        @usableFromInline internal
+        @usableFromInline
         let attribute:ID
-        @usableFromInline internal
+        @usableFromInline
         let value:String
 
-        @inlinable internal
+        @inlinable
         init(_ attribute:ID, _ value:String)
         {
             self.attribute = attribute
@@ -18,7 +18,7 @@ extension DOM
 }
 extension DOM.Property
 {
-    @inlinable internal static
+    @inlinable static
     func += (utf8:inout [UInt8], self:Self)
     {
         utf8.append(0x20) // ' '
