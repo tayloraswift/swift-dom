@@ -1,11 +1,10 @@
 <div align="center">
 
-***`dom`***<br>`1.1`
+***`dom`***
 
-[![ci status](https://github.com/tayloraswift/swift-dom/actions/workflows/ci.yml/badge.svg)](https://github.com/tayloraswift/swift-dom/actions/workflows/ci.yml)
+[![Tests](https://github.com/tayloraswift/swift-dom/actions/workflows/Tests.yml/badge.svg)](https://github.com/tayloraswift/swift-dom/actions/workflows/Tests.yml)
+[![Documentation](https://github.com/tayloraswift/swift-dom/actions/workflows/Documentation.yml/badge.svg)](https://github.com/tayloraswift/swift-dom/actions/workflows/Documentation.yml)
 
-[![swift package index versions](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Ftayloraswift%2Fswift-dom%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/tayloraswift/swift-dom)
-[![swift package index platforms](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Ftayloraswift%2Fswift-dom%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/tayloraswift/swift-dom)
 
 </div>
 
@@ -19,3 +18,19 @@ The ***`swift-dom`*** library is a cross-platform, efficient, expressive DSL for
 [getting started](https://swiftinit.org/docs/swift-dom/html/getting-started)
 
 </div>
+
+## Requirements
+
+The swift-dom library requires Swift 5.10 or later.
+
+| Platform | Status |
+| -------- | ------ |
+| 🐧 Linux | [![Tests](https://github.com/tayloraswift/swift-dom/actions/workflows/Tests.yml/badge.svg)](https://github.com/tayloraswift/swift-dom/actions/workflows/Tests.yml) |
+| 🍏 Darwin | [![Tests](https://github.com/tayloraswift/swift-dom/actions/workflows/Tests.yml/badge.svg)](https://github.com/tayloraswift/swift-dom/actions/workflows/Tests.yml) |
+| 🍏 Darwin (iOS) | [![iOS](https://github.com/tayloraswift/swift-dom/actions/workflows/iOS.yml/badge.svg)](https://github.com/tayloraswift/swift-dom/actions/workflows/iOS.yml) |
+| 🍏 Darwin (tvOS) | [![tvOS](https://github.com/tayloraswift/swift-dom/actions/workflows/tvOS.yml/badge.svg)](https://github.com/tayloraswift/swift-dom/actions/workflows/tvOS.yml) |
+| 🍏 Darwin (visionOS) | [![visionOS](https://github.com/tayloraswift/swift-dom/actions/workflows/visionOS.yml/badge.svg)](https://github.com/tayloraswift/swift-dom/actions/workflows/visionOS.yml) |
+| 🍏 Darwin (watchOS) | [![watchOS](https://github.com/tayloraswift/swift-dom/actions/workflows/watchOS.yml/badge.svg)](https://github.com/tayloraswift/swift-dom/actions/workflows/watchOS.yml) |
+
+
+[Check deployment minimums](https://swiftinit.org/docs/swift-dom#ss:platform-requirements)
