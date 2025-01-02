@@ -49,7 +49,7 @@ extension HTML.ContentEncoder
     /// Writes an opening HTML tag to the output stream.
     ///
     /// This is a low-level interface. Prefer encoding with ``subscript(_:content:)``
-    /// or ``subscript(_:_:content:) [8M0O5]``.
+    /// or ``subscript(_:_:content:) (_, _, (HTML.ContentEncoder) -> ())``.
     @inlinable public mutating
     func open(_ tag:HTML.ContainerElement,
         with yield:(inout HTML.AttributeEncoder) -> () = { _ in })
@@ -59,7 +59,7 @@ extension HTML.ContentEncoder
     /// Writes a closing HTML tag to the output stream.
     ///
     /// This is a low-level interface. Prefer encoding with ``subscript(_:content:)``
-    /// or ``subscript(_:_:content:) [8M0O5]``.
+    /// or ``subscript(_:_:content:) (_, _, (HTML.ContentEncoder) -> ())``.
     @inlinable public mutating
     func close(_ tag:HTML.ContainerElement)
     {
