@@ -10,8 +10,9 @@ SVG is a large namespace, and SVG elements can only appear inside an `<svg>` ele
 Conversely, normal HTML elements *cannot* appear inside an `<svg>` element. Therefore, the DSL
 enforces the separation between HTML and SVG in the type system.
 
-To open an SVG context, use the ``HTML.ContentEncoder.subscript(_:_:content:) [2XP4C]``
-overload. It accepts an element of type ``SVG.Embedded``, which is an enum with a single case,
+To open an SVG context, use the
+``HTML.ContentEncoder.subscript(_:_:content:) (_, _, (SVG.ContentEncoder) -> ())`` overload.
+It accepts an element of type ``SVG.Embedded``, which is an enum with a single case,
 ``SVG.Embedded/svg``. An SVG context looks visually identical to a
 [nested HTML context](doc:Getting-started), but it yields an ``SVG.ContentEncoder`` instead of
 an ``HTML.ContentEncoder``.

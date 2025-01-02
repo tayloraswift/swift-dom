@@ -24,18 +24,19 @@ always available.
 ### Custom conformances
 
 You can conform custom types to ``HTML.OutputStreamable`` by implementing the
-``HTML.OutputStreamable/+=(_:_:) [46UV7]`` and ``HTML.OutputStreamable/|=(_:_:) [3TLKY]``
-operator requirements. The latter has a default implementation (that does nothing), so
-only the ``HTML.OutputStreamable/+=(_:_:) [46UV7]`` requirement needs a user-supplied witness.
+``HTML.OutputStreamable/+=(_:_:) [requirement]`` and
+``HTML.OutputStreamable/|=(_:_:) [requirement]`` operator requirements. The latter has a default
+implementation (that does nothing), so only the ``HTML.OutputStreamable/+=(_:_:) [requirement]``
+requirement needs a user-supplied witness.
 
--   ``HTML.OutputStreamable.+=(_:_:) [46UV7]``
--   ``HTML.OutputStreamable.|=(_:_:) [3TLKY]``
+-   ``HTML.OutputStreamable.+=(_:_:) [requirement]``
+-   ``HTML.OutputStreamable.|=(_:_:) [requirement]``
 
-The ``HTML.OutputStreamable/+=(_:_:) [46UV7]`` witness will always be called when encoding an
-instance of a conforming type. The ``HTML.OutputStreamable/|=(_:_:) [3TLKY]`` witness will only
-be called when it is statically known that the generated elements will be the only children of
-their parent. This means that the two spellings below have slightly different semantics, as the
-latter will not call the attribute-encoding witness.
+The ``HTML.OutputStreamable/+=(_:_:) [requirement]`` witness will always be called when encoding
+an instance of a conforming type. The ``HTML.OutputStreamable/|=(_:_:) [requirement]`` witness
+will only be called when it is statically known that the generated elements will be the only
+children of their parent. This means that the two spellings below have slightly different
+semantics, as the latter will not call the attribute-encoding witness.
 
 @Snippet(id: "Protocols", slice: "ASSIGNMENT")
 @Snippet(id: "Protocols", slice: "STREAMING")
@@ -71,8 +72,9 @@ class set to `positive` or `negative` depending on the value. It then appends th
 @Snippet(id: "Protocols", slice: "SCORE_WITNESS_CONTENT")
 
 >   Tip:
->   The `" points"` line is calling ``String``’s own ``HTML.OutputStreamable/+=(_:_:) [8MWWV]``
->   witness, which it inherits as a default implementation from ``StringProtocol``.
+>   The `" points"` line is calling ``String``’s own
+>   ``HTML.OutputStreamable/+=(_:_:) [requirement]`` witness, which it inherits as a default
+>   implementation from ``StringProtocol``.
 
 >   Experiment:
 >   The implementation above renders negative scores with a leading hyphen (`-`). Try changing
@@ -108,9 +110,10 @@ it’s a good idea to rely on the library’s helper protocols when possible. On
 requires an ``Identifiable`` conformance.
 
 Here is an example of a type that conforms to ``HTML.OutputStreamableAnchor``. It provides an
-``Identifiable/id [8T2WS]`` that is different from its textual description. The protocol will
-provide a witness for the attribute-encoding ``HTML.OutputStreamable/|=(_:_:) [3TLKY]``
-requirement that sets the `id` attribute on the parent element.
+``Identifiable/id [requirement]`` that is different from its textual description. The protocol
+will provide a witness for the attribute-encoding
+``HTML.OutputStreamable/|=(_:_:) [requirement]`` requirement that sets the `id` attribute on the
+parent element.
 
 @Snippet(id: "Protocols", slice: "STATE")
 
@@ -129,12 +132,13 @@ It is possible to go one step further and use the `id` attribute to create linka
 The library implements this through the ``HTML.OutputStreamableHeading`` protocol, which further
 refines ``HTML.OutputStreamableAnchor`` with an associated delegate type named
 ``HTML.OutputStreamableHeading/Display``. This protocol wraps the delegate in an `<a>` tag with
-the `href` attribute pointing to the conforming instance’s own ``Identifiable/id [8T2WS]``.
+the `href` attribute pointing to the conforming instance’s own
+``Identifiable/id [requirement]``.
 
 Here is an example of a type that conforms to ``HTML.OutputStreamableHeading``. Instead of
-implementing ``HTML.OutputStreamable/+=(_:_:) [46UV7]`` directly, it delegates to ``String``,
-which already conforms to ``HTML.OutputStreamable``, via its
-``HTML.OutputStreamableHeading/display [25686]`` witness.
+implementing ``HTML.OutputStreamable/+=(_:_:) [requirement]`` directly, it delegates to
+``String``, which already conforms to ``HTML.OutputStreamable``, via its
+``HTML.OutputStreamableHeading/display -> String`` witness.
 
 @Snippet(id: "Protocols", slice: "HEADING")
 
@@ -154,7 +158,7 @@ which already conforms to ``HTML.OutputStreamable``, via its
 >   Tip:
 >   You could have also implemented ``CustomStringConvertible`` for `ProfileHeading` instead,
 >   which would have provided a default implementation for the
->   ``HTML.OutputStreamableHeading/display [25686]`` requirement.
+>   ``HTML.OutputStreamableHeading/display [requirement]`` requirement.
 
 The real power of the DSL comes from its composability. We used ``String`` as the delegate type
 in the example above, but you could just as easily use a custom type.
