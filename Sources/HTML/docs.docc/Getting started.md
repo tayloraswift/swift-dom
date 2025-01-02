@@ -168,7 +168,7 @@ with the [ʻokina](https://en.wikipedia.org/wiki/ʻOkina), the encoder will not 
 ### Encoding attributes dynamically
 
 Although it is an exceptionally rare use case, you can encode attributes dynamically by passing
-instances of ``HTML.Attribute`` to ``HTML.AttributeEncoder/subscript(name:) [7PXKH]``.
+instances of ``HTML.Attribute`` to ``HTML.AttributeEncoder/subscript(name:) -> String?``.
 
 A slightly more common use case is to encode `data-` attributes using
 ``HTML.AttributeEncoder/subscript(data:)``.
@@ -272,7 +272,8 @@ The HTML DSL provides a **streaming interface** alongside the subscript-assignme
 ### Streaming values
 
 Most prose rendering involves interpolating text nodes with HTML elements. The basic interface
-to use for interpolated streaming is the ``HTML.OutputStreamable/+=(_:_:) [46UV7]`` operator.
+to use for interpolated streaming is the ``HTML.OutputStreamable/+=(_:_:) [requirement]``
+operator.
 
 @Snippet(id: "Patterns", slice: "STREAMING")
 
@@ -283,7 +284,7 @@ to use for interpolated streaming is the ``HTML.OutputStreamable/+=(_:_:) [46UV7
 ### Streaming values with elision
 
 Like the subscript-assignment interface, the streaming interface supports elision with the
-``Swift.Optional/?=(_:_:) [8IW6N]`` operator.
+``Swift.Optional/?=(_:_:) (HTML.ContentEncoder, _)`` operator.
 
 @Snippet(id: "Patterns", slice: "STREAMING_ELISION")
 
