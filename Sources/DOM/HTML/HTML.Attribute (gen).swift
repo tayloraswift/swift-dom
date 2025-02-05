@@ -10,6 +10,7 @@ extension HTML
         case align
         case allow
         case alt
+        case `as`
         case async
         case autocapitalize
         case autocomplete
@@ -164,6 +165,9 @@ struct Factory
     }
     @inlinable public var alt: Attribute {
         .alt
+    }
+    @inlinable public var `as`: Attribute {
+        .`as`
     }
     @inlinable public var async: Attribute {
         .async
