@@ -13,6 +13,7 @@ extension HTML
         case align
         case allow
         case alt
+        case `as`
         case async
         case autocapitalize
         case autocomplete
