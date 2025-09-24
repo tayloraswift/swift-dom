@@ -87,6 +87,7 @@ extension GenerateDynamicMemberFactory:MemberMacro
     public static
     func expansion(of attachment:AttributeSyntax,
         providingMembersOf decl:some DeclGroupSyntax,
+        conformingTo protocol:[TypeSyntax],
         in context:some MacroExpansionContext) throws -> [DeclSyntax]
     {
         guard

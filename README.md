@@ -21,7 +21,7 @@ The ***`swift-dom`*** library is a cross-platform, efficient, expressive DSL for
 
 ## Requirements
 
-The swift-dom library requires Swift 5.10 or later.
+The swift-dom library requires Swift 6.0 or later.
 
 | Platform | Status |
 | -------- | ------ |
