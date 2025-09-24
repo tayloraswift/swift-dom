@@ -1,4 +1,4 @@
-// swift-tools-version:5.10
+// swift-tools-version:6.0
 import PackageDescription
 import CompilerPluginSupport
 
@@ -12,7 +12,7 @@ let package:Package = .init(
         .library(name: "DynamicMemberFactoryMacro", targets: ["DynamicMemberFactoryMacro"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-syntax", "510.0.1" ..< "601.0.0"),
+        .package(url: "https://github.com/apple/swift-syntax", from: "602.0.0"),
     ],
     targets: [
         .target(name: "DOM",
