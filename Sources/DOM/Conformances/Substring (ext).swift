@@ -1,6 +1,4 @@
-extension Substring:HTML.OutputStreamable
-{
+extension Substring: HTML.OutputStreamable {
 }
-extension Substring:SVG.OutputStreamable
-{
+extension Substring: SVG.OutputStreamable {
 }

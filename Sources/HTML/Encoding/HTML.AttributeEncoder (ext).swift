@@ -1,21 +1,14 @@
-extension HTML.AttributeEncoder
-{
-    @inlinable public
-    var property:HTML.Attribute.Property?
-    {
+extension HTML.AttributeEncoder {
+    @inlinable public var property: HTML.Attribute.Property? {
         get { nil }
-        set (value)
-        {
+        set (value) {
             self[name: .property] = value?.rawValue
         }
     }
 
-    @inlinable public
-    var rel:HTML.Attribute.Rel?
-    {
+    @inlinable public var rel: HTML.Attribute.Rel? {
         get { nil }
-        set (value)
-        {
+        set (value) {
             self[name: .rel] = value?.rawValue
         }
     }

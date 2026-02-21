@@ -1,9 +1,6 @@
-extension HTML.Attribute
-{
+extension HTML.Attribute {
     /// https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel
-    @frozen public
-    enum Rel:String, Equatable, Hashable, Sendable
-    {
+    @frozen public enum Rel: String, Equatable, Hashable, Sendable {
         case alternate
         case author
         case bookmark
@@ -37,11 +34,8 @@ extension HTML.Attribute
         case google_ugc = "ugc"
     }
 }
-extension HTML.Attribute.Rel:CustomStringConvertible
-{
-    @inlinable public
-    var description:String
-    {
+extension HTML.Attribute.Rel: CustomStringConvertible {
+    @inlinable public var description: String {
         self.rawValue
     }
 }
