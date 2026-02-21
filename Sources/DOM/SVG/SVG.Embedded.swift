@@ -1,8 +1,5 @@
-extension SVG
-{
-    @frozen public
-    enum Embedded
-    {
+extension SVG {
+    @frozen public enum Embedded {
         case svg
     }
 }

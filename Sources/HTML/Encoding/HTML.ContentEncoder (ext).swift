@@ -1,45 +1,35 @@
-extension HTML.ContentEncoder
-{
+extension HTML.ContentEncoder {
     /// Encodes **any** ``HTML.OutputStreamable`` value to this HTML stream.
     ///
     /// This is the **only** supported interface for encoding existentials to HTML, since
     /// `Optional<any HTML.OutputStreamable>` would displace all of the DSL’s generic overloads.
-    @inlinable public static
-    func *= (html:inout Self, _self:any HTML.OutputStreamable)
-    {
+    @inlinable public static func *= (html: inout Self, _self: any HTML.OutputStreamable) {
         _self.encode(to: &html)
     }
 }
-extension HTML.ContentEncoder
-{
+extension HTML.ContentEncoder {
     /// Optionally encodes an ``HTML.OutputStreamable`` value to the stream through **multiple
     /// levels** of HTML tags, with optional attributes added to the **outermost** wrapper tag.
     ///
     /// If the value is nil, `attributes` will not be evaluated and nothing will be encoded.
     /// The getter always returns nil.
-    @inlinable public
-    subscript<Renderable>(
-        _ exterior:HTML.ContainerElement,
-        _ interior:HTML.ContainerElement...,
-        exterior attributes:(inout HTML.AttributeEncoder) -> () = { _ in }) -> Renderable?
-        where Renderable:HTML.OutputStreamable
-    {
+    @inlinable public subscript<Renderable>(
+        _ exterior: HTML.ContainerElement,
+        _ interior: HTML.ContainerElement...,
+        exterior attributes: (inout HTML.AttributeEncoder) -> () = { _ in }
+    ) -> Renderable?
+        where Renderable: HTML.OutputStreamable {
         get { nil }
-        set (value)
-        {
-            if  let value:Renderable
-            {
-                self[exterior, { $0 |= value ; attributes(&$0) }]
-                {
-                    for interior:HTML.ContainerElement in interior
-                    {
+        set (value) {
+            if  let value: Renderable {
+                self[exterior, { $0 |= value ; attributes(&$0) }] {
+                    for interior: HTML.ContainerElement in interior {
                         $0.open(interior)
                     }
 
                     $0 += value
 
-                    for interior:HTML.ContainerElement in interior.reversed()
-                    {
+                    for interior: HTML.ContainerElement in interior.reversed() {
                         $0.close(interior)
                     }
                 }
@@ -52,73 +42,60 @@ extension HTML.ContentEncoder
     ///
     /// If the value is nil, `attributes` will not be evaluated and nothing will be encoded.
     /// The getter always returns nil.
-    @inlinable public
-    subscript<Renderable>(tag:HTML.ContainerElement,
-        attributes:(inout HTML.AttributeEncoder) -> () = { _ in }) -> Renderable?
-        where Renderable:HTML.OutputStreamable
-    {
+    @inlinable public subscript<Renderable>(
+        tag: HTML.ContainerElement,
+        attributes: (inout HTML.AttributeEncoder) -> () = { _ in }
+    ) -> Renderable?
+        where Renderable: HTML.OutputStreamable {
         get { nil }
-        set (value)
-        {
-            if  let value:Renderable
-            {
+        set (value) {
+            if  let value: Renderable {
                 self[tag, { $0 |= value ; attributes(&$0) }] { $0 += value }
             }
         }
     }
 }
-extension HTML.ContentEncoder
-{
-    @inlinable public
-    subscript<Renderable>(svg:SVG.Embedded,
-        attributes:(inout SVG.AttributeEncoder) -> () = { _ in }) -> Renderable?
-        where Renderable:SVG.OutputStreamable
-    {
+extension HTML.ContentEncoder {
+    @inlinable public subscript<Renderable>(
+        svg: SVG.Embedded,
+        attributes: (inout SVG.AttributeEncoder) -> () = { _ in }
+    ) -> Renderable?
+        where Renderable: SVG.OutputStreamable {
         get { nil }
-        set (value)
-        {
-            if  let value:Renderable
-            {
+        set (value) {
+            if  let value: Renderable {
                 self[svg, { $0 |= value ; attributes(&$0) }] { $0 += value }
             }
         }
     }
 }
-extension HTML.ContentEncoder
-{
-    @inlinable public
-    subscript<Renderable>(link target:String?,
-        attributes:(inout HTML.AttributeEncoder) -> () = { _ in }) -> Renderable?
-        where Renderable:HTML.OutputStreamable
-    {
+extension HTML.ContentEncoder {
+    @inlinable public subscript<Renderable>(
+        link target: String?,
+        attributes: (inout HTML.AttributeEncoder) -> () = { _ in }
+    ) -> Renderable?
+        where Renderable: HTML.OutputStreamable {
         get { nil }
-        set (value)
-        {
-            if  let value:Renderable
-            {
+        set (value) {
+            if  let value: Renderable {
                 self[link: target, { $0 |= value ; attributes(&$0) }] { $0 += value }
             }
         }
     }
 }
-extension HTML.ContentEncoder
-{
+extension HTML.ContentEncoder {
     /// Appends a `span` element to the stream if the link `target` is nil,
     /// or an `a` element containing the link `target` in its `href` attribute
     /// if non-nil.
-    @inlinable public
-    subscript(link target:String?,
-        attributes:(inout HTML.AttributeEncoder) -> () = { _ in },
-        content encode:(inout Self) -> ()) -> Void
-    {
-        mutating get
-        {
-            if  let target:String
-            {
+    @inlinable public subscript(
+        link target: String?,
+        attributes: (inout HTML.AttributeEncoder) -> () = { _ in },
+        content encode: (inout Self) -> ()
+    ) -> Void {
+        mutating get {
+            if  let target: String {
                 self[.a, { $0.href = target ; attributes(&$0) }, content: encode]
-            }
-            else
-            {
+            } else {
                 self[.span, attributes, content: encode]
             }
         }

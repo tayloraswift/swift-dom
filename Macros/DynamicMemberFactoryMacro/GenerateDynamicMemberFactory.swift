@@ -10,7 +10,7 @@
 /// The factory type will include an `@inlinable` (`internal`) initializer that takes
 /// no arguments. The factory type itself has zero size.
 @attached(member, names: named(Factory))
-public
-macro GenerateDynamicMemberFactory(excluding:String...) = #externalMacro(
+public macro GenerateDynamicMemberFactory(excluding: String...) = #externalMacro(
     module: "DynamicLookupMacros",
-    type: "GenerateDynamicMemberFactory")
+    type: "GenerateDynamicMemberFactory"
+)
