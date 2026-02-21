@@ -2,7 +2,7 @@
 import PackageDescription
 import CompilerPluginSupport
 
-let package:Package = .init(
+let package: Package = .init(
     name: "swift-dom",
     platforms: [.macOS(.v14), .iOS(.v13), .tvOS(.v13), .watchOS(.v6)],
     products: [
@@ -12,10 +12,12 @@ let package:Package = .init(
         .library(name: "DynamicMemberFactoryMacro", targets: ["DynamicMemberFactoryMacro"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-syntax", from: "602.0.0"),
+        .package(url: "https://github.com/swiftlang/swift-syntax", from: "602.0.0"),
+        .package(url: "https://github.com/tayloraswift/dollup", from: "0.8.2"),
     ],
     targets: [
-        .target(name: "DOM",
+        .target(
+            name: "DOM",
             dependencies: [
                 // .target(name: "DynamicMemberFactoryMacro"),
             ],
@@ -24,23 +26,31 @@ let package:Package = .init(
             exclude: [
                 "HTML/HTML.Attribute.swift",
                 "SVG/SVG.Attribute.swift",
-            ]),
+            ]
+        ),
 
-        .target(name: "HTML",
+        .target(
+            name: "HTML",
             dependencies: [
                 .target(name: "DOM"),
-            ]),
+            ]
+        ),
 
-        .target(name: "DynamicMemberFactoryMacro",
+        .target(
+            name: "DynamicMemberFactoryMacro",
             dependencies: [
                 .target(name: "DynamicLookupMacros"),
             ],
-            path: "Macros/DynamicMemberFactoryMacro"),
+            path: "Macros/DynamicMemberFactoryMacro"
+        ),
 
-        .macro(name: "DynamicLookupMacros",
+        .macro(
+            name: "DynamicLookupMacros",
             dependencies: [
                 .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
                 .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
             ],
-            path: "Macros/DynamicLookupMacros"),
-    ])
+            path: "Macros/DynamicLookupMacros"
+        ),
+    ]
+)

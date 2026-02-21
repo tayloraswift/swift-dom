@@ -1,8 +1,5 @@
-extension SVG
-{
-    @frozen public
-    enum ContainerElement:String, Equatable, Hashable, Sendable
-    {
+extension SVG {
+    @frozen public enum ContainerElement: String, Equatable, Hashable, Sendable {
         case a
         case animate
         case animateMotion

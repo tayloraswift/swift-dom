@@ -1,5 +1,12 @@
 #!/bin/bash
 set -e
+set -x
+
 swift --version
+
+# check formatting state
+swift package dollup --allow-writing-to-package-directory
+git diff --quiet
+
 swift build
 swift build -c release

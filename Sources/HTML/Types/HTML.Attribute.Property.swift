@@ -1,9 +1,6 @@
-extension HTML.Attribute
-{
+extension HTML.Attribute {
     /// See https://ogp.me/
-    @frozen public
-    enum Property:String, Equatable, Hashable, Sendable
-    {
+    @frozen public enum Property: String, Equatable, Hashable, Sendable {
         case og_audio = "og:audio"
         case og_audio_type = "og:audio:type"
 

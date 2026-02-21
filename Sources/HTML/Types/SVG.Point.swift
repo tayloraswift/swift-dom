@@ -6,51 +6,33 @@ import func Darwin.cos
 import func Darwin.sin
 #endif
 
-extension SVG
-{
-    @frozen public
-    struct Point<Scalar> where Scalar:CustomStringConvertible
-    {
-        public
-        var x:Scalar
-        public
-        var y:Scalar
+extension SVG {
+    @frozen public struct Point<Scalar> where Scalar: CustomStringConvertible {
+        public var x: Scalar
+        public var y: Scalar
 
-        @inlinable public
-        init(_ x:Scalar, _ y:Scalar)
-        {
+        @inlinable public init(_ x: Scalar, _ y: Scalar) {
             self.x = x
             self.y = y
         }
     }
 }
-extension SVG.Point:Equatable where Scalar:Equatable
-{
+extension SVG.Point: Equatable where Scalar: Equatable {
 }
-extension SVG.Point:Hashable where Scalar:Hashable
-{
+extension SVG.Point: Hashable where Scalar: Hashable {
 }
-extension SVG.Point:Sendable where Scalar:Sendable
-{
+extension SVG.Point: Sendable where Scalar: Sendable {
 }
-extension SVG.Point<Float>
-{
-    @inlinable public
-    init(radians:Float, radius:Float = 1.0)
-    {
+extension SVG.Point<Float> {
+    @inlinable public init(radians: Float, radius: Float = 1.0) {
         self.init(radius * _cos(radians), radius * -_sin(radians))
     }
 }
-extension SVG.Point<Double>
-{
-    @inlinable public
-    init(radians:Double, radius:Double = 1.0)
-    {
+extension SVG.Point<Double> {
+    @inlinable public init(radians: Double, radius: Double = 1.0) {
         self.init(radius * _cos(radians), radius * -_sin(radians))
     }
 }
-extension SVG.Point:CustomStringConvertible
-{
-    @inlinable public
-    var description:String { "\(self.x),\(self.y)" }
+extension SVG.Point: CustomStringConvertible {
+    @inlinable public var description: String { "\(self.x),\(self.y)" }
 }

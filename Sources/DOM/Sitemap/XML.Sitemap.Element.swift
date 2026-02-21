@@ -1,8 +1,5 @@
-extension XML.Sitemap
-{
-    @frozen public
-    enum Element:String, Equatable, Hashable, Sendable
-    {
+extension XML.Sitemap {
+    @frozen public enum Element: String, Equatable, Hashable, Sendable {
         case changefreq
         case lastmod
         case loc

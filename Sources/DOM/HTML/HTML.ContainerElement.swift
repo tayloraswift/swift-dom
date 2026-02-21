@@ -1,8 +1,5 @@
-extension HTML
-{
-    @frozen public
-    enum ContainerElement:String, Equatable, Hashable, Sendable
-    {
+extension HTML {
+    @frozen public enum ContainerElement: String, Equatable, Hashable, Sendable {
         case html
         case head
         case body

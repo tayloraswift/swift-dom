@@ -1,8 +1,5 @@
-extension HTML
-{
-    @frozen public
-    enum VoidElement:String, Equatable, Hashable, Sendable
-    {
+extension HTML {
+    @frozen public enum VoidElement: String, Equatable, Hashable, Sendable {
         case area
         case base
         case br
