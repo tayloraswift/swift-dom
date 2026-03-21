@@ -12,8 +12,8 @@ let package: Package = .init(
         .library(name: "DynamicMemberFactoryMacro", targets: ["DynamicMemberFactoryMacro"]),
     ],
     dependencies: [
+        .package(url: "https://github.com/ordo-one/dollup", from: "1.0.1"),
         .package(url: "https://github.com/swiftlang/swift-syntax", from: "602.0.0"),
-        .package(url: "https://github.com/tayloraswift/dollup", from: "0.8.2"),
     ],
     targets: [
         .target(
