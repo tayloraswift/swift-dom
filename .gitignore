@@ -1,5 +1,7 @@
-.build/
-.build.ssgc/
-.ssgc/
+.DS_Store
+
+/.build/
+/.build.ssgc/
+/.ssgc/
 
 /Package.resolved
