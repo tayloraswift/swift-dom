@@ -1,12 +1,11 @@
 #!/bin/bash
-set -e
-set -x
+set -euo pipefail
 
 swift --version
 
 # check formatting state
 swift package dollup --allow-writing-to-package-directory
-git diff --quiet
+git diff --exit-code
 
 swift build
 swift build -c release
