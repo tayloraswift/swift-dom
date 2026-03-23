@@ -1,7 +1,8 @@
 name: Tests
 
+permissions:
+    contents: write
 on:
-    workflow_dispatch:
     push:
         branches: [ master ]
     pull_request:
@@ -29,22 +30,7 @@ jobs:
         outputs:
             code_changed: ${{ steps.changes.outputs.any_changed }}
 
-    macos:
-        runs-on: macos-26
-        name: macOS
-        needs: changes
-        if: ${{ needs.changes.outputs.code_changed == 'true' }}
-        steps:
-            -   name: 💖 Checkout repository 💖
-                uses: actions/checkout@v6
-
-            -   name: 💖 Select Xcode 26.3 💖
-                run: sudo xcode-select -s /Applications/Xcode_26.3.app/Contents/Developer
-
-            -   name: 💖 Test 💖
-                run: Scripts/TestAll
-
-    linux:
+    Linux:
         runs-on: ubuntu-24.04
         name: Ubuntu 24.04
         needs: changes
@@ -59,5 +45,40 @@ jobs:
             -   name: 💖 Checkout repository 💖
                 uses: actions/checkout@v6
 
-            -   name: 💖 Test 💖
+            -   name: 💖 Run tests 💖
                 run: Scripts/TestAll
+
+            -   name: 💖 Update badge 💖
+                uses: rarestype/rarestbadge@v1
+                if: always()
+
+    macOS:
+        runs-on: macos-26
+        needs: changes
+        if: ${{ needs.changes.outputs.code_changed == 'true' }}
+        steps:
+            -   name: 💖 Checkout repository 💖
+                uses: actions/checkout@v6
+
+            -   name: 💖 Select Xcode 26.3 💖
+                run: sudo xcode-select -s /Applications/Xcode_26.3.app/Contents/Developer
+
+            -   name: 💖 Run tests 💖
+                run: Scripts/TestAll
+
+            -   name: 💖 Update badge 💖
+                uses: rarestype/rarestbadge@v1
+                if: always()
+
+    macOS-devices:
+        strategy:
+            matrix:
+                destination: [iOS, tvOS, visionOS, watchOS]
+        needs: changes
+        if: ${{ needs.changes.outputs.code_changed == 'true' }}
+        name: ${{ matrix.destination }}
+        uses: rarestype/swift-device-action/.github/workflows/build.yml@v1
+        with:
+            xcode-scheme: 'swift-dom-Package'
+            destination: ${{ matrix.destination }}
+            badge-namespace: ${{ github.workflow }}
